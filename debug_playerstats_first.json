@@ -1,0 +1,94 @@
+{
+  "fantasy_content": {
+    "xml:lang": "en-US",
+    "yahoo:uri": "/fantasy/v2/player/466.p.3704/stats;type=week;week=7",
+    "player": [
+      [
+        {
+          "player_key": "466.p.3704"
+        },
+        {
+          "player_id": "3704"
+        },
+        {
+          "name": {
+            "full": "LeBron James",
+            "first": "LeBron",
+            "last": "James",
+            "ascii_first": "LeBron",
+            "ascii_last": "James"
+          }
+        },
+        {
+          "url": "https://sports.yahoo.com/nba/players/3704"
+        },
+        {
+          "editorial_player_key": "nba.p.3704"
+        },
+        {
+          "editorial_team_key": "nba.t.13"
+        },
+        {
+          "editorial_team_full_name": "Los Angeles Lakers"
+        },
+        {
+          "editorial_team_abbr": "LAL"
+        },
+        {
+          "editorial_team_url": "https://sports.yahoo.com/nba/teams/la-lakers/"
+        },
+        {
+          "is_keeper": {
+            "status": false,
+            "cost": false
+          }
+        },
+        {
+          "uniform_number": "23"
+        },
+        {
+          "display_position": "SF,PF"
+        },
+        {
+          "headshot": {
+            "url": "https://s.yimg.com/iu/api/res/1.2/d0ar3r622Gyr2j8MzXacTQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10292024/3704.png",
+            "size": "small"
+          },
+          "image_url": "https://s.yimg.com/iu/api/res/1.2/d0ar3r622Gyr2j8MzXacTQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10292024/3704.png"
+        },
+        {
+          "is_undroppable": "0"
+        },
+        {
+          "position_type": "P"
+        },
+        [],
+        {
+          "eligible_positions": [
+            {
+              "position": "PF"
+            },
+            {
+              "position": "SF"
+            }
+          ]
+        },
+        {
+          "eligible_positions_to_add": []
+        },
+        [],
+        [],
+        {
+          "has_player_notes": 1
+        },
+        [],
+        {
+          "player_notes_last_timestamp": 1764661205
+        }
+      ]
+    ],
+    "time": "22.203922271729ms",
+    "copyright": "Certain Data by Sportradar, Stats Perform and Rotowire",
+    "refresh_rate": "60"
+  }
+}
