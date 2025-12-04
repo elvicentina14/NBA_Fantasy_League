@@ -2,9 +2,9 @@ name: Update fantasy data
 
 on:
   schedule:
-    # Runs daily at 02:00 UTC. Change cron if you want different frequency.
-    - cron: '0 2 * * *'
-  workflow_dispatch: {}  # allows manual run from Actions UI
+    - cron: '0 * * * *'   # every hour, at minute 0
+  workflow_dispatch: {}
+
 
 jobs:
   update:
