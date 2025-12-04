@@ -3,1791 +3,4944 @@
     "team_key": "466.l.165651.t.1",
     "team_id": "1",
     "team_name": "MARK HENRY ALCANTARA",
-    "player_raw": [
-      {
-        "player_key": "466.p.5767"
-      },
-      {
-        "player_id": "5767"
-      },
-      {
-        "name": {
-          "full": "De'Aaron Fox",
-          "first": "De'Aaron",
-          "last": "Fox",
-          "ascii_first": "De'Aaron",
-          "ascii_last": "Fox"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/5767"
-      },
-      {
-        "editorial_player_key": "nba.p.5767"
-      },
-      {
-        "editorial_team_key": "nba.t.24"
-      },
-      {
-        "editorial_team_full_name": "San Antonio Spurs"
-      },
-      {
-        "editorial_team_abbr": "SAS"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/san-antonio/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "4"
-      },
-      {
-        "display_position": "PG,SG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/5wDxE8hlN4rdWYooGRrGBQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/5767.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/5wDxE8hlN4rdWYooGRrGBQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/5767.png"
-      },
-      {
-        "is_undroppable": "1"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "SG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      {
-        "has_recent_player_notes": 1
-      },
-      {
-        "player_notes_last_timestamp": 1764817704
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5767"
+    }
   },
   {
     "team_key": "466.l.165651.t.1",
     "team_id": "1",
     "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "5767"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6755"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6755"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6169"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6169"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6720"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6720"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6632"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6632"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10065"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10065"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5958"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5958"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5352"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5352"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10476"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10476"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5640"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5640"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6577"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6577"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5842"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5842"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.3704"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "3704"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6164"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6164"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5464"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5464"
     }
   },
   {
     "team_key": "466.l.165651.t.2",
     "team_id": "2",
     "team_name": "Matalim Dede",
-    "player_raw": [
-      {
-        "player_key": "466.p.6218"
-      },
-      {
-        "player_id": "6218"
-      },
-      {
-        "name": {
-          "full": "Kevin Porter Jr.",
-          "first": "Kevin",
-          "last": "Porter Jr.",
-          "ascii_first": "Kevin",
-          "ascii_last": "Porter Jr."
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/6218"
-      },
-      {
-        "editorial_player_key": "nba.p.6218"
-      },
-      {
-        "editorial_team_key": "nba.t.15"
-      },
-      {
-        "editorial_team_full_name": "Milwaukee Bucks"
-      },
-      {
-        "editorial_team_abbr": "MIL"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/milwaukee/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "7"
-      },
-      {
-        "display_position": "PG,SG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/C2.3sqD8SfokJz_fhxTBDg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/6218.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/C2.3sqD8SfokJz_fhxTBDg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/6218.png"
-      },
-      {
-        "is_undroppable": "0"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "SG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      {
-        "has_recent_player_notes": 1
-      },
-      {
-        "player_notes_last_timestamp": 1764821776
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6218"
+    }
   },
   {
     "team_key": "466.l.165651.t.2",
     "team_id": "2",
     "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "6218"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10095"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10095"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10450"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10450"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6499"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6499"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5843"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5843"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10265"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10265"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6703"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6703"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6617"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6617"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6512"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6512"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5582"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5582"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6679"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6679"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6692"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6692"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6567"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6567"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6513"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6513"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6691"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6691"
     }
   },
   {
     "team_key": "466.l.165651.t.3",
     "team_id": "3",
     "team_name": "The Way of the Wemby",
-    "player_raw": [
-      {
-        "player_key": "466.p.10468"
-      },
-      {
-        "player_id": "10468"
-      },
-      {
-        "name": {
-          "full": "Cooper Flagg",
-          "first": "Cooper",
-          "last": "Flagg",
-          "ascii_first": "Cooper",
-          "ascii_last": "Flagg"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/10468"
-      },
-      {
-        "editorial_player_key": "nba.p.10468"
-      },
-      {
-        "editorial_team_key": "nba.t.6"
-      },
-      {
-        "editorial_team_full_name": "Dallas Mavericks"
-      },
-      {
-        "editorial_team_abbr": "DAL"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/dallas/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "32"
-      },
-      {
-        "display_position": "PG,SG,SF"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/64_5Ztd1lqG.jWfrDxnuXw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10202025/10468.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/64_5Ztd1lqG.jWfrDxnuXw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10202025/10468.png"
-      },
-      {
-        "is_undroppable": "0"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "SG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "SF"
-          },
-          {
-            "position": "F"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      {
-        "has_recent_player_notes": 1
-      },
-      {
-        "player_notes_last_timestamp": 1764823147
-      }
-    ]
-  },
-  {
-    "team_key": "466.l.165651.t.3",
-    "team_id": "3",
-    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_key": "466.p.10468"
     }
   },
   {
     "team_key": "466.l.165651.t.3",
     "team_id": "3",
     "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "is_editable": 0
+      "player_id": "10468"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4390"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "4390"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6698"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6698"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4614"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "4614"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6420"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6420"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5069"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5069"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6206"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6206"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5163"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5163"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6551"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6551"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10440"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10440"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10444"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10444"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10287"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10287"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6581"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6581"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10094"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10094"
     }
   },
   {
     "team_key": "466.l.165651.t.4",
     "team_id": "4",
     "team_name": "🦌🦌 🦌",
-    "player_raw": [
-      {
-        "player_key": "466.p.10115"
-      },
-      {
-        "player_id": "10115"
-      },
-      {
-        "name": {
-          "full": "Brandin Podziemski",
-          "first": "Brandin",
-          "last": "Podziemski",
-          "ascii_first": "Brandin",
-          "ascii_last": "Podziemski"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/10115"
-      },
-      {
-        "editorial_player_key": "nba.p.10115"
-      },
-      {
-        "editorial_team_key": "nba.t.9"
-      },
-      {
-        "editorial_team_full_name": "Golden State Warriors"
-      },
-      {
-        "editorial_team_abbr": "GSW"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/golden-state/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "2"
-      },
-      {
-        "display_position": "PG,SG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/j82lNu5Ai28THSz5.dYr0w--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10292024/10115.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/j82lNu5Ai28THSz5.dYr0w--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10292024/10115.png"
-      },
-      {
-        "is_undroppable": "0"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "SG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      [],
-      {
-        "player_notes_last_timestamp": 1764743836
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10115"
+    }
   },
   {
     "team_key": "466.l.165651.t.4",
     "team_id": "4",
     "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "10115"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6417"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6417"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10092"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10092"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4896"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "4896"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6550"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6550"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6166"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6166"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5185"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5185"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6699"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6699"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5858"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5858"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4901"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "4901"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4725"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "4725"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6411"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6411"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6572"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6572"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6165"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6165"
     }
   },
   {
     "team_key": "466.l.165651.t.5",
     "team_id": "5",
     "team_name": "IBA KA",
-    "player_raw": [
-      {
-        "player_key": "466.p.6721"
-      },
-      {
-        "player_id": "6721"
-      },
-      {
-        "name": {
-          "full": "Andrew Nembhard",
-          "first": "Andrew",
-          "last": "Nembhard",
-          "ascii_first": "Andrew",
-          "ascii_last": "Nembhard"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/6721"
-      },
-      {
-        "editorial_player_key": "nba.p.6721"
-      },
-      {
-        "editorial_team_key": "nba.t.11"
-      },
-      {
-        "editorial_team_full_name": "Indiana Pacers"
-      },
-      {
-        "editorial_team_abbr": "IND"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/indiana/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "2"
-      },
-      {
-        "display_position": "PG,SG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/tFTqSyfenWzRz18tFGLdcw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/6721.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/tFTqSyfenWzRz18tFGLdcw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/6721.png"
-      },
-      {
-        "is_undroppable": "0"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "SG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      [],
-      {
-        "player_notes_last_timestamp": 1764649346
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6721"
+    }
   },
   {
     "team_key": "466.l.165651.t.5",
     "team_id": "5",
     "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "6721"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6175"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6175"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4244"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "4244"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6696"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6696"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10104"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10104"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5292"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5292"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6693"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6693"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5832"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5832"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5826"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5826"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5959"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5959"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10107"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10107"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10454"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10454"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6559"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6559"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5660"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5660"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5294"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5294"
     }
   },
   {
     "team_key": "466.l.165651.t.6",
     "team_id": "6",
     "team_name": "ICC Defenders",
-    "player_raw": [
-      {
-        "player_key": "466.p.10288"
-      },
-      {
-        "player_id": "10288"
-      },
-      {
-        "name": {
-          "full": "Reed Sheppard",
-          "first": "Reed",
-          "last": "Sheppard",
-          "ascii_first": "Reed",
-          "ascii_last": "Sheppard"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/10288"
-      },
-      {
-        "editorial_player_key": "nba.p.10288"
-      },
-      {
-        "editorial_team_key": "nba.t.10"
-      },
-      {
-        "editorial_team_full_name": "Houston Rockets"
-      },
-      {
-        "editorial_team_abbr": "HOU"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/houston/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "15"
-      },
-      {
-        "display_position": "PG,SG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/v.2eYugQx_jvOUiUyuSZrg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/10288.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/v.2eYugQx_jvOUiUyuSZrg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/10288.png"
-      },
-      {
-        "is_undroppable": "0"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "SG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      {
-        "has_recent_player_notes": 1
-      },
-      {
-        "player_notes_last_timestamp": 1764805618
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10288"
+    }
   },
   {
     "team_key": "466.l.165651.t.6",
     "team_id": "6",
     "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "10288"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6031"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6031"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5636"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5636"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6562"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6562"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5007"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5007"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6558"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6558"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6398"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6398"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10285"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10285"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5327"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5327"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10096"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10096"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10273"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10273"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6028"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6028"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10272"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10272"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5836"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5836"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10290"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10290"
     }
   },
   {
     "team_key": "466.l.165651.t.7",
     "team_id": "7",
     "team_name": "Patrick's Mai Team",
-    "player_raw": [
-      {
-        "player_key": "466.p.6044"
-      },
-      {
-        "player_id": "6044"
-      },
-      {
-        "name": {
-          "full": "Jalen Brunson",
-          "first": "Jalen",
-          "last": "Brunson",
-          "ascii_first": "Jalen",
-          "ascii_last": "Brunson"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/6044"
-      },
-      {
-        "editorial_player_key": "nba.p.6044"
-      },
-      {
-        "editorial_team_key": "nba.t.18"
-      },
-      {
-        "editorial_team_full_name": "New York Knicks"
-      },
-      {
-        "editorial_team_abbr": "NYK"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/new-york/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "11"
-      },
-      {
-        "display_position": "PG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/rSoP4zwaX5v7mOETI3i5zg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11252025/6044.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/rSoP4zwaX5v7mOETI3i5zg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11252025/6044.png"
-      },
-      {
-        "is_undroppable": "1"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SG"
-          },
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      {
-        "has_recent_player_notes": 1
-      },
-      {
-        "player_notes_last_timestamp": 1764820095
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6044"
+    }
   },
   {
     "team_key": "466.l.165651.t.7",
     "team_id": "7",
     "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "6044"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5187"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5187"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5506"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5506"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5601"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5601"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5350"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5350"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5471"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5471"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5903"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5903"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5905"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5905"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6735"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6735"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5245"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5245"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6355"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6355"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5769"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5769"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10315"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10315"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5295"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5295"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5856"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5856"
     }
   },
   {
     "team_key": "466.l.165651.t.8",
     "team_id": "8",
     "team_name": "Zesty Squad",
-    "player_raw": [
-      {
-        "player_key": "466.p.5638"
-      },
-      {
-        "player_id": "5638"
-      },
-      {
-        "name": {
-          "full": "Jamal Murray",
-          "first": "Jamal",
-          "last": "Murray",
-          "ascii_first": "Jamal",
-          "ascii_last": "Murray"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/5638"
-      },
-      {
-        "editorial_player_key": "nba.p.5638"
-      },
-      {
-        "editorial_team_key": "nba.t.7"
-      },
-      {
-        "editorial_team_full_name": "Denver Nuggets"
-      },
-      {
-        "editorial_team_abbr": "DEN"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/denver/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "27"
-      },
-      {
-        "display_position": "PG,SG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/dmVibmKyh2eu2yvY0kMf0g--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/5638.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/dmVibmKyh2eu2yvY0kMf0g--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/5638.png"
-      },
-      {
-        "is_undroppable": "0"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "SG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      {
-        "has_recent_player_notes": 1
-      },
-      {
-        "player_notes_last_timestamp": 1764817132
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5638"
+    }
   },
   {
     "team_key": "466.l.165651.t.8",
     "team_id": "8",
     "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "5638"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6556"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6556"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6516"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6516"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6217"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6217"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5432"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5432"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5013"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5013"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6733"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6733"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4897"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "4897"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6019"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6019"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10279"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10279"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10100"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10100"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6606"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6606"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6702"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6702"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6707"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6707"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10292"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10292"
     }
   },
   {
     "team_key": "466.l.165651.t.9",
     "team_id": "9",
     "team_name": "Donation Only",
-    "player_raw": [
-      {
-        "player_key": "466.p.10467"
-      },
-      {
-        "player_id": "10467"
-      },
-      {
-        "name": {
-          "full": "Dylan Harper",
-          "first": "Dylan",
-          "last": "Harper",
-          "ascii_first": "Dylan",
-          "ascii_last": "Harper"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/10467"
-      },
-      {
-        "editorial_player_key": "nba.p.10467"
-      },
-      {
-        "editorial_team_key": "nba.t.24"
-      },
-      {
-        "editorial_team_full_name": "San Antonio Spurs"
-      },
-      {
-        "editorial_team_abbr": "SAS"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/san-antonio/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "2"
-      },
-      {
-        "display_position": "PG,SG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/ZgBUWiO6sMQi9xlbB5PtNw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/10467.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/ZgBUWiO6sMQi9xlbB5PtNw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/10467.png"
-      },
-      {
-        "is_undroppable": "0"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "SG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      {
-        "has_recent_player_notes": 1
-      },
-      {
-        "player_notes_last_timestamp": 1764816227
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10467"
+    }
   },
   {
     "team_key": "466.l.165651.t.9",
     "team_id": "9",
     "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "10467"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6395"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6395"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10511"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10511"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6697"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6697"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6173"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6173"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10462"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10462"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6219"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6219"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5827"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5827"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6751"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6751"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10445"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10445"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6022"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6022"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6515"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6515"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5015"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5015"
     }
   },
   {
     "team_key": "466.l.165651.t.10",
     "team_id": "10",
     "team_name": "🥶 🥶 🥶",
-    "player_raw": [
-      {
-        "player_key": "466.p.4563"
-      },
-      {
-        "player_id": "4563"
-      },
-      {
-        "name": {
-          "full": "James Harden",
-          "first": "James",
-          "last": "Harden",
-          "ascii_first": "James",
-          "ascii_last": "Harden"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/4563"
-      },
-      {
-        "editorial_player_key": "nba.p.4563"
-      },
-      {
-        "editorial_team_key": "nba.t.12"
-      },
-      {
-        "editorial_team_full_name": "LA Clippers"
-      },
-      {
-        "editorial_team_abbr": "LAC"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/la-clippers/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "1"
-      },
-      {
-        "display_position": "PG,SG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/qGkYKGrgoLSoSNXtRwsQ1g--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10222024/4563.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/qGkYKGrgoLSoSNXtRwsQ1g--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10222024/4563.png"
-      },
-      {
-        "is_undroppable": "1"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "SG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      {
-        "has_recent_player_notes": 1
-      },
-      {
-        "player_notes_last_timestamp": 1764819728
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4563"
+    }
   },
   {
     "team_key": "466.l.165651.t.10",
     "team_id": "10",
     "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "4563"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6548"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6548"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6580"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6580"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5840"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5840"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6514"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6514"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10393"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10393"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5663"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5663"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10121"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10121"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6549"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6549"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6695"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6695"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5161"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5161"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10078"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10078"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10294"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10294"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4840"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "4840"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6016"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6016"
     }
   },
   {
     "team_key": "466.l.165651.t.11",
     "team_id": "11",
     "team_name": "Denzel's Grand Team",
-    "player_raw": [
-      {
-        "player_key": "466.p.6035"
-      },
-      {
-        "player_id": "6035"
-      },
-      {
-        "name": {
-          "full": "Anfernee Simons",
-          "first": "Anfernee",
-          "last": "Simons",
-          "ascii_first": "Anfernee",
-          "ascii_last": "Simons"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/6035"
-      },
-      {
-        "editorial_player_key": "nba.p.6035"
-      },
-      {
-        "editorial_team_key": "nba.t.2"
-      },
-      {
-        "editorial_team_full_name": "Boston Celtics"
-      },
-      {
-        "editorial_team_abbr": "BOS"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/boston/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "4"
-      },
-      {
-        "display_position": "PG,SG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/4dKmUiE2To_4Kteg4sUQkw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/07092025/6035.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/4dKmUiE2To_4Kteg4sUQkw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/07092025/6035.png"
-      },
-      {
-        "is_undroppable": "0"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "SG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      [],
-      {
-        "player_notes_last_timestamp": 1764605809
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6035"
+    }
   },
   {
     "team_key": "466.l.165651.t.11",
     "team_id": "11",
     "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "6035"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5602"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5602"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6754"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6754"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10296"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10296"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6023"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6023"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10263"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10263"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10097"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10097"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5658"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5658"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6174"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6174"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6163"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6163"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4912"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "4912"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6253"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6253"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5197"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5197"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5475"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5475"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6711"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6711"
     }
   },
   {
     "team_key": "466.l.165651.t.12",
     "team_id": "12",
     "team_name": "Gab's Minions",
-    "player_raw": [
-      {
-        "player_key": "466.p.6578"
-      },
-      {
-        "player_id": "6578"
-      },
-      {
-        "name": {
-          "full": "Miles McBride",
-          "first": "Miles",
-          "last": "McBride",
-          "ascii_first": "Miles",
-          "ascii_last": "McBride"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/6578"
-      },
-      {
-        "editorial_player_key": "nba.p.6578"
-      },
-      {
-        "editorial_team_key": "nba.t.18"
-      },
-      {
-        "editorial_team_full_name": "New York Knicks"
-      },
-      {
-        "editorial_team_abbr": "NYK"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/new-york/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "2"
-      },
-      {
-        "display_position": "PG,SG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/Lndp9HCYE_m6yz2qrHK1_Q--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11252025/6578.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/Lndp9HCYE_m6yz2qrHK1_Q--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11252025/6578.png"
-      },
-      {
-        "is_undroppable": "0"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "SG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      [],
-      {
-        "player_notes_last_timestamp": 1764392606
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6578"
+    }
   },
   {
     "team_key": "466.l.165651.t.12",
     "team_id": "12",
     "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "6578"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6433"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6433"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6401"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6401"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6422"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6422"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10103"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10103"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10274"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10274"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6408"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6408"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6226"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6226"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6616"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6616"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5073"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5073"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5318"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5318"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10327"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10327"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10465"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10465"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5642"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5642"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6014"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6014"
     }
   },
   {
     "team_key": "466.l.165651.t.13",
     "team_id": "13",
     "team_name": "🌁 Warriors Throwback 💦",
-    "player_raw": [
-      {
-        "player_key": "466.p.6167"
-      },
-      {
-        "player_id": "6167"
-      },
-      {
-        "name": {
-          "full": "Darius Garland",
-          "first": "Darius",
-          "last": "Garland",
-          "ascii_first": "Darius",
-          "ascii_last": "Garland"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/6167"
-      },
-      {
-        "editorial_player_key": "nba.p.6167"
-      },
-      {
-        "editorial_team_key": "nba.t.5"
-      },
-      {
-        "editorial_team_full_name": "Cleveland Cavaliers"
-      },
-      {
-        "editorial_team_abbr": "CLE"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/cleveland/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "10"
-      },
-      {
-        "display_position": "PG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/Tfli6T42Qn6Itfut.4dYag--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10242024/6167.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/Tfli6T42Qn6Itfut.4dYag--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10242024/6167.png"
-      },
-      {
-        "is_undroppable": "0"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SG"
-          },
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      [],
-      {
-        "player_notes_last_timestamp": 1764715172
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6167"
+    }
   },
   {
     "team_key": "466.l.165651.t.13",
     "team_id": "13",
     "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "6167"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6734"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6734"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6418"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6418"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5324"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5324"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6021"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6021"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6596"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6596"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6564"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6564"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6038"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6038"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4892"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "4892"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4612"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "4612"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6413"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6413"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10304"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10304"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10340"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10340"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6569"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6569"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6216"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6216"
     }
   },
   {
     "team_key": "466.l.165651.t.14",
     "team_id": "14",
     "team_name": "Mervyn's Swag Team",
-    "player_raw": [
-      {
-        "player_key": "466.p.10276"
-      },
-      {
-        "player_id": "10276"
-      },
-      {
-        "name": {
-          "full": "Jared McCain",
-          "first": "Jared",
-          "last": "McCain",
-          "ascii_first": "Jared",
-          "ascii_last": "McCain"
-        }
-      },
-      {
-        "url": "https://sports.yahoo.com/nba/players/10276"
-      },
-      {
-        "editorial_player_key": "nba.p.10276"
-      },
-      {
-        "editorial_team_key": "nba.t.20"
-      },
-      {
-        "editorial_team_full_name": "Philadelphia 76ers"
-      },
-      {
-        "editorial_team_abbr": "PHI"
-      },
-      {
-        "editorial_team_url": "https://sports.yahoo.com/nba/teams/philadelphia/"
-      },
-      {
-        "is_keeper": {
-          "status": false,
-          "cost": false,
-          "kept": false
-        }
-      },
-      {
-        "uniform_number": "20"
-      },
-      {
-        "display_position": "PG,SG"
-      },
-      {
-        "headshot": {
-          "url": "https://s.yimg.com/iu/api/res/1.2/vaoROSZBEkyU.kju5sOwDg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10282024/10276.png",
-          "size": "small"
-        },
-        "image_url": "https://s.yimg.com/iu/api/res/1.2/vaoROSZBEkyU.kju5sOwDg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10282024/10276.png"
-      },
-      {
-        "is_undroppable": "0"
-      },
-      {
-        "position_type": "P"
-      },
-      {
-        "primary_position": "PG"
-      },
-      {
-        "eligible_positions": [
-          {
-            "position": "PG"
-          },
-          {
-            "position": "SG"
-          },
-          {
-            "position": "G"
-          },
-          {
-            "position": "Util"
-          }
-        ]
-      },
-      {
-        "eligible_positions_to_add": [
-          {
-            "position": "SF"
-          },
-          {
-            "position": "PF"
-          },
-          {
-            "position": "C"
-          }
-        ]
-      },
-      [],
-      [],
-      {
-        "has_player_notes": 1
-      },
-      [],
-      {
-        "player_notes_last_timestamp": 1764605688
-      }
-    ]
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10276"
+    }
   },
   {
     "team_key": "466.l.165651.t.14",
     "team_id": "14",
     "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
     "player_raw": {
-      "selected_position": [
-        {
-          "coverage_type": "date",
-          "date": "2025-12-03"
-        },
-        {
-          "position": "PG"
-        },
-        {
-          "is_flex": 0
-        }
-      ]
+      "player_id": "10276"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10108"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10108"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6205"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6205"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6403"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6403"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5482"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5482"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6025"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6025"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6018"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6018"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6073"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6073"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6694"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6694"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6015"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6015"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5473"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5473"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6032"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6032"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6705"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6705"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.4622"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "4622"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5835"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5835"
     }
   }
 ]
