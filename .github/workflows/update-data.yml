@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repo (persist credentials for push)
         uses: actions/checkout@v4
         with:
-          persist-credentials: true   # allows git push using GITHUB_TOKEN
+          persist-credentials: true
           fetch-depth: 0
 
       - name: Decode oauth2.json from base64 secret and validate
@@ -30,9 +30,9 @@ jobs:
           fi
           # decode base64 into oauth2.json
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
-          # quick JSON sanity check
+          # quick JSON sanity check using a heredoc (kept inside the run block)
           python - <<'PY'
-import json,sys
+import json, sys
 try:
     json.load(open('oauth2.json'))
     print('oauth2.json OK')
@@ -64,14 +64,10 @@ PY
           python fetch_players_and_stats.py
 
       - name: Commit and push outputs
-        # uses the checked out repo and the GITHUB_TOKEN (persist-credentials: true)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # stage common outputs (adjust filenames if your script writes different ones)
           git add league_players.csv player_stats.csv || true
-          # if there are debug files you also want to commit, uncomment:
-          # git add debug_players_*.json league_players_raw.json debug_playerstats_first.json || true
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
