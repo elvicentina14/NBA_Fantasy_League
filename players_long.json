@@ -2672,30 +2672,6 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_key": "466.p.6019"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.8",
-    "team_id": "8",
-    "team_name": "Zesty Squad",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
-      "player_id": "6019"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.8",
-    "team_id": "8",
-    "team_name": "Zesty Squad",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
       "player_key": "466.p.10279"
     }
   },
@@ -2709,6 +2685,30 @@
     "selected_position": null,
     "player_raw": {
       "player_id": "10279"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.10292"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10292"
     }
   },
   {
@@ -2816,7 +2816,7 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_key": "466.p.10292"
+      "player_key": "466.p.6019"
     }
   },
   {
@@ -2828,7 +2828,7 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_id": "10292"
+      "player_id": "6019"
     }
   },
   {
