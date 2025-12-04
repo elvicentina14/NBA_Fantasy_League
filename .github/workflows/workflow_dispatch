@@ -1,0 +1,5 @@
+      - name: Run fetch league players (manual test)
+        env:
+          LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
+        run: |
+          python fetch_league_players.py
