@@ -40,7 +40,7 @@ except Exception as e:
     print('Invalid oauth2.json:', e)
     sys.exit(2)
 PY
-
+ 
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
