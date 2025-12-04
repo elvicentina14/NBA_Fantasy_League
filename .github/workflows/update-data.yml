@@ -36,17 +36,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install yahoo_oauth requests pandas
 
-      - name: Run fetch script
+      - name: Run DEBUG fetch script
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
-          python fetch_players_and_stats.py
+          python fetch_players_and_stats_debug.py
 
       - name: Commit and push outputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add league_players.csv player_stats.csv || true
+          git add debug_players_*.json league_players_raw.json league_players.csv player_stats.csv debug_playerstats_first.json || true
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
