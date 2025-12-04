@@ -728,7 +728,7 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_key": "466.p.10468"
+      "player_key": "466.p.10445"
     }
   },
   {
@@ -740,7 +740,7 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_id": "10468"
+      "player_id": "10445"
     }
   },
   {
@@ -824,54 +824,6 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_key": "466.p.6420"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.3",
-    "team_id": "3",
-    "team_name": "The Way of the Wemby",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
-      "player_id": "6420"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.3",
-    "team_id": "3",
-    "team_name": "The Way of the Wemby",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
-      "player_key": "466.p.5069"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.3",
-    "team_id": "3",
-    "team_name": "The Way of the Wemby",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
-      "player_id": "5069"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.3",
-    "team_id": "3",
-    "team_name": "The Way of the Wemby",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
       "player_key": "466.p.10444"
     }
   },
@@ -909,6 +861,54 @@
     "selected_position": null,
     "player_raw": {
       "player_id": "6581"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5163"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5163"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6219"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6219"
     }
   },
   {
@@ -968,6 +968,30 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
+      "player_key": "466.p.10468"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "10468"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
       "player_key": "466.p.6206"
     }
   },
@@ -981,30 +1005,6 @@
     "selected_position": null,
     "player_raw": {
       "player_id": "6206"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.3",
-    "team_id": "3",
-    "team_name": "The Way of the Wemby",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
-      "player_key": "466.p.5163"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.3",
-    "team_id": "3",
-    "team_name": "The Way of the Wemby",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
-      "player_id": "5163"
     }
   },
   {
@@ -1232,7 +1232,7 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_key": "466.p.6699"
+      "player_key": "466.p.10496"
     }
   },
   {
@@ -1244,7 +1244,7 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_id": "6699"
+      "player_id": "10496"
     }
   },
   {
@@ -2912,7 +2912,7 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_key": "466.p.6697"
+      "player_key": "466.p.6420"
     }
   },
   {
@@ -2924,7 +2924,7 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_id": "6697"
+      "player_id": "6420"
     }
   },
   {
@@ -2984,30 +2984,6 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_key": "466.p.6219"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.9",
-    "team_id": "9",
-    "team_name": "Donation Only",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
-      "player_id": "6219"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.9",
-    "team_id": "9",
-    "team_name": "Donation Only",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
       "player_key": "466.p.5015"
     }
   },
@@ -3021,6 +2997,30 @@
     "selected_position": null,
     "player_raw": {
       "player_id": "5015"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.5069"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "5069"
     }
   },
   {
@@ -3056,7 +3056,7 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_key": "466.p.10445"
+      "player_key": "466.p.6022"
     }
   },
   {
@@ -3068,7 +3068,31 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_id": "10445"
+      "player_id": "6022"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6697"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6697"
     }
   },
   {
@@ -3117,30 +3141,6 @@
     "selected_position": null,
     "player_raw": {
       "player_id": "5827"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.9",
-    "team_id": "9",
-    "team_name": "Donation Only",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
-      "player_key": "466.p.6022"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.9",
-    "team_id": "9",
-    "team_name": "Donation Only",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
-      "player_id": "6022"
     }
   },
   {
@@ -4136,30 +4136,6 @@
     "player_name": null,
     "selected_position": null,
     "player_raw": {
-      "player_key": "466.p.10465"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.12",
-    "team_id": "12",
-    "team_name": "Gab's Minions",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
-      "player_id": "10465"
-    }
-  },
-  {
-    "team_key": "466.l.165651.t.12",
-    "team_id": "12",
-    "team_name": "Gab's Minions",
-    "player_id": null,
-    "player_key": null,
-    "player_name": null,
-    "selected_position": null,
-    "player_raw": {
       "player_key": "466.p.6226"
     }
   },
@@ -4173,6 +4149,30 @@
     "selected_position": null,
     "player_raw": {
       "player_id": "6226"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_key": "466.p.6737"
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_id": null,
+    "player_key": null,
+    "player_name": null,
+    "selected_position": null,
+    "player_raw": {
+      "player_id": "6737"
     }
   },
   {
