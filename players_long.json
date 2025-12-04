@@ -1,0 +1,1793 @@
+[
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_raw": [
+      {
+        "player_key": "466.p.5767"
+      },
+      {
+        "player_id": "5767"
+      },
+      {
+        "name": {
+          "full": "De'Aaron Fox",
+          "first": "De'Aaron",
+          "last": "Fox",
+          "ascii_first": "De'Aaron",
+          "ascii_last": "Fox"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/5767"
+      },
+      {
+        "editorial_player_key": "nba.p.5767"
+      },
+      {
+        "editorial_team_key": "nba.t.24"
+      },
+      {
+        "editorial_team_full_name": "San Antonio Spurs"
+      },
+      {
+        "editorial_team_abbr": "SAS"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/san-antonio/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "4"
+      },
+      {
+        "display_position": "PG,SG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/5wDxE8hlN4rdWYooGRrGBQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/5767.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/5wDxE8hlN4rdWYooGRrGBQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/5767.png"
+      },
+      {
+        "is_undroppable": "1"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "SG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      {
+        "has_recent_player_notes": 1
+      },
+      {
+        "player_notes_last_timestamp": 1764817704
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.1",
+    "team_id": "1",
+    "team_name": "MARK HENRY ALCANTARA",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_raw": [
+      {
+        "player_key": "466.p.6218"
+      },
+      {
+        "player_id": "6218"
+      },
+      {
+        "name": {
+          "full": "Kevin Porter Jr.",
+          "first": "Kevin",
+          "last": "Porter Jr.",
+          "ascii_first": "Kevin",
+          "ascii_last": "Porter Jr."
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/6218"
+      },
+      {
+        "editorial_player_key": "nba.p.6218"
+      },
+      {
+        "editorial_team_key": "nba.t.15"
+      },
+      {
+        "editorial_team_full_name": "Milwaukee Bucks"
+      },
+      {
+        "editorial_team_abbr": "MIL"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/milwaukee/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "7"
+      },
+      {
+        "display_position": "PG,SG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/C2.3sqD8SfokJz_fhxTBDg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/6218.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/C2.3sqD8SfokJz_fhxTBDg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/6218.png"
+      },
+      {
+        "is_undroppable": "0"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "SG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      {
+        "has_recent_player_notes": 1
+      },
+      {
+        "player_notes_last_timestamp": 1764821776
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.2",
+    "team_id": "2",
+    "team_name": "Matalim Dede",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_raw": [
+      {
+        "player_key": "466.p.10468"
+      },
+      {
+        "player_id": "10468"
+      },
+      {
+        "name": {
+          "full": "Cooper Flagg",
+          "first": "Cooper",
+          "last": "Flagg",
+          "ascii_first": "Cooper",
+          "ascii_last": "Flagg"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/10468"
+      },
+      {
+        "editorial_player_key": "nba.p.10468"
+      },
+      {
+        "editorial_team_key": "nba.t.6"
+      },
+      {
+        "editorial_team_full_name": "Dallas Mavericks"
+      },
+      {
+        "editorial_team_abbr": "DAL"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/dallas/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "32"
+      },
+      {
+        "display_position": "PG,SG,SF"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/64_5Ztd1lqG.jWfrDxnuXw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10202025/10468.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/64_5Ztd1lqG.jWfrDxnuXw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10202025/10468.png"
+      },
+      {
+        "is_undroppable": "0"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "SG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "SF"
+          },
+          {
+            "position": "F"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      {
+        "has_recent_player_notes": 1
+      },
+      {
+        "player_notes_last_timestamp": 1764823147
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.3",
+    "team_id": "3",
+    "team_name": "The Way of the Wemby",
+    "player_raw": {
+      "is_editable": 0
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_raw": [
+      {
+        "player_key": "466.p.10115"
+      },
+      {
+        "player_id": "10115"
+      },
+      {
+        "name": {
+          "full": "Brandin Podziemski",
+          "first": "Brandin",
+          "last": "Podziemski",
+          "ascii_first": "Brandin",
+          "ascii_last": "Podziemski"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/10115"
+      },
+      {
+        "editorial_player_key": "nba.p.10115"
+      },
+      {
+        "editorial_team_key": "nba.t.9"
+      },
+      {
+        "editorial_team_full_name": "Golden State Warriors"
+      },
+      {
+        "editorial_team_abbr": "GSW"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/golden-state/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "2"
+      },
+      {
+        "display_position": "PG,SG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/j82lNu5Ai28THSz5.dYr0w--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10292024/10115.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/j82lNu5Ai28THSz5.dYr0w--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10292024/10115.png"
+      },
+      {
+        "is_undroppable": "0"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "SG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      [],
+      {
+        "player_notes_last_timestamp": 1764743836
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.4",
+    "team_id": "4",
+    "team_name": "🦌🦌 🦌",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_raw": [
+      {
+        "player_key": "466.p.6721"
+      },
+      {
+        "player_id": "6721"
+      },
+      {
+        "name": {
+          "full": "Andrew Nembhard",
+          "first": "Andrew",
+          "last": "Nembhard",
+          "ascii_first": "Andrew",
+          "ascii_last": "Nembhard"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/6721"
+      },
+      {
+        "editorial_player_key": "nba.p.6721"
+      },
+      {
+        "editorial_team_key": "nba.t.11"
+      },
+      {
+        "editorial_team_full_name": "Indiana Pacers"
+      },
+      {
+        "editorial_team_abbr": "IND"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/indiana/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "2"
+      },
+      {
+        "display_position": "PG,SG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/tFTqSyfenWzRz18tFGLdcw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/6721.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/tFTqSyfenWzRz18tFGLdcw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/6721.png"
+      },
+      {
+        "is_undroppable": "0"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "SG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      [],
+      {
+        "player_notes_last_timestamp": 1764649346
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.5",
+    "team_id": "5",
+    "team_name": "IBA KA",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_raw": [
+      {
+        "player_key": "466.p.10288"
+      },
+      {
+        "player_id": "10288"
+      },
+      {
+        "name": {
+          "full": "Reed Sheppard",
+          "first": "Reed",
+          "last": "Sheppard",
+          "ascii_first": "Reed",
+          "ascii_last": "Sheppard"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/10288"
+      },
+      {
+        "editorial_player_key": "nba.p.10288"
+      },
+      {
+        "editorial_team_key": "nba.t.10"
+      },
+      {
+        "editorial_team_full_name": "Houston Rockets"
+      },
+      {
+        "editorial_team_abbr": "HOU"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/houston/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "15"
+      },
+      {
+        "display_position": "PG,SG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/v.2eYugQx_jvOUiUyuSZrg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/10288.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/v.2eYugQx_jvOUiUyuSZrg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/10288.png"
+      },
+      {
+        "is_undroppable": "0"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "SG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      {
+        "has_recent_player_notes": 1
+      },
+      {
+        "player_notes_last_timestamp": 1764805618
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.6",
+    "team_id": "6",
+    "team_name": "ICC Defenders",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_raw": [
+      {
+        "player_key": "466.p.6044"
+      },
+      {
+        "player_id": "6044"
+      },
+      {
+        "name": {
+          "full": "Jalen Brunson",
+          "first": "Jalen",
+          "last": "Brunson",
+          "ascii_first": "Jalen",
+          "ascii_last": "Brunson"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/6044"
+      },
+      {
+        "editorial_player_key": "nba.p.6044"
+      },
+      {
+        "editorial_team_key": "nba.t.18"
+      },
+      {
+        "editorial_team_full_name": "New York Knicks"
+      },
+      {
+        "editorial_team_abbr": "NYK"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/new-york/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "11"
+      },
+      {
+        "display_position": "PG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/rSoP4zwaX5v7mOETI3i5zg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11252025/6044.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/rSoP4zwaX5v7mOETI3i5zg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11252025/6044.png"
+      },
+      {
+        "is_undroppable": "1"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SG"
+          },
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      {
+        "has_recent_player_notes": 1
+      },
+      {
+        "player_notes_last_timestamp": 1764820095
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.7",
+    "team_id": "7",
+    "team_name": "Patrick's Mai Team",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_raw": [
+      {
+        "player_key": "466.p.5638"
+      },
+      {
+        "player_id": "5638"
+      },
+      {
+        "name": {
+          "full": "Jamal Murray",
+          "first": "Jamal",
+          "last": "Murray",
+          "ascii_first": "Jamal",
+          "ascii_last": "Murray"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/5638"
+      },
+      {
+        "editorial_player_key": "nba.p.5638"
+      },
+      {
+        "editorial_team_key": "nba.t.7"
+      },
+      {
+        "editorial_team_full_name": "Denver Nuggets"
+      },
+      {
+        "editorial_team_abbr": "DEN"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/denver/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "27"
+      },
+      {
+        "display_position": "PG,SG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/dmVibmKyh2eu2yvY0kMf0g--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/5638.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/dmVibmKyh2eu2yvY0kMf0g--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/5638.png"
+      },
+      {
+        "is_undroppable": "0"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "SG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      {
+        "has_recent_player_notes": 1
+      },
+      {
+        "player_notes_last_timestamp": 1764817132
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.8",
+    "team_id": "8",
+    "team_name": "Zesty Squad",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_raw": [
+      {
+        "player_key": "466.p.10467"
+      },
+      {
+        "player_id": "10467"
+      },
+      {
+        "name": {
+          "full": "Dylan Harper",
+          "first": "Dylan",
+          "last": "Harper",
+          "ascii_first": "Dylan",
+          "ascii_last": "Harper"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/10467"
+      },
+      {
+        "editorial_player_key": "nba.p.10467"
+      },
+      {
+        "editorial_team_key": "nba.t.24"
+      },
+      {
+        "editorial_team_full_name": "San Antonio Spurs"
+      },
+      {
+        "editorial_team_abbr": "SAS"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/san-antonio/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "2"
+      },
+      {
+        "display_position": "PG,SG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/ZgBUWiO6sMQi9xlbB5PtNw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/10467.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/ZgBUWiO6sMQi9xlbB5PtNw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11172025/10467.png"
+      },
+      {
+        "is_undroppable": "0"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "SG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      {
+        "has_recent_player_notes": 1
+      },
+      {
+        "player_notes_last_timestamp": 1764816227
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.9",
+    "team_id": "9",
+    "team_name": "Donation Only",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_raw": [
+      {
+        "player_key": "466.p.4563"
+      },
+      {
+        "player_id": "4563"
+      },
+      {
+        "name": {
+          "full": "James Harden",
+          "first": "James",
+          "last": "Harden",
+          "ascii_first": "James",
+          "ascii_last": "Harden"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/4563"
+      },
+      {
+        "editorial_player_key": "nba.p.4563"
+      },
+      {
+        "editorial_team_key": "nba.t.12"
+      },
+      {
+        "editorial_team_full_name": "LA Clippers"
+      },
+      {
+        "editorial_team_abbr": "LAC"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/la-clippers/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "1"
+      },
+      {
+        "display_position": "PG,SG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/qGkYKGrgoLSoSNXtRwsQ1g--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10222024/4563.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/qGkYKGrgoLSoSNXtRwsQ1g--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10222024/4563.png"
+      },
+      {
+        "is_undroppable": "1"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "SG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      {
+        "has_recent_player_notes": 1
+      },
+      {
+        "player_notes_last_timestamp": 1764819728
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.10",
+    "team_id": "10",
+    "team_name": "🥶 🥶 🥶",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_raw": [
+      {
+        "player_key": "466.p.6035"
+      },
+      {
+        "player_id": "6035"
+      },
+      {
+        "name": {
+          "full": "Anfernee Simons",
+          "first": "Anfernee",
+          "last": "Simons",
+          "ascii_first": "Anfernee",
+          "ascii_last": "Simons"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/6035"
+      },
+      {
+        "editorial_player_key": "nba.p.6035"
+      },
+      {
+        "editorial_team_key": "nba.t.2"
+      },
+      {
+        "editorial_team_full_name": "Boston Celtics"
+      },
+      {
+        "editorial_team_abbr": "BOS"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/boston/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "4"
+      },
+      {
+        "display_position": "PG,SG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/4dKmUiE2To_4Kteg4sUQkw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/07092025/6035.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/4dKmUiE2To_4Kteg4sUQkw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/07092025/6035.png"
+      },
+      {
+        "is_undroppable": "0"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "SG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      [],
+      {
+        "player_notes_last_timestamp": 1764605809
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.11",
+    "team_id": "11",
+    "team_name": "Denzel's Grand Team",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_raw": [
+      {
+        "player_key": "466.p.6578"
+      },
+      {
+        "player_id": "6578"
+      },
+      {
+        "name": {
+          "full": "Miles McBride",
+          "first": "Miles",
+          "last": "McBride",
+          "ascii_first": "Miles",
+          "ascii_last": "McBride"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/6578"
+      },
+      {
+        "editorial_player_key": "nba.p.6578"
+      },
+      {
+        "editorial_team_key": "nba.t.18"
+      },
+      {
+        "editorial_team_full_name": "New York Knicks"
+      },
+      {
+        "editorial_team_abbr": "NYK"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/new-york/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "2"
+      },
+      {
+        "display_position": "PG,SG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/Lndp9HCYE_m6yz2qrHK1_Q--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11252025/6578.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/Lndp9HCYE_m6yz2qrHK1_Q--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/11252025/6578.png"
+      },
+      {
+        "is_undroppable": "0"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "SG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      [],
+      {
+        "player_notes_last_timestamp": 1764392606
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.12",
+    "team_id": "12",
+    "team_name": "Gab's Minions",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_raw": [
+      {
+        "player_key": "466.p.6167"
+      },
+      {
+        "player_id": "6167"
+      },
+      {
+        "name": {
+          "full": "Darius Garland",
+          "first": "Darius",
+          "last": "Garland",
+          "ascii_first": "Darius",
+          "ascii_last": "Garland"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/6167"
+      },
+      {
+        "editorial_player_key": "nba.p.6167"
+      },
+      {
+        "editorial_team_key": "nba.t.5"
+      },
+      {
+        "editorial_team_full_name": "Cleveland Cavaliers"
+      },
+      {
+        "editorial_team_abbr": "CLE"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/cleveland/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "10"
+      },
+      {
+        "display_position": "PG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/Tfli6T42Qn6Itfut.4dYag--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10242024/6167.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/Tfli6T42Qn6Itfut.4dYag--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10242024/6167.png"
+      },
+      {
+        "is_undroppable": "0"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SG"
+          },
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      [],
+      {
+        "player_notes_last_timestamp": 1764715172
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.13",
+    "team_id": "13",
+    "team_name": "🌁 Warriors Throwback 💦",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_raw": [
+      {
+        "player_key": "466.p.10276"
+      },
+      {
+        "player_id": "10276"
+      },
+      {
+        "name": {
+          "full": "Jared McCain",
+          "first": "Jared",
+          "last": "McCain",
+          "ascii_first": "Jared",
+          "ascii_last": "McCain"
+        }
+      },
+      {
+        "url": "https://sports.yahoo.com/nba/players/10276"
+      },
+      {
+        "editorial_player_key": "nba.p.10276"
+      },
+      {
+        "editorial_team_key": "nba.t.20"
+      },
+      {
+        "editorial_team_full_name": "Philadelphia 76ers"
+      },
+      {
+        "editorial_team_abbr": "PHI"
+      },
+      {
+        "editorial_team_url": "https://sports.yahoo.com/nba/teams/philadelphia/"
+      },
+      {
+        "is_keeper": {
+          "status": false,
+          "cost": false,
+          "kept": false
+        }
+      },
+      {
+        "uniform_number": "20"
+      },
+      {
+        "display_position": "PG,SG"
+      },
+      {
+        "headshot": {
+          "url": "https://s.yimg.com/iu/api/res/1.2/vaoROSZBEkyU.kju5sOwDg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10282024/10276.png",
+          "size": "small"
+        },
+        "image_url": "https://s.yimg.com/iu/api/res/1.2/vaoROSZBEkyU.kju5sOwDg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/nba_cutout/players_l/10282024/10276.png"
+      },
+      {
+        "is_undroppable": "0"
+      },
+      {
+        "position_type": "P"
+      },
+      {
+        "primary_position": "PG"
+      },
+      {
+        "eligible_positions": [
+          {
+            "position": "PG"
+          },
+          {
+            "position": "SG"
+          },
+          {
+            "position": "G"
+          },
+          {
+            "position": "Util"
+          }
+        ]
+      },
+      {
+        "eligible_positions_to_add": [
+          {
+            "position": "SF"
+          },
+          {
+            "position": "PF"
+          },
+          {
+            "position": "C"
+          }
+        ]
+      },
+      [],
+      [],
+      {
+        "has_player_notes": 1
+      },
+      [],
+      {
+        "player_notes_last_timestamp": 1764605688
+      }
+    ]
+  },
+  {
+    "team_key": "466.l.165651.t.14",
+    "team_id": "14",
+    "team_name": "Mervyn's Swag Team",
+    "player_raw": {
+      "selected_position": [
+        {
+          "coverage_type": "date",
+          "date": "2025-12-03"
+        },
+        {
+          "position": "PG"
+        },
+        {
+          "is_flex": 0
+        }
+      ]
+    }
+  }
+]
