@@ -30,17 +30,9 @@ jobs:
           fi
           # decode base64 into oauth2.json
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
-          # quick JSON sanity check using a heredoc (kept inside the run block)
-          python - <<'PY'
-import json, sys
-try:
-    json.load(open('oauth2.json'))
-    print('oauth2.json OK')
-except Exception as e:
-    print('Invalid oauth2.json:', e)
-    sys.exit(2)
-PY
- 
+          # quick JSON sanity check (one-liner avoids heredoc/YAML issues)
+          python -c "import json,sys; json.load(open('oauth2.json')); print('oauth2.json OK')"
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
