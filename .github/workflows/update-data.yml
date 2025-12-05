@@ -28,9 +28,7 @@ jobs:
             echo "ERROR: OAUTH2_JSON_B64 secret is empty"
             exit 2
           fi
-          # decode base64 into oauth2.json
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
-          # quick JSON sanity check (one-liner avoids heredoc/YAML issues)
           python -c "import json,sys; json.load(open('oauth2.json')); print('oauth2.json OK')"
 
       - name: Setup Python
@@ -43,26 +41,36 @@ jobs:
           python -m pip install --upgrade pip
           pip install yahoo_oauth requests pandas
 
-      - name: Run fetch script
+      - name: Run fetch scripts
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
-          # fail fast if script missing
-          if [ ! -f fetch_players_and_stats.py ]; then
-            echo "fetch_players_and_stats.py not found in repo root"
+          # fail fast if scripts missing
+          missing=0
+          for f in fetch_players_and_stats.py fetch_rosters_and_standings.py combine_outputs.py; do
+            if [ ! -f "$f" ]; then
+              echo "$f not found"
+              missing=1
+            fi
+          done
+          if [ "$missing" -eq 1 ]; then
+            echo "Missing script(s) - aborting"
             ls -la
             exit 2
           fi
+
           python fetch_players_and_stats.py
+          python fetch_rosters_and_standings.py
+          python combine_outputs.py
 
       - name: Commit and push outputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add league_players.csv player_stats.csv || true
+          git add league_players.csv player_stats.csv team_rosters.csv standings.csv combined_player_view.csv || true
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Update league_players & player_stats (automated)"
+            git commit -m "Update fantasy outputs (automated)"
             git push
           fi
