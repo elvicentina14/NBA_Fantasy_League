@@ -1,18 +1,17 @@
 name: Update fantasy data
 
-# Run every 30 minutes + manual trigger
 on:
   schedule:
-    - cron: '*/30 * * * *'
-  workflow_dispatch: {}
+    - cron: '*/30 * * * *'   # every 30 minutes
+  workflow_dispatch: {}       # manual trigger
 
-# Give the workflow permission to write repository contents (needed for git push)
 permissions:
   contents: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo (persist credentials for push)
         uses: actions/checkout@v4
@@ -28,7 +27,11 @@ jobs:
             echo "ERROR: OAUTH2_JSON_B64 secret is empty"
             exit 2
           fi
+
+          # Decode base64 into oauth2.json
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
+
+          # Quick JSON sanity check
           python -c "import json,sys; json.load(open('oauth2.json')); print('oauth2.json OK')"
 
       - name: Setup Python
@@ -45,7 +48,7 @@ jobs:
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
-          # fail fast if scripts missing
+          # Check scripts exist
           missing=0
           for f in fetch_players_and_stats.py fetch_rosters_and_standings.py combine_outputs.py; do
             if [ ! -f "$f" ]; then
@@ -53,6 +56,7 @@ jobs:
               missing=1
             fi
           done
+
           if [ "$missing" -eq 1 ]; then
             echo "Missing script(s) - aborting"
             ls -la
@@ -67,7 +71,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add league_players.csv player_stats.csv team_rosters.csv standings.csv combined_player_view.csv || true
+
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
