@@ -100,7 +100,7 @@ player_key,player_name,team_key,team_name,position,stat_id,stat_value
 466.p.5601,Brandon Ingram,466.l.165651.t.7,Sakuragi,"SG,SF,PF",0,24
 466.p.5602,Jaylen Brown,466.l.165651.t.11,Denzel's Grand Team,"SG,SF",0,22
 466.p.5636,Kris Dunn,466.l.165651.t.6,ICC Defenders,"PG,SG",0,23
-466.p.5637,Buddy Hield,,,,0,23
+466.p.5637,Buddy Hield,466.l.165651.t.1,MARK HENRY ALCANTARA,"SG,SF",0,23
 466.p.5638,Jamal Murray,466.l.165651.t.8,Zesty Squad,"PG,SG",0,21
 466.p.5640,Jakob Poeltl,466.l.165651.t.1,MARK HENRY ALCANTARA,C,0,17
 466.p.5642,Domantas Sabonis,466.l.165651.t.12,Gab's Minions,C,0,11
@@ -317,13 +317,13 @@ player_key,player_name,team_key,team_name,position,stat_id,stat_value
 466.p.6604,Trendon Watford,,,,0,14
 466.p.6606,Austin Reaves,466.l.165651.t.8,Zesty Squad,"PG,SG,SF",0,19
 466.p.6613,Jose Alvarado,,,,0,22
-466.p.6614,Jock Landale,466.l.165651.t.3,The Way of the Wemby,C,0,23
+466.p.6614,Jock Landale,,,,0,23
 466.p.6616,Jordan Goodwin,466.l.165651.t.12,Gab's Minions,"PG,SG",0,20
 466.p.6617,Jay Huff,466.l.165651.t.2,Matalim Dede,C,0,23
 466.p.6619,Sam Hauser,,,,0,23
 466.p.6624,David Duke Jr.,,,,0,-
 466.p.6628,Mac McClung,,,,0,3
-466.p.6632,Justin Champagnie,466.l.165651.t.1,MARK HENRY ALCANTARA,"SF,PF",0,19
+466.p.6632,Justin Champagnie,,,,0,19
 466.p.6636,Jeff Dowtin Jr.,,,,0,-
 466.p.6637,Ethan Thompson,,,,0,3
 466.p.6652,Dru Smith,,,,0,23
@@ -547,7 +547,7 @@ player_key,player_name,team_key,team_name,position,stat_id,stat_value
 466.p.10330,Jonathan Mogbo,,,,0,10
 466.p.10331,Bobi Klintman,,,,0,6
 466.p.10332,Reece Beekman,,,,0,-
-466.p.10333,Jamal Shead,,,,0,24
+466.p.10333,Jamal Shead,466.l.165651.t.3,The Way of the Wemby,PG,0,24
 466.p.10335,Adem Bona,,,,0,17
 466.p.10336,Harrison Ingram,,,,0,3
 466.p.10337,Cam Christie,,,,0,16
