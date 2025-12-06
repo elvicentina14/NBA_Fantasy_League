@@ -1,11 +1,11 @@
 player_key,player_name,stat_id,stat_value
-466.p.3704,LeBron James,0,5
+466.p.3704,LeBron James,0,6
 466.p.3930,Chris Paul,0,16
 466.p.4152,Kyle Lowry,0,2
 466.p.4163,P.J. Tucker,0,-
 466.p.4244,Kevin Durant,0,17
-466.p.4245,Al Horford,0,12
-466.p.4246,Mike Conley,0,21
+466.p.4245,Al Horford,0,13
+466.p.4246,Mike Conley,0,22
 466.p.4247,Jeff Green,0,8
 466.p.4390,Russell Westbrook,0,22
 466.p.4391,Kevin Love,0,12
@@ -39,27 +39,27 @@ player_key,player_name,stat_id,stat_value
 466.p.5009,Bradley Beal,0,6
 466.p.5012,Damian Lillard,0,-
 466.p.5013,Harrison Barnes,0,21
-466.p.5015,Andre Drummond,0,19
+466.p.5015,Andre Drummond,0,20
 466.p.5068,Jae Crowder,0,-
-466.p.5069,Draymond Green,0,19
-466.p.5073,Khris Middleton,0,15
+466.p.5069,Draymond Green,0,20
+466.p.5073,Khris Middleton,0,16
 466.p.5156,Alex Len,0,-
 466.p.5159,Kentavious Caldwell-Pope,0,22
-466.p.5161,CJ McCollum,0,20
+466.p.5161,CJ McCollum,0,21
 466.p.5163,Steven Adams,0,16
 466.p.5164,Kelly Olynyk,0,11
 466.p.5185,Giannis Antetokounmpo,0,17
 466.p.5187,Dennis Schröder,0,18
 466.p.5192,Mason Plumlee,0,8
 466.p.5194,Tim Hardaway Jr.,0,21
-466.p.5197,Rudy Gobert,0,21
-466.p.5245,Seth Curry,0,1
+466.p.5197,Rudy Gobert,0,22
+466.p.5245,Seth Curry,0,2
 466.p.5292,Andrew Wiggins,0,19
-466.p.5294,Joel Embiid,0,7
+466.p.5294,Joel Embiid,0,8
 466.p.5295,Aaron Gordon,0,13
 466.p.5316,Danté Exum,0,-
 466.p.5317,Marcus Smart,0,14
-466.p.5318,Julius Randle,0,21
+466.p.5318,Julius Randle,0,22
 466.p.5321,Elfrid Payton,0,-
 466.p.5322,Doug McDermott,0,1
 466.p.5323,Dario Šarić,0,3
@@ -68,7 +68,7 @@ player_key,player_name,stat_id,stat_value
 466.p.5330,Gary Harris,0,14
 466.p.5336,Clint Capela,0,18
 466.p.5338,Bogdan Bogdanović,0,9
-466.p.5341,Kyle Anderson,0,6
+466.p.5341,Kyle Anderson,0,7
 466.p.5349,Spencer Dinwiddie,0,-
 466.p.5350,Jerami Grant,0,21
 466.p.5352,Nikola Jokić,0,21
@@ -97,10 +97,10 @@ player_key,player_name,stat_id,stat_value
 466.p.5506,Norman Powell,0,17
 466.p.5582,T.J. McConnell,0,12
 466.p.5600,Ben Simmons,0,-
-466.p.5601,Brandon Ingram,0,22
+466.p.5601,Brandon Ingram,0,23
 466.p.5602,Jaylen Brown,0,21
 466.p.5636,Kris Dunn,0,22
-466.p.5637,Buddy Hield,0,22
+466.p.5637,Buddy Hield,0,23
 466.p.5638,Jamal Murray,0,20
 466.p.5640,Jakob Poeltl,0,16
 466.p.5642,Domantas Sabonis,0,11
@@ -117,7 +117,7 @@ player_key,player_name,stat_id,stat_value
 466.p.5693,Dorian Finney-Smith,0,-
 466.p.5727,Fred VanVleet,0,-
 466.p.5733,Damion Lee,0,-
-466.p.5739,Gary Payton II,0,21
+466.p.5739,Gary Payton II,0,22
 466.p.5747,Derrick Jones Jr.,0,13
 466.p.5754,Alex Caruso,0,15
 466.p.5763,Markelle Fultz,0,-
@@ -125,7 +125,7 @@ player_key,player_name,stat_id,stat_value
 466.p.5765,Jayson Tatum,0,-
 466.p.5767,De'Aaron Fox,0,13
 466.p.5768,Jonathan Isaac,0,20
-466.p.5769,Lauri Markkanen,0,20
+466.p.5769,Lauri Markkanen,0,21
 466.p.5822,Dennis Smith Jr.,0,-
 466.p.5823,Zach Collins,0,-
 466.p.5824,Malik Monk,0,19
@@ -137,7 +137,7 @@ player_key,player_name,stat_id,stat_value
 466.p.5836,OG Anunoby,0,12
 466.p.5840,Kyle Kuzma,0,22
 466.p.5841,Tony Bradley,0,20
-466.p.5842,Derrick White,0,20
+466.p.5842,Derrick White,0,21
 466.p.5843,Josh Hart,0,20
 466.p.5855,Thomas Bryant,0,16
 466.p.5856,Isaiah Hartenstein,0,19
@@ -150,8 +150,8 @@ player_key,player_name,stat_id,stat_value
 466.p.5903,Luke Kornet,0,14
 466.p.5905,Royce O'Neale,0,22
 466.p.5908,Nigel Hayes-Davis,0,16
-466.p.5958,Deandre Ayton,0,18
-466.p.5959,Marvin Bagley III,0,16
+466.p.5958,Deandre Ayton,0,19
+466.p.5959,Marvin Bagley III,0,17
 466.p.6014,Luka Dončić,0,16
 466.p.6015,Jaren Jackson Jr.,0,20
 466.p.6016,Trae Young,0,5
@@ -163,13 +163,13 @@ player_key,player_name,stat_id,stat_value
 466.p.6022,Shai Gilgeous-Alexander,0,22
 466.p.6023,Miles Bridges,0,22
 466.p.6025,Michael Porter Jr.,0,18
-466.p.6028,Donte DiVincenzo,0,21
+466.p.6028,Donte DiVincenzo,0,22
 466.p.6029,Lonnie Walker IV,0,-
 466.p.6030,Kevin Huerter,0,19
 466.p.6031,Josh Okogie,0,19
 466.p.6032,Grayson Allen,0,14
 466.p.6034,Aaron Holiday,0,14
-466.p.6035,Anfernee Simons,0,21
+466.p.6035,Anfernee Simons,0,22
 466.p.6036,Moritz Wagner,0,-
 466.p.6037,Landry Shamet,0,15
 466.p.6038,Robert Williams III,0,14
@@ -179,8 +179,8 @@ player_key,player_name,stat_id,stat_value
 466.p.6048,Gary Trent Jr.,0,23
 466.p.6052,Jarred Vanderbilt,0,14
 466.p.6053,Bruce Brown,0,21
-466.p.6057,De'Anthony Melton,0,-
-466.p.6058,Svi Mykhailiuk,0,20
+466.p.6057,De'Anthony Melton,0,1
+466.p.6058,Svi Mykhailiuk,0,21
 466.p.6061,Alize Johnson,0,-
 466.p.6065,Shake Milton,0,-
 466.p.6073,Duncan Robinson,0,20
@@ -194,8 +194,8 @@ player_key,player_name,stat_id,stat_value
 466.p.6166,De'Andre Hunter,0,19
 466.p.6167,Darius Garland,0,8
 466.p.6169,Coby White,0,5
-466.p.6170,Jaxson Hayes,0,17
-466.p.6171,Rui Hachimura,0,19
+466.p.6170,Jaxson Hayes,0,18
+466.p.6171,Rui Hachimura,0,20
 466.p.6173,Cameron Johnson,0,20
 466.p.6174,P.J. Washington,0,19
 466.p.6175,Tyler Herro,0,5
@@ -209,14 +209,14 @@ player_key,player_name,stat_id,stat_value
 466.p.6216,Jordan Poole,0,7
 466.p.6217,Keldon Johnson,0,21
 466.p.6218,Kevin Porter Jr.,0,4
-466.p.6219,Nic Claxton,0,21
+466.p.6219,Nic Claxton,0,22
 466.p.6224,Cody Martin,0,4
 466.p.6226,Daniel Gafford,0,15
 466.p.6232,Bol Bol,0,-
 466.p.6234,Talen Horton-Tucker,0,-
-466.p.6236,Terance Mann,0,19
+466.p.6236,Terance Mann,0,20
 466.p.6240,Jalen McDaniels,0,-
-466.p.6253,Naz Reid,0,21
+466.p.6253,Naz Reid,0,22
 466.p.6254,Luguentz Dort,0,15
 466.p.6255,John Konchar,0,20
 466.p.6256,Dean Wade,0,21
@@ -230,8 +230,8 @@ player_key,player_name,stat_id,stat_value
 466.p.6293,Charlie Brown Jr.,0,-
 466.p.6315,Amir Coffey,0,16
 466.p.6326,Marques Bolden,0,-
-466.p.6353,Gabe Vincent,0,9
-466.p.6355,Anthony Edwards,0,17
+466.p.6353,Gabe Vincent,0,10
+466.p.6355,Anthony Edwards,0,18
 466.p.6356,James Wiseman,0,1
 466.p.6395,LaMelo Ball,0,15
 466.p.6396,Patrick Williams,0,20
@@ -247,15 +247,15 @@ player_key,player_name,stat_id,stat_value
 466.p.6407,Cole Anthony,0,21
 466.p.6408,Isaiah Stewart,0,19
 466.p.6410,Josh Green,0,-
-466.p.6411,Saddiq Bey,0,21
+466.p.6411,Saddiq Bey,0,22
 466.p.6412,Precious Achiuwa,0,15
-466.p.6413,Tyrese Maxey,0,20
+466.p.6413,Tyrese Maxey,0,21
 466.p.6414,Zeke Nnaji,0,12
-466.p.6417,Immanuel Quickley,0,22
-466.p.6418,Payton Pritchard,0,21
-466.p.6420,Jaden McDaniels,0,20
+466.p.6417,Immanuel Quickley,0,23
+466.p.6418,Payton Pritchard,0,22
+466.p.6420,Jaden McDaniels,0,21
 466.p.6422,Desmond Bane,0,22
-466.p.6427,Xavier Tillman,0,9
+466.p.6427,Xavier Tillman,0,10
 466.p.6429,Vít Krejčí,0,19
 466.p.6433,Tre Jones,0,17
 466.p.6434,Nick Richards,0,21
@@ -266,34 +266,34 @@ player_key,player_name,stat_id,stat_value
 466.p.6453,Mason Jones,0,-
 466.p.6459,Lamar Stevens,0,-
 466.p.6463,Jae'Sean Tate,0,12
-466.p.6471,Anthony Gill,0,7
+466.p.6471,Anthony Gill,0,8
 466.p.6499,Naji Marshall,0,23
 466.p.6500,Trevelin Queen,0,-
 466.p.6512,Cade Cunningham,0,19
 466.p.6513,Jalen Green,0,2
 466.p.6514,Evan Mobley,0,22
-466.p.6515,Scottie Barnes,0,22
+466.p.6515,Scottie Barnes,0,23
 466.p.6516,Jalen Suggs,0,17
 466.p.6548,Josh Giddey,0,19
-466.p.6549,Jonathan Kuminga,0,15
+466.p.6549,Jonathan Kuminga,0,16
 466.p.6550,Franz Wagner,0,22
 466.p.6551,Davion Mitchell,0,22
-466.p.6552,Ziaire Williams,0,18
-466.p.6556,Moses Moody,0,20
+466.p.6552,Ziaire Williams,0,19
+466.p.6556,Moses Moody,0,21
 466.p.6557,Corey Kispert,0,17
 466.p.6558,Alperen Sengun,0,19
-466.p.6559,Trey Murphy III,0,20
+466.p.6559,Trey Murphy III,0,21
 466.p.6560,Tre Mann,0,18
 466.p.6561,Kai Jones,0,-
 466.p.6562,Jalen Johnson,0,20
 466.p.6563,Keon Johnson,0,-
 466.p.6564,Isaiah Jackson,0,22
 466.p.6566,Josh Christopher,0,-
-466.p.6567,Quentin Grimes,0,19
+466.p.6567,Quentin Grimes,0,20
 466.p.6568,Bones Hyland,0,14
 466.p.6569,Cam Thomas,0,8
 466.p.6570,Jaden Springer,0,-
-466.p.6571,Day'Ron Sharpe,0,20
+466.p.6571,Day'Ron Sharpe,0,21
 466.p.6572,Santi Aldama,0,22
 466.p.6574,Jeremiah Robinson-Earl,0,17
 466.p.6575,Jason Preston,0,-
@@ -301,29 +301,29 @@ player_key,player_name,stat_id,stat_value
 466.p.6578,Miles McBride,0,18
 466.p.6579,JT Thor,0,-
 466.p.6580,Ayo Dosunmu,0,19
-466.p.6581,Neemias Queta,0,19
+466.p.6581,Neemias Queta,0,20
 466.p.6582,Jared Butler,0,-
 466.p.6584,Isaiah Livers,0,13
 466.p.6586,Kessler Edwards,0,-
 466.p.6588,Dalano Banton,0,-
 466.p.6590,Sharife Cooper,0,4
 466.p.6593,Brandon Boston,0,-
-466.p.6594,Luka Garza,0,17
+466.p.6594,Luka Garza,0,18
 466.p.6595,Charles Bassey,0,2
-466.p.6596,Sandro Mamukelashvili,0,21
+466.p.6596,Sandro Mamukelashvili,0,22
 466.p.6597,Aaron Wiggins,0,11
 466.p.6600,Jericho Sims,0,17
 466.p.6603,A.J. Lawson,0,-
 466.p.6604,Trendon Watford,0,14
-466.p.6606,Austin Reaves,0,17
-466.p.6613,Jose Alvarado,0,21
+466.p.6606,Austin Reaves,0,18
+466.p.6613,Jose Alvarado,0,22
 466.p.6614,Jock Landale,0,22
 466.p.6616,Jordan Goodwin,0,19
 466.p.6617,Jay Huff,0,22
-466.p.6619,Sam Hauser,0,21
+466.p.6619,Sam Hauser,0,22
 466.p.6624,David Duke Jr.,0,-
 466.p.6628,Mac McClung,0,3
-466.p.6632,Justin Champagnie,0,18
+466.p.6632,Justin Champagnie,0,19
 466.p.6636,Jeff Dowtin Jr.,0,-
 466.p.6637,Ethan Thompson,0,2
 466.p.6652,Dru Smith,0,22
@@ -353,8 +353,8 @@ player_key,player_name,stat_id,stat_value
 466.p.6705,Mark Williams,0,18
 466.p.6707,Tari Eason,0,11
 466.p.6708,Dalen Terry,0,11
-466.p.6709,Jake LaRavia,0,20
-466.p.6710,Malaki Branham,0,9
+466.p.6709,Jake LaRavia,0,21
+466.p.6710,Malaki Branham,0,10
 466.p.6711,Christian Braun,0,11
 466.p.6712,Walker Kessler,0,5
 466.p.6713,David Roddy,0,-
@@ -372,20 +372,20 @@ player_key,player_name,stat_id,stat_value
 466.p.6725,Max Christie,0,23
 466.p.6727,Jaden Hardy,0,18
 466.p.6728,Kennedy Chandler,0,-
-466.p.6730,Bryce McGowens,0,12
+466.p.6730,Bryce McGowens,0,13
 466.p.6731,E.J. Liddell,0,7
 466.p.6732,Trevor Keels,0,-
 466.p.6733,Moussa Diabaté,0,22
 466.p.6734,Ryan Rollins,0,23
-466.p.6735,Josh Minott,0,20
+466.p.6735,Josh Minott,0,21
 466.p.6737,Vince Williams Jr.,0,17
 466.p.6738,Kendall Brown,0,-
-466.p.6741,Tyrese Martin,0,21
-466.p.6742,Karlo Matković,0,12
+466.p.6741,Tyrese Martin,0,22
+466.p.6742,Karlo Matković,0,13
 466.p.6743,JD Davison,0,9
-466.p.6745,Gui Santos,0,15
+466.p.6745,Gui Santos,0,16
 466.p.6746,Luke Travers,0,9
-466.p.6747,Jabari Walker,0,19
+466.p.6747,Jabari Walker,0,20
 466.p.6749,Alondes Williams,0,-
 466.p.6750,Lester Quinones,0,-
 466.p.6751,Collin Gillespie,0,22
@@ -394,18 +394,18 @@ player_key,player_name,stat_id,stat_value
 466.p.6754,Julian Champagnie,0,21
 466.p.6755,AJ Green,0,23
 466.p.6757,Scotty Pippen Jr.,0,-
-466.p.6761,Ron Harper Jr.,0,3
+466.p.6761,Ron Harper Jr.,0,4
 466.p.6762,Johnny Juzang,0,8
 466.p.6766,Simone Fontecchio,0,21
 466.p.6767,Kevon Harris,0,-
-466.p.6772,Pat Spencer,0,14
+466.p.6772,Pat Spencer,0,15
 466.p.6773,Mouhamadou Gueye,0,-
 466.p.6776,Quenton Jackson,0,5
 466.p.6782,Stanley Umude,0,-
 466.p.6783,Jules Bernard,0,-
-466.p.6785,Tyson Etienne,0,7
+466.p.6785,Tyson Etienne,0,8
 466.p.6786,Daeqwon Plowden,0,1
-466.p.6791,Dominick Barlow,0,11
+466.p.6791,Dominick Barlow,0,12
 466.p.6800,Jamaree Bouyea,0,6
 466.p.6801,Jamal Cain,0,5
 466.p.6802,Orlando Robinson,0,3
@@ -425,15 +425,15 @@ player_key,player_name,stat_id,stat_value
 466.p.10070,GG Jackson,0,8
 466.p.10073,Seth Lundy,0,-
 466.p.10074,Jalen Pickett,0,9
-466.p.10075,Jordan Walsh,0,17
-466.p.10077,Jalen Wilson,0,16
-466.p.10078,Tristan Vukcevic,0,17
+466.p.10075,Jordan Walsh,0,18
+466.p.10077,Jalen Wilson,0,17
+466.p.10078,Tristan Vukcevic,0,18
 466.p.10079,Maxwell Lewis,0,-
-466.p.10080,Trayce Jackson-Davis,0,12
+466.p.10080,Trayce Jackson-Davis,0,13
 466.p.10082,Andre Jackson Jr.,0,9
 466.p.10083,Julian Phillips,0,19
 466.p.10084,Jordan Miller,0,4
-466.p.10086,Jaylen Clark,0,19
+466.p.10086,Jaylen Clark,0,20
 466.p.10087,Colby Jones,0,1
 466.p.10088,Chris Livingston,0,2
 466.p.10089,Jalen Slawson,0,-
@@ -442,10 +442,10 @@ player_key,player_name,stat_id,stat_value
 466.p.10095,Anthony Black,0,22
 466.p.10096,Ausar Thompson,0,18
 466.p.10097,Dereck Lively II,0,7
-466.p.10098,Jordan Hawkins,0,18
+466.p.10098,Jordan Hawkins,0,19
 466.p.10099,Bilal Coulibaly,0,12
-466.p.10100,Keyonte George,0,20
-466.p.10101,Gradey Dick,0,22
+466.p.10100,Keyonte George,0,21
+466.p.10101,Gradey Dick,0,23
 466.p.10103,Jarace Walker,0,22
 466.p.10104,Brandon Miller,0,6
 466.p.10105,Kobe Bufkin,0,-
@@ -453,19 +453,19 @@ player_key,player_name,stat_id,stat_value
 466.p.10107,Cason Wallace,0,21
 466.p.10108,Amen Thompson,0,19
 466.p.10109,Jalen Hood-Schifino,0,-
-466.p.10110,Taylor Hendricks,0,11
+466.p.10110,Taylor Hendricks,0,12
 466.p.10111,Dariq Whitehead,0,-
 466.p.10112,Julian Strawther,0,9
 466.p.10113,Ben Sheppard,0,22
 466.p.10114,Marcus Sasser,0,-
-466.p.10115,Brandin Podziemski,0,22
+466.p.10115,Brandin Podziemski,0,23
 466.p.10116,Olivier-Maxence Prosper,0,12
 466.p.10117,Kobe Brown,0,15
-466.p.10118,Cam Whitmore,0,20
+466.p.10118,Cam Whitmore,0,21
 466.p.10119,Kris Murray,0,20
-466.p.10120,Nick Smith Jr.,0,7
-466.p.10121,Noah Clowney,0,21
-466.p.10122,Brice Sensabaugh,0,19
+466.p.10120,Nick Smith Jr.,0,8
+466.p.10121,Noah Clowney,0,22
+466.p.10122,Brice Sensabaugh,0,20
 466.p.10125,Ricky Council IV,0,-
 466.p.10127,Oscar Tshiebwe,0,-
 466.p.10129,Jacob Toppin,0,5
@@ -493,18 +493,18 @@ player_key,player_name,stat_id,stat_value
 466.p.10262,Tyler Smith,0,-
 466.p.10263,Ronald Holland II,0,22
 466.p.10265,Matas Buzelis,0,21
-466.p.10272,Kyshawn George,0,18
-466.p.10273,Bub Carrington,0,20
+466.p.10272,Kyshawn George,0,19
+466.p.10273,Bub Carrington,0,21
 466.p.10274,Kel'el Ware,0,22
 466.p.10275,Tristan da Silva,0,22
-466.p.10276,Jared McCain,0,11
-466.p.10277,Baylor Scheierman,0,17
-466.p.10278,Ja'Kobe Walter,0,19
+466.p.10276,Jared McCain,0,12
+466.p.10277,Baylor Scheierman,0,18
+466.p.10278,Ja'Kobe Walter,0,20
 466.p.10279,Jaylon Tyson,0,18
-466.p.10280,Terrence Shannon Jr.,0,12
-466.p.10281,Rob Dillingham,0,19
-466.p.10282,Isaiah Collier,0,12
-466.p.10283,Cody Williams,0,11
+466.p.10280,Terrence Shannon Jr.,0,13
+466.p.10281,Rob Dillingham,0,20
+466.p.10282,Isaiah Collier,0,13
+466.p.10283,Cody Williams,0,12
 466.p.10284,Dillon Jones,0,-
 466.p.10285,Donovan Clingan,0,21
 466.p.10286,DaRon Holmes II,0,2
@@ -512,7 +512,7 @@ player_key,player_name,stat_id,stat_value
 466.p.10288,Reed Sheppard,0,19
 466.p.10289,Yves Missi,0,16
 466.p.10290,Stephon Castle,0,13
-466.p.10291,Dalton Knecht,0,17
+466.p.10291,Dalton Knecht,0,18
 466.p.10292,Ryan Dunn,0,17
 466.p.10293,Devin Carter,0,8
 466.p.10294,Alex Sarr,0,16
@@ -524,14 +524,14 @@ player_key,player_name,stat_id,stat_value
 466.p.10303,Kevin McCullar Jr.,0,-
 466.p.10304,Ajay Mitchell,0,22
 466.p.10305,Johnny Furphy,0,4
-466.p.10308,Quinten Post,0,22
+466.p.10308,Quinten Post,0,23
 466.p.10309,Jalen Bridges,0,-
-466.p.10310,Justin Edwards,0,18
+466.p.10310,Justin Edwards,0,19
 466.p.10311,Keshad Johnson,0,8
 466.p.10312,Pelle Larsson,0,22
 466.p.10313,Oso Ighodaro,0,22
 466.p.10314,Tyler Kolek,0,17
-466.p.10315,Kyle Filipowski,0,19
+466.p.10315,Kyle Filipowski,0,20
 466.p.10316,Daniss Jenkins,0,17
 466.p.10317,Ariel Hukporti,0,13
 466.p.10318,Tristen Newton,0,-
@@ -544,11 +544,11 @@ player_key,player_name,stat_id,stat_value
 466.p.10327,Cam Spencer,0,22
 466.p.10328,N'Faly Dante,0,4
 466.p.10329,PJ Hall,0,7
-466.p.10330,Jonathan Mogbo,0,8
+466.p.10330,Jonathan Mogbo,0,9
 466.p.10331,Bobi Klintman,0,6
 466.p.10332,Reece Beekman,0,-
-466.p.10333,Jamal Shead,0,22
-466.p.10335,Adem Bona,0,15
+466.p.10333,Jamal Shead,0,23
+466.p.10335,Adem Bona,0,16
 466.p.10336,Harrison Ingram,0,3
 466.p.10337,Cam Christie,0,15
 466.p.10338,Antonio Reeves,0,4
@@ -563,10 +563,10 @@ player_key,player_name,stat_id,stat_value
 466.p.10367,Riley Minix,0,3
 466.p.10372,David Jones Garcia,0,9
 466.p.10383,Isaiah Stevens,0,-
-466.p.10385,Trey Alexander,0,2
+466.p.10385,Trey Alexander,0,3
 466.p.10387,Jesse Edwards,0,-
 466.p.10389,Jack McVeigh,0,-
-466.p.10391,Jamison Battle,0,15
+466.p.10391,Jamison Battle,0,16
 466.p.10392,Tristan Enaruna,0,-
 466.p.10393,Spencer Jones,0,17
 466.p.10395,Trentyn Flowers,0,1
@@ -586,29 +586,29 @@ player_key,player_name,stat_id,stat_value
 466.p.10423,Elijah Harkless,0,7
 466.p.10435,Taran Armstrong,0,-
 466.p.10436,Phillip Wheeler,0,-
-466.p.10440,Jeremiah Fears,0,22
+466.p.10440,Jeremiah Fears,0,23
 466.p.10441,Yanic Konan Niederhäuser,0,11
 466.p.10442,Noa Essengue,0,2
-466.p.10443,Collin Murray-Boyles,0,17
-466.p.10444,Derik Queen,0,22
-466.p.10445,Egor Dëmin,0,19
+466.p.10443,Collin Murray-Boyles,0,18
+466.p.10444,Derik Queen,0,23
+466.p.10445,Egor Dëmin,0,20
 466.p.10446,Liam McNeeley,0,16
 466.p.10447,Khaman Maluach,0,10
 466.p.10448,Tre Johnson,0,15
-466.p.10449,Will Riley,0,14
+466.p.10449,Will Riley,0,15
 466.p.10450,Kon Knueppel,0,22
 466.p.10451,Asa Newell,0,14
 466.p.10452,Kasparas Jakučionis,0,1
 466.p.10453,Jase Richardson,0,12
-466.p.10454,VJ Edgecombe,0,17
+466.p.10454,VJ Edgecombe,0,18
 466.p.10455,Nolan Traore,0,4
-466.p.10456,Danny Wolf,0,7
+466.p.10456,Danny Wolf,0,8
 466.p.10457,Drake Powell,0,15
-466.p.10458,Ben Saraf,0,10
-466.p.10459,Hugo González,0,16
+466.p.10458,Ben Saraf,0,11
+466.p.10459,Hugo González,0,17
 466.p.10460,Joan Beringer,0,9
-466.p.10461,Walter Clayton Jr.,0,16
-466.p.10462,Ace Bailey,0,20
+466.p.10461,Walter Clayton Jr.,0,17
+466.p.10462,Ace Bailey,0,21
 466.p.10463,Thomas Sorber,0,-
 466.p.10464,Yang Hansen,0,12
 466.p.10465,Cedric Coward,0,22
@@ -631,11 +631,11 @@ player_key,player_name,stat_id,stat_value
 466.p.10482,Lachlan Olbrich,0,3
 466.p.10483,Max Shulga,0,-
 466.p.10484,Alex Toohey,0,-
-466.p.10485,Will Richard,0,20
+466.p.10485,Will Richard,0,21
 466.p.10486,Chaz Lanier,0,12
 466.p.10487,Kam Jones,0,-
-466.p.10488,Adou Thiero,0,5
-466.p.10489,Jamir Watkins,0,5
+466.p.10488,Adou Thiero,0,6
+466.p.10489,Jamir Watkins,0,6
 466.p.10490,Alijah Martin,0,-
 466.p.10491,Jahmai Mashack,0,1
 466.p.10492,Taelon Peter,0,14
@@ -643,7 +643,7 @@ player_key,player_name,stat_id,stat_value
 466.p.10494,Javon Small,0,8
 466.p.10495,Rasheer Fleming,0,11
 466.p.10496,Maxime Raynaud,0,14
-466.p.10497,Micah Peavy,0,18
+466.p.10497,Micah Peavy,0,19
 466.p.10498,Sion James,0,22
 466.p.10499,Hunter Sallis,0,6
 466.p.10500,Mark Sears,0,7
