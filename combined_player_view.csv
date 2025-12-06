@@ -179,7 +179,7 @@ player_key,player_name,team_key,team_name,position,stat_id,stat_value
 466.p.6048,Gary Trent Jr.,,,,0,24
 466.p.6052,Jarred Vanderbilt,,,,0,14
 466.p.6053,Bruce Brown,,,,0,22
-466.p.6057,De'Anthony Melton,466.l.165651.t.10,🥶 🥶 🥶,"PG,SG",0,1
+466.p.6057,De'Anthony Melton,,,,0,1
 466.p.6058,Svi Mykhailiuk,,,,0,22
 466.p.6061,Alize Johnson,,,,0,-
 466.p.6065,Shake Milton,,,,0,-
@@ -287,7 +287,7 @@ player_key,player_name,team_key,team_name,position,stat_id,stat_value
 466.p.6561,Kai Jones,,,,0,-
 466.p.6562,Jalen Johnson,466.l.165651.t.6,ICC Defenders,"SF,PF",0,21
 466.p.6563,Keon Johnson,,,,0,-
-466.p.6564,Isaiah Jackson,466.l.165651.t.13,🌁 Warriors Throwback 💦,C,0,23
+466.p.6564,Isaiah Jackson,,,,0,23
 466.p.6566,Josh Christopher,,,,0,-
 466.p.6567,Quentin Grimes,466.l.165651.t.2,Matalim Dede,"SG,SF",0,21
 466.p.6568,Bones Hyland,,,,0,14
@@ -398,7 +398,7 @@ player_key,player_name,team_key,team_name,position,stat_id,stat_value
 466.p.6762,Johnny Juzang,,,,0,8
 466.p.6766,Simone Fontecchio,,,,0,22
 466.p.6767,Kevon Harris,,,,0,-
-466.p.6772,Pat Spencer,,,,0,15
+466.p.6772,Pat Spencer,466.l.165651.t.10,🥶 🥶 🥶,"PG,SG",0,15
 466.p.6773,Mouhamadou Gueye,,,,0,-
 466.p.6776,Quenton Jackson,,,,0,5
 466.p.6782,Stanley Umude,,,,0,-
@@ -524,7 +524,7 @@ player_key,player_name,team_key,team_name,position,stat_id,stat_value
 466.p.10303,Kevin McCullar Jr.,,,,0,-
 466.p.10304,Ajay Mitchell,466.l.165651.t.13,🌁 Warriors Throwback 💦,"PG,SG",0,23
 466.p.10305,Johnny Furphy,,,,0,5
-466.p.10308,Quinten Post,,,,0,23
+466.p.10308,Quinten Post,466.l.165651.t.13,🌁 Warriors Throwback 💦,C,0,23
 466.p.10309,Jalen Bridges,,,,0,-
 466.p.10310,Justin Edwards,,,,0,20
 466.p.10311,Keshad Johnson,,,,0,8
