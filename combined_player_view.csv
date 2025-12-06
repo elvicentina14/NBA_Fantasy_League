@@ -53,7 +53,7 @@ player_key,player_name,team_key,team_name,position,stat_id,stat_value
 466.p.5192,Mason Plumlee,,,,0,8
 466.p.5194,Tim Hardaway Jr.,,,,0,21
 466.p.5197,Rudy Gobert,466.l.165651.t.11,Denzel's Grand Team,C,0,22
-466.p.5245,Seth Curry,466.l.165651.t.7,Sakuragi,SG,0,2
+466.p.5245,Seth Curry,,,,0,2
 466.p.5292,Andrew Wiggins,466.l.165651.t.5,IBA KA,"SG,SF,PF",0,19
 466.p.5294,Joel Embiid,466.l.165651.t.5,IBA KA,C,0,8
 466.p.5295,Aaron Gordon,466.l.165651.t.7,Sakuragi,"PF,C",0,13
@@ -293,7 +293,7 @@ player_key,player_name,team_key,team_name,position,stat_id,stat_value
 466.p.6568,Bones Hyland,,,,0,14
 466.p.6569,Cam Thomas,466.l.165651.t.13,🌁 Warriors Throwback 💦,"SG,SF",0,8
 466.p.6570,Jaden Springer,,,,0,-
-466.p.6571,Day'Ron Sharpe,,,,0,21
+466.p.6571,Day'Ron Sharpe,466.l.165651.t.7,Sakuragi,C,0,21
 466.p.6572,Santi Aldama,466.l.165651.t.4,🦌🦌 🦌,"PF,C",0,22
 466.p.6574,Jeremiah Robinson-Earl,,,,0,17
 466.p.6575,Jason Preston,,,,0,-
