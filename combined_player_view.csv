@@ -243,7 +243,7 @@ player_key,player_name,team_key,team_name,position,stat_id,stat_value
 466.p.6402,Jalen Smith,,,,0,18
 466.p.6403,Devin Vassell,466.l.165651.t.14,Mervyn's Swag Team,"SG,SF",0,22
 466.p.6404,Tyrese Haliburton,,,,0,-
-466.p.6406,Aaron Nesmith,,,,0,11
+466.p.6406,Aaron Nesmith,466.l.165651.t.12,Gab's Minions,"SG,SF",0,11
 466.p.6407,Cole Anthony,,,,0,22
 466.p.6408,Isaiah Stewart,466.l.165651.t.12,Gab's Minions,"PF,C",0,20
 466.p.6410,Josh Green,,,,0,-
@@ -446,7 +446,7 @@ player_key,player_name,team_key,team_name,position,stat_id,stat_value
 466.p.10099,Bilal Coulibaly,,,,0,12
 466.p.10100,Keyonte George,466.l.165651.t.8,Zesty Squad,"PG,SG",0,22
 466.p.10101,Gradey Dick,,,,0,24
-466.p.10103,Jarace Walker,466.l.165651.t.12,Gab's Minions,"SF,PF",0,23
+466.p.10103,Jarace Walker,,,,0,23
 466.p.10104,Brandon Miller,466.l.165651.t.5,IBA KA,"SF,PF",0,7
 466.p.10105,Kobe Bufkin,,,,0,-
 466.p.10106,Jett Howard,,,,0,15
