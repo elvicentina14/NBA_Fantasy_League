@@ -3,7 +3,7 @@ from yahoo_oauth import OAuth2
 import os
 import json
 import pandas as pd
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 CONFIG_FILE = "oauth2.json"
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
@@ -69,13 +69,46 @@ def get_league_current_date(oauth):
     return today_str
 
 
+def get_league_start_date(oauth):
+    """
+    Ask Yahoo what the league's start_date is (YYYY-MM-DD).
+    If that fails, fall back to current_date (so we at least work).
+    """
+    if not LEAGUE_KEY:
+        raise SystemExit("LEAGUE_KEY env var is not set")
+
+    try:
+        data = get_json(oauth, f"league/{LEAGUE_KEY}")
+        start_date = find_first(data, "start_date")
+        if isinstance(start_date, str) and len(start_date) == 10:
+            print(f"Using league start_date from Yahoo: {start_date}")
+            return start_date
+        else:
+            print("No start_date found in league settings; falling back to current_date.")
+            return get_league_current_date(oauth)
+    except Exception as e:
+        print("Could not get league start_date from API:", type(e).__name__, e)
+        return get_league_current_date(oauth)
+
+
+def date_range_iso(start_date_str, end_date_str):
+    """
+    Yield YYYY-MM-DD strings from start_date to end_date inclusive.
+    """
+    start = datetime.fromisoformat(start_date_str).date()
+    end = datetime.fromisoformat(end_date_str).date()
+    d = start
+    while d <= end:
+        yield d.isoformat()
+        d += timedelta(days=1)
+
+
 def extract_daily_stats_for_player(oauth, player_key, stats_date):
     """
     Call player/{player_key}/stats;date={stats_date}
     and return a list of dicts:
       { player_key, player_name, coverage, period, timestamp, stat_id, stat_value }
     """
-    # Daily stats for given date
     rel = f"player/{player_key}/stats;date={stats_date}"
     data = get_json(oauth, rel)
 
@@ -179,42 +212,75 @@ def main():
     if os.path.exists("team_rosters.csv"):
         try:
             rosters = pd.read_csv("team_rosters.csv", dtype=str)
-            # If rosters has player_key, use it as the base for combined view
             if "player_key" in rosters.columns:
                 base_for_combined = rosters.copy()
                 print("Using team_rosters.csv as base for combined_player_view_full.")
         except Exception as e:
             print("Failed to read team_rosters.csv, falling back to league_players:", type(e).__name__, e)
 
-    # 4) Determine which date to pull (league current_date)
-    stats_date = get_league_current_date(oauth)
+    # 4) Determine the date range to pull
+    league_start = get_league_start_date(oauth)
+    league_current = get_league_current_date(oauth)
 
-    # 5) Get list of unique players from league_players.csv
+    # Default: from league_start
+    start_date = league_start
+    end_date = league_current
+
+    # If we already have a stats file, continue from the next missing day
+    if os.path.exists("player_stats_full.csv"):
+        try:
+            existing_stats = pd.read_csv("player_stats_full.csv", dtype=str)
+            if "timestamp" in existing_stats.columns:
+                ts = existing_stats["timestamp"].dropna()
+                if not ts.empty:
+                    last_ts = ts.max()  # YYYY-MM-DD max works lexicographically
+                    print(f"Existing stats up to {last_ts}")
+                    try:
+                        last_date = datetime.fromisoformat(last_ts).date()
+                        next_date = (last_date + timedelta(days=1)).isoformat()
+                        # We don't want to go earlier than league_start
+                        if next_date > start_date:
+                            start_date = next_date
+                    except Exception as e:
+                        print("Could not parse last timestamp, using league_start instead:", e)
+        except Exception as e:
+            print("Failed to read existing player_stats_full.csv, will rebuild from league_start:", e)
+
+    # If start_date is after end_date, there's nothing new to fetch
+    if datetime.fromisoformat(start_date).date() > datetime.fromisoformat(end_date).date():
+        print(f"No new dates to fetch. Already up to date through {end_date}.")
+        # Still rebuild combined_player_view_full.csv from existing stats + base?
+        # For safety we just exit here.
+        return
+
+    print(f"Fetching stats from {start_date} to {end_date} (inclusive)")
+
+    # 5) Get list of unique players
     player_keys = sorted(league_players["player_key"].dropna().unique().tolist())
     print(f"Found {len(player_keys)} unique player_keys in league_players.csv")
-    print(f"Fetching DAILY stats for date: {stats_date}")
 
     all_rows = []
 
-    for idx, pk in enumerate(player_keys, start=1):
-        print(f"[{idx}/{len(player_keys)}] Fetching stats for player {pk}")
-        try:
-            rows = extract_daily_stats_for_player(oauth, pk, stats_date)
-        except Exception as e:
-            print(f"Failed to fetch stats for {pk}: {type(e).__name__} {e}")
-            rows = []
-        all_rows.extend(rows)
+    for stats_date in date_range_iso(start_date, end_date):
+        print(f"\n=== Fetching DAILY stats for date: {stats_date} ===")
+        for idx, pk in enumerate(player_keys, start=1):
+            print(f"[{stats_date}] [{idx}/{len(player_keys)}] Fetching stats for player {pk}")
+            try:
+                rows = extract_daily_stats_for_player(oauth, pk, stats_date)
+            except Exception as e:
+                print(f"Failed to fetch stats for {pk} on {stats_date}: {type(e).__name__} {e}")
+                rows = []
+            all_rows.extend(rows)
 
     # 6) Build / update player_stats_full.csv
     if all_rows:
         new_stats = pd.DataFrame(all_rows)
     else:
-        print("WARNING: No stats found for any player.")
+        print("WARNING: No stats found for any player in the requested date range.")
         new_stats = pd.DataFrame(
             columns=["player_key", "player_name", "coverage", "period", "timestamp", "stat_id", "stat_value"]
         )
 
-    # If file already exists, append and de-duplicate (so re-runs on same date don't create duplicates)
     if os.path.exists("player_stats_full.csv"):
         old_stats = pd.read_csv("player_stats_full.csv", dtype=str)
         combined_stats = pd.concat([old_stats, new_stats], ignore_index=True)
@@ -228,7 +294,6 @@ def main():
     print(f"Saved {len(combined_stats)} total rows to player_stats_full.csv")
 
     # 7) Build / update combined_player_view_full.csv
-    # Try merging on both player_key + player_name if possible; otherwise fall back to player_key only.
     base = base_for_combined.copy()
     for col in ["player_key", "player_name"]:
         if col not in base.columns:
@@ -252,7 +317,6 @@ def main():
     if os.path.exists("combined_player_view_full.csv"):
         old_combined = pd.read_csv("combined_player_view_full.csv", dtype=str)
         merged_all = pd.concat([old_combined, merged], ignore_index=True)
-        # Dedupe on (player_key, timestamp, stat_id, team_key if present)
         subset_cols = ["player_key", "timestamp", "stat_id"]
         if "team_key" in merged_all.columns:
             subset_cols.append("team_key")
