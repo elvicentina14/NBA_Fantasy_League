@@ -1,9 +1,10 @@
 name: Update fantasy data
 
+# Run every 30 minutes + manual trigger
 on:
   schedule:
-    - cron: '*/30 * * * *'   # every 30 minutes
-  workflow_dispatch: {}       # manual trigger
+    - cron: '*/30 * * * *'
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -11,7 +12,6 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo (persist credentials for push)
         uses: actions/checkout@v4
@@ -40,25 +40,28 @@ jobs:
           python -m pip install --upgrade pip
           pip install yahoo_oauth requests pandas
 
-      - name: Run fetch_all.py
+      # Your original script – keeps producing league_players.csv (and whatever else it did)
+      - name: Run base fetch script (players & simple stats)
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
-          if [ ! -f fetch_all.py ]; then
-            echo "fetch_all.py not found in repo root"
-            ls -la
-            exit 2
-          fi
-          python fetch_all.py
+          python fetch_players_and_stats.py
+
+      # NEW: full stats for all players
+      - name: Run full player stats script
+        env:
+          LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
+        run: |
+          python fetch_full_player_stats.py
 
       - name: Commit and push outputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add league_players.csv player_stats.csv team_rosters.csv standings.csv combined_player_view.csv || true
+          git add league_players.csv player_stats_full.csv combined_player_view_full.csv || true
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Update fantasy outputs (automated)"
+            git commit -m "Update league players & full stats (automated)"
             git push
           fi
