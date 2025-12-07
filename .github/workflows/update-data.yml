@@ -62,4 +62,23 @@ jobs:
           python fetch_rosters_and_standings.py
 
           echo "Running fetch_full_player_stats.py..."
-          python fetch_full_player_stats_
+          python fetch_full_player_stats.py     # <--- FIXED HERE
+
+      - name: Commit and push outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Always rebuild parquet so they are included in diff
+          rm -f player_stats_full.parquet combined_player_view_full.parquet
+
+          git add player_stats_daily || true
+          git add player_stats_full.parquet combined_player_view_full.parquet || true
+          git add standings.csv team_rosters.csv league_players.csv || true
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update fantasy data outputs (automated)"
+            git push
+          fi
