@@ -40,17 +40,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install yahoo_oauth requests pandas
 
-      # Your original script – keeps producing league_players.csv (and whatever else it did)
-      - name: Run base fetch script (players & simple stats)
+      # 1) Your base script that builds league_players.csv etc.
+      - name: Run base fetch script (players & simple data)
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
           python fetch_players_and_stats.py
 
-      # NEW: full stats for all players
+      # 2) NEW: full stats per player via player/{player_key}/stats
       - name: Run full player stats script
         env:
-          LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
+          LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}  # not strictly needed here, but OK
         run: |
           python fetch_full_player_stats.py
 
