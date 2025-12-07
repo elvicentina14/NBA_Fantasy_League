@@ -1,12 +1,15 @@
 # fetch_full_player_stats.py
 from yahoo_oauth import OAuth2
 import os
-import json
 import pandas as pd
 from datetime import datetime, timezone, timedelta
 
 CONFIG_FILE = "oauth2.json"
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
+
+DAILY_DIR = "player_stats_daily"  # folder for daily CSVs
+FULL_PARQUET = "player_stats_full.parquet"
+COMBINED_PARQUET = "combined_player_view_full.parquet"
 
 
 def ensure_list(x):
@@ -72,7 +75,7 @@ def get_league_current_date(oauth):
 def get_league_start_date(oauth):
     """
     Ask Yahoo what the league's start_date is (YYYY-MM-DD).
-    If that fails, fall back to current_date (so we at least work).
+    If that fails, fall back to current_date.
     """
     if not LEAGUE_KEY:
         raise SystemExit("LEAGUE_KEY env var is not set")
@@ -92,9 +95,7 @@ def get_league_start_date(oauth):
 
 
 def date_range_iso(start_date_str, end_date_str):
-    """
-    Yield YYYY-MM-DD strings from start_date to end_date inclusive.
-    """
+    """Yield YYYY-MM-DD strings from start_date to end_date inclusive."""
     start = datetime.fromisoformat(start_date_str).date()
     end = datetime.fromisoformat(end_date_str).date()
     d = start
@@ -185,6 +186,76 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
     return rows
 
 
+def build_full_parquet_from_daily():
+    """Read all daily CSVs and write a single Parquet file with all stats."""
+    if not os.path.isdir(DAILY_DIR):
+        print(f"No {DAILY_DIR} directory found; skipping full Parquet build.")
+        return None
+
+    files = sorted(
+        f for f in os.listdir(DAILY_DIR)
+        if f.endswith(".csv")
+    )
+    if not files:
+        print(f"No daily CSV files in {DAILY_DIR}; skipping full Parquet build.")
+        return None
+
+    dfs = []
+    for fname in files:
+        path = os.path.join(DAILY_DIR, fname)
+        try:
+            df = pd.read_csv(path, dtype=str)
+            if not df.empty:
+                dfs.append(df)
+        except Exception as e:
+            print(f"Failed to read {path}: {type(e).__name__} {e}")
+
+    if not dfs:
+        print("All daily CSVs were empty or unreadable; skipping Parquet.")
+        return None
+
+    full_df = pd.concat(dfs, ignore_index=True)
+    # Optional: sort for nice ordering
+    full_df.sort_values(by=["timestamp", "player_key", "stat_id"], inplace=True, ignore_index=True)
+
+    full_df.to_parquet(FULL_PARQUET, index=False)
+    print(f"Saved {len(full_df)} total rows to {FULL_PARQUET}")
+    return full_df
+
+
+def build_combined_parquet(base_for_combined, full_stats_df):
+    """
+    Join rosters/league_players with full stats and write combined_player_view_full.parquet.
+    """
+    if full_stats_df is None or full_stats_df.empty:
+        print("No full stats DataFrame provided; skipping combined Parquet.")
+        return
+
+    base = base_for_combined.copy()
+    for col in ["player_key", "player_name"]:
+        if col not in base.columns:
+            base[col] = base_for_combined.get(col)
+
+    # Prefer join on both key + name if available
+    if "player_name" in base.columns and "player_name" in full_stats_df.columns:
+        merged = base.merge(
+            full_stats_df,
+            on=["player_key", "player_name"],
+            how="left",
+            validate="m:m",
+        )
+    else:
+        merged = base.merge(
+            full_stats_df,
+            on=["player_key"],
+            how="left",
+            validate="m:m",
+        )
+
+    merged.to_parquet(COMBINED_PARQUET, index=False)
+    print(f"Saved {len(merged)} rows to {COMBINED_PARQUET}")
+
+
 def main():
     # 0) Basic checks
     if not LEAGUE_KEY:
@@ -192,6 +263,9 @@ def main():
 
     if not os.path.exists(CONFIG_FILE):
         raise SystemExit(f"{CONFIG_FILE} not found")
+
+    # Ensure daily directory exists
+    os.makedirs(DAILY_DIR, exist_ok=True)
 
     # 1) OAuth
     oauth = OAuth2(None, None, from_file=CONFIG_FILE)
@@ -206,63 +280,38 @@ def main():
     if "player_key" not in league_players.columns:
         raise SystemExit("league_players.csv missing 'player_key' column.")
 
-    # 3) If we have team_rosters.csv, we'll join stats to that (more fantasy context)
-    rosters = None
+    # 3) If we have team_rosters.csv, use that as base for combined view
     base_for_combined = league_players.copy()
     if os.path.exists("team_rosters.csv"):
         try:
             rosters = pd.read_csv("team_rosters.csv", dtype=str)
             if "player_key" in rosters.columns:
                 base_for_combined = rosters.copy()
-                print("Using team_rosters.csv as base for combined_player_view_full.")
+                print("Using team_rosters.csv as base for combined view.")
         except Exception as e:
             print("Failed to read team_rosters.csv, falling back to league_players:", type(e).__name__, e)
 
-    # 4) Determine the date range to pull
+    # 4) Determine the full date range for the league
     league_start = get_league_start_date(oauth)
     league_current = get_league_current_date(oauth)
 
-    # Default: from league_start
-    start_date = league_start
-    end_date = league_current
-
-    # If we already have a stats file, continue from the next missing day
-    if os.path.exists("player_stats_full.csv"):
-        try:
-            existing_stats = pd.read_csv("player_stats_full.csv", dtype=str)
-            if "timestamp" in existing_stats.columns:
-                ts = existing_stats["timestamp"].dropna()
-                if not ts.empty:
-                    last_ts = ts.max()  # YYYY-MM-DD max works lexicographically
-                    print(f"Existing stats up to {last_ts}")
-                    try:
-                        last_date = datetime.fromisoformat(last_ts).date()
-                        next_date = (last_date + timedelta(days=1)).isoformat()
-                        # We don't want to go earlier than league_start
-                        if next_date > start_date:
-                            start_date = next_date
-                    except Exception as e:
-                        print("Could not parse last timestamp, using league_start instead:", e)
-        except Exception as e:
-            print("Failed to read existing player_stats_full.csv, will rebuild from league_start:", e)
-
-    # If start_date is after end_date, there's nothing new to fetch
-    if datetime.fromisoformat(start_date).date() > datetime.fromisoformat(end_date).date():
-        print(f"No new dates to fetch. Already up to date through {end_date}.")
-        # Still rebuild combined_player_view_full.csv from existing stats + base?
-        # For safety we just exit here.
-        return
-
-    print(f"Fetching stats from {start_date} to {end_date} (inclusive)")
+    print(f"League date range: {league_start} to {league_current}")
 
     # 5) Get list of unique players
     player_keys = sorted(league_players["player_key"].dropna().unique().tolist())
     print(f"Found {len(player_keys)} unique player_keys in league_players.csv")
 
-    all_rows = []
+    # 6) Fetch missing daily files
+    for stats_date in date_range_iso(league_start, league_current):
+        daily_path = os.path.join(DAILY_DIR, f"{stats_date}.csv")
 
-    for stats_date in date_range_iso(start_date, end_date):
+        if os.path.exists(daily_path):
+            print(f"Daily file for {stats_date} already exists ({daily_path}), skipping API calls for this date.")
+            continue
+
         print(f"\n=== Fetching DAILY stats for date: {stats_date} ===")
+        date_rows = []
+
         for idx, pk in enumerate(player_keys, start=1):
             print(f"[{stats_date}] [{idx}/{len(player_keys)}] Fetching stats for player {pk}")
             try:
@@ -270,62 +319,27 @@ def main():
             except Exception as e:
                 print(f"Failed to fetch stats for {pk} on {stats_date}: {type(e).__name__} {e}")
                 rows = []
-            all_rows.extend(rows)
+            date_rows.extend(rows)
 
-    # 6) Build / update player_stats_full.csv
-    if all_rows:
-        new_stats = pd.DataFrame(all_rows)
-    else:
-        print("WARNING: No stats found for any player in the requested date range.")
-        new_stats = pd.DataFrame(
-            columns=["player_key", "player_name", "coverage", "period", "timestamp", "stat_id", "stat_value"]
-        )
+        # Build daily DataFrame and save
+        if date_rows:
+            df_date = pd.DataFrame(date_rows)
+        else:
+            # Create an empty file with correct columns to signal "processed"
+            df_date = pd.DataFrame(
+                columns=["player_key", "player_name", "coverage", "period", "timestamp", "stat_id", "stat_value"]
+            )
+            print(f"WARNING: No stats found for any player on {stats_date}")
 
-    if os.path.exists("player_stats_full.csv"):
-        old_stats = pd.read_csv("player_stats_full.csv", dtype=str)
-        combined_stats = pd.concat([old_stats, new_stats], ignore_index=True)
-        combined_stats.drop_duplicates(
-            subset=["player_key", "timestamp", "stat_id"], inplace=True
-        )
-    else:
-        combined_stats = new_stats
+        df_date.to_csv(daily_path, index=False)
+        print(f"Saved {len(df_date)} rows to {daily_path}")
 
-    combined_stats.to_csv("player_stats_full.csv", index=False)
-    print(f"Saved {len(combined_stats)} total rows to player_stats_full.csv")
+    # 7) Build full Parquet from daily CSVs
+    full_stats_df = build_full_parquet_from_daily()
 
-    # 7) Build / update combined_player_view_full.csv
-    base = base_for_combined.copy()
-    for col in ["player_key", "player_name"]:
-        if col not in base.columns:
-            base[col] = base_for_combined.get(col)
-
-    if "player_name" in base.columns and "player_name" in combined_stats.columns:
-        merged = base.merge(
-            combined_stats,
-            on=["player_key", "player_name"],
-            how="left",
-            validate="m:m",
-        )
-    else:
-        merged = base.merge(
-            combined_stats,
-            on=["player_key"],
-            how="left",
-            validate="m:m",
-        )
-
-    if os.path.exists("combined_player_view_full.csv"):
-        old_combined = pd.read_csv("combined_player_view_full.csv", dtype=str)
-        merged_all = pd.concat([old_combined, merged], ignore_index=True)
-        subset_cols = ["player_key", "timestamp", "stat_id"]
-        if "team_key" in merged_all.columns:
-            subset_cols.append("team_key")
-        merged_all.drop_duplicates(subset=subset_cols, inplace=True)
-    else:
-        merged_all = merged
-
-    merged_all.to_csv("combined_player_view_full.csv", index=False)
-    print(f"Saved {len(merged_all)} total rows to combined_player_view_full.csv")
+    # 8) Build combined view Parquet
+    if full_stats_df is not None:
+        build_combined_parquet(base_for_combined, full_stats_df)
 
 
 if __name__ == "__main__":
