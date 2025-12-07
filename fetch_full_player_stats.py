@@ -4,8 +4,6 @@ import os
 import json
 import pandas as pd
 
-LEAGUE_KEY = os.environ.get("LEAGUE_KEY")  # comes from GitHub Secret
-
 CONFIG_FILE = "oauth2.json"
 
 
@@ -34,24 +32,6 @@ def find_first(obj, key):
     return None
 
 
-def iter_player_blocks(obj):
-    """
-    Recursively yield 'player' blocks from the Yahoo JSON.
-    A 'player' block is whatever is under a 'player' key.
-    """
-    if isinstance(obj, dict):
-        if "player" in obj:
-            for p in ensure_list(obj["player"]):
-                yield p
-        for v in obj.values():
-            for p in iter_player_blocks(v):
-                yield p
-    elif isinstance(obj, list):
-        for item in obj:
-            for p in iter_player_blocks(item):
-                yield p
-
-
 def get_json(oauth, relative_path):
     """Call Yahoo Fantasy API with ?format=json appended."""
     base = "https://fantasysports.yahooapis.com/fantasy/v2/"
@@ -64,16 +44,102 @@ def get_json(oauth, relative_path):
     return resp.json()
 
 
-def main():
-    if not LEAGUE_KEY:
-        raise SystemExit("LEAGUE_KEY env var is not set")
+def extract_stats_for_player(oauth, player_key):
+    """
+    Call player/{player_key}/stats and return a list of dicts:
+    {
+      player_key, player_name, coverage, period, stat_id, stat_value
+    }
+    """
+    rel = f"player/{player_key}/stats"
+    data = get_json(oauth, rel)
 
-    # 1) OAuth session
+    fc = data.get("fantasy_content", {})
+    player_node = fc.get("player")
+
+    # player_node is usually a list like:
+    # [ {player_key}, {...}, {name: {...}}, ..., {player_stats: {...}} ]
+    # but we keep it generic and search for name + player_stats
+    if player_node is None:
+        return []
+
+    player_name = None
+    if isinstance(player_node, list):
+        name_obj = find_first(player_node, "name")
+    else:
+        name_obj = find_first(player_node, "name")
+
+    if isinstance(name_obj, dict) and "full" in name_obj:
+        player_name = name_obj["full"]
+    else:
+        player_name = find_first(name_obj, "full") if isinstance(name_obj, dict) else None
+
+    if not player_name:
+        player_name = "Unknown"
+
+    player_stats = find_first(player_node, "player_stats")
+    if not isinstance(player_stats, dict):
+        return []
+
+    coverage_type = player_stats.get("coverage_type") or find_first(player_stats, "coverage_type")
+    period = (
+        player_stats.get("season")
+        or player_stats.get("week")
+        or player_stats.get("date")
+        or find_first(player_stats, "season")
+        or find_first(player_stats, "week")
+        or find_first(player_stats, "date")
+    )
+
+    stats_node = player_stats.get("stats") or find_first(player_stats, "stats")
+    if stats_node is None:
+        return []
+
+    # stats_node is usually {"stat": [ {...}, {...} ]}
+    stat_items = []
+    if isinstance(stats_node, dict):
+        if "stat" in stats_node:
+            stat_items = ensure_list(stats_node["stat"])
+        else:
+            stat_items = [stats_node]
+    elif isinstance(stats_node, list):
+        stat_items = stats_node
+
+    rows = []
+    for item in stat_items:
+        # Sometimes wrapped in {"stat": {...}}
+        if isinstance(item, dict) and "stat" in item:
+            s = item["stat"]
+        else:
+            s = item
+
+        stat_id = find_first(s, "stat_id")
+        value = find_first(s, "value")
+
+        if stat_id is None:
+            continue
+
+        rows.append(
+            {
+                "player_key": str(player_key),
+                "player_name": player_name,
+                "coverage": coverage_type,
+                "period": period,
+                "stat_id": str(stat_id),
+                "stat_value": value,
+            }
+        )
+
+    return rows
+
+
+def main():
+    # 1) OAuth (re-use same oauth2.json you already have)
     oauth = OAuth2(None, None, from_file=CONFIG_FILE)
     if not oauth.token_is_valid():
         raise SystemExit("OAuth token is not valid inside GitHub Actions – refresh locally first.")
 
-    # 2) Load league_players.csv (already created by your other script)
+    # 2) league_players.csv must already exist (from fetch_players_and_stats.py)
     if not os.path.exists("league_players.csv"):
         raise SystemExit("league_players.csv not found. Run fetch_players_and_stats.py first.")
 
@@ -84,108 +150,30 @@ def main():
     player_keys = sorted(league_players["player_key"].dropna().unique().tolist())
     print(f"Found {len(player_keys)} unique player_keys in league_players.csv")
 
-    stats_rows = []
+    all_rows = []
 
-    # 3) Fetch stats in chunks of up to 25 players (Yahoo API style)
-    chunk_size = 25
-    for i in range(0, len(player_keys), chunk_size):
-        chunk = player_keys[i:i + chunk_size]
-        keys_param = ",".join(chunk)
-        rel = f"league/{LEAGUE_KEY}/players;player_keys={keys_param}/stats"
-        print(f"Fetching stats for players {i + 1}–{i + len(chunk)}")
-        data = get_json(oauth, rel)
+    for idx, pk in enumerate(player_keys, start=1):
+        print(f"Fetching stats for player {idx}/{len(player_keys)}: {pk}")
+        try:
+            rows = extract_stats_for_player(oauth, pk)
+        except Exception as e:
+            print(f"Failed to fetch stats for {pk}: {type(e).__name__} {e}")
+            rows = []
+        all_rows.extend(rows)
 
-        # 4) Walk all 'player' blocks that contain player_stats
-        seen_in_chunk = set()
-        for p_block in iter_player_blocks(data):
-            # p_block is usually a list like [ {player_key}, {player_id}, {name}, ..., {player_stats}, ... ]
-            player_key = find_first(p_block, "player_key")
-            if not player_key:
-                continue
-
-            # Avoid duplicates if any
-            if (player_key, id(p_block)) in seen_in_chunk:
-                continue
-            seen_in_chunk.add((player_key, id(p_block)))
-
-            name_obj = find_first(p_block, "name")
-            if isinstance(name_obj, dict) and "full" in name_obj:
-                player_name = name_obj["full"]
-            else:
-                player_name = find_first(p_block, "full") or "Unknown"
-
-            player_stats = find_first(p_block, "player_stats")
-            if not isinstance(player_stats, dict):
-                continue
-
-            coverage_type = player_stats.get("coverage_type") or find_first(player_stats, "coverage_type")
-            period = (
-                player_stats.get("season")
-                or player_stats.get("week")
-                or player_stats.get("date")
-                or find_first(player_stats, "season")
-                or find_first(player_stats, "week")
-                or find_first(player_stats, "date")
-            )
-
-            # The actual stats live under something like player_stats["stats"]["stat"]
-            stats_node = player_stats.get("stats") or find_first(player_stats, "stats")
-            if stats_node is None:
-                continue
-
-            # stats_node might be:
-            # - {"stat": [ {...}, {...} ]}
-            # - [ {"stat": {...}}, {"stat": {...}} ]
-            # - or directly a list of dicts with stat_id/value
-            stat_items = []
-            if isinstance(stats_node, dict):
-                if "stat" in stats_node:
-                    stat_items = ensure_list(stats_node["stat"])
-                else:
-                    stat_items = [stats_node]
-            elif isinstance(stats_node, list):
-                stat_items = stats_node
-            else:
-                stat_items = []
-
-            for item in stat_items:
-                # Sometimes wrapped in {"stat": {...}}
-                if isinstance(item, dict) and "stat" in item:
-                    s = item["stat"]
-                else:
-                    s = item
-
-                stat_id = find_first(s, "stat_id")
-                value = find_first(s, "value")
-
-                if stat_id is None:
-                    continue
-
-                stats_rows.append(
-                    {
-                        "player_key": str(player_key),
-                        "player_name": player_name,
-                        "coverage": coverage_type,
-                        "period": period,
-                        "stat_id": str(stat_id),
-                        "stat_value": value,
-                    }
-                )
-
-    # 5) Build DataFrame of all stats
-    if not stats_rows:
-        print("WARNING: No stats found.")
+    # 3) Build player_stats_full.csv
+    if not all_rows:
+        print("WARNING: No stats found for any player.")
         df_stats = pd.DataFrame(
             columns=["player_key", "player_name", "coverage", "period", "stat_id", "stat_value"]
         )
     else:
-        df_stats = pd.DataFrame(stats_rows)
+        df_stats = pd.DataFrame(all_rows)
 
     df_stats.to_csv("player_stats_full.csv", index=False)
     print(f"Saved {len(df_stats)} rows to player_stats_full.csv")
 
-    # 6) Combined player view: join with league_players on player_key (+ name for safety)
-    # We keep all columns from league_players and add stats columns.
+    # 4) Join with league_players to create the combined view
     combined = league_players.merge(
         df_stats,
         on=["player_key", "player_name"],
