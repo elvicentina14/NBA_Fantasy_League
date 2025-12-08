@@ -30,7 +30,12 @@ jobs:
           fi
 
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
-          python -c "import json; json.load(open('oauth2.json')); print('oauth2.json OK')"
+          python - << 'EOF'
+import json
+with open("oauth2.json","r") as f:
+    json.load(f)
+print("oauth2.json OK")
+EOF
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -66,12 +71,19 @@ jobs:
           echo "Running fetch_full_player_stats.py..."
           python fetch_full_player_stats.py
 
+      - name: Show changes before commit (debug)
+        run: |
+          echo "==== git status BEFORE add ===="
+          git status
+          echo "==== repo tree ===="
+          ls -R
+
       - name: Commit and push outputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Daily history files (one CSV per day)
+          # Daily history files (directory + contents)
           git add player_stats_daily || true
 
           # Parquet outputs (historical + combined view)
@@ -80,9 +92,15 @@ jobs:
           # Supporting CSVs
           git add standings.csv team_rosters.csv league_players.csv player_stats.csv || true
 
+          echo "==== git status AFTER add ===="
+          git status
+          echo "==== git diff --cached --stat ===="
+          git diff --cached --stat || true
+
           if git diff --cached --quiet; then
             echo "No changes to commit"
-          else:
+          else
             git commit -m "Update fantasy data outputs (automated)"
-            git push
+            # Explicitly push to the current branch (usually main)
+            git push origin HEAD
           fi
