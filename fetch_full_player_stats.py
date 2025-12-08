@@ -1,11 +1,10 @@
 # fetch_full_player_stats.py
 #
 # Behavior:
-# - From today onward, each run:
+# - Each run:
 #     * Uses TODAY'S UTC DATE as the snapshot label (YYYY-MM-DD).
-#     * For every player, calls Yahoo for season-to-date stats using "?date={snapshot_date}".
-#       (Yahoo appears to ignore the date for your game and returns current season totals,
-#        which is fine because we only need snapshots over time.)
+#     * For every player, calls Yahoo for stats using ";date={snapshot_date}".
+#       (For your league this behaves like "current season totals".)
 #     * Writes one CSV per day into: player_stats_daily/YYYY-MM-DD.csv
 # - Then builds player_stats_full.parquet with:
 #     * stat_value_num = season total as of that snapshot date
@@ -56,7 +55,7 @@ def find_first(obj: Any, key: str) -> Any:
 def get_json(oauth: OAuth2, relative_path: str) -> Dict[str, Any]:
     """
     Call Yahoo Fantasy API with ?format=json appended.
-    Be tolerant of non-JSON / 999 responses – return {} instead of crashing.
+    If non-200 or JSON error, log and return {} so that player is skipped.
     """
     base = "https://fantasysports.yahooapis.com/fantasy/v2/"
     url = base + relative_path
@@ -80,8 +79,7 @@ def get_snapshot_date(oauth: Optional[OAuth2] = None) -> str:
     """
     Decide which date label to use for this snapshot.
 
-    We IGNORE league.current_date because it gets stuck and messes timestamps.
-    We simply use today's UTC date (YYYY-MM-DD) as the label.
+    We IGNORE league.current_date for the label and just use today's UTC date.
     """
     today_str = datetime.now(timezone.utc).date().isoformat()
     print(f"Using today's UTC date for snapshot: {today_str}")
@@ -108,9 +106,8 @@ def extract_cumulative_stats_for_player(
     """
     Call player/{player_key}/stats;date={snapshot_date}.
 
-    For your league, this endpoint returns "current season totals" regardless of the date
-    parameter, which is fine because we only care about the snapshot *time*, not the
-    internal Yahoo scoring date. We treat this as "season-to-date at snapshot_date".
+    For your league, this behaves like "season totals as of now".
+    We label that with snapshot_date and later diff snapshots to get daily_value.
     """
     rel = f"player/{player_key}/stats;date={snapshot_date}"
     data = get_json(oauth, rel)
@@ -336,7 +333,7 @@ def main():
         except Exception as e:
             print("Failed to read team_rosters.csv, falling back to league_players:", type(e).__name__, e)
 
-    # Snapshot date: TODAY, not league.current_date
+    # Snapshot date: TODAY (UTC)
     snapshot_date = get_snapshot_date(oauth)
     print(f"Snapshotting cumulative stats for date label: {snapshot_date}")
 
