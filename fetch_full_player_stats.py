@@ -1,21 +1,19 @@
 # fetch_full_player_stats.py
 #
-# Behavior (going forward):
-# - Each run:
-#     * Uses TODAY'S UTC DATE as the snapshot label (YYYY-MM-DD).
-#     * For every player, calls Yahoo for stats using ";date={snapshot_date}".
-#       (For your league this behaves like "current season totals".)
-#     * Writes one CSV per day into: player_stats_daily/YYYY-MM-DD.csv
-# - Then builds player_stats_full.parquet with:
-#     * stat_value_num = season total as of that snapshot date
-#     * daily_value    = increment vs previous snapshot (per player_key + stat_id)
-# - Then builds combined_player_view_full.parquet by joining with rosters/league_players.
+# From today onward:
+# - For each run, we fetch season-to-date totals AS OF a single scoring date
+#   (the league's current_date if available, otherwise today's UTC date).
+# - We write one CSV per date into player_stats_daily/YYYY-MM-DD.csv.
+# - We build player_stats_full.parquet with:
+#       stat_value_num = season total as of that date
+#       daily_value    = increment vs previous date (per player + stat_id)
+# - We build combined_player_view_full.parquet by joining with rosters/league_players.
 
 from yahoo_oauth import OAuth2
 import os
 import pandas as pd
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Dict
 
 CONFIG_FILE = "oauth2.json"
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
@@ -55,7 +53,7 @@ def find_first(obj: Any, key: str) -> Any:
 def get_json(oauth: OAuth2, relative_path: str) -> Dict[str, Any]:
     """
     Call Yahoo Fantasy API with ?format=json appended.
-    If non-200 or JSON error, log and return {} so that player is skipped.
+    Be tolerant of non-JSON / 999 responses – return {} instead of crashing.
     """
     base = "https://fantasysports.yahooapis.com/fantasy/v2/"
     url = base + relative_path
@@ -71,45 +69,44 @@ def get_json(oauth: OAuth2, relative_path: str) -> Dict[str, Any]:
     try:
         return resp.json()
     except ValueError:
-        print(f"JSON decode error for URL {url} (status {resp.status_code})")
+        print(f"JSON decode error for URL: {url} (status {resp.status_code})")
         return {}
 
 
-def get_snapshot_date(oauth: Optional[OAuth2] = None) -> str:
+def get_league_current_date(oauth: OAuth2) -> str:
     """
-    Decide which date label to use for this snapshot.
+    Ask Yahoo what the league's current_date is (YYYY-MM-DD).
+    If that fails, fall back to today's UTC date.
+    """
+    if not LEAGUE_KEY:
+        raise SystemExit("LEAGUE_KEY env var is not set")
 
-    We IGNORE league.current_date for the label and just use today's UTC date.
-    """
+    try:
+        data = get_json(oauth, f"league/{LEAGUE_KEY}")
+        current_date = find_first(data, "current_date")
+        if isinstance(current_date, str) and len(current_date) == 10:
+            print(f"(Yahoo) league.current_date = {current_date}")
+            return current_date
+        else:
+            print("(Yahoo) league.current_date missing or invalid in response.")
+    except Exception as e:
+        print("Could not get league current_date from API:", type(e).__name__, e)
+
     today_str = datetime.now(timezone.utc).date().isoformat()
     print(f"Using today's UTC date for snapshot: {today_str}")
-
-    # Log Yahoo's current_date for debugging only (not used as the label)
-    if oauth is not None and LEAGUE_KEY:
-        try:
-            data = get_json(oauth, f"league/{LEAGUE_KEY}")
-            league_current = find_first(data, "current_date")
-            print(f"(Yahoo league.current_date = {league_current})")
-        except Exception as e:
-            print("Could not read league.current_date (ignored):", type(e).__name__, e)
-
     return today_str
 
 
 # ---------- Yahoo stats call ----------
 
-def extract_cumulative_stats_for_player(
-    oauth: OAuth2,
-    player_key: str,
-    snapshot_date: str,
-) -> List[Dict[str, Any]]:
+def extract_cumulative_stats_for_player(oauth: OAuth2, player_key: str, stats_date: str) -> List[Dict[str, Any]]:
     """
-    Call player/{player_key}/stats;date={snapshot_date}.
+    Call player/{player_key}/stats;type=date;date={stats_date}.
 
-    For your league, this behaves like "season totals as of now".
-    We label that with snapshot_date and later diff snapshots to get daily_value.
+    Yahoo returns season-to-date totals *as of that scoring date* (for that run).
+    We store those totals; later we compute daily_value by differencing.
     """
-    rel = f"player/{player_key}/stats;date={snapshot_date}"
+    rel = f"player/{player_key}/stats;type=date;date={stats_date}"
     data = get_json(oauth, rel)
 
     fc = data.get("fantasy_content", {})
@@ -137,7 +134,7 @@ def extract_cumulative_stats_for_player(
         player_stats.get("date")
         or player_stats.get("season")
         or player_stats.get("week")
-        or snapshot_date
+        or stats_date
     )
 
     stats_node = player_stats.get("stats") or find_first(player_stats, "stats")
@@ -172,9 +169,9 @@ def extract_cumulative_stats_for_player(
                 "player_name": player_name,
                 "coverage": coverage_type or "season",
                 "period": period,
-                "timestamp": snapshot_date,   # our snapshot label
+                "timestamp": stats_date,   # scoring date label
                 "stat_id": str(stat_id),
-                "stat_value": value,          # cumulative season total at this snapshot
+                "stat_value": value,       # cumulative as of this date
             }
         )
 
@@ -183,11 +180,11 @@ def extract_cumulative_stats_for_player(
 
 # ---------- parquet builders ----------
 
-def build_full_parquet_from_daily() -> Optional[pd.DataFrame]:
+def build_full_parquet_from_daily() -> pd.DataFrame | None:
     """
     Combine all daily CSVs and compute:
       - stat_value_num: cumulative total (season-to-date)
-      - daily_value: per-snapshot increment vs previous snapshot for that player+stat_id
+      - daily_value: per-date increment vs previous day for that player+stat_id
     """
     if not os.path.isdir(DAILY_DIR):
         print(f"No {DAILY_DIR} directory found; skipping full Parquet build.")
@@ -214,15 +211,15 @@ def build_full_parquet_from_daily() -> Optional[pd.DataFrame]:
 
     full_df = pd.concat(dfs, ignore_index=True)
 
-    # Core types
+    # Clean core types
     for col in ["player_key", "stat_id", "timestamp"]:
         if col in full_df.columns:
             full_df[col] = full_df[col].astype(str)
 
-    # Numeric cumulative
+    # Numeric cumulative value
     full_df["stat_value_num"] = pd.to_numeric(full_df.get("stat_value"), errors="coerce")
 
-    # Sort for diff
+    # Sort for diff calculation
     full_df.sort_values(
         by=["player_key", "stat_id", "timestamp"],
         inplace=True,
@@ -234,7 +231,7 @@ def build_full_parquet_from_daily() -> Optional[pd.DataFrame]:
         ["player_key", "stat_id"]
     )["stat_value_num"].diff()
 
-    # First snapshot per player+stat: use that snapshot's cumulative as daily_value
+    # First date per player+stat: use that day's cumulative as daily_value
     full_df["daily_value"] = full_df["daily_value"].fillna(full_df["stat_value_num"])
 
     # Save Parquet
@@ -252,10 +249,8 @@ def build_full_parquet_from_daily() -> Optional[pd.DataFrame]:
     return full_df
 
 
-def build_combined_parquet(
-    base_for_combined: pd.DataFrame,
-    full_stats_df: pd.DataFrame,
-) -> None:
+def build_combined_parquet(base_for_combined: pd.DataFrame,
+                           full_stats_df: pd.DataFrame) -> None:
     """
     Join rosters/league_players with full stats and write combined_player_view_full.parquet.
     """
@@ -322,7 +317,7 @@ def main():
     if "player_key" not in league_players.columns:
         raise SystemExit("league_players.csv missing 'player_key' column.")
 
-    # Base table for combined view
+    # Base table for combined view (rosters if available, else league_players)
     base_for_combined = league_players.copy()
     if os.path.exists("team_rosters.csv"):
         try:
@@ -333,25 +328,25 @@ def main():
         except Exception as e:
             print("Failed to read team_rosters.csv, falling back to league_players:", type(e).__name__, e)
 
-    # Snapshot date: TODAY (UTC)
-    snapshot_date = get_snapshot_date(oauth)
-    print(f"Snapshotting cumulative stats for date label: {snapshot_date}")
+    # Decide which fantasy scoring date we are snapshotting
+    stats_date = get_league_current_date(oauth)
+    print(f"Snapshotting cumulative stats for date label: {stats_date}")
 
-    # Build today's daily CSV (overwrites previous same-date file)
+    # Build today's daily CSV (overwrites any previous same-date file)
     player_keys = sorted(league_players["player_key"].dropna().unique().tolist())
     print(f"Found {len(player_keys)} player_keys.")
 
     daily_rows: List[Dict[str, Any]] = []
     for idx, pk in enumerate(player_keys, start=1):
-        print(f"[{snapshot_date}] [{idx}/{len(player_keys)}] Fetching stats for player {pk}")
+        print(f"[{stats_date}] [{idx}/{len(player_keys)}] Fetching stats for player {pk}")
         try:
-            rows = extract_cumulative_stats_for_player(oauth, pk, snapshot_date)
+            rows = extract_cumulative_stats_for_player(oauth, pk, stats_date)
         except Exception as e:
-            print(f"Failed to fetch stats for {pk} on {snapshot_date}: {type(e).__name__} {e}")
+            print(f"Failed to fetch stats for {pk} on {stats_date}: {type(e).__name__} {e}")
             rows = []
         daily_rows.extend(rows)
 
-    daily_path = os.path.join(DAILY_DIR, f"{snapshot_date}.csv")
+    daily_path = os.path.join(DAILY_DIR, f"{stats_date}.csv")
 
     if daily_rows:
         df_day = pd.DataFrame(daily_rows)
@@ -359,12 +354,12 @@ def main():
         df_day = pd.DataFrame(
             columns=["player_key", "player_name", "coverage", "period", "timestamp", "stat_id", "stat_value"]
         )
-        print(f"WARNING: No stats found for any player on {snapshot_date}")
+        print(f"WARNING: No stats found for any player on {stats_date}")
 
     df_day.to_csv(daily_path, index=False)
     print(f"Saved {len(df_day)} rows to {daily_path}")
 
-    # Rebuild parquet from ALL daily CSVs (today + future snapshots)
+    # Rebuild parquet from ALL daily CSVs (today + any future ones)
     full_stats_df = build_full_parquet_from_daily()
     if full_stats_df is not None:
         build_combined_parquet(base_for_combined, full_stats_df)
