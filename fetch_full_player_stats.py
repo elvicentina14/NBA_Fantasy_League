@@ -13,11 +13,11 @@ DAILY_DIR = "player_stats_daily"
 FULL_PARQUET = "player_stats_full.parquet"
 COMBINED_PARQUET = "combined_player_view_full.parquet"
 
-# If not set as env var in Actions, this is your default earliest date to backfill
-DEFAULT_BACKFILL_START = "2024-10-22"  # <-- change if your league started later/earlier
+# Default earliest date we want to backfill (change if needed)
+DEFAULT_BACKFILL_START = "2024-10-22"
 
 # Hard cap on how many days to fetch per workflow run
-MAX_DAYS_PER_RUN = 5  # tweak this if runs are still too long
+MAX_DAYS_PER_RUN = 5
 
 
 # ----------------- helpers ----------------- #
@@ -58,16 +58,12 @@ def get_json(oauth, relative_path):
         sep = "&" if "?" in url else "?"
         url = url + f"{sep}format=json"
     resp = oauth.session.get(url)
-
-    # If it's not a 2xx status, raise
     resp.raise_for_status()
 
-    # Try to parse JSON; if it fails, log and return empty
     try:
         return resp.json()
     except JSONDecodeError:
         print(f"JSON decode error for URL: {url} (status {resp.status_code})")
-        # You can optionally print resp.text[:200] here, but that can be huge.
         return {}
 
 
@@ -95,8 +91,9 @@ def get_league_current_date(oauth):
 
 def get_backfill_start_date_from_env_or_default():
     """
-    Determine the earliest date we *want* to have, ignoring what's already fetched.
-    Prefer BACKFILL_START_DATE env var, otherwise DEFAULT_BACKFILL_START.
+    Earliest date we want to have in our history:
+    - Prefer BACKFILL_START_DATE env var
+    - Otherwise DEFAULT_BACKFILL_START
     """
     env_val = os.environ.get("BACKFILL_START_DATE")
     if env_val:
@@ -108,43 +105,51 @@ def get_backfill_start_date_from_env_or_default():
 
 def get_effective_start_date():
     """
-    Decide which date to start fetching in this run:
+    Decide which date to start fetching this run:
       - At least BACKFILL_START_DATE
-      - But if we already have daily files, start at the day *after* the last one
+      - But if we already have daily files, start at the day after the last
+        *non-empty* daily file.
     """
     desired_start = get_backfill_start_date_from_env_or_default()
 
     if not os.path.isdir(DAILY_DIR):
         return desired_start
 
-    # find latest existing daily CSV
     existing_dates = []
     for fname in os.listdir(DAILY_DIR):
         if not fname.endswith(".csv"):
             continue
         base = fname[:-4]  # strip .csv
         try:
-            # if it parses as a date, keep it
             _ = datetime.fromisoformat(base).date()
-            existing_dates.append(base)
         except Exception:
             continue
+
+        # Skip completely empty daily files (0 rows) so we can retry them.
+        path = os.path.join(DAILY_DIR, fname)
+        try:
+            df_tmp = pd.read_csv(path)
+            if df_tmp.empty:
+                print(f"Found existing EMPTY daily file {path}; ignoring for effective start (will retry).")
+                continue
+        except Exception as e:
+            print(f"Could not read existing daily file {path} ({type(e).__name__}); will treat as missing.")
+            continue
+
+        existing_dates.append(base)
 
     if not existing_dates:
         return desired_start
 
     latest = max(existing_dates)
     next_date = (datetime.fromisoformat(latest).date() + timedelta(days=1)).isoformat()
-    # effective start is the later of (desired_start, next_date)
     effective_start = max(desired_start, next_date)
-    print(f"Latest existing daily file: {latest}, so effective start date is {effective_start}")
+    print(f"Latest non-empty daily file: {latest}, so effective start date is {effective_start}")
     return effective_start
 
 
 def date_range_iso(start_date_str, end_date_str):
-    """
-    Yield YYYY-MM-DD strings from start_date to end_date inclusive.
-    """
+    """Yield YYYY-MM-DD strings from start_date to end_date inclusive."""
     start = datetime.fromisoformat(start_date_str).date()
     end = datetime.fromisoformat(end_date_str).date()
     d = start
@@ -155,11 +160,12 @@ def date_range_iso(start_date_str, end_date_str):
 
 def extract_daily_stats_for_player(oauth, player_key, stats_date):
     """
-    Call player/{player_key}/stats;date={stats_date}
+    Call player/{player_key}/stats;type=date;date={stats_date}
     and return a list of dicts:
       { player_key, player_name, coverage, period, timestamp, stat_id, stat_value }
     """
-    rel = f"player/{player_key}/stats;date={stats_date}"
+    # IMPORTANT: type=date forces Yahoo to return stats for that scoring date
+    rel = f"player/{player_key}/stats;type=date;date={stats_date}"
     data = get_json(oauth, rel)
 
     fc = data.get("fantasy_content", {})
@@ -272,11 +278,14 @@ def build_full_parquet_from_daily():
                         inplace=True,
                         ignore_index=True)
 
+    ts = full_df["timestamp"].astype(str)
+    full_df["timestamp"] = ts  # enforce all strings
+
     full_df.to_parquet(FULL_PARQUET, index=False)
     print(
         f"Saved {len(full_df)} total rows to {FULL_PARQUET}. "
-        f"Dates: {full_df['timestamp'].min()} → {full_df['timestamp'].max()} "
-        f"({full_df['timestamp'].nunique()} distinct days)"
+        f"Dates: {ts.min()} → {ts.max()} "
+        f"({ts.nunique()} distinct days)"
     )
     return full_df
 
@@ -310,10 +319,12 @@ def build_combined_parquet(base_for_combined, full_stats_df):
         )
 
     merged.to_parquet(COMBINED_PARQUET, index=False)
+
+    ts = full_stats_df["timestamp"].astype(str)
     print(
         f"Saved {len(merged)} rows to {COMBINED_PARQUET}. "
-        f"Dates: {merged['timestamp'].min()} → {merged['timestamp'].max()} "
-        f"({merged['timestamp'].nunique()} distinct days)"
+        f"Dates in stats: {ts.min()} → {ts.max()} "
+        f"({ts.nunique()} distinct days)"
     )
 
 
@@ -358,7 +369,6 @@ def main():
     league_current = get_league_current_date(oauth)
     print(f"Full desired date range: {effective_start} to {league_current}")
 
-    # Build list of dates to fetch, but cap by MAX_DAYS_PER_RUN
     all_dates = list(date_range_iso(effective_start, league_current))
     if not all_dates:
         print("No new dates to fetch.")
@@ -378,9 +388,17 @@ def main():
     for stats_date in dates_to_fetch:
         daily_path = os.path.join(DAILY_DIR, f"{stats_date}.csv")
 
+        # We only skip if the existing file is non-empty.
         if os.path.exists(daily_path):
-            print(f"Daily file for {stats_date} already exists ({daily_path}), skipping API calls for this date.")
-            continue
+            try:
+                df_tmp = pd.read_csv(daily_path)
+                if not df_tmp.empty:
+                    print(f"Daily file for {stats_date} already exists and is non-empty ({daily_path}); skipping.")
+                    continue
+                else:
+                    print(f"Daily file for {stats_date} exists but is EMPTY; refetching.")
+            except Exception as e:
+                print(f"Could not read existing daily file {daily_path} ({type(e).__name__}); refetching.")
 
         print(f"\n=== Fetching DAILY stats for date: {stats_date} ===")
         date_rows = []
@@ -396,22 +414,12 @@ def main():
 
         if date_rows:
             df_date = pd.DataFrame(date_rows)
+            df_date.to_csv(daily_path, index=False)
+            print(f"Saved {len(df_date)} rows to {daily_path}")
         else:
-            df_date = pd.DataFrame(
-                columns=[
-                    "player_key",
-                    "player_name",
-                    "coverage",
-                    "period",
-                    "timestamp",
-                    "stat_id",
-                    "stat_value",
-                ]
-            )
-            print(f"WARNING: No stats found for any player on {stats_date}")
-
-        df_date.to_csv(daily_path, index=False)
-        print(f"Saved {len(df_date)} rows to {daily_path}")
+            # If EVERY player failed (e.g., all 999s), don't write the daily file
+            # so we can retry this date in a future run.
+            print(f"WARNING: No stats rows collected for {stats_date}; NOT writing daily CSV so we can retry later.")
 
     # After fetching this chunk of days, rebuild Parquet from *all* daily CSVs we have
     full_stats_df = build_full_parquet_from_daily()
