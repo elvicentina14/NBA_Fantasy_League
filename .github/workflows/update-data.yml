@@ -52,6 +52,8 @@ jobs:
           python fetch_full_player_stats.py
 
       - name: Commit and push outputs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
 
@@ -68,11 +70,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Track outputs but DO NOT commit oauth2.json
-          git add league_players.csv || true
-          git add player_stats_full.parquet || true
-          git add combined_player_view_full.parquet || true
-          git add player_stats_daily || true
+          # Stage EVERYTHING, then unstage oauth2.json so it never gets committed
+          git add .
+          git reset oauth2.json || true
 
           echo "=== GIT STATUS (after add) ==="
           git status
@@ -81,5 +81,6 @@ jobs:
             echo "No changes to commit"
           else:
             git commit -m "Update fantasy data outputs (automated)"
-            git push origin HEAD
+            # Push explicitly to main
+            git push origin HEAD:main
           fi
