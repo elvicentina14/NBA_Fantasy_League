@@ -3,14 +3,13 @@ from yahoo_oauth import OAuth2
 import os
 import pandas as pd
 from datetime import datetime, timezone, timedelta
-import json
 
 CONFIG_FILE = "oauth2.json"
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 
 # Outputs
-DAILY_DIR = "player_stats_daily"              # folder of one CSV per day
-FULL_PARQUET = "player_stats_full.parquet"    # all days, all players
+DAILY_DIR = "player_stats_daily"  # folder of one CSV per day
+FULL_PARQUET = "player_stats_full.parquet"  # all days, all players
 COMBINED_PARQUET = "combined_player_view_full.parquet"  # joined with rosters/league_players
 
 
@@ -44,6 +43,7 @@ def find_first(obj, key):
 def get_json(oauth, relative_path):
     """
     Call Yahoo Fantasy API with ?format=json appended.
+
     Be tolerant of HTTP errors and JSONDecode errors – return {} instead of crashing.
     """
     base = "https://fantasysports.yahooapis.com/fantasy/v2/"
@@ -125,11 +125,13 @@ def date_range_iso(start_date_str, end_date_str):
 
 def extract_daily_stats_for_player(oauth, player_key, stats_date):
     """
-    Call player/{player_key}/stats;date={stats_date}
-    and return a list of dicts:
+    Call player/{player_key}/stats;type=date;date={stats_date}
+
+    Return list of dicts:
       { player_key, player_name, coverage, period, timestamp, stat_id, stat_value }
     """
-    rel = f"player/{player_key}/stats;date={stats_date}"
+    # IMPORTANT: type=date gives DAILY stats; without it you get season totals.
+    rel = f"player/{player_key}/stats;type=date;date={stats_date}"
     data = get_json(oauth, rel)
 
     fc = data.get("fantasy_content", {})
@@ -243,7 +245,11 @@ def build_full_parquet_from_daily():
         full_df["timestamp"] = full_df["timestamp"].astype(str)
 
     # Sort for nice ordering
-    full_df.sort_values(by=["timestamp", "player_key", "stat_id"], inplace=True, ignore_index=True)
+    full_df.sort_values(
+        by=["timestamp", "player_key", "stat_id"],
+        inplace=True,
+        ignore_index=True,
+    )
 
     # Write Parquet
     full_df.to_parquet(FULL_PARQUET, index=False)
@@ -255,7 +261,10 @@ def build_full_parquet_from_daily():
             first = ts.min()
             last = ts.max()
             ndays = ts.nunique()
-            print(f"Saved {len(full_df)} total rows to {FULL_PARQUET}. Dates: {first} → {last} ({ndays} distinct days)")
+            print(
+                f"Saved {len(full_df)} total rows to {FULL_PARQUET}.\n"
+                f"Dates: {first} → {last} ({ndays} distinct days)"
+            )
         else:
             print(f"Saved {len(full_df)} total rows to {FULL_PARQUET}, but timestamp column is empty.")
     else:
@@ -307,7 +316,7 @@ def build_combined_parquet(base_for_combined, full_stats_df):
             last = ts.max()
             ndays = ts.nunique()
             print(
-                f"Saved {len(merged)} rows to {COMBINED_PARQUET}. "
+                f"Saved {len(merged)} rows to {COMBINED_PARQUET}.\n"
                 f"Dates: {first} → {last} ({ndays} distinct days in stats)"
             )
         else:
@@ -354,8 +363,9 @@ def main():
             print("Failed to read team_rosters.csv, falling back to league_players:", type(e).__name__, e)
 
     # 4) Determine the full date range for the league
-    league_start = get_league_start_date(oauth)
-    league_current = get_league_current_date(oauth)
+    oauth_for_dates = oauth
+    league_start = get_league_start_date(oauth_for_dates)
+    league_current = get_league_current_date(oauth_for_dates)
 
     # Optional BACKFILL_START_DATE override to avoid going earlier than needed
     effective_start = league_start
