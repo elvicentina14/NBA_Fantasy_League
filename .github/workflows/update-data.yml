@@ -11,6 +11,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    # timeout-minutes: 360  # optional cap
 
     steps:
       - name: Checkout repo (persist credentials for push)
@@ -28,7 +29,6 @@ jobs:
             echo "ERROR: OAUTH2_JSON_B64 secret is empty"
             exit 2
           fi
-
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
           python -c "import json; json.load(open('oauth2.json')); print('oauth2.json OK')"
 
@@ -42,22 +42,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install yahoo_oauth requests pandas pyarrow
 
-      - name: Run full stats fetch
+      - name: Run full stats fetch (today snapshot)
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
           set -e
+          if [ ! -f "fetch_full_player_stats.py" ]; then
+            echo "fetch_full_player_stats.py not found in repo root"
+            ls -la
+            exit 2
+          fi
+
           echo "Running fetch_full_player_stats.py..."
           python fetch_full_player_stats.py
-
-      - name: Show outputs and git status (debug)
-        run: |
-          echo "=== LS (repo root) ==="
-          ls -la
-          echo "=== LS player_stats_daily ==="
-          ls -la player_stats_daily || echo "no player_stats_daily dir"
-          echo "=== GIT STATUS (before add) ==="
-          git status
 
       - name: Commit and push outputs
         run: |
@@ -66,22 +63,27 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          echo "=== git status BEFORE add ==="
-          git status --short
-
-          # Stage only data artifacts – DO NOT add oauth2.json
-          git add -f player_stats_daily \
-                     player_stats_full.parquet \
-                     combined_player_view_full.parquet \
-                     league_players.csv || true
-
-          echo "=== git status AFTER add ==="
-          git status --short
-
-          if git diff --cached --quiet; then
-            echo "No changes staged; nothing to commit."
-            exit 0
+          echo "=== LS (repo root) ==="
+          ls -la
+          echo "=== LS player_stats_daily (if exists) ==="
+          if [ -d "player_stats_daily" ]; then
+            ls -la player_stats_daily
           fi
 
-          git commit -m "Update fantasy data outputs (automated)"
-          git push origin HEAD
+          echo "=== GIT STATUS (before add) ==="
+          git status
+
+          # Track outputs (never add oauth2.json)
+          git add player_stats_daily || true
+          git add player_stats_full.parquet combined_player_view_full.parquet || true
+          git add league_players.csv || true
+
+          echo "=== GIT STATUS (after add) ==="
+          git status
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else:
+            git commit -m "Update fantasy data outputs (automated)"
+            git push origin HEAD
+          fi
