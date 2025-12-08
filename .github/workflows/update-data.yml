@@ -11,8 +11,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    # You can uncomment this if you want to cap runs
-    # timeout-minutes: 360
+    # timeout-minutes: 360  # optional cap if you want
 
     steps:
       - name: Checkout repo (persist credentials for push)
@@ -46,8 +45,6 @@ jobs:
       - name: Run data fetch scripts
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
-          # Optional: limit earliest backfill date to avoid super-long first run
-          # BACKFILL_START_DATE: '2024-10-22'
         run: |
           set -e
 
@@ -74,7 +71,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Daily history files
+          # Daily history files (one CSV per day)
           git add player_stats_daily || true
 
           # Parquet outputs (historical + combined view)
@@ -85,7 +82,7 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
-          else
+          else:
             git commit -m "Update fantasy data outputs (automated)"
             git push
           fi
