@@ -11,7 +11,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    # timeout-minutes: 360  # optional
+    # timeout-minutes: 360  # optional override
 
     steps:
       - name: Checkout repo (persist credentials for push)
@@ -84,7 +84,7 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
-          else
+          else:
             git commit -m "Update fantasy data outputs (automated)"
             git push
           fi
