@@ -19,6 +19,8 @@
 # combined_player_view_full.parquet = league_players joined
 # to full stats (one row per player+stat+date)
 
+from __future__ import annotations  # <- optional, but safe
+
 import os
 from datetime import datetime, timezone
 from typing import Any, Dict, List
@@ -97,7 +99,6 @@ def _collect_player_nodes(obj: Any, out: List[Dict[str, Any]]) -> None:
     We only really need player_key + name, so we keep this generic.
     """
     if isinstance(obj, dict):
-        # Heuristic: a 'player' dict usually contains 'player_key'
         if "player_key" in obj:
             out.append(obj)
         for v in obj.values():
@@ -111,9 +112,6 @@ def fetch_league_players(oauth: OAuth2) -> pd.DataFrame:
     """
     Fetch all players in the league via paged calls to:
       league/{LEAGUE_KEY}/players;start=N;count=25
-
-    This is resilient to Yahoo's weird JSON by recursively scanning
-    for 'player_key' and 'name.full'.
     """
     if not LEAGUE_KEY:
         raise SystemExit("LEAGUE_KEY env var is not set")
@@ -142,7 +140,6 @@ def fetch_league_players(oauth: OAuth2) -> pd.DataFrame:
             if not pk:
                 continue
 
-            # Player name
             name_obj = node.get("name") or find_first(node, "name")
             full_name = None
             if isinstance(name_obj, dict) and "full" in name_obj:
@@ -158,7 +155,6 @@ def fetch_league_players(oauth: OAuth2) -> pd.DataFrame:
 
         print(f"  Found {len(tmp)} raw 'player' dicts, added {added_this_page} new players.")
 
-        # Stop if this page didn't add anything new (or was empty)
         if added_this_page == 0:
             break
 
@@ -181,14 +177,10 @@ def extract_cumulative_stats_for_player(
     oauth: OAuth2, player_key: str, stats_date: str
 ) -> List[Dict[str, Any]]:
     """
-    Call Yahoo:
+    Call:
       player/{player_key}/stats;type=date;date={stats_date}
 
-    and pull *season-to-date totals as of that fantasy date*.
-
-    We record 'stat_value' as cumulative. Later we derive 'daily_value'
-    by differencing across dates, but since we now *only* snapshot today,
-    daily_value == stat_value_num for that first day.
+    We get season-to-date totals as of that fantasy date.
     """
     rel = f"player/{player_key}/stats;type=date;date={stats_date}"
     data = get_json(oauth, rel)
@@ -198,7 +190,6 @@ def extract_cumulative_stats_for_player(
     if player_node is None:
         return []
 
-    # Player name
     name_obj = find_first(player_node, "name")
     if isinstance(name_obj, dict) and "full" in name_obj:
         player_name = name_obj["full"]
@@ -207,7 +198,6 @@ def extract_cumulative_stats_for_player(
     if not player_name:
         player_name = "Unknown"
 
-    # Player stats block
     player_stats = find_first(player_node, "player_stats")
     if not isinstance(player_stats, dict):
         return []
@@ -264,11 +254,6 @@ def extract_cumulative_stats_for_player(
 # ================== Parquet builders ================== #
 
 def build_full_parquet_from_daily() -> pd.DataFrame | None:
-    """
-    Combine all CSVs in player_stats_daily into one historical table and compute:
-      - stat_value_num = numeric cumulative value
-      - daily_value    = stat_value_num - previous day's stat_value_num per (player_key, stat_id)
-    """
     if not os.path.isdir(DAILY_DIR):
         print(f"No {DAILY_DIR} directory found; skipping full Parquet build.")
         return None
@@ -294,27 +279,22 @@ def build_full_parquet_from_daily() -> pd.DataFrame | None:
 
     full_df = pd.concat(dfs, ignore_index=True)
 
-    # Core string fields
     for col in ["player_key", "player_name", "stat_id", "timestamp"]:
         if col in full_df.columns:
             full_df[col] = full_df[col].astype(str)
 
-    # Numeric cumulative value
     full_df["stat_value_num"] = pd.to_numeric(full_df.get("stat_value"), errors="coerce")
 
-    # Sort for diff
     full_df.sort_values(
         by=["player_key", "stat_id", "timestamp"],
         inplace=True,
         ignore_index=True,
     )
 
-    # daily_value = today's cumulative minus previous cumulative for same player+stat
     full_df["daily_value"] = full_df.groupby(
         ["player_key", "stat_id"]
     )["stat_value_num"].diff()
 
-    # First date per player+stat gets full cumulative as daily_value
     full_df["daily_value"] = full_df["daily_value"].fillna(full_df["stat_value_num"])
 
     full_df.to_parquet(FULL_PARQUET, index=False)
@@ -333,10 +313,6 @@ def build_full_parquet_from_daily() -> pd.DataFrame | None:
 
 def build_combined_parquet(base_for_combined: pd.DataFrame,
                            full_stats_df: pd.DataFrame) -> None:
-    """
-    Join base_for_combined (from league_players.csv) with stats and write
-    combined_player_view_full.parquet.
-    """
     if full_stats_df is None or full_stats_df.empty:
         print("No full stats DataFrame provided; skipping combined Parquet.")
         return
@@ -387,12 +363,10 @@ def main():
 
     os.makedirs(DAILY_DIR, exist_ok=True)
 
-    # OAuth
     oauth = OAuth2(None, None, from_file=CONFIG_FILE)
     if not oauth.token_is_valid():
         raise SystemExit("OAuth token is not valid inside GitHub Actions – refresh locally first.")
 
-    # Ensure league_players.csv exists (auto-build if missing)
     if not os.path.exists("league_players.csv"):
         print("league_players.csv not found – trying to fetch league players from Yahoo...")
         lp_df = fetch_league_players(oauth)
@@ -407,7 +381,6 @@ def main():
     if "player_key" not in lp_df.columns:
         raise SystemExit("league_players.csv missing 'player_key' column.")
 
-    # Today only (no backfill: Yahoo returns 999 when you hammer past dates)
     stats_date = get_today_utc_str()
     print(f"Snapshotting cumulative stats for date (UTC): {stats_date}")
 
@@ -437,7 +410,6 @@ def main():
     df_day.to_csv(daily_path, index=False)
     print(f"Saved {len(df_day)} rows to {daily_path}")
 
-    # Build Parquet over all days we’ve ever saved
     full_stats_df = build_full_parquet_from_daily()
     if full_stats_df is not None:
         build_combined_parquet(lp_df, full_stats_df)
