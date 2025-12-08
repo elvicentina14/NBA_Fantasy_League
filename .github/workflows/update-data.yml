@@ -11,7 +11,6 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    # timeout-minutes: 360  # optional cap
 
     steps:
       - name: Checkout repo (persist credentials for push)
@@ -24,6 +23,7 @@ jobs:
         env:
           OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
         run: |
+          set -e
           if [ -z "$OAUTH_B64" ]; then
             echo "ERROR: OAUTH2_JSON_B64 secret is empty"
             exit 2
@@ -42,18 +42,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install yahoo_oauth requests pandas pyarrow
 
-      - name: Run fantasy data script
+      - name: Run full stats fetch
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
           set -e
-
-          if [ ! -f "fetch_full_player_stats.py" ]; then
-            echo "fetch_full_player_stats.py not found in repo root"
-            ls -la
-            exit 2
-          fi
-
           echo "Running fetch_full_player_stats.py..."
           python fetch_full_player_stats.py
 
@@ -62,30 +55,33 @@ jobs:
           echo "=== LS (repo root) ==="
           ls -la
           echo "=== LS player_stats_daily ==="
-          ls -la player_stats_daily || echo "player_stats_daily does not exist"
+          ls -la player_stats_daily || echo "no player_stats_daily dir"
           echo "=== GIT STATUS (before add) ==="
           git status
 
       - name: Commit and push outputs
         run: |
+          set -e
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          echo "=== GIT STATUS before git add ==="
-          git status
+          echo "=== git status BEFORE add ==="
+          git status --short
 
-          # Daily history files (directory + contents)
-          git add -f player_stats_daily || true
+          # Stage only data artifacts – DO NOT add oauth2.json
+          git add -f player_stats_daily \
+                     player_stats_full.parquet \
+                     combined_player_view_full.parquet \
+                     league_players.csv || true
 
-          # Parquet outputs (historical + combined view) + players master
-          git add -f player_stats_full.parquet combined_player_view_full.parquet league_players.csv || true
-
-          echo "=== GIT STATUS after git add ==="
-          git status
+          echo "=== git status AFTER add ==="
+          git status --short
 
           if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else:
-            git commit -m "Update fantasy data outputs (automated)"
-            git push origin HEAD
+            echo "No changes staged; nothing to commit."
+            exit 0
           fi
+
+          git commit -m "Update fantasy data outputs (automated)"
+          git push origin HEAD
