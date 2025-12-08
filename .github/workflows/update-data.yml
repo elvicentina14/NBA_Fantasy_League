@@ -19,6 +19,7 @@ jobs:
         with:
           persist-credentials: true
           fetch-depth: 0
+          ref: main   # force main branch
 
       - name: Decode oauth2.json from base64 secret and validate
         env:
@@ -66,6 +67,11 @@ jobs:
           echo "Running fetch_full_player_stats.py..."
           python fetch_full_player_stats.py
 
+      - name: Create heartbeat file (always changes)
+        run: |
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > workflow_heartbeat.txt
+          echo "Wrote workflow_heartbeat.txt"
+
       - name: Commit and push outputs
         run: |
           git config user.name "github-actions[bot]"
@@ -79,6 +85,14 @@ jobs:
 
           # Supporting CSVs
           git add standings.csv team_rosters.csv league_players.csv player_stats.csv || true
+
+          # Heartbeat (always changed)
+          git add workflow_heartbeat.txt || true
+
+          echo "==== git status ===="
+          git status
+          echo "==== git diff --cached --stat ===="
+          git diff --cached --stat || true
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
