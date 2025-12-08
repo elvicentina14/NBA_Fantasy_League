@@ -1,4 +1,5 @@
 # fetch_full_player_stats.py
+
 from yahoo_oauth import OAuth2
 import os
 import pandas as pd
@@ -7,13 +8,12 @@ from datetime import datetime, timezone, timedelta
 CONFIG_FILE = "oauth2.json"
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 
-# Outputs
-DAILY_DIR = "player_stats_daily"  # folder of one CSV per day
-FULL_PARQUET = "player_stats_full.parquet"  # all days, all players
+DAILY_DIR = "player_stats_daily"              # folder of daily CSVs
+FULL_PARQUET = "player_stats_full.parquet"    # all days, all players
 COMBINED_PARQUET = "combined_player_view_full.parquet"  # joined with rosters/league_players
 
 
-# ---------- Generic helpers ----------
+# ---------- Helpers ----------
 
 def ensure_list(x):
     if x is None:
@@ -43,8 +43,7 @@ def find_first(obj, key):
 def get_json(oauth, relative_path):
     """
     Call Yahoo Fantasy API with ?format=json appended.
-
-    Be tolerant of HTTP errors and JSONDecode errors – return {} instead of crashing.
+    Tolerant to non-JSON responses (rate limits / HTML / etc).
     """
     base = "https://fantasysports.yahooapis.com/fantasy/v2/"
     url = base + relative_path
@@ -53,24 +52,20 @@ def get_json(oauth, relative_path):
         url = url + f"{sep}format=json"
 
     resp = oauth.session.get(url)
-
-    # Yahoo's 999 / other non-200 statuses – just log and return empty.
     if resp.status_code != 200:
-        print(f"Non-200 for URL: {url} (status {resp.status_code})")
+        print(f"Non-200 response for URL {url}: {resp.status_code}")
         return {}
 
     try:
         return resp.json()
     except ValueError:
-        # Covers JSONDecodeError and similar
-        print(f"JSON decode error for URL: {url} (status {resp.status_code})")
+        print(f"JSON decode error for URL {url}: {resp.status_code}")
         return {}
 
 
 def get_league_current_date(oauth):
     """
-    Ask Yahoo what the league's current_date is (YYYY-MM-DD).
-    If that fails, fall back to today's UTC date.
+    Get league current_date (YYYY-MM-DD); fallback to today's UTC date.
     """
     if not LEAGUE_KEY:
         raise SystemExit("LEAGUE_KEY env var is not set")
@@ -91,8 +86,7 @@ def get_league_current_date(oauth):
 
 def get_league_start_date(oauth):
     """
-    Ask Yahoo what the league's start_date is (YYYY-MM-DD).
-    If that fails, fall back to current_date.
+    Get league start_date (YYYY-MM-DD); fallback to current_date.
     """
     if not LEAGUE_KEY:
         raise SystemExit("LEAGUE_KEY env var is not set")
@@ -127,10 +121,9 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
     """
     Call player/{player_key}/stats;type=date;date={stats_date}
 
-    Return list of dicts:
-      { player_key, player_name, coverage, period, timestamp, stat_id, stat_value }
+    Returns season-to-date stats AS OF that date (cumulative).
+    We later convert them to daily by differencing across dates.
     """
-    # IMPORTANT: type=date gives DAILY stats; without it you get season totals.
     rel = f"player/{player_key}/stats;type=date;date={stats_date}"
     data = get_json(oauth, rel)
 
@@ -162,13 +155,13 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
         or find_first(player_stats, "date")
         or find_first(player_stats, "season")
         or find_first(player_stats, "week")
+        or stats_date
     )
 
     stats_node = player_stats.get("stats") or find_first(player_stats, "stats")
     if stats_node is None:
         return []
 
-    # stats_node is usually {"stat": [ {...}, {...} ]}
     if isinstance(stats_node, dict):
         if "stat" in stats_node:
             stat_items = ensure_list(stats_node["stat"])
@@ -181,7 +174,6 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
 
     rows = []
     for item in stat_items:
-        # Sometimes wrapped in {"stat": {...}}
         if isinstance(item, dict) and "stat" in item:
             s = item["stat"]
         else:
@@ -189,7 +181,6 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
 
         stat_id = find_first(s, "stat_id")
         value = find_first(s, "value")
-
         if stat_id is None:
             continue
 
@@ -197,11 +188,11 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
             {
                 "player_key": str(player_key),
                 "player_name": player_name,
-                "coverage": coverage_type or "date",
-                "period": period or stats_date,
-                "timestamp": stats_date,  # standardized daily timestamp
+                "coverage": coverage_type or "season",  # Yahoo reports 'season'
+                "period": period,
+                "timestamp": stats_date,             # the scoring date
                 "stat_id": str(stat_id),
-                "stat_value": value,
+                "stat_value": value,                 # cumulative as-of this date
             }
         )
 
@@ -211,15 +202,16 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
 # ---------- Parquet builders ----------
 
 def build_full_parquet_from_daily():
-    """Read all daily CSVs and write a single Parquet file with all stats."""
+    """
+    Read all daily CSVs, combine, and build BOTH:
+      - cumulative 'stat_value'
+      - per-day 'daily_value' (difference vs previous day per player/stat)
+    """
     if not os.path.isdir(DAILY_DIR):
         print(f"No {DAILY_DIR} directory found; skipping full Parquet build.")
         return None
 
-    files = sorted(
-        f for f in os.listdir(DAILY_DIR)
-        if f.endswith(".csv")
-    )
+    files = sorted(f for f in os.listdir(DAILY_DIR) if f.endswith(".csv"))
     if not files:
         print(f"No daily CSV files in {DAILY_DIR}; skipping full Parquet build.")
         return None
@@ -240,35 +232,40 @@ def build_full_parquet_from_daily():
 
     full_df = pd.concat(dfs, ignore_index=True)
 
-    # Make sure timestamp is clean string
-    if "timestamp" in full_df.columns:
-        full_df["timestamp"] = full_df["timestamp"].astype(str)
+    # Clean types
+    for col in ["player_key", "stat_id", "timestamp"]:
+        if col in full_df.columns:
+            full_df[col] = full_df[col].astype(str)
 
-    # Sort for nice ordering
+    # Convert stat_value to numeric where possible
+    full_df["stat_value_num"] = pd.to_numeric(full_df.get("stat_value"), errors="coerce")
+
+    # Sort so diff() works correctly
     full_df.sort_values(
-        by=["timestamp", "player_key", "stat_id"],
+        by=["player_key", "stat_id", "timestamp"],
         inplace=True,
         ignore_index=True,
     )
 
-    # Write Parquet
+    # Compute DAILY values = difference vs previous day's cumulative
+    # For first available day per player/stat, daily_value = that day's cumulative.
+    full_df["daily_value"] = full_df.groupby(["player_key", "stat_id"])["stat_value_num"].diff()
+    full_df["daily_value"] = full_df["daily_value"].fillna(full_df["stat_value_num"])
+
+    # Save parquet (keep both cumulative + daily)
     full_df.to_parquet(FULL_PARQUET, index=False)
 
-    # Nice log summary
-    if "timestamp" in full_df.columns:
-        ts = full_df["timestamp"].dropna().astype(str)
-        if not ts.empty:
-            first = ts.min()
-            last = ts.max()
-            ndays = ts.nunique()
-            print(
-                f"Saved {len(full_df)} total rows to {FULL_PARQUET}.\n"
-                f"Dates: {first} → {last} ({ndays} distinct days)"
-            )
-        else:
-            print(f"Saved {len(full_df)} total rows to {FULL_PARQUET}, but timestamp column is empty.")
+    ts = full_df["timestamp"].dropna().astype(str)
+    if not ts.empty:
+        first = ts.min()
+        last = ts.max()
+        ndays = ts.nunique()
+        print(
+            f"Saved {len(full_df)} total rows to {FULL_PARQUET}. "
+            f"Dates: {first} → {last} ({ndays} distinct days)"
+        )
     else:
-        print(f"Saved {len(full_df)} total rows to {FULL_PARQUET}, no timestamp column found.")
+        print(f"Saved {len(full_df)} total rows to {FULL_PARQUET}, but timestamp column is empty.")
 
     return full_df
 
@@ -276,6 +273,7 @@ def build_full_parquet_from_daily():
 def build_combined_parquet(base_for_combined, full_stats_df):
     """
     Join rosters/league_players with full stats and write combined_player_view_full.parquet.
+    Includes both cumulative 'stat_value' and per-day 'daily_value'.
     """
     if full_stats_df is None or full_stats_df.empty:
         print("No full stats DataFrame provided; skipping combined Parquet.")
@@ -286,7 +284,6 @@ def build_combined_parquet(base_for_combined, full_stats_df):
         if col not in base.columns:
             base[col] = base_for_combined.get(col)
 
-    # Prefer join on both key + name if available
     if "player_name" in base.columns and "player_name" in full_stats_df.columns:
         merged = base.merge(
             full_stats_df,
@@ -302,48 +299,36 @@ def build_combined_parquet(base_for_combined, full_stats_df):
             validate="m:m",
         )
 
-    # Ensure timestamp is string for logging
-    if "timestamp" in merged.columns:
-        merged["timestamp"] = merged["timestamp"].astype(str)
-
     merged.to_parquet(COMBINED_PARQUET, index=False)
 
-    # Logging summary
-    if "timestamp" in merged.columns:
-        ts = merged["timestamp"].dropna()
-        if not ts.empty:
-            first = ts.min()
-            last = ts.max()
-            ndays = ts.nunique()
-            print(
-                f"Saved {len(merged)} rows to {COMBINED_PARQUET}.\n"
-                f"Dates: {first} → {last} ({ndays} distinct days in stats)"
-            )
-        else:
-            print(f"Saved {len(merged)} rows to {COMBINED_PARQUET} (no timestamps populated).")
+    ts = merged["timestamp"].dropna().astype(str) if "timestamp" in merged.columns else pd.Series([], dtype=str)
+    if not ts.empty:
+        print(
+            f"Saved {len(merged)} rows to {COMBINED_PARQUET}. "
+            f"Dates in stats: {ts.min()} → {ts.max()} ({ts.nunique()} distinct days)"
+        )
     else:
-        print(f"Saved {len(merged)} rows to {COMBINED_PARQUET} (no timestamp column).")
+        print(f"Saved {len(merged)} rows to {COMBINED_PARQUET} (no timestamp info).")
 
 
 # ---------- Main ----------
 
 def main():
-    # 0) Basic checks
+    # Basic checks
     if not LEAGUE_KEY:
         raise SystemExit("LEAGUE_KEY env var is not set")
 
     if not os.path.exists(CONFIG_FILE):
         raise SystemExit(f"{CONFIG_FILE} not found")
 
-    # Ensure daily directory exists
     os.makedirs(DAILY_DIR, exist_ok=True)
 
-    # 1) OAuth
+    # OAuth
     oauth = OAuth2(None, None, from_file=CONFIG_FILE)
     if not oauth.token_is_valid():
         raise SystemExit("OAuth token is not valid inside GitHub Actions – refresh locally first.")
 
-    # 2) Make sure league_players.csv exists
+    # league_players.csv is the master list
     if not os.path.exists("league_players.csv"):
         raise SystemExit("league_players.csv not found. Run fetch_players_and_stats.py first.")
 
@@ -351,7 +336,7 @@ def main():
     if "player_key" not in league_players.columns:
         raise SystemExit("league_players.csv missing 'player_key' column.")
 
-    # 3) If we have team_rosters.csv, use that as base for combined view
+    # Use team_rosters.csv as base if present
     base_for_combined = league_players.copy()
     if os.path.exists("team_rosters.csv"):
         try:
@@ -362,20 +347,18 @@ def main():
         except Exception as e:
             print("Failed to read team_rosters.csv, falling back to league_players:", type(e).__name__, e)
 
-    # 4) Determine the full date range for the league
-    oauth_for_dates = oauth
-    league_start = get_league_start_date(oauth_for_dates)
-    league_current = get_league_current_date(oauth_for_dates)
+    # Date range
+    league_start = get_league_start_date(oauth)
+    league_current = get_league_current_date(oauth)
 
-    # Optional BACKFILL_START_DATE override to avoid going earlier than needed
+    # Optional BACKFILL_START_DATE to not go before that
     effective_start = league_start
     backfill_env = os.environ.get("BACKFILL_START_DATE")
     if backfill_env:
         try:
             ls_date = datetime.fromisoformat(league_start).date()
             bf_date = datetime.fromisoformat(backfill_env).date()
-            effective_start_date = max(ls_date, bf_date)
-            effective_start = effective_start_date.isoformat()
+            effective_start = max(ls_date, bf_date).isoformat()
             print(f"BACKFILL_START_DATE={backfill_env} applied. Effective start: {effective_start}")
         except ValueError:
             print(f"Invalid BACKFILL_START_DATE='{backfill_env}', ignoring and using league_start={league_start}")
@@ -383,19 +366,19 @@ def main():
     print(f"League date range: {league_start} → {league_current}")
     print(f"Backfilling daily stats from {effective_start} → {league_current}")
 
-    # 5) Get list of unique players
+    # Players
     player_keys = sorted(league_players["player_key"].dropna().unique().tolist())
     print(f"Found {len(player_keys)} unique player_keys in league_players.csv")
 
-    # 6) Fetch missing daily files
+    # Fetch daily stats for each date without touching dates we already have
     for stats_date in date_range_iso(effective_start, league_current):
         daily_path = os.path.join(DAILY_DIR, f"{stats_date}.csv")
 
         if os.path.exists(daily_path):
-            print(f"Daily file for {stats_date} already exists ({daily_path}), skipping API calls for this date.")
+            print(f"Daily file for {stats_date} already exists ({daily_path}); skipping.")
             continue
 
-        print(f"\n=== Fetching DAILY stats for date: {stats_date} ===")
+        print(f"\n=== Fetching DAILY cumulative stats for date: {stats_date} ===")
         date_rows = []
 
         for idx, pk in enumerate(player_keys, start=1):
@@ -407,11 +390,9 @@ def main():
                 rows = []
             date_rows.extend(rows)
 
-        # Build daily DataFrame and save
         if date_rows:
             df_date = pd.DataFrame(date_rows)
         else:
-            # Create an empty file with correct columns to signal "processed"
             df_date = pd.DataFrame(
                 columns=["player_key", "player_name", "coverage", "period", "timestamp", "stat_id", "stat_value"]
             )
@@ -420,10 +401,8 @@ def main():
         df_date.to_csv(daily_path, index=False)
         print(f"Saved {len(df_date)} rows to {daily_path}")
 
-    # 7) Build full Parquet from daily CSVs
+    # Build parquet files
     full_stats_df = build_full_parquet_from_daily()
-
-    # 8) Build combined view Parquet
     if full_stats_df is not None:
         build_combined_parquet(base_for_combined, full_stats_df)
 
