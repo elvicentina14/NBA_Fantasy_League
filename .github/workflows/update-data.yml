@@ -11,7 +11,8 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    # timeout-minutes: 360  # optional override
+    # You can uncomment this if you want to cap runs
+    # timeout-minutes: 360
 
     steps:
       - name: Checkout repo (persist credentials for push)
@@ -45,7 +46,7 @@ jobs:
       - name: Run data fetch scripts
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
-          # Optional: override earliest date to backfill (YYYY-MM-DD)
+          # Optional: limit earliest backfill date to avoid super-long first run
           # BACKFILL_START_DATE: '2024-10-22'
         run: |
           set -e
