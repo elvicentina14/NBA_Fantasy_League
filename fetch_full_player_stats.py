@@ -3,7 +3,9 @@
 # Behavior:
 # - From today onward, each run:
 #     * Uses TODAY'S UTC DATE as the snapshot label (YYYY-MM-DD).
-#     * For every player, calls Yahoo for season-to-date stats AS OF NOW.
+#     * For every player, calls Yahoo for season-to-date stats using "?date={snapshot_date}".
+#       (Yahoo appears to ignore the date for your game and returns current season totals,
+#        which is fine because we only need snapshots over time.)
 #     * Writes one CSV per day into: player_stats_daily/YYYY-MM-DD.csv
 # - Then builds player_stats_full.parquet with:
 #     * stat_value_num = season total as of that snapshot date
@@ -84,7 +86,7 @@ def get_snapshot_date(oauth: Optional[OAuth2] = None) -> str:
     today_str = datetime.now(timezone.utc).date().isoformat()
     print(f"Using today's UTC date for snapshot: {today_str}")
 
-    # Just log Yahoo's current_date for debugging; not used as the label.
+    # Log Yahoo's current_date for debugging only (not used as the label)
     if oauth is not None and LEAGUE_KEY:
         try:
             data = get_json(oauth, f"league/{LEAGUE_KEY}")
@@ -104,12 +106,13 @@ def extract_cumulative_stats_for_player(
     snapshot_date: str,
 ) -> List[Dict[str, Any]]:
     """
-    Call player/{player_key}/stats;type=season
+    Call player/{player_key}/stats;date={snapshot_date}.
 
-    Yahoo returns season-to-date totals for the current season.
-    We store those totals and label them with snapshot_date.
+    For your league, this endpoint returns "current season totals" regardless of the date
+    parameter, which is fine because we only care about the snapshot *time*, not the
+    internal Yahoo scoring date. We treat this as "season-to-date at snapshot_date".
     """
-    rel = f"player/{player_key}/stats;type=season"
+    rel = f"player/{player_key}/stats;date={snapshot_date}"
     data = get_json(oauth, rel)
 
     fc = data.get("fantasy_content", {})
@@ -134,8 +137,8 @@ def extract_cumulative_stats_for_player(
 
     coverage_type = player_stats.get("coverage_type") or find_first(player_stats, "coverage_type")
     period = (
-        player_stats.get("season")
-        or player_stats.get("date")
+        player_stats.get("date")
+        or player_stats.get("season")
         or player_stats.get("week")
         or snapshot_date
     )
