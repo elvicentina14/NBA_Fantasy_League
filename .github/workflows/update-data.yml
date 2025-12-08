@@ -11,6 +11,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    # timeout-minutes: 360  # optional cap
 
     steps:
       - name: Checkout repo (persist credentials for push)
@@ -41,26 +42,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install yahoo_oauth requests pandas pyarrow
 
-      - name: Run data fetch scripts
+      - name: Run fantasy data script
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
           set -e
 
-          # Ensure scripts exist in repo root
-          for f in fetch_players_and_stats.py fetch_rosters_and_standings.py fetch_full_player_stats.py; do
-            if [ ! -f "$f" ]; then
-              echo "$f not found in repo root"
-              ls -la
-              exit 2
-            fi
-          done
-
-          echo "Running fetch_players_and_stats.py..."
-          python fetch_players_and_stats.py
-
-          echo "Running fetch_rosters_and_standings.py..."
-          python fetch_rosters_and_standings.py
+          if [ ! -f "fetch_full_player_stats.py" ]; then
+            echo "fetch_full_player_stats.py not found in repo root"
+            ls -la
+            exit 2
+          fi
 
           echo "Running fetch_full_player_stats.py..."
           python fetch_full_player_stats.py
@@ -73,11 +65,8 @@ jobs:
           # Daily history files (directory + contents)
           git add player_stats_daily || true
 
-          # Parquet outputs (historical + combined view)
-          git add player_stats_full.parquet combined_player_view_full.parquet || true
-
-          # Supporting CSVs
-          git add standings.csv team_rosters.csv league_players.csv player_stats.csv || true
+          # Parquet outputs (historical + combined view) + players master
+          git add player_stats_full.parquet combined_player_view_full.parquet league_players.csv || true
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
