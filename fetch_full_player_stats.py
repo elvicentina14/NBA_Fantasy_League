@@ -1,26 +1,20 @@
 # fetch_full_player_stats.py
-
 from yahoo_oauth import OAuth2
 import os
 import pandas as pd
 from datetime import datetime, timezone, timedelta
-from json import JSONDecodeError
+import json
 
 CONFIG_FILE = "oauth2.json"
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 
-DAILY_DIR = "player_stats_daily"
-FULL_PARQUET = "player_stats_full.parquet"
-COMBINED_PARQUET = "combined_player_view_full.parquet"
-
-# Default earliest date we want to backfill (change if needed)
-DEFAULT_BACKFILL_START = "2024-10-22"
-
-# Hard cap on how many days to fetch per workflow run
-MAX_DAYS_PER_RUN = 5
+# Outputs
+DAILY_DIR = "player_stats_daily"              # folder of one CSV per day
+FULL_PARQUET = "player_stats_full.parquet"    # all days, all players
+COMBINED_PARQUET = "combined_player_view_full.parquet"  # joined with rosters/league_players
 
 
-# ----------------- helpers ----------------- #
+# ---------- Generic helpers ----------
 
 def ensure_list(x):
     if x is None:
@@ -31,7 +25,7 @@ def ensure_list(x):
 
 
 def find_first(obj, key):
-    """Recursively find the first occurrence of key anywhere in nested dict/list."""
+    """Recursively find the first value for a given key in nested dict/list."""
     if isinstance(obj, dict):
         if key in obj:
             return obj[key]
@@ -50,19 +44,25 @@ def find_first(obj, key):
 def get_json(oauth, relative_path):
     """
     Call Yahoo Fantasy API with ?format=json appended.
-    Be robust to bad / non-JSON responses (rate limits, HTML, etc.).
+    Be tolerant of HTTP errors and JSONDecode errors – return {} instead of crashing.
     """
     base = "https://fantasysports.yahooapis.com/fantasy/v2/"
     url = base + relative_path
     if "format=json" not in url:
         sep = "&" if "?" in url else "?"
         url = url + f"{sep}format=json"
+
     resp = oauth.session.get(url)
-    resp.raise_for_status()
+
+    # Yahoo's 999 / other non-200 statuses – just log and return empty.
+    if resp.status_code != 200:
+        print(f"Non-200 for URL: {url} (status {resp.status_code})")
+        return {}
 
     try:
         return resp.json()
-    except JSONDecodeError:
+    except ValueError:
+        # Covers JSONDecodeError and similar
         print(f"JSON decode error for URL: {url} (status {resp.status_code})")
         return {}
 
@@ -89,63 +89,26 @@ def get_league_current_date(oauth):
     return today_str
 
 
-def get_backfill_start_date_from_env_or_default():
+def get_league_start_date(oauth):
     """
-    Earliest date we want to have in our history:
-    - Prefer BACKFILL_START_DATE env var
-    - Otherwise DEFAULT_BACKFILL_START
+    Ask Yahoo what the league's start_date is (YYYY-MM-DD).
+    If that fails, fall back to current_date.
     """
-    env_val = os.environ.get("BACKFILL_START_DATE")
-    if env_val:
-        print(f"Using BACKFILL_START_DATE from env: {env_val}")
-        return env_val
-    print(f"Using DEFAULT_BACKFILL_START: {DEFAULT_BACKFILL_START}")
-    return DEFAULT_BACKFILL_START
+    if not LEAGUE_KEY:
+        raise SystemExit("LEAGUE_KEY env var is not set")
 
-
-def get_effective_start_date():
-    """
-    Decide which date to start fetching this run:
-      - At least BACKFILL_START_DATE
-      - But if we already have daily files, start at the day after the last
-        *non-empty* daily file.
-    """
-    desired_start = get_backfill_start_date_from_env_or_default()
-
-    if not os.path.isdir(DAILY_DIR):
-        return desired_start
-
-    existing_dates = []
-    for fname in os.listdir(DAILY_DIR):
-        if not fname.endswith(".csv"):
-            continue
-        base = fname[:-4]  # strip .csv
-        try:
-            _ = datetime.fromisoformat(base).date()
-        except Exception:
-            continue
-
-        # Skip completely empty daily files (0 rows) so we can retry them.
-        path = os.path.join(DAILY_DIR, fname)
-        try:
-            df_tmp = pd.read_csv(path)
-            if df_tmp.empty:
-                print(f"Found existing EMPTY daily file {path}; ignoring for effective start (will retry).")
-                continue
-        except Exception as e:
-            print(f"Could not read existing daily file {path} ({type(e).__name__}); will treat as missing.")
-            continue
-
-        existing_dates.append(base)
-
-    if not existing_dates:
-        return desired_start
-
-    latest = max(existing_dates)
-    next_date = (datetime.fromisoformat(latest).date() + timedelta(days=1)).isoformat()
-    effective_start = max(desired_start, next_date)
-    print(f"Latest non-empty daily file: {latest}, so effective start date is {effective_start}")
-    return effective_start
+    try:
+        data = get_json(oauth, f"league/{LEAGUE_KEY}")
+        start_date = find_first(data, "start_date")
+        if isinstance(start_date, str) and len(start_date) == 10:
+            print(f"Using league start_date from Yahoo: {start_date}")
+            return start_date
+        else:
+            print("No start_date found in league settings; falling back to current_date.")
+            return get_league_current_date(oauth)
+    except Exception as e:
+        print("Could not get league start_date from API:", type(e).__name__, e)
+        return get_league_current_date(oauth)
 
 
 def date_range_iso(start_date_str, end_date_str):
@@ -158,14 +121,15 @@ def date_range_iso(start_date_str, end_date_str):
         d += timedelta(days=1)
 
 
+# ---------- Stat extraction ----------
+
 def extract_daily_stats_for_player(oauth, player_key, stats_date):
     """
-    Call player/{player_key}/stats;type=date;date={stats_date}
+    Call player/{player_key}/stats;date={stats_date}
     and return a list of dicts:
       { player_key, player_name, coverage, period, timestamp, stat_id, stat_value }
     """
-    # IMPORTANT: type=date forces Yahoo to return stats for that scoring date
-    rel = f"player/{player_key}/stats;type=date;date={stats_date}"
+    rel = f"player/{player_key}/stats;date={stats_date}"
     data = get_json(oauth, rel)
 
     fc = data.get("fantasy_content", {})
@@ -193,7 +157,9 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
         player_stats.get("date")
         or player_stats.get("season")
         or player_stats.get("week")
-        or stats_date
+        or find_first(player_stats, "date")
+        or find_first(player_stats, "season")
+        or find_first(player_stats, "week")
     )
 
     stats_node = player_stats.get("stats") or find_first(player_stats, "stats")
@@ -201,7 +167,6 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
         return []
 
     # stats_node is usually {"stat": [ {...}, {...} ]}
-    stat_items = []
     if isinstance(stats_node, dict):
         if "stat" in stats_node:
             stat_items = ensure_list(stats_node["stat"])
@@ -209,9 +174,12 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
             stat_items = [stats_node]
     elif isinstance(stats_node, list):
         stat_items = stats_node
+    else:
+        stat_items = []
 
     rows = []
     for item in stat_items:
+        # Sometimes wrapped in {"stat": {...}}
         if isinstance(item, dict) and "stat" in item:
             s = item["stat"]
         else:
@@ -219,6 +187,7 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
 
         stat_id = find_first(s, "stat_id")
         value = find_first(s, "value")
+
         if stat_id is None:
             continue
 
@@ -227,8 +196,8 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
                 "player_key": str(player_key),
                 "player_name": player_name,
                 "coverage": coverage_type or "date",
-                "period": period,
-                "timestamp": stats_date,
+                "period": period or stats_date,
+                "timestamp": stats_date,  # standardized daily timestamp
                 "stat_id": str(stat_id),
                 "stat_value": value,
             }
@@ -237,17 +206,18 @@ def extract_daily_stats_for_player(oauth, player_key, stats_date):
     return rows
 
 
-# ----------------- parquet builders ----------------- #
+# ---------- Parquet builders ----------
 
 def build_full_parquet_from_daily():
-    """
-    Read all daily CSVs, combine, de-duplicate, and write a single Parquet file.
-    """
+    """Read all daily CSVs and write a single Parquet file with all stats."""
     if not os.path.isdir(DAILY_DIR):
         print(f"No {DAILY_DIR} directory found; skipping full Parquet build.")
         return None
 
-    files = sorted(f for f in os.listdir(DAILY_DIR) if f.endswith(".csv"))
+    files = sorted(
+        f for f in os.listdir(DAILY_DIR)
+        if f.endswith(".csv")
+    )
     if not files:
         print(f"No daily CSV files in {DAILY_DIR}; skipping full Parquet build.")
         return None
@@ -268,25 +238,29 @@ def build_full_parquet_from_daily():
 
     full_df = pd.concat(dfs, ignore_index=True)
 
-    for col in ["player_key", "timestamp", "stat_id"]:
-        if col not in full_df.columns:
-            raise SystemExit(f"Missing expected column '{col}' in combined stats dataframe")
+    # Make sure timestamp is clean string
+    if "timestamp" in full_df.columns:
+        full_df["timestamp"] = full_df["timestamp"].astype(str)
 
-    full_df.drop_duplicates(subset=["player_key", "timestamp", "stat_id"], inplace=True)
+    # Sort for nice ordering
+    full_df.sort_values(by=["timestamp", "player_key", "stat_id"], inplace=True, ignore_index=True)
 
-    full_df.sort_values(by=["timestamp", "player_key", "stat_id"],
-                        inplace=True,
-                        ignore_index=True)
-
-    ts = full_df["timestamp"].astype(str)
-    full_df["timestamp"] = ts  # enforce all strings
-
+    # Write Parquet
     full_df.to_parquet(FULL_PARQUET, index=False)
-    print(
-        f"Saved {len(full_df)} total rows to {FULL_PARQUET}. "
-        f"Dates: {ts.min()} → {ts.max()} "
-        f"({ts.nunique()} distinct days)"
-    )
+
+    # Nice log summary
+    if "timestamp" in full_df.columns:
+        ts = full_df["timestamp"].dropna().astype(str)
+        if not ts.empty:
+            first = ts.min()
+            last = ts.max()
+            ndays = ts.nunique()
+            print(f"Saved {len(full_df)} total rows to {FULL_PARQUET}. Dates: {first} → {last} ({ndays} distinct days)")
+        else:
+            print(f"Saved {len(full_df)} total rows to {FULL_PARQUET}, but timestamp column is empty.")
+    else:
+        print(f"Saved {len(full_df)} total rows to {FULL_PARQUET}, no timestamp column found.")
+
     return full_df
 
 
@@ -303,6 +277,7 @@ def build_combined_parquet(base_for_combined, full_stats_df):
         if col not in base.columns:
             base[col] = base_for_combined.get(col)
 
+    # Prefer join on both key + name if available
     if "player_name" in base.columns and "player_name" in full_stats_df.columns:
         merged = base.merge(
             full_stats_df,
@@ -318,34 +293,48 @@ def build_combined_parquet(base_for_combined, full_stats_df):
             validate="m:m",
         )
 
+    # Ensure timestamp is string for logging
+    if "timestamp" in merged.columns:
+        merged["timestamp"] = merged["timestamp"].astype(str)
+
     merged.to_parquet(COMBINED_PARQUET, index=False)
 
-    ts = full_stats_df["timestamp"].astype(str)
-    print(
-        f"Saved {len(merged)} rows to {COMBINED_PARQUET}. "
-        f"Dates in stats: {ts.min()} → {ts.max()} "
-        f"({ts.nunique()} distinct days)"
-    )
+    # Logging summary
+    if "timestamp" in merged.columns:
+        ts = merged["timestamp"].dropna()
+        if not ts.empty:
+            first = ts.min()
+            last = ts.max()
+            ndays = ts.nunique()
+            print(
+                f"Saved {len(merged)} rows to {COMBINED_PARQUET}. "
+                f"Dates: {first} → {last} ({ndays} distinct days in stats)"
+            )
+        else:
+            print(f"Saved {len(merged)} rows to {COMBINED_PARQUET} (no timestamps populated).")
+    else:
+        print(f"Saved {len(merged)} rows to {COMBINED_PARQUET} (no timestamp column).")
 
 
-# ----------------- main ----------------- #
+# ---------- Main ----------
 
 def main():
-    # Basic checks
+    # 0) Basic checks
     if not LEAGUE_KEY:
         raise SystemExit("LEAGUE_KEY env var is not set")
 
     if not os.path.exists(CONFIG_FILE):
         raise SystemExit(f"{CONFIG_FILE} not found")
 
+    # Ensure daily directory exists
     os.makedirs(DAILY_DIR, exist_ok=True)
 
-    # OAuth
+    # 1) OAuth
     oauth = OAuth2(None, None, from_file=CONFIG_FILE)
     if not oauth.token_is_valid():
         raise SystemExit("OAuth token is not valid inside GitHub Actions – refresh locally first.")
 
-    # league_players.csv is the master list of players
+    # 2) Make sure league_players.csv exists
     if not os.path.exists("league_players.csv"):
         raise SystemExit("league_players.csv not found. Run fetch_players_and_stats.py first.")
 
@@ -353,7 +342,7 @@ def main():
     if "player_key" not in league_players.columns:
         raise SystemExit("league_players.csv missing 'player_key' column.")
 
-    # Use team_rosters.csv as base for combined view if present
+    # 3) If we have team_rosters.csv, use that as base for combined view
     base_for_combined = league_players.copy()
     if os.path.exists("team_rosters.csv"):
         try:
@@ -364,41 +353,37 @@ def main():
         except Exception as e:
             print("Failed to read team_rosters.csv, falling back to league_players:", type(e).__name__, e)
 
-    # Determine effective start and current date
-    effective_start = get_effective_start_date()
+    # 4) Determine the full date range for the league
+    league_start = get_league_start_date(oauth)
     league_current = get_league_current_date(oauth)
-    print(f"Full desired date range: {effective_start} to {league_current}")
 
-    all_dates = list(date_range_iso(effective_start, league_current))
-    if not all_dates:
-        print("No new dates to fetch.")
-        full_stats_df = build_full_parquet_from_daily()
-        if full_stats_df is not None:
-            build_combined_parquet(base_for_combined, full_stats_df)
-        return
+    # Optional BACKFILL_START_DATE override to avoid going earlier than needed
+    effective_start = league_start
+    backfill_env = os.environ.get("BACKFILL_START_DATE")
+    if backfill_env:
+        try:
+            ls_date = datetime.fromisoformat(league_start).date()
+            bf_date = datetime.fromisoformat(backfill_env).date()
+            effective_start_date = max(ls_date, bf_date)
+            effective_start = effective_start_date.isoformat()
+            print(f"BACKFILL_START_DATE={backfill_env} applied. Effective start: {effective_start}")
+        except ValueError:
+            print(f"Invalid BACKFILL_START_DATE='{backfill_env}', ignoring and using league_start={league_start}")
 
-    dates_to_fetch = all_dates[:MAX_DAYS_PER_RUN]
-    print(f"This run will fetch up to {len(dates_to_fetch)} day(s): {dates_to_fetch[0]} → {dates_to_fetch[-1]}")
+    print(f"League date range: {league_start} → {league_current}")
+    print(f"Backfilling daily stats from {effective_start} → {league_current}")
 
-    # Get list of unique players
+    # 5) Get list of unique players
     player_keys = sorted(league_players["player_key"].dropna().unique().tolist())
     print(f"Found {len(player_keys)} unique player_keys in league_players.csv")
 
-    # Fetch those days
-    for stats_date in dates_to_fetch:
+    # 6) Fetch missing daily files
+    for stats_date in date_range_iso(effective_start, league_current):
         daily_path = os.path.join(DAILY_DIR, f"{stats_date}.csv")
 
-        # We only skip if the existing file is non-empty.
         if os.path.exists(daily_path):
-            try:
-                df_tmp = pd.read_csv(daily_path)
-                if not df_tmp.empty:
-                    print(f"Daily file for {stats_date} already exists and is non-empty ({daily_path}); skipping.")
-                    continue
-                else:
-                    print(f"Daily file for {stats_date} exists but is EMPTY; refetching.")
-            except Exception as e:
-                print(f"Could not read existing daily file {daily_path} ({type(e).__name__}); refetching.")
+            print(f"Daily file for {stats_date} already exists ({daily_path}), skipping API calls for this date.")
+            continue
 
         print(f"\n=== Fetching DAILY stats for date: {stats_date} ===")
         date_rows = []
@@ -412,17 +397,23 @@ def main():
                 rows = []
             date_rows.extend(rows)
 
+        # Build daily DataFrame and save
         if date_rows:
             df_date = pd.DataFrame(date_rows)
-            df_date.to_csv(daily_path, index=False)
-            print(f"Saved {len(df_date)} rows to {daily_path}")
         else:
-            # If EVERY player failed (e.g., all 999s), don't write the daily file
-            # so we can retry this date in a future run.
-            print(f"WARNING: No stats rows collected for {stats_date}; NOT writing daily CSV so we can retry later.")
+            # Create an empty file with correct columns to signal "processed"
+            df_date = pd.DataFrame(
+                columns=["player_key", "player_name", "coverage", "period", "timestamp", "stat_id", "stat_value"]
+            )
+            print(f"WARNING: No stats found for any player on {stats_date}")
 
-    # After fetching this chunk of days, rebuild Parquet from *all* daily CSVs we have
+        df_date.to_csv(daily_path, index=False)
+        print(f"Saved {len(df_date)} rows to {daily_path}")
+
+    # 7) Build full Parquet from daily CSVs
     full_stats_df = build_full_parquet_from_daily()
+
+    # 8) Build combined view Parquet
     if full_stats_df is not None:
         build_combined_parquet(base_for_combined, full_stats_df)
 
