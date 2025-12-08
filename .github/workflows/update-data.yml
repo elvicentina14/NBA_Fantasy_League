@@ -11,6 +11,8 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    # You can be explicit if you want, but default is 360 min anyway
+    # timeout-minutes: 360
 
     steps:
       - name: Checkout repo (persist credentials for push)
@@ -29,7 +31,12 @@ jobs:
           fi
 
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
-          python -c "import json; json.load(open('oauth2.json')); print('oauth2.json OK')"
+          python - << 'EOF'
+import json
+with open("oauth2.json", "r") as f:
+    json.load(f)
+print("oauth2.json OK")
+EOF
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -44,6 +51,8 @@ jobs:
       - name: Run data fetch scripts
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
+          # Optional: override earliest date to backfill (YYYY-MM-DD)
+          # BACKFILL_START_DATE: '2024-10-22'
         run: |
           set -e
 
@@ -70,10 +79,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Track daily stats + parquet outputs + supporting CSVs
+          # Daily history files
           git add player_stats_daily || true
+
+          # Parquet outputs (historical + combined view)
           git add player_stats_full.parquet combined_player_view_full.parquet || true
-          git add standings.csv team_rosters.csv league_players.csv || true
+
+          # Supporting CSVs
+          git add standings.csv team_rosters.csv league_players.csv player_stats.csv || true
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
