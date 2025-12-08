@@ -1,6 +1,6 @@
 # fetch_full_player_stats.py
 #
-# Behavior:
+# Behavior (going forward):
 # - Each run:
 #     * Uses TODAY'S UTC DATE as the snapshot label (YYYY-MM-DD).
 #     * For every player, calls Yahoo for stats using ";date={snapshot_date}".
