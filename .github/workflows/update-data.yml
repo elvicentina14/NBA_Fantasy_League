@@ -30,12 +30,7 @@ jobs:
           fi
 
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
-          python - << 'EOF'
-import json
-with open("oauth2.json", "r") as f:
-    json.load(f)
-print("oauth2.json OK")
-EOF
+          python -c "import json; json.load(open('oauth2.json')); print('oauth2.json OK')"
 
       - name: Setup Python
         uses: actions/setup-python@v4
