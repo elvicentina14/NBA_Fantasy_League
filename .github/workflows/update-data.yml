@@ -32,7 +32,7 @@ jobs:
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
           python - << 'EOF'
 import json
-with open("oauth2.json","r") as f:
+with open("oauth2.json", "r") as f:
     json.load(f)
 print("oauth2.json OK")
 EOF
@@ -84,7 +84,7 @@ EOF
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
-          else
+          else:
             git commit -m "Update fantasy data outputs (automated)"
             git push origin HEAD
           fi
