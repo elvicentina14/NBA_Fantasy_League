@@ -3,6 +3,16 @@
 # Outputs:
 #   - team_rosters.csv : team_key, team_name, player_key, player_name, position
 #   - standings.csv    : team_key, team_name, rank, wins, losses, ties, win_pct
+#
+# Strategy:
+#   - Rosters:
+#       league/{LEAGUE_KEY}          -> find teams
+#       team/{team_key}/roster       -> players per team
+#   - Standings:
+#       league/{LEAGUE_KEY}/standings -> ranks, W/L/T, pct
+#
+# If standings or teams are missing/odd, we log a WARNING but do NOT crash.
+# That way the workflow continues and stats can still be updated.
 
 import os
 from json import JSONDecodeError
@@ -66,6 +76,7 @@ def safe_get_json(oauth: OAuth2, path: str) -> Dict[str, Any]:
 
 
 def extract_team_name(team_node: Dict[str, Any]) -> str:
+    """Try hard to get a human-readable team name."""
     name = None
     name_obj = team_node.get("name")
     if isinstance(name_obj, dict):
@@ -90,32 +101,26 @@ def main():
     if not oauth.token_is_valid():
         raise SystemExit("OAuth token is not valid inside GitHub Actions – refresh locally first.")
 
-    print("Fetching league standings (for teams + standings)...")
-    league_standings = safe_get_json(oauth, f"league/{LEAGUE_KEY}/standings")
-    if not league_standings:
-        raise SystemExit("Could not fetch league standings; no teams available for rosters.")
+    # ---------- ROSTERS (league -> teams -> team/{team_key}/roster) ---------- #
 
-    standings_root = safe_find(league_standings, "standings")
-    teams_node = safe_find(standings_root, "teams") if standings_root else None
-
-    if isinstance(teams_node, dict) and "team" in teams_node:
-        teams = ensure_list(teams_node["team"])
-    elif isinstance(teams_node, list):
-        teams = teams_node
+    print("Fetching league info to build team rosters...")
+    league_data = safe_get_json(oauth, f"league/{LEAGUE_KEY}")
+    if not league_data:
+        print("WARNING: league/{LEAGUE_KEY} returned empty/invalid JSON; cannot build rosters.")
+        teams_for_roster: List[Any] = []
     else:
-        teams = []
-        print("WARNING: Could not find 'teams' in league standings response.")
-
-    if not teams:
-        raise SystemExit("No teams found in standings; cannot build rosters/standings CSVs.")
-
-    # ---------- ROSTERS ---------- #
-
-    print("Building team_rosters.csv from team/{team_key}/roster calls...")
+        teams_node = safe_find(league_data, "teams")
+        if isinstance(teams_node, dict) and "team" in teams_node:
+            teams_for_roster = ensure_list(teams_node["team"])
+        elif isinstance(teams_node, list):
+            teams_for_roster = teams_node
+        else:
+            print("WARNING: Could not find 'teams' in league response; no rosters will be built.")
+            teams_for_roster = []
 
     roster_rows: List[Dict[str, Any]] = []
 
-    for t in teams:
+    for t in teams_for_roster:
         team_key = safe_find(t, "team_key")
         team_name = extract_team_name(t)
 
@@ -141,6 +146,7 @@ def main():
         elif isinstance(players_node, list):
             players = players_node
         else:
+            # last-resort search
             players = ensure_list(safe_find(team_data, "player"))
 
         if not players:
@@ -173,13 +179,29 @@ def main():
     else:
         print("WARNING: No roster rows built; team_rosters.csv will NOT be created.")
 
-    # ---------- STANDINGS ---------- #
+    # ---------- STANDINGS (league/{LEAGUE_KEY}/standings) ---------- #
 
-    print("Building standings.csv...")
+    print("Fetching standings...")
+
+    standings_data = safe_get_json(oauth, f"league/{LEAGUE_KEY}/standings")
+    if not standings_data:
+        print("WARNING: standings API returned empty/invalid JSON; standings.csv will NOT be created.")
+        return
+
+    standings_root = safe_find(standings_data, "standings")
+    teams_node = safe_find(standings_root, "teams") if standings_root else None
+
+    if isinstance(teams_node, dict) and "team" in teams_node:
+        teams_for_standings = ensure_list(teams_node["team"])
+    elif isinstance(teams_node, list):
+        teams_for_standings = teams_node
+    else:
+        print("WARNING: Could not find 'teams' in standings response; standings.csv will NOT be created.")
+        return
 
     standings_rows: List[Dict[str, Any]] = []
 
-    for t in teams:
+    for t in teams_for_standings:
         team_key = safe_find(t, "team_key")
         team_name = extract_team_name(t)
 
@@ -206,7 +228,12 @@ def main():
 
     if standings_rows:
         df_standings = pd.DataFrame(standings_rows)
-        df_standings.sort_values(by="rank", inplace=True, ignore_index=True)
+        # rank might be string; safe sort
+        if "rank" in df_standings.columns:
+            df_standings["rank_numeric"] = pd.to_numeric(df_standings["rank"], errors="coerce")
+            df_standings.sort_values(by=["rank_numeric", "team_name"], inplace=True, ignore_index=True)
+            df_standings.drop(columns=["rank_numeric"], inplace=True)
+
         df_standings.to_csv(STANDINGS_CSV, index=False)
         print(f"Wrote {len(df_standings)} rows to {STANDINGS_CSV}")
     else:
