@@ -29,37 +29,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Decode oauth2.json from base64 secret and validate
-        shell: bash
-        env:
-          OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
-        run: |
-          set -euo pipefail
-          if [ -z "${OAUTH_B64:-}" ]; then
-            echo "ERROR: OAUTH2_JSON_B64 secret is empty"
-            exit 2
-          fi
-          echo "$OAUTH_B64" | base64 --decode > oauth2.json
-          python - << 'PYCODE'
-import json, sys
-try:
-    with open("oauth2.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-    # minimal sanity checks
-    for k in ("client_id", "client_secret"):
-        if not data.get(k):
-            raise ValueError(f"Missing {k} in oauth2.json")
-    print("oauth2.json looks valid.")
-except Exception as e:
-    print(f"oauth2.json validation failed: {e}", file=sys.stderr)
-    sys.exit(1)
-PYCODE
-
       - name: Run extractor
         env:
-          # Your python script should load oauth2.json from working dir
+          YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
+          YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
+          YAHOO_REFRESH_TOKEN: ${{ secrets.YAHOO_REFRESH_TOKEN }}
           YAHOO_LEAGUE_KEY: ${{ secrets.YAHOO_LEAGUE_KEY }}
-          STAT_SEASON: "2025"   # or comment this and set STAT_WEEK: "9"
+          STAT_SEASON: "2025"   # or set STAT_WEEK instead
           # STAT_WEEK: "9"
         run: |
           python scripts/fetch_yahoo_nba.py
