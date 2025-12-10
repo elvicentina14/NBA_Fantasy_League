@@ -2,8 +2,8 @@ name: Update fantasy data
 
 on:
   schedule:
-    - cron: '0 */6 * * *'   # every 6 hours
-  workflow_dispatch: {}
+    - cron: '*/30 * * * *'   # every 30 minutes
+  workflow_dispatch: {}       # manual trigger
 
 permissions:
   contents: write
@@ -13,16 +13,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repo (persist credentials for push)
         uses: actions/checkout@v4
         with:
           persist-credentials: true
+          fetch-depth: 0
 
-      - name: Decode oauth2 secret
+      - name: Decode oauth2.json from base64 secret and validate
         env:
           OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
         run: |
+          set -e
+          if [ -z "$OAUTH_B64" ]; then
+            echo "ERROR: OAUTH2_JSON_B64 secret is empty"
+            exit 2
+          fi
+
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
+
           python - << 'EOF'
 import json
 json.load(open("oauth2.json"))
@@ -34,31 +42,60 @@ EOF
         with:
           python-version: '3.10'
 
-      - name: Install deps
+      - name: Install requirements
         run: |
-          pip install yahoo_oauth pandas pyarrow requests
+          set -e
+          python -m pip install --upgrade pip
+          pip install yahoo_oauth requests pandas pyarrow
 
-      - name: Fetch rosters + standings
+      - name: Run fetch_rosters_and_standings.py
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
+          set -e
+          echo "Running fetch_rosters_and_standings.py..."
           python fetch_rosters_and_standings.py
 
-      - name: Fetch daily stats
+      - name: Run fetch_full_player_stats.py
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
+          set -e
+          echo "Running fetch_full_player_stats.py..."
           python fetch_full_player_stats.py
 
-      - name: Commit & push
+      - name: Commit and push outputs
         run: |
+          echo "=== LS (repo root) ==="
+          ls -la
+          if [ -d player_stats_daily ]; then
+            echo "=== LS player_stats_daily ==="
+            ls -la player_stats_daily
+          fi
+
+          echo "=== GIT STATUS (before add) ==="
+          git status
+
           git config user.name "github-actions[bot]"
-          git config user.email "actions@github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Stage EVERYTHING, then unstage oauth2.json so it never gets committed
           git add -A
           git reset oauth2.json || true
+
+          echo "=== GIT STATUS (after add) ==="
+          git status
+
+          echo "=== DIFF (cached) ==="
+          git diff --cached --stat || true
+
+          # If there is anything staged, commit and push
           if [ -n "$(git diff --cached --name-only)" ]; then
-            git commit -m "Update fantasy data"
-            git push
+            echo "Changes detected, committing..."
+            git commit -m "Update fantasy data outputs (automated)"
+
+            echo "Pushing to origin/main..."
+            git push origin HEAD:main
           else
-            echo "No changes"
+            echo "No changes to commit"
           fi
