@@ -1,101 +1,52 @@
-name: Update fantasy data
+
+name: Fetch Yahoo NBA Fantasy
 
 on:
   schedule:
-    - cron: '*/30 * * * *'   # every 30 minutes
-  workflow_dispatch: {}       # manual trigger
+    # Daily at 18:20 UTC (adjust as needed)
+    - cron: "20 18 * * *"
+  workflow_dispatch:  # allow manual runs
 
 permissions:
   contents: write
 
 jobs:
-  update:
+  fetch:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo (persist credentials for push)
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-          fetch-depth: 0
-
-      - name: Decode oauth2.json from base64 secret and validate
-        env:
-          OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
-        run: |
-          set -e
-          if [ -z "$OAUTH_B64" ]; then
-            echo "ERROR: OAUTH2_JSON_B64 secret is empty"
-            exit 2
-          fi
-
-          echo "$OAUTH_B64" | base64 --decode > oauth2.json
-
-          python - << 'EOF'
-import json
-json.load(open("oauth2.json"))
-print("oauth2.json OK")
-EOF
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.11"
 
-      - name: Install requirements
+      - name: Install dependencies
         run: |
-          set -e
           python -m pip install --upgrade pip
-          pip install yahoo_oauth requests pandas pyarrow
+          pip install -r requirements.txt
 
-      - name: Run fetch_rosters_and_standings.py
+      - name: Run extractor
         env:
-          LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
+          YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
+          YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
+          YAHOO_REFRESH_TOKEN: ${{ secrets.YAHOO_REFRESH_TOKEN }}
+          YAHOO_LEAGUE_KEY: ${{ secrets.YAHOO_LEAGUE_KEY }}   # e.g., nba.l.123456
+          # Choose one or leave both empty to use Yahoo's default season context:
+          STAT_SEASON: "2025"
+          # STAT_WEEK: "9"
         run: |
-          set -e
-          echo "Running fetch_rosters_and_standings.py..."
-          python fetch_rosters_and_standings.py
+          python scripts/fetch_yahoo_nba.py
 
-      - name: Run fetch_full_player_stats.py
-        env:
-          LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
+      - name: Commit data artifacts
         run: |
-          set -e
-          echo "Running fetch_full_player_stats.py..."
-          python fetch_full_player_stats.py
-
-      - name: Commit and push outputs
-        run: |
-          echo "=== LS (repo root) ==="
-          ls -la
-          if [ -d player_stats_daily ]; then
-            echo "=== LS player_stats_daily ==="
-            ls -la player_stats_daily
-          fi
-
-          echo "=== GIT STATUS (before add) ==="
-          git status
-
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # Stage EVERYTHING, then unstage oauth2.json so it never gets committed
-          git add -A
-          git reset oauth2.json || true
-
-          echo "=== GIT STATUS (after add) ==="
-          git status
-
-          echo "=== DIFF (cached) ==="
-          git diff --cached --stat || true
-
-          # If there is anything staged, commit and push
-          if [ -n "$(git diff --cached --name-only)" ]; then
-            echo "Changes detected, committing..."
-            git commit -m "Update fantasy data outputs (automated)"
-
-            echo "Pushing to origin/main..."
-            git push origin HEAD:main
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto: Yahoo Fantasy NBA update $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            git push
           else
-            echo "No changes to commit"
+            echo "No changes to commit."
           fi
