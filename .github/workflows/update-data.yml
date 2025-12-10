@@ -43,7 +43,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install yahoo_oauth requests pandas pyarrow
 
-      - name: Run fetch_full_player_stats.py
+      - name: Run fetch_rosters_and_standings.py (build team_rosters + standings)
+        env:
+          LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
+        run: |
+          set -e
+          echo "Running fetch_rosters_and_standings.py..."
+          python fetch_rosters_and_standings.py
+
+      - name: Run fetch_full_player_stats.py (daily stats + Parquet + combined view)
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
