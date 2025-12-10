@@ -1,3 +1,13 @@
+# fetch_rosters_and_standings.py
+#
+# Builds:
+#   - team_rosters.csv  (team_key, team_name, player_key, player_name, position)
+#   - standings.csv     (team_key, team_name, rank, wins, losses, ties, win_pct)
+#
+# Uses:
+#   LEAGUE_KEY env var (e.g. "466.l.165651")
+#   oauth2.json (decoded from your GitHub secret)
+
 from yahoo_oauth import OAuth2
 import os
 import pandas as pd
@@ -8,104 +18,173 @@ LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 ROSTERS_CSV = "team_rosters.csv"
 STANDINGS_CSV = "standings.csv"
 
-def find_first(obj, key):
+
+# ---------------- helpers ---------------- #
+
+def safe_find(obj, key):
+    """Safely search nested dict/list for first occurrence of key."""
     if isinstance(obj, dict):
         if key in obj:
             return obj[key]
         for v in obj.values():
-            f = find_first(v, key)
-            if f is not None:
-                return f
+            result = safe_find(v, key)
+            if result is not None:
+                return result
     elif isinstance(obj, list):
         for item in obj:
-            f = find_first(item, key)
-            if f is not None:
-                return f
+            result = safe_find(item, key)
+            if result is not None:
+                return result
     return None
 
-def get_json(oauth, rel):
+
+def safe_get_json(oauth, path):
+    """
+    Call Yahoo Fantasy API and force JSON format.
+
+    Returns {} instead of throwing on non-200 or JSON decode errors
+    so the workflow doesn't hard-crash on a 999.
+    """
     base = "https://fantasysports.yahooapis.com/fantasy/v2/"
-    url = base + rel
+    url = base + path
     if "format=json" not in url:
-        url += ("&" if "?" in url else "?") + "format=json"
-    r = oauth.session.get(url)
-    try:
-        return r.json()
-    except:
+        sep = "&" if "?" in url else "?"
+        url = url + f"{sep}format=json"
+
+    resp = oauth.session.get(url)
+    if resp.status_code != 200:
+        print(f"Non-200 response for URL: {url} (status {resp.status_code})")
         return {}
 
-def build_rosters(oauth):
-    print("Fetching rosters...")
-    data = get_json(oauth, f"league/{LEAGUE_KEY}/teams;out=roster")
-    teams = find_first(data, "team")
-    if not teams:
-        print("No team data, skipping.")
-        return pd.DataFrame()
+    try:
+        return resp.json()
+    except Exception as e:
+        print(f"JSON decode error for URL: {url} (status {resp.status_code}) - {type(e).__name__}: {e}")
+        return {}
 
-    if not isinstance(teams, list):
-        teams = [teams]
 
-    rows = []
+# ---------------- main ---------------- #
 
-    for t in teams:
-        team_key = find_first(t, "team_key")
-        team_name = find_first(t, "full") or find_first(t, "name")
-        players = find_first(t, "player")
-        if not players:
-            continue
-        if not isinstance(players, list):
-            players = [players]
+def main():
+    # Basic checks
+    if not LEAGUE_KEY:
+        raise SystemExit("LEAGUE_KEY env var is not set")
 
-        for p in players:
-            pk = find_first(p, "player_key")
-            name = find_first(p, "full")
-            pos = find_first(p, "display_position")
-            rows.append({
-                "team_key": team_key,
-                "team_name": team_name,
-                "player_key": pk,
-                "player_name": name,
-                "position": pos
-            })
+    if not os.path.exists(CONFIG_FILE):
+        raise SystemExit("Missing oauth2.json")
 
-    df = pd.DataFrame(rows)
-    df.to_csv(ROSTERS_CSV, index=False)
-    print(f"Wrote {len(df)} rows -> {ROSTERS_CSV}")
-    return df
-
-def build_standings(oauth):
-    print("Fetching standings...")
-    data = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
-    teams = find_first(data, "team")
-    if not teams:
-        print("No standings teams, skipping.")
-        return pd.DataFrame()
-
-    if not isinstance(teams, list):
-        teams = [teams]
-
-    rows = []
-    for t in teams:
-        rows.append({
-            "team_key": find_first(t, "team_key"),
-            "team_name": find_first(t, "full"),
-            "rank": find_first(t, "rank"),
-            "wins": find_first(t, "wins"),
-            "losses": find_first(t, "losses"),
-            "ties": find_first(t, "ties"),
-            "win_pct": find_first(t, "percentage"),
-        })
-
-    df = pd.DataFrame(rows)
-    df.to_csv(STANDINGS_CSV, index=False)
-    print(f"Wrote {len(df)} rows -> {STANDINGS_CSV}")
-    return df
-
-if __name__ == "__main__":
     oauth = OAuth2(None, None, from_file=CONFIG_FILE)
     if not oauth.token_is_valid():
-        print("Token expired, refresh locally.")
-        exit(1)
+        raise SystemExit("OAuth token is not valid inside GitHub Actions – refresh locally first.")
 
-    build_rosters(oauth)
-    build_standings(oauth)
+    # ---------- ROSTERS ---------- #
+
+    print("Fetching team rosters...")
+
+    league_data = safe_get_json(oauth, f"league/{LEAGUE_KEY}")
+    teams_node = safe_find(league_data, "teams")
+
+    if not teams_node:
+        print("Could not find 'teams' in league response; no rosters will be built.")
+    else:
+        # Normalize list
+        teams = teams_node.get("team") if isinstance(teams_node, dict) else teams_node
+        if not isinstance(teams, list):
+            teams = [teams]
+
+        all_rows = []
+
+        for t in teams:
+            # Team key / name
+            team_key = safe_find(t, "team_key")
+            team_name = safe_find(t, "name")
+
+            print(f"GET roster for team: {team_key} / {team_name}")
+
+            team_data = safe_get_json(oauth, f"team/{team_key}/roster")
+            roster_root = safe_find(team_data, "roster")
+
+            if not roster_root:
+                print(f"Roster parse fail for team {team_key}")
+                continue
+
+            players_node = safe_find(roster_root, "players")
+            players = players_node.get("player") if isinstance(players_node, dict) else players_node
+
+            if not isinstance(players, list):
+                players = [players]
+
+            for p in players:
+                pk = safe_find(p, "player_key")
+                name = safe_find(p, "full") or safe_find(p, "name")
+                pos = safe_find(p, "display_position")
+
+                all_rows.append(
+                    {
+                        "team_key": team_key,
+                        "team_name": team_name,
+                        "player_key": pk,
+                        "player_name": name,
+                        "position": pos,
+                    }
+                )
+
+        if all_rows:
+            df_rosters = pd.DataFrame(all_rows)
+            df_rosters.to_csv(ROSTERS_CSV, index=False)
+            print(f"Wrote {len(df_rosters)} rows to {ROSTERS_CSV}")
+        else:
+            print("WARNING: No roster rows built; team_rosters.csv will NOT be created.")
+
+    # ---------- STANDINGS ---------- #
+
+    print("Fetching standings...")
+
+    standings_data = safe_get_json(oauth, f"league/{LEAGUE_KEY}/standings")
+    standings_root = safe_find(standings_data, "standings")
+
+    if not standings_root:
+        print("Could not find standings in API response; standings.csv will NOT be created.")
+    else:
+        teams_node = safe_find(standings_root, "teams")
+        if not teams_node:
+            print("Could not find 'teams' in standings; standings.csv will NOT be created.")
+        else:
+            teams = teams_node.get("team") if isinstance(teams_node, dict) else teams_node
+            if not isinstance(teams, list):
+                teams = [teams]
+
+            standings_rows = []
+
+            for t in teams:
+                team_key = safe_find(t, "team_key")
+                team_name = safe_find(t, "name")
+
+                rank = safe_find(t, "rank")
+                wins = safe_find(t, "wins")
+                losses = safe_find(t, "losses")
+                ties = safe_find(t, "ties")
+                pct = safe_find(t, "percentage")
+
+                standings_rows.append(
+                    {
+                        "team_key": team_key,
+                        "team_name": team_name,
+                        "rank": rank,
+                        "wins": wins,
+                        "losses": losses,
+                        "ties": ties,
+                        "win_pct": pct,
+                    }
+                )
+
+            if standings_rows:
+                df_standings = pd.DataFrame(standings_rows)
+                df_standings.to_csv(STANDINGS_CSV, index=False)
+                print(f"Wrote {len(df_standings)} rows to {STANDINGS_CSV}")
+            else:
+                print("WARNING: No standings rows built; standings.csv will NOT be created.")
+
+
+if __name__ == "__main__":
+    main()
