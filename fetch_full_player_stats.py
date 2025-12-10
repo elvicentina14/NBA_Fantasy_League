@@ -16,10 +16,11 @@
 #   player_key, player_name, coverage, period, timestamp,
 #   stat_id, stat_value, stat_value_num, daily_value
 #
-# combined_player_view_full.parquet = league_players joined
-# to full stats (one row per player+stat+date)
+# combined_player_view_full.parquet:
+#   league_players joined to full stats (one row per player+stat+date)
+#   JOIN IS ON player_key ONLY (to avoid name mismatch issues).
 
-from __future__ import annotations  # <- optional, but safe
+from __future__ import annotations
 
 import os
 from datetime import datetime, timezone
@@ -34,6 +35,9 @@ LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 DAILY_DIR = "player_stats_daily"
 FULL_PARQUET = "player_stats_full.parquet"
 COMBINED_PARQUET = "combined_player_view_full.parquet"
+
+# *** IMPORTANT: 2025–2026 SEASON START DATE (Yahoo NBA fantasy) ***
+SEASON_START = "2025-10-21"
 
 
 # ================== Generic helpers ================== #
@@ -108,6 +112,31 @@ def _collect_player_nodes(obj: Any, out: List[Dict[str, Any]]) -> None:
             _collect_player_nodes(item, out)
 
 
+def _extract_player_name_from_node(node: Dict[str, Any]) -> str:
+    """
+    Best-effort extraction of a player's full name from a Yahoo player node.
+    Much more aggressive than before, to avoid 'Unknown' everywhere.
+    """
+    # Try direct "name" object
+    name_obj = node.get("name") or find_first(node, "name")
+
+    full_name = None
+    if isinstance(name_obj, dict) and "full" in name_obj:
+        full_name = name_obj["full"]
+    elif isinstance(name_obj, dict):
+        # As a fallback, search this dict for 'full'
+        full_name = find_first(name_obj, "full")
+
+    # Ultimate fallback: search entire node for any "full" key
+    if not full_name:
+        full_name = find_first(node, "full")
+
+    if not full_name:
+        full_name = "Unknown"
+
+    return str(full_name)
+
+
 def fetch_league_players(oauth: OAuth2) -> pd.DataFrame:
     """
     Fetch all players in the league via paged calls to:
@@ -140,14 +169,7 @@ def fetch_league_players(oauth: OAuth2) -> pd.DataFrame:
             if not pk:
                 continue
 
-            name_obj = node.get("name") or find_first(node, "name")
-            full_name = None
-            if isinstance(name_obj, dict) and "full" in name_obj:
-                full_name = name_obj["full"]
-            else:
-                full_name = find_first(name_obj, "full") if isinstance(name_obj, dict) else None
-            if not full_name:
-                full_name = "Unknown"
+            full_name = _extract_player_name_from_node(node)
 
             if pk not in players:
                 players[pk] = {"player_key": pk, "player_name": full_name}
@@ -190,6 +212,7 @@ def extract_cumulative_stats_for_player(
     if player_node is None:
         return []
 
+    # Name from stats payload (usually reliable)
     name_obj = find_first(player_node, "name")
     if isinstance(name_obj, dict) and "full" in name_obj:
         player_name = name_obj["full"]
@@ -239,7 +262,7 @@ def extract_cumulative_stats_for_player(
         rows.append(
             {
                 "player_key": str(player_key),
-                "player_name": player_name,
+                "player_name": str(player_name),
                 "coverage": coverage_type or "season",
                 "period": period,
                 "timestamp": stats_date,
@@ -254,6 +277,10 @@ def extract_cumulative_stats_for_player(
 # ================== Parquet builders ================== #
 
 def build_full_parquet_from_daily() -> pd.DataFrame | None:
+    """
+    Build player_stats_full.parquet from ALL CSVs in player_stats_daily,
+    but only for rows on or after SEASON_START.
+    """
     if not os.path.isdir(DAILY_DIR):
         print(f"No {DAILY_DIR} directory found; skipping full Parquet build.")
         return None
@@ -279,63 +306,76 @@ def build_full_parquet_from_daily() -> pd.DataFrame | None:
 
     full_df = pd.concat(dfs, ignore_index=True)
 
+    # Core string fields
     for col in ["player_key", "player_name", "stat_id", "timestamp"]:
         if col in full_df.columns:
             full_df[col] = full_df[col].astype(str)
 
+    # Filter for CURRENT SEASON ONLY
+    if "timestamp" in full_df.columns:
+        full_df = full_df[full_df["timestamp"] >= SEASON_START].copy()
+
+    # Numeric cumulative value
     full_df["stat_value_num"] = pd.to_numeric(full_df.get("stat_value"), errors="coerce")
 
+    # Sort for diff
     full_df.sort_values(
         by=["player_key", "stat_id", "timestamp"],
         inplace=True,
         ignore_index=True,
     )
 
+    # daily_value = today's cumulative minus previous cumulative for same player+stat
     full_df["daily_value"] = full_df.groupby(
         ["player_key", "stat_id"]
     )["stat_value_num"].diff()
 
+    # First date per player+stat gets full cumulative as daily_value
     full_df["daily_value"] = full_df["daily_value"].fillna(full_df["stat_value_num"])
 
     full_df.to_parquet(FULL_PARQUET, index=False)
 
-    ts = full_df["timestamp"].dropna().astype(str)
-    if not ts.empty:
-        print(
-            f"Saved {len(full_df)} rows to {FULL_PARQUET}. "
-            f"Dates: {ts.min()} → {ts.max()} ({ts.nunique()} distinct days)"
-        )
+    if "timestamp" in full_df.columns:
+        ts = full_df["timestamp"].dropna().astype(str)
+        if not ts.empty:
+            print(
+                f"Saved {len(full_df)} rows to {FULL_PARQUET}. "
+                f"Dates: {ts.min()} → {ts.max()} ({ts.nunique()} distinct days)"
+            )
+        else:
+            print(f"Saved {len(full_df)} rows to {FULL_PARQUET}, timestamp column empty.")
     else:
-        print(f"Saved {len(full_df)} rows to {FULL_PARQUET}, timestamp column empty.")
+        print(f"Saved {len(full_df)} rows to {FULL_PARQUET}, no timestamp column present.")
 
     return full_df
 
 
 def build_combined_parquet(base_for_combined: pd.DataFrame,
                            full_stats_df: pd.DataFrame) -> None:
+    """
+    Join base_for_combined (from league_players.csv) with stats and write
+    combined_player_view_full.parquet.
+
+    *** IMPORTANT ***
+    We ALWAYS join on player_key ONLY to avoid mismatch when names differ
+    between league_players.csv and stats payloads.
+    """
     if full_stats_df is None or full_stats_df.empty:
         print("No full stats DataFrame provided; skipping combined Parquet.")
         return
 
     base = base_for_combined.copy()
-    for col in ["player_key", "player_name"]:
-        if col not in base.columns:
-            base[col] = base_for_combined.get(col)
 
-    if "player_name" in base.columns and "player_name" in full_stats_df.columns:
-        merged = base.merge(
-            full_stats_df,
-            on=["player_key", "player_name"],
-            how="left",
-            validate="m:m",
-        )
-    else:
-        merged = base.merge(
-            full_stats_df,
-            on=["player_key"],
-            how="left",
-            validate="m:m",
-        )
+    # Ensure player_key exists
+    if "player_key" not in base.columns:
+        raise SystemExit("Base DataFrame for combined view is missing 'player_key'.")
+
+    merged = base.merge(
+        full_stats_df,
+        on=["player_key"],
+        how="left",
+        validate="m:m",
+    )
 
     merged.to_parquet(COMBINED_PARQUET, index=False)
 
@@ -367,6 +407,7 @@ def main():
     if not oauth.token_is_valid():
         raise SystemExit("OAuth token is not valid inside GitHub Actions – refresh locally first.")
 
+    # Build or load league_players.csv
     if not os.path.exists("league_players.csv"):
         print("league_players.csv not found – trying to fetch league players from Yahoo...")
         lp_df = fetch_league_players(oauth)
@@ -410,6 +451,7 @@ def main():
     df_day.to_csv(daily_path, index=False)
     print(f"Saved {len(df_day)} rows to {daily_path}")
 
+    # Build Parquet over all days we’ve ever saved (current season only)
     full_stats_df = build_full_parquet_from_daily()
     if full_stats_df is not None:
         build_combined_parquet(lp_df, full_stats_df)
