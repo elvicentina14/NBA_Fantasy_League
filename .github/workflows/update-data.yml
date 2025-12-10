@@ -1,0 +1,64 @@
+name: Update fantasy data
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # every 6 hours
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Decode oauth2 secret
+        env:
+          OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
+        run: |
+          echo "$OAUTH_B64" | base64 --decode > oauth2.json
+          python - << 'EOF'
+import json
+json.load(open("oauth2.json"))
+print("oauth2.json OK")
+EOF
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install deps
+        run: |
+          pip install yahoo_oauth pandas pyarrow requests
+
+      - name: Fetch rosters + standings
+        env:
+          LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
+        run: |
+          python fetch_rosters_and_standings.py
+
+      - name: Fetch daily stats
+        env:
+          LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
+        run: |
+          python fetch_full_player_stats.py
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          git add -A
+          git reset oauth2.json || true
+          if [ -n "$(git diff --cached --name-only)" ]; then
+            git commit -m "Update fantasy data"
+            git push
+          else
+            echo "No changes"
+          fi
