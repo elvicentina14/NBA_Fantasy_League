@@ -17,8 +17,9 @@
 #   stat_id, stat_value, stat_value_num, daily_value
 #
 # combined_player_view_full.parquet:
-#   league_players joined to full stats (one row per player+stat+date)
-#   JOIN IS ON player_key ONLY (to avoid name mismatch issues).
+#   - Base = team_rosters.csv (if present) else league_players.csv
+#   - Joined to full stats on player_key ONLY
+#   - Carries through team_name, team_key, etc. from rosters.
 
 from __future__ import annotations
 
@@ -36,7 +37,7 @@ DAILY_DIR = "player_stats_daily"
 FULL_PARQUET = "player_stats_full.parquet"
 COMBINED_PARQUET = "combined_player_view_full.parquet"
 
-# *** IMPORTANT: 2025–2026 SEASON START DATE (Yahoo NBA fantasy) ***
+# 2025–2026 season start date for Yahoo NBA fantasy
 SEASON_START = "2025-10-21"
 
 
@@ -115,7 +116,7 @@ def _collect_player_nodes(obj: Any, out: List[Dict[str, Any]]) -> None:
 def _extract_player_name_from_node(node: Dict[str, Any]) -> str:
     """
     Best-effort extraction of a player's full name from a Yahoo player node.
-    Much more aggressive than before, to avoid 'Unknown' everywhere.
+    More aggressive so we don't end up with 'Unknown' for everyone.
     """
     # Try direct "name" object
     name_obj = node.get("name") or find_first(node, "name")
@@ -124,7 +125,6 @@ def _extract_player_name_from_node(node: Dict[str, Any]) -> str:
     if isinstance(name_obj, dict) and "full" in name_obj:
         full_name = name_obj["full"]
     elif isinstance(name_obj, dict):
-        # As a fallback, search this dict for 'full'
         full_name = find_first(name_obj, "full")
 
     # Ultimate fallback: search entire node for any "full" key
@@ -353,12 +353,13 @@ def build_full_parquet_from_daily() -> pd.DataFrame | None:
 def build_combined_parquet(base_for_combined: pd.DataFrame,
                            full_stats_df: pd.DataFrame) -> None:
     """
-    Join base_for_combined (from league_players.csv) with stats and write
+    Join base_for_combined (team_rosters or league_players) with stats and write
     combined_player_view_full.parquet.
 
     *** IMPORTANT ***
-    We ALWAYS join on player_key ONLY to avoid mismatch when names differ
-    between league_players.csv and stats payloads.
+    - Base includes team columns if team_rosters.csv is used.
+    - We ALWAYS join on player_key ONLY (names can differ).
+    - We drop player_name from the base so we only keep the one from stats.
     """
     if full_stats_df is None or full_stats_df.empty:
         print("No full stats DataFrame provided; skipping combined Parquet.")
@@ -366,13 +367,16 @@ def build_combined_parquet(base_for_combined: pd.DataFrame,
 
     base = base_for_combined.copy()
 
-    # Ensure player_key exists
     if "player_key" not in base.columns:
         raise SystemExit("Base DataFrame for combined view is missing 'player_key'.")
 
+    # Remove base player_name so we keep a single player_name from stats
+    if "player_name" in base.columns:
+        base = base.drop(columns=["player_name"])
+
     merged = base.merge(
         full_stats_df,
-        on=["player_key"],
+        on="player_key",
         how="left",
         validate="m:m",
     )
@@ -422,6 +426,21 @@ def main():
     if "player_key" not in lp_df.columns:
         raise SystemExit("league_players.csv missing 'player_key' column.")
 
+    # Decide base_for_combined:
+    # - If you have team_rosters.csv (with team_name, team_key, player_key), use that.
+    # - Otherwise, fall back to league_players.csv.
+    base_for_combined = lp_df.copy()
+    if os.path.exists("team_rosters.csv"):
+        try:
+            rosters = pd.read_csv("team_rosters.csv", dtype=str)
+            if "player_key" in rosters.columns:
+                base_for_combined = rosters.copy()
+                print("Using team_rosters.csv as base for combined view.")
+            else:
+                print("team_rosters.csv missing 'player_key', falling back to league_players.")
+        except Exception as e:
+            print("Failed to read team_rosters.csv, falling back to league_players:", type(e).__name__, e)
+
     stats_date = get_today_utc_str()
     print(f"Snapshotting cumulative stats for date (UTC): {stats_date}")
 
@@ -454,7 +473,7 @@ def main():
     # Build Parquet over all days we’ve ever saved (current season only)
     full_stats_df = build_full_parquet_from_daily()
     if full_stats_df is not None:
-        build_combined_parquet(lp_df, full_stats_df)
+        build_combined_parquet(base_for_combined, full_stats_df)
 
 
 if __name__ == "__main__":
