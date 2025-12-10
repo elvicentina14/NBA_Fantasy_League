@@ -1,28 +1,17 @@
 # fetch_full_player_stats.py
 #
-# What this does
-# --------------
-# 1. Ensures we have league_players.csv
-#    - If missing OR mostly "Unknown", calls Yahoo "league/{LEAGUE_KEY}/players"
-#      and rebuilds it automatically.
-# 2. Ensures we have team_rosters.csv
-#    - If missing, calls Yahoo "league/{LEAGUE_KEY}/teams;out=roster"
-#      and builds a file with team_key, team_name, player_key, player_name.
-# 3. Fetches season-to-date stats as of TODAY ONLY for every player
-#    in league_players.csv (no historical backfill – Yahoo 999s that).
-# 4. Writes:
-#       player_stats_daily/YYYY-MM-DD.csv
-#       player_stats_full.parquet
-#       combined_player_view_full.parquet
-#
-# player_stats_full.parquet columns:
-#   player_key, player_name, coverage, period, timestamp,
-#   stat_id, stat_value, stat_value_num, daily_value
-#
-# combined_player_view_full.parquet:
-#   - Base = team_rosters.csv (if present) else league_players.csv
-#   - Joined to full stats on player_key ONLY
-#   - Carries through team_name, team_key, etc. from rosters.
+# Pipeline:
+#   1. Assumes team_rosters.csv already built by fetch_rosters_and_standings.py
+#   2. For every unique player_key in team_rosters.csv:
+#        - Fetch season-to-date stats for TODAY only
+#        - Save to player_stats_daily/YYYY-MM-DD.csv
+#   3. Build player_stats_full.parquet from ALL daily CSVs
+#      (only rows on/after 2025-10-21 for 2025–26 season)
+#   4. Build combined_player_view_full.parquet by joining:
+#        base = team_rosters.csv
+#        stats = player_stats_full.parquet
+#      join key = player_key (so we keep team_key, team_name, position)
+
 
 from __future__ import annotations
 
@@ -34,17 +23,16 @@ import pandas as pd
 from yahoo_oauth import OAuth2
 
 CONFIG_FILE = "oauth2.json"
-LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 
 DAILY_DIR = "player_stats_daily"
 FULL_PARQUET = "player_stats_full.parquet"
 COMBINED_PARQUET = "combined_player_view_full.parquet"
 
-# 2025–2026 season start date for Yahoo NBA fantasy
+# 2025–2026 NBA Yahoo fantasy season start
 SEASON_START = "2025-10-21"
 
 
-# ================== Generic helpers ================== #
+# ---------------- helpers ---------------- #
 
 def ensure_list(x: Any) -> List[Any]:
     if x is None:
@@ -75,7 +63,7 @@ def get_json(oauth: OAuth2, relative_path: str) -> Dict[str, Any]:
     """
     Call Yahoo Fantasy API with ?format=json appended.
 
-    Returns {} instead of throwing if Yahoo returns 999 or non-JSON.
+    Returns {} instead of throwing if Yahoo returns non-JSON.
     """
     base = "https://fantasysports.yahooapis.com/fantasy/v2/"
     url = base + relative_path
@@ -95,216 +83,11 @@ def get_json(oauth: OAuth2, relative_path: str) -> Dict[str, Any]:
 
 
 def get_today_utc_str() -> str:
-    """YYYY-MM-DD in UTC (used when league.current_date is unavailable)."""
+    """YYYY-MM-DD in UTC (used as fantasy date)."""
     return datetime.now(timezone.utc).date().isoformat()
 
 
-# ================== Collectors for players / teams ================== #
-
-def _collect_player_nodes(obj: Any, out: List[Dict[str, Any]]) -> None:
-    """
-    Recursively walk the Yahoo JSON and collect dicts that look like player records.
-    We only really need player_key + name, so we keep this generic.
-    """
-    if isinstance(obj, dict):
-        if "player_key" in obj:
-            out.append(obj)
-        for v in obj.values():
-            _collect_player_nodes(v, out)
-    elif isinstance(obj, list):
-        for item in obj:
-            _collect_player_nodes(item, out)
-
-
-def _collect_team_nodes(obj: Any, out: List[Dict[str, Any]]) -> None:
-    """
-    Recursively walk the Yahoo JSON and collect dicts that look like team records.
-    Heuristic: presence of 'team_key'.
-    """
-    if isinstance(obj, dict):
-        if "team_key" in obj:
-            out.append(obj)
-        for v in obj.values():
-            _collect_team_nodes(v, out)
-    elif isinstance(obj, list):
-        for item in obj:
-            _collect_team_nodes(item, out)
-
-
-def _extract_player_name_from_node(node: Dict[str, Any]) -> str:
-    """
-    Best-effort extraction of a player's full name from a Yahoo player node.
-    More aggressive so we don't end up with 'Unknown' for everyone.
-    """
-    name_obj = node.get("name") or find_first(node, "name")
-
-    full_name = None
-    if isinstance(name_obj, dict) and "full" in name_obj:
-        full_name = name_obj["full"]
-    elif isinstance(name_obj, dict):
-        full_name = find_first(name_obj, "full")
-
-    # Ultimate fallback: search entire node for any "full" key
-    if not full_name:
-        full_name = find_first(node, "full")
-
-    if not full_name:
-        full_name = "Unknown"
-
-    return str(full_name)
-
-
-def _extract_team_name_from_node(team_node: Dict[str, Any]) -> str:
-    """
-    Extract team name from a team node. Yahoo usually has:
-      team["name"] -> { "full": "Team Name" }
-    """
-    name_obj = team_node.get("name")
-    full_name = None
-
-    if isinstance(name_obj, dict) and "full" in name_obj:
-        full_name = name_obj["full"]
-    elif isinstance(name_obj, dict):
-        full_name = find_first(name_obj, "full")
-
-    if not full_name:
-        # As a fallback, search the team node for any 'name' / 'full' combo
-        full_name = find_first(team_node, "name") or find_first(team_node, "full")
-
-    if not full_name:
-        full_name = "Unknown team"
-
-    return str(full_name)
-
-
-# ================== League players builder ================== #
-
-def fetch_league_players(oauth: OAuth2) -> pd.DataFrame:
-    """
-    Fetch all players in the league via paged calls to:
-      league/{LEAGUE_KEY}/players;start=N;count=25
-    """
-    if not LEAGUE_KEY:
-        raise SystemExit("LEAGUE_KEY env var is not set")
-
-    print("Building league_players.csv from Yahoo league players endpoint...")
-    players: Dict[str, Dict[str, str]] = {}
-
-    start = 0
-    page_size = 25
-    page = 0
-
-    while True:
-        rel = f"league/{LEAGUE_KEY}/players;start={start};count={page_size}"
-        print(f"Fetching league players page {page} (start={start})...")
-        data = get_json(oauth, rel)
-        if not data:
-            print("Empty or invalid response for league players page – stopping pagination.")
-            break
-
-        tmp: List[Dict[str, Any]] = []
-        _collect_player_nodes(data, tmp)
-
-        added_this_page = 0
-        for node in tmp:
-            pk = str(node.get("player_key", "")).strip()
-            if not pk:
-                continue
-
-            full_name = _extract_player_name_from_node(node)
-
-            if pk not in players:
-                players[pk] = {"player_key": pk, "player_name": full_name}
-                added_this_page += 1
-
-        print(f"  Found {len(tmp)} raw 'player' dicts, added {added_this_page} new players.")
-
-        if added_this_page == 0:
-            break
-
-        page += 1
-        start += page_size
-
-    if not players:
-        print("WARNING: did not find any players in league players responses.")
-        return pd.DataFrame(columns=["player_key", "player_name"])
-
-    df = pd.DataFrame(list(players.values()))
-    df.sort_values(by="player_key", inplace=True, ignore_index=True)
-    print(f"Built league_players DataFrame with {len(df)} players.")
-    return df
-
-
-# ================== Team rosters builder ================== #
-
-def fetch_team_rosters(oauth: OAuth2) -> pd.DataFrame:
-    """
-    Build a team_rosters DataFrame with columns:
-      team_key, team_name, player_key, player_name
-
-    from:
-      league/{LEAGUE_KEY}/teams;out=roster
-    """
-    if not LEAGUE_KEY:
-        raise SystemExit("LEAGUE_KEY env var is not set")
-
-    print("Building team_rosters.csv from Yahoo league teams endpoint...")
-
-    rel = f"league/{LEAGUE_KEY}/teams;out=roster"
-    data = get_json(oauth, rel)
-    if not data:
-        print("Empty or invalid response for league teams; cannot build rosters.")
-        return pd.DataFrame(columns=["team_key", "team_name", "player_key", "player_name"])
-
-    team_nodes: List[Dict[str, Any]] = []
-    _collect_team_nodes(data, team_nodes)
-    print(f"Found {len(team_nodes)} raw 'team' dicts in league teams response.")
-
-    rows: List[Dict[str, str]] = []
-
-    for tnode in team_nodes:
-        team_key = str(tnode.get("team_key", "")).strip()
-        if not team_key:
-            continue
-
-        team_name = _extract_team_name_from_node(tnode)
-
-        # Collect players within that team node
-        player_nodes: List[Dict[str, Any]] = []
-        _collect_player_nodes(tnode, player_nodes)
-
-        if not player_nodes:
-            # Team with empty roster is still valid (just no rows)
-            continue
-
-        for pnode in player_nodes:
-            pkey = str(pnode.get("player_key", "")).strip()
-            if not pkey:
-                continue
-            pname = _extract_player_name_from_node(pnode)
-
-            rows.append(
-                {
-                    "team_key": team_key,
-                    "team_name": team_name,
-                    "player_key": pkey,
-                    "player_name": pname,
-                }
-            )
-
-    if not rows:
-        print("WARNING: Did not find any (team, player) combinations in teams response.")
-        return pd.DataFrame(columns=["team_key", "team_name", "player_key", "player_name"])
-
-    df = pd.DataFrame(rows)
-    df.drop_duplicates(subset=["team_key", "player_key"], inplace=True)
-    df.sort_values(by=["team_key", "player_key"], inplace=True, ignore_index=True)
-
-    print(f"Built team_rosters DataFrame with {len(df)} rows.")
-    return df
-
-
-# ================== Stats fetch (today only) ================== #
+# ---------------- stats fetch (today only) ---------------- #
 
 def extract_cumulative_stats_for_player(
     oauth: OAuth2, player_key: str, stats_date: str
@@ -385,12 +168,12 @@ def extract_cumulative_stats_for_player(
     return rows
 
 
-# ================== Parquet builders ================== #
+# ---------------- parquet builders ---------------- #
 
 def build_full_parquet_from_daily() -> pd.DataFrame | None:
     """
     Build player_stats_full.parquet from ALL CSVs in player_stats_daily,
-    but only for rows on or after SEASON_START.
+    but only for rows on or after SEASON_START (2025-10-21).
     """
     if not os.path.isdir(DAILY_DIR):
         print(f"No {DAILY_DIR} directory found; skipping full Parquet build.")
@@ -417,12 +200,12 @@ def build_full_parquet_from_daily() -> pd.DataFrame | None:
 
     full_df = pd.concat(dfs, ignore_index=True)
 
-    # Core string fields
+    # Ensure key columns are strings
     for col in ["player_key", "player_name", "stat_id", "timestamp"]:
         if col in full_df.columns:
             full_df[col] = full_df[col].astype(str)
 
-    # Filter for CURRENT SEASON ONLY
+    # Filter for current season only
     if "timestamp" in full_df.columns:
         full_df = full_df[full_df["timestamp"] >= SEASON_START].copy()
 
@@ -436,7 +219,7 @@ def build_full_parquet_from_daily() -> pd.DataFrame | None:
         ignore_index=True,
     )
 
-    # daily_value = today's cumulative minus previous cumulative for same player+stat
+    # daily_value = today's cumulative minus previous cumulative per (player_key, stat_id)
     full_df["daily_value"] = full_df.groupby(
         ["player_key", "stat_id"]
     )["stat_value_num"].diff()
@@ -464,12 +247,11 @@ def build_full_parquet_from_daily() -> pd.DataFrame | None:
 def build_combined_parquet(base_for_combined: pd.DataFrame,
                            full_stats_df: pd.DataFrame) -> None:
     """
-    Join base_for_combined (team_rosters or league_players) with stats and write
+    Join base_for_combined (team_rosters) with stats and write
     combined_player_view_full.parquet.
 
-    - Base includes team columns if team_rosters.csv is used.
-    - We ALWAYS join on player_key ONLY (names can differ).
-    - We drop player_name from the base so we only keep the one from stats.
+    - base_for_combined should have: team_key, team_name, player_key, (optionally position)
+    - We ALWAYS join on player_key ONLY to avoid name mismatch issues.
     """
     if full_stats_df is None or full_stats_df.empty:
         print("No full stats DataFrame provided; skipping combined Parquet.")
@@ -480,7 +262,7 @@ def build_combined_parquet(base_for_combined: pd.DataFrame,
     if "player_key" not in base.columns:
         raise SystemExit("Base DataFrame for combined view is missing 'player_key'.")
 
-    # Remove base player_name so we keep a single player_name from stats
+    # Drop any player_name from base so we keep single player_name from stats
     if "player_name" in base.columns:
         base = base.drop(columns=["player_name"])
 
@@ -506,12 +288,9 @@ def build_combined_parquet(base_for_combined: pd.DataFrame,
         print(f"Saved {len(merged)} rows to {COMBINED_PARQUET}, no timestamp column present.")
 
 
-# ================== main ================== #
+# ---------------- main ---------------- #
 
 def main():
-    if not LEAGUE_KEY:
-        raise SystemExit("LEAGUE_KEY env var is not set")
-
     if not os.path.exists(CONFIG_FILE):
         raise SystemExit(f"{CONFIG_FILE} not found (must be oauth2.json)")
 
@@ -521,66 +300,23 @@ def main():
     if not oauth.token_is_valid():
         raise SystemExit("OAuth token is not valid inside GitHub Actions – refresh locally first.")
 
-    # Build or load league_players.csv
-    rebuild_lp = False
-    if not os.path.exists("league_players.csv"):
-        print("league_players.csv not found – will build from API.")
-        rebuild_lp = True
-    else:
-        print("Using existing league_players.csv")
-        lp_df_tmp = pd.read_csv("league_players.csv", dtype=str)
-        if "player_name" in lp_df_tmp.columns and len(lp_df_tmp) > 0:
-            frac_unknown = (lp_df_tmp["player_name"] == "Unknown").mean()
-            print(f"Existing league_players.csv: {frac_unknown:.1%} of names are 'Unknown'.")
-            if frac_unknown > 0.9:
-                print("Too many 'Unknown' names – rebuilding league_players from API.")
-                rebuild_lp = True
-        else:
-            rebuild_lp = True
-
-    if rebuild_lp:
-        lp_df = fetch_league_players(oauth)
-        if lp_df.empty:
-            raise SystemExit("Could not build league_players.csv from API; aborting.")
-        lp_df.to_csv("league_players.csv", index=False)
-        print("Saved rebuilt league_players.csv")
-    else:
-        lp_df = pd.read_csv("league_players.csv", dtype=str)
-
-    if "player_key" not in lp_df.columns:
-        raise SystemExit("league_players.csv missing 'player_key' column.")
-
-    # Build or load team_rosters.csv
+    # Use team_rosters.csv as the canonical base
     if not os.path.exists("team_rosters.csv"):
-        print("team_rosters.csv not found – trying to fetch team rosters from Yahoo...")
-        tr_df = fetch_team_rosters(oauth)
-        if tr_df.empty:
-            print("WARNING: Could not build team_rosters.csv from API; will fall back to league_players as base.")
-            base_for_combined = lp_df.copy()
-        else:
-            tr_df.to_csv("team_rosters.csv", index=False)
-            print("Saved team_rosters.csv")
-            base_for_combined = tr_df
-    else:
-        print("Using existing team_rosters.csv as base for combined view.")
-        try:
-            tr_df = pd.read_csv("team_rosters.csv", dtype=str)
-            if "player_key" in tr_df.columns:
-                base_for_combined = tr_df
-            else:
-                print("team_rosters.csv missing 'player_key'; falling back to league_players.")
-                base_for_combined = lp_df.copy()
-        except Exception as e:
-            print("Failed to read team_rosters.csv, falling back to league_players:", type(e).__name__, e)
-            base_for_combined = lp_df.copy()
+        raise SystemExit("team_rosters.csv not found. Run fetch_rosters_and_standings.py first.")
+
+    print("Using team_rosters.csv as base for combined view and player list.")
+    base_df = pd.read_csv("team_rosters.csv", dtype=str)
+    if "player_key" not in base_df.columns:
+        raise SystemExit("team_rosters.csv missing 'player_key' column.")
+
+    player_keys = sorted(base_df["player_key"].dropna().unique().tolist())
+    print(f"Found {len(player_keys)} unique player_keys from team_rosters.csv.")
 
     stats_date = get_today_utc_str()
     print(f"Snapshotting cumulative stats for date (UTC): {stats_date}")
 
-    player_keys = sorted(lp_df["player_key"].dropna().unique().tolist())
-    print(f"Found {len(player_keys)} player_keys.")
-
     daily_rows: List[Dict[str, Any]] = []
+
     for idx, pk in enumerate(player_keys, start=1):
         print(f"[{stats_date}] [{idx}/{len(player_keys)}] Fetching stats for player {pk}")
         try:
@@ -596,17 +332,25 @@ def main():
         df_day = pd.DataFrame(daily_rows)
     else:
         df_day = pd.DataFrame(
-            columns=["player_key", "player_name", "coverage", "period", "timestamp", "stat_id", "stat_value"]
+            columns=[
+                "player_key",
+                "player_name",
+                "coverage",
+                "period",
+                "timestamp",
+                "stat_id",
+                "stat_value",
+            ]
         )
         print(f"WARNING: No stats found for any player on {stats_date}")
 
     df_day.to_csv(daily_path, index=False)
     print(f"Saved {len(df_day)} rows to {daily_path}")
 
-    # Build Parquet over all days we’ve ever saved (current season only)
+    # Build Parquet over all days for current season
     full_stats_df = build_full_parquet_from_daily()
     if full_stats_df is not None:
-        build_combined_parquet(base_for_combined, full_stats_df)
+        build_combined_parquet(base_df, full_stats_df)
 
 
 if __name__ == "__main__":
