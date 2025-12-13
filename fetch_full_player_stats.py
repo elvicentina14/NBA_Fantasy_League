@@ -2,7 +2,6 @@ from yahoo_oauth import OAuth2
 import os
 import pandas as pd
 from datetime import datetime, timezone
-from typing import Any, Dict, List
 
 CONFIG_FILE = "oauth2.json"
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
@@ -13,7 +12,11 @@ COMBINED_PARQUET = "combined_player_view_full.parquet"
 
 
 def ensure_list(x):
-    return x if isinstance(x, list) else [x]
+    if x is None:
+        return []
+    if isinstance(x, list):
+        return x
+    return [x]
 
 
 def find_first(obj, key):
@@ -33,51 +36,57 @@ def find_first(obj, key):
 
 
 def get_json(oauth, path):
-    url = f"https://fantasysports.yahooapis.com/fantasy/v2/{path}?format=json"
+    base = "https://fantasysports.yahooapis.com/fantasy/v2/"
+    url = base + path
+    if "format=json" not in url:
+        url += "?format=json"
     r = oauth.session.get(url)
     return r.json() if r.status_code == 200 else {}
 
 
 def main():
     os.makedirs(DAILY_DIR, exist_ok=True)
+
     oauth = OAuth2(None, None, from_file=CONFIG_FILE)
 
-    league_players = pd.read_csv("team_rosters.csv")[["player_key", "player_name"]].drop_duplicates()
+    league_players = pd.read_csv("league_players.csv", dtype=str)
+    players = league_players["player_key"].dropna().unique()
 
-    snapshot = datetime.now(timezone.utc).date().isoformat()
-    rows: List[Dict[str, Any]] = []
+    date = datetime.now(timezone.utc).date().isoformat()
+    rows = []
 
-    for pk in league_players["player_key"]:
-        data = get_json(oauth, f"player/{pk}/stats;date={snapshot}")
-        player = find_first(data, "player")
-        stats = find_first(player, "stats")
+    for pk in players:
+        data = get_json(oauth, f"player/{pk}/stats;date={date}")
+        stats = find_first(data, "stats")
 
-        if not stats:
-            continue
+        stat_items = []
+        if isinstance(stats, dict):
+            stat_items = ensure_list(stats.get("stat"))
+        elif isinstance(stats, list):
+            for s in stats:
+                if isinstance(s, dict) and "stat" in s:
+                    stat_items.append(s["stat"])
 
-        for s in ensure_list(stats.get("stat")):
+        for s in stat_items:
             rows.append({
                 "player_key": pk,
-                "player_name": find_first(player, "full"),
+                "player_name": find_first(s, "name"),
                 "stat_id": find_first(s, "stat_id"),
                 "stat_value": find_first(s, "value"),
-                "timestamp": snapshot
+                "timestamp": date
             })
 
-    daily_df = pd.DataFrame(rows)
-    daily_df.to_csv(f"{DAILY_DIR}/{snapshot}.csv", index=False)
+    df_day = pd.DataFrame(rows)
+    df_day.to_csv(f"{DAILY_DIR}/{date}.csv", index=False)
 
-    # ---- build parquet ----
-    all_days = []
-    for f in os.listdir(DAILY_DIR):
-        all_days.append(pd.read_csv(f"{DAILY_DIR}/{f}", dtype=str))
+    full = pd.concat(
+        [pd.read_csv(f"{DAILY_DIR}/{f}") for f in os.listdir(DAILY_DIR)],
+        ignore_index=True
+    )
 
-    full = pd.concat(all_days)
     full["stat_value_num"] = pd.to_numeric(full["stat_value"], errors="coerce")
-
     full.sort_values(["player_key", "stat_id", "timestamp"], inplace=True)
-    full["daily_value"] = full.groupby(["player_key", "stat_id"])["stat_value_num"].diff()
-    full["daily_value"] = full["daily_value"].fillna(full["stat_value_num"])
+    full["daily_value"] = full.groupby(["player_key", "stat_id"])["stat_value_num"].diff().fillna(full["stat_value_num"])
 
     full.to_parquet(FULL_PARQUET, index=False)
 
