@@ -1,7 +1,7 @@
 from yahoo_oauth import OAuth2
 import os
 import pandas as pd
-from typing import Any, List, Dict
+from typing import Any
 
 CONFIG_FILE = "oauth2.json"
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
@@ -11,7 +11,7 @@ STANDINGS_CSV = "standings.csv"
 PLAYERS_CSV = "league_players.csv"
 
 
-# ---------- helpers ----------
+# ---------------- helpers ---------------- #
 
 def ensure_list(x):
     if x is None:
@@ -48,6 +48,7 @@ def get_json(oauth, path):
     if r.status_code != 200:
         print("Non-200:", r.status_code)
         return {}
+
     try:
         return r.json()
     except Exception:
@@ -68,7 +69,7 @@ def extract_player_name(player):
     return str(name)
 
 
-# ---------- main ----------
+# ---------------- main ---------------- #
 
 def main():
     if not LEAGUE_KEY:
@@ -80,23 +81,31 @@ def main():
     if not oauth.token_is_valid():
         raise SystemExit("OAuth invalid")
 
-    print("Fetching league teams + rosters...")
-    data = get_json(oauth, f"league/{LEAGUE_KEY}/teams;out=roster")
+    # ---------- STEP 1: GET TEAMS ----------
+    print("Fetching league teams...")
+    league_data = get_json(oauth, f"league/{LEAGUE_KEY}/teams")
 
-    teams_node = find_first(data, "teams")
+    teams_node = find_first(league_data, "teams")
     teams = ensure_list(teams_node.get("team")) if isinstance(teams_node, dict) else []
 
     if not teams:
-        raise SystemExit("No teams returned by Yahoo")
+        raise SystemExit("Yahoo returned NO teams (this is a Yahoo issue, not your code)")
+
+    print(f"Found {len(teams)} teams")
 
     roster_rows = []
     player_rows = []
 
+    # ---------- STEP 2: PER-TEAM ROSTERS ----------
+    print("Fetching team rosters...")
     for team in teams:
         team_key = team.get("team_key")
         team_name = extract_team_name(team)
 
-        players_node = find_first(team, "players")
+        print(f"→ {team_name}")
+
+        roster_data = get_json(oauth, f"team/{team_key}/roster")
+        players_node = find_first(roster_data, "players")
         players = ensure_list(players_node.get("player")) if isinstance(players_node, dict) else []
 
         for p in players:
@@ -120,20 +129,22 @@ def main():
     pd.DataFrame(roster_rows).drop_duplicates().to_csv(ROSTERS_CSV, index=False)
     pd.DataFrame(player_rows).drop_duplicates().to_csv(PLAYERS_CSV, index=False)
 
-    print(f"Wrote {ROSTERS_CSV} and {PLAYERS_CSV}")
+    print(f"Wrote {ROSTERS_CSV} ({len(roster_rows)} rows)")
+    print(f"Wrote {PLAYERS_CSV}")
 
+    # ---------- STANDINGS ----------
     print("Fetching standings...")
-    sdata = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
-    standings_rows = []
+    standings_data = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
 
-    teams_node = find_first(sdata, "teams")
+    standings_rows = []
+    teams_node = find_first(standings_data, "teams")
     teams = ensure_list(teams_node.get("team")) if isinstance(teams_node, dict) else []
 
     for t in teams:
         team_key = t.get("team_key")
         team_name = extract_team_name(t)
+        ts = find_first(t, "team_standings") or {}
 
-        ts = find_first(t, "team_standings")
         standings_rows.append({
             "team_key": team_key,
             "team_name": team_name,
