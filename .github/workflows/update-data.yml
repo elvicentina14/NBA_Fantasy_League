@@ -2,7 +2,7 @@ name: Update fantasy data
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # every 6 hours
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -13,45 +13,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           persist-credentials: true
 
-      - name: Restore oauth2.json from secret
+      - name: Restore oauth2.json
         env:
           OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
         run: |
-          set -e
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
-          ls -l oauth2.json
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install yahoo-oauth pandas
+          pip install yahoo-oauth yahoo-fantasy-api pandas
 
       - name: Fetch team rosters
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
-        run: |
-          python fetch_rosters.py
+        run: python fetch_rosters.py
 
       - name: Fetch player stats
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
-        run: |
-          python fetch_player_stats.py
+        run: python fetch_player_stats.py
 
-      - name: Commit and push data
+      - name: Commit data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add *.csv player_stats_daily/*.csv || true
-          git commit -m "Automated fantasy data update" || echo "No changes to commit"
+          git commit -m "Automated fantasy data update" || echo "No changes"
           git push
