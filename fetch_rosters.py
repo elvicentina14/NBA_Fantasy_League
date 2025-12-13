@@ -10,16 +10,16 @@ def main():
     league = League(oauth, LEAGUE_KEY)
 
     print("Fetching teams via league.teams() ...")
-    team_keys = league.teams()   # ✅ returns list[str]
+    team_keys = league.teams()  # list[str]
 
     rows = []
 
     for team_key in team_keys:
         team = Team(oauth, team_key)
 
-        team_name = team.team_name  # ✅ PROPERTY, NOT METHOD
+        team_name = team.name()   # ✅ CORRECT
 
-        roster = team.roster()      # ✅ list of dicts
+        roster = team.roster()    # list[dict]
 
         for p in roster:
             rows.append({
