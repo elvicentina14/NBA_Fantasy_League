@@ -2,42 +2,41 @@ import os
 import csv
 from datetime import date
 from yahoo_oauth import OAuth2
-from yahoo_fantasy_api import League
+from yahoo_fantasy_api import League, Player
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
 OUT_DIR = "player_stats_daily"
 os.makedirs(OUT_DIR, exist_ok=True)
 
-def find_players(node, found):
-    if isinstance(node, dict):
-        if "player_key" in node:
-            found.append(node)
-        for v in node.values():
-            find_players(v, found)
-    elif isinstance(node, list):
-        for i in node:
-            find_players(i, found)
-
 def main():
     oauth = OAuth2(None, None, from_file="oauth2.json")
     league = League(oauth, LEAGUE_KEY)
 
-    raw = league.league_raw
-    players = []
-    find_players(raw, players)
-
+    team_keys = league.teams()
+    seen_players = set()
     rows = []
 
-    for p in players:
-        stats = p.get("player_stats", {}).get("stats", [])
-        for s in stats:
-            rows.append({
-                "player_key": p.get("player_key"),
-                "player_name": p.get("name", {}).get("full", ""),
-                "stat_id": s.get("stat_id"),
-                "stat_value": s.get("value"),
-                "date": str(date.today())
-            })
+    for team_key in team_keys:
+        team = league.to_team(team_key)
+        roster = team.roster()
+
+        for p in roster:
+            pk = p["player_key"]
+            if pk in seen_players:
+                continue
+            seen_players.add(pk)
+
+            player = Player(oauth, pk)
+            stats = player.stats()
+
+            for stat_id, stat_val in stats.items():
+                rows.append({
+                    "player_key": pk,
+                    "player_name": p["name"]["full"],
+                    "stat_id": stat_id,
+                    "stat_value": stat_val,
+                    "date": str(date.today())
+                })
 
     out_file = os.path.join(OUT_DIR, f"{date.today()}.csv")
 
