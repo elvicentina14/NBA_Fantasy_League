@@ -1,83 +1,53 @@
 import os
 import csv
-import json
-import requests
 from yahoo_oauth import OAuth2
+from yahoo_fantasy_api import League
 
-LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
-OUT_FILE = "team_rosters.csv"
+LEAGUE_KEY = os.environ["LEAGUE_KEY"]
 
+def list_to_dict(node):
+    """Convert Yahoo list-of-dicts into one dict"""
+    out = {}
+    for item in node:
+        if isinstance(item, dict):
+            out.update(item)
+    return out
 
 def ensure_list(x):
-    if isinstance(x, list):
-        return x
-    return [x]
-
+    if x is None:
+        return []
+    return x if isinstance(x, list) else [x]
 
 def main():
-    if not LEAGUE_KEY:
-        raise RuntimeError("LEAGUE_KEY env var not set")
-
     oauth = OAuth2(None, None, from_file="oauth2.json")
+    league = League(oauth, LEAGUE_KEY)
 
-    url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/teams/roster"
-    resp = oauth.session.get(url, params={"format": "json"})
-    resp.raise_for_status()
-
-    data = resp.json()
-
-    # Yahoo structure:
-    # fantasy_content -> league -> [0, {teams: {...}}]
-    league = data["fantasy_content"]["league"][1]
-    teams_node = league["teams"]
+    print("Fetching teams via league.teams() …")
+    teams = league.teams()
 
     rows = []
 
-    for _, team_wrapper in teams_node.items():
-        if not isinstance(team_wrapper, dict):
-            continue
+    for t in teams:
+        team_key = t["team_key"]
+        team_name = t.get("name", "")
 
-        team = team_wrapper.get("team")
-        if not team:
-            continue
+        print(f"Fetching roster for {team_key}")
 
-        team_key = team.get("team_key")
-        team_name = team.get("name")
+        roster = league.to_team(team_key).roster()
 
-        roster = team.get("roster", {})
-        players = roster.get("players", {})
+        players = ensure_list(roster.get("players", {}).get("player"))
 
-        for _, player_wrapper in players.items():
-            if not isinstance(player_wrapper, dict):
-                continue
-
-            player = player_wrapper.get("player")
-            if not player:
-                continue
-
-            player_key = player.get("player_key")
-
-            name = player.get("name", {})
-            full_name = name.get("full")
-
-            positions = player.get("eligible_positions", {}).get("position", [])
-            if isinstance(positions, list):
-                position = "/".join(positions)
-            else:
-                position = positions
-
+        for p in players:
+            pdata = list_to_dict(p)
             rows.append({
                 "team_key": team_key,
                 "team_name": team_name,
-                "player_key": player_key,
-                "player_name": full_name,
-                "position": position
+                "player_key": pdata.get("player_key"),
+                "player_name": pdata.get("name", {}).get("full"),
+                "position": pdata.get("display_position")
             })
 
-    if not rows:
-        raise RuntimeError("No roster data extracted — API returned unexpected structure")
-
-    with open(OUT_FILE, "w", newline="", encoding="utf-8") as f:
+    with open("team_rosters.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(
             f,
             fieldnames=["team_key", "team_name", "player_key", "player_name", "position"]
@@ -85,8 +55,7 @@ def main():
         writer.writeheader()
         writer.writerows(rows)
 
-    print(f"✅ Wrote {len(rows)} rows → {OUT_FILE}")
-
+    print(f"✅ Wrote {len(rows)} rows → team_rosters.csv")
 
 if __name__ == "__main__":
     main()
