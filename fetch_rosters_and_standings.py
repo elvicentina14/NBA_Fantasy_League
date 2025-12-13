@@ -14,10 +14,18 @@ def as_list(x):
         return x
     return [x]
 
-def unwrap(x):
-    while isinstance(x, list) and len(x) > 0:
-        x = x[0]
-    return x
+def find_all_teams(obj, out):
+    """
+    Recursively find dicts that look like Yahoo 'team' objects.
+    """
+    if isinstance(obj, dict):
+        if "team_key" in obj and "name" in obj:
+            out.append(obj)
+        for v in obj.values():
+            find_all_teams(v, out)
+    elif isinstance(obj, list):
+        for item in obj:
+            find_all_teams(item, out)
 
 def get_json(oauth, path):
     base = "https://fantasysports.yahooapis.com/fantasy/v2/"
@@ -35,41 +43,39 @@ def main():
     if not oauth.token_is_valid():
         raise SystemExit("OAuth invalid")
 
-    # ======================================================
-    # 1) GET TEAMS *FROM STANDINGS* (THIS IS THE FIX)
-    # ======================================================
-    print("Fetching teams via standings (reliable endpoint)...")
+    print("Fetching league data (searching for teams anywhere in response)...")
 
-    data = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
+    data = get_json(oauth, f"league/{LEAGUE_KEY}/scoreboard")
 
-    fc = unwrap(data["fantasy_content"])
-    league = unwrap(fc["league"])
-    standings = unwrap(league["standings"])
-    teams_node = unwrap(standings["teams"])
-    teams = as_list(teams_node["team"])
+    teams = []
+    find_all_teams(data, teams)
+
+    # Deduplicate by team_key
+    seen = {}
+    for t in teams:
+        seen[t["team_key"]] = t
+
+    teams = list(seen.values())
 
     if not teams:
-        raise SystemExit("Yahoo returned zero teams")
+        raise SystemExit("❌ Yahoo returned no teams anywhere in response")
 
-    print(f"Found {len(teams)} teams")
+    print(f"✅ Found {len(teams)} teams")
 
-    # ======================================================
-    # 2) FETCH ROSTERS
-    # ======================================================
+    # ---------------- ROSTERS ---------------- #
+
     roster_rows = []
 
     for t in teams:
         team_key = t["team_key"]
         team_name = t["name"]
 
-        print(f"→ Fetching roster: {team_name}")
+        print(f"→ Fetching roster for {team_name}")
 
         data = get_json(oauth, f"team/{team_key}/roster")
-        fc = unwrap(data["fantasy_content"])
-        team = unwrap(fc["team"])
-        roster = unwrap(team["roster"])
-        players_node = unwrap(roster["players"])
-        players = as_list(players_node["player"])
+
+        players = []
+        find_all_players(data, players)
 
         for p in players:
             roster_rows.append({
@@ -82,30 +88,41 @@ def main():
 
     df_rosters = pd.DataFrame(roster_rows)
     df_rosters.to_csv("team_rosters.csv", index=False)
-    print(f"Wrote {len(df_rosters)} rows → team_rosters.csv")
+    print(f"📝 Wrote {len(df_rosters)} rows → team_rosters.csv")
 
-    # ======================================================
-    # 3) BUILD STANDINGS CSV
-    # ======================================================
+    # ---------------- STANDINGS ---------------- #
+
     standings_rows = []
 
     for t in teams:
-        s = t["team_standings"]
-        ot = s["outcome_totals"]
+        s = t.get("team_standings", {})
+        ot = s.get("outcome_totals", {})
 
         standings_rows.append({
             "team_key": t["team_key"],
             "team_name": t["name"],
-            "rank": s["rank"],
-            "wins": ot["wins"],
-            "losses": ot["losses"],
-            "ties": ot["ties"],
-            "pct": ot["percentage"],
+            "rank": s.get("rank"),
+            "wins": ot.get("wins"),
+            "losses": ot.get("losses"),
+            "ties": ot.get("ties"),
+            "pct": ot.get("percentage"),
         })
 
     df_standings = pd.DataFrame(standings_rows)
     df_standings.to_csv("standings.csv", index=False)
-    print(f"Wrote {len(df_standings)} rows → standings.csv")
+    print(f"📝 Wrote {len(df_standings)} rows → standings.csv")
+
+
+def find_all_players(obj, out):
+    if isinstance(obj, dict):
+        if "player_key" in obj and "name" in obj:
+            out.append(obj)
+        for v in obj.values():
+            find_all_players(v, out)
+    elif isinstance(obj, list):
+        for item in obj:
+            find_all_players(item, out)
+
 
 if __name__ == "__main__":
     main()
