@@ -1,32 +1,17 @@
 from yahoo_oauth import OAuth2
 import os
 import pandas as pd
-from json import JSONDecodeError
+from typing import Any, List, Dict
 
 CONFIG_FILE = "oauth2.json"
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 
 ROSTERS_CSV = "team_rosters.csv"
 STANDINGS_CSV = "standings.csv"
+PLAYERS_CSV = "league_players.csv"
 
 
 # ---------- helpers ----------
-
-def safe_find(obj, key):
-    if isinstance(obj, dict):
-        if key in obj:
-            return obj[key]
-        for v in obj.values():
-            r = safe_find(v, key)
-            if r is not None:
-                return r
-    elif isinstance(obj, list):
-        for i in obj:
-            r = safe_find(i, key)
-            if r is not None:
-                return r
-    return None
-
 
 def ensure_list(x):
     if x is None:
@@ -36,87 +21,131 @@ def ensure_list(x):
     return [x]
 
 
+def find_first(obj: Any, key: str):
+    if isinstance(obj, dict):
+        if key in obj:
+            return obj[key]
+        for v in obj.values():
+            found = find_first(v, key)
+            if found is not None:
+                return found
+    elif isinstance(obj, list):
+        for i in obj:
+            found = find_first(i, key)
+            if found is not None:
+                return found
+    return None
+
+
 def get_json(oauth, path):
     base = "https://fantasysports.yahooapis.com/fantasy/v2/"
     url = base + path
     if "format=json" not in url:
-        url += "?format=json"
+        sep = "&" if "?" in url else "?"
+        url += f"{sep}format=json"
 
-    resp = oauth.session.get(url)
-    resp.raise_for_status()
-    try:
-        return resp.json()
-    except JSONDecodeError:
+    r = oauth.session.get(url)
+    if r.status_code != 200:
+        print("Non-200:", r.status_code)
         return {}
+    try:
+        return r.json()
+    except Exception:
+        return {}
+
+
+def extract_team_name(team):
+    name = team.get("name")
+    if isinstance(name, dict):
+        return name.get("full") or name.get("short")
+    return str(name)
+
+
+def extract_player_name(player):
+    name = player.get("name")
+    if isinstance(name, dict):
+        return name.get("full")
+    return str(name)
 
 
 # ---------- main ----------
 
 def main():
     if not LEAGUE_KEY:
-        raise SystemExit("LEAGUE_KEY not set")
+        raise SystemExit("LEAGUE_KEY env var missing")
+    if not os.path.exists(CONFIG_FILE):
+        raise SystemExit("oauth2.json missing")
 
     oauth = OAuth2(None, None, from_file=CONFIG_FILE)
     if not oauth.token_is_valid():
         raise SystemExit("OAuth invalid")
 
-    # ================== ROSTERS ==================
-    print("Fetching teams + rosters...")
+    print("Fetching league teams + rosters...")
     data = get_json(oauth, f"league/{LEAGUE_KEY}/teams;out=roster")
 
-    teams = ensure_list(safe_find(data, "team"))
+    teams_node = find_first(data, "teams")
+    teams = ensure_list(teams_node.get("team")) if isinstance(teams_node, dict) else []
+
     if not teams:
-        raise SystemExit("No teams found in teams;out=roster response")
+        raise SystemExit("No teams returned by Yahoo")
 
     roster_rows = []
+    player_rows = []
 
-    for t in teams:
-        team_key = safe_find(t, "team_key")
-        team_name = safe_find(t, "name")
+    for team in teams:
+        team_key = team.get("team_key")
+        team_name = extract_team_name(team)
 
-        players = ensure_list(safe_find(t, "player"))
+        players_node = find_first(team, "players")
+        players = ensure_list(players_node.get("player")) if isinstance(players_node, dict) else []
 
         for p in players:
+            player_key = p.get("player_key")
+            player_name = extract_player_name(p)
+            position = find_first(p, "display_position")
+
             roster_rows.append({
                 "team_key": team_key,
                 "team_name": team_name,
-                "player_key": safe_find(p, "player_key"),
-                "player_name": safe_find(p, "full"),
-                "position": safe_find(p, "display_position"),
+                "player_key": player_key,
+                "player_name": player_name,
+                "position": position
             })
 
-    df_rosters = pd.DataFrame(roster_rows)
-    df_rosters.to_csv(ROSTERS_CSV, index=False)
-    print(f"Wrote {len(df_rosters)} rows → {ROSTERS_CSV}")
+            player_rows.append({
+                "player_key": player_key,
+                "player_name": player_name
+            })
 
-    # ================== STANDINGS ==================
+    pd.DataFrame(roster_rows).drop_duplicates().to_csv(ROSTERS_CSV, index=False)
+    pd.DataFrame(player_rows).drop_duplicates().to_csv(PLAYERS_CSV, index=False)
+
+    print(f"Wrote {ROSTERS_CSV} and {PLAYERS_CSV}")
+
     print("Fetching standings...")
-    data = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
-
-    teams = ensure_list(safe_find(data, "team"))
-    if not teams:
-        raise SystemExit("No teams found in standings response")
-
+    sdata = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
     standings_rows = []
 
-    for t in teams:
-        standings = safe_find(t, "team_standings")
-        if not standings:
-            continue
+    teams_node = find_first(sdata, "teams")
+    teams = ensure_list(teams_node.get("team")) if isinstance(teams_node, dict) else []
 
+    for t in teams:
+        team_key = t.get("team_key")
+        team_name = extract_team_name(t)
+
+        ts = find_first(t, "team_standings")
         standings_rows.append({
-            "team_key": safe_find(t, "team_key"),
-            "team_name": safe_find(t, "name"),
-            "rank": safe_find(standings, "rank"),
-            "wins": safe_find(standings, "wins"),
-            "losses": safe_find(standings, "losses"),
-            "ties": safe_find(standings, "ties"),
-            "pct": safe_find(standings, "percentage"),
+            "team_key": team_key,
+            "team_name": team_name,
+            "rank": ts.get("rank"),
+            "wins": ts.get("wins"),
+            "losses": ts.get("losses"),
+            "ties": ts.get("ties"),
+            "pct": ts.get("percentage")
         })
 
-    df_standings = pd.DataFrame(standings_rows)
-    df_standings.to_csv(STANDINGS_CSV, index=False)
-    print(f"Wrote {len(df_standings)} rows → {STANDINGS_CSV}")
+    pd.DataFrame(standings_rows).to_csv(STANDINGS_CSV, index=False)
+    print(f"Wrote {STANDINGS_CSV}")
 
 
 if __name__ == "__main__":
