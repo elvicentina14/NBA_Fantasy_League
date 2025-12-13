@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
         with:
           persist-credentials: true
 
@@ -21,14 +22,17 @@ jobs:
         env:
           OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
         run: |
+          set -e
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
           python - <<EOF
 import json
-json.load(open("oauth2.json"))
-print("oauth2.json valid")
+with open("oauth2.json") as f:
+    json.load(f)
+print("oauth2.json is valid")
 EOF
 
-      - uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
@@ -51,7 +55,7 @@ EOF
           set -e
           python fetch_full_player_stats.py
 
-      - name: Commit outputs
+      - name: Commit and push results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
