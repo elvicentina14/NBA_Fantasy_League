@@ -35,49 +35,41 @@ def main():
     if not oauth.token_is_valid():
         raise SystemExit("OAuth invalid")
 
-    # ---------- FETCH TEAMS ----------
-    print("Fetching league teams...")
-    teams = []
-    start = 0
+    # ======================================================
+    # 1) GET TEAMS *FROM STANDINGS* (THIS IS THE FIX)
+    # ======================================================
+    print("Fetching teams via standings (reliable endpoint)...")
 
-    while True:
-        data = get_json(
-            oauth,
-            f"league/{LEAGUE_KEY}/teams;start={start};count=25"
-        )
+    data = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
 
-        fc = unwrap(data.get("fantasy_content"))
-        league = unwrap(fc.get("league"))
-        teams_node = unwrap(league.get("teams"))
-
-        page = as_list(teams_node.get("team"))
-        if not page:
-            break
-
-        teams.extend(page)
-        start += 25
+    fc = unwrap(data["fantasy_content"])
+    league = unwrap(fc["league"])
+    standings = unwrap(league["standings"])
+    teams_node = unwrap(standings["teams"])
+    teams = as_list(teams_node["team"])
 
     if not teams:
-        raise SystemExit("No teams returned by Yahoo")
+        raise SystemExit("Yahoo returned zero teams")
 
     print(f"Found {len(teams)} teams")
 
-    # ---------- FETCH ROSTERS ----------
+    # ======================================================
+    # 2) FETCH ROSTERS
+    # ======================================================
     roster_rows = []
 
     for t in teams:
         team_key = t["team_key"]
         team_name = t["name"]
 
-        print(f"→ {team_name}")
+        print(f"→ Fetching roster: {team_name}")
 
         data = get_json(oauth, f"team/{team_key}/roster")
-        fc = unwrap(data.get("fantasy_content"))
-        team = unwrap(fc.get("team"))
-        roster = unwrap(team.get("roster"))
-        players_node = unwrap(roster.get("players"))
-
-        players = as_list(players_node.get("player"))
+        fc = unwrap(data["fantasy_content"])
+        team = unwrap(fc["team"])
+        roster = unwrap(team["roster"])
+        players_node = unwrap(roster["players"])
+        players = as_list(players_node["player"])
 
         for p in players:
             roster_rows.append({
@@ -90,25 +82,18 @@ def main():
 
     df_rosters = pd.DataFrame(roster_rows)
     df_rosters.to_csv("team_rosters.csv", index=False)
-    print(f"Wrote {len(df_rosters)} roster rows → team_rosters.csv")
+    print(f"Wrote {len(df_rosters)} rows → team_rosters.csv")
 
-    # ---------- FETCH STANDINGS ----------
-    print("Fetching standings...")
+    # ======================================================
+    # 3) BUILD STANDINGS CSV
+    # ======================================================
+    standings_rows = []
 
-    data = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
-    fc = unwrap(data.get("fantasy_content"))
-    league = unwrap(fc.get("league"))
-    standings = unwrap(league.get("standings"))
-    teams_node = unwrap(standings.get("teams"))
-
-    teams = as_list(teams_node.get("team"))
-
-    rows = []
     for t in teams:
         s = t["team_standings"]
         ot = s["outcome_totals"]
 
-        rows.append({
+        standings_rows.append({
             "team_key": t["team_key"],
             "team_name": t["name"],
             "rank": s["rank"],
@@ -118,7 +103,7 @@ def main():
             "pct": ot["percentage"],
         })
 
-    df_standings = pd.DataFrame(rows)
+    df_standings = pd.DataFrame(standings_rows)
     df_standings.to_csv("standings.csv", index=False)
     print(f"Wrote {len(df_standings)} rows → standings.csv")
 
