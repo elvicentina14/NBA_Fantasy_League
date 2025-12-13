@@ -2,7 +2,6 @@ from yahoo_oauth import OAuth2
 import os
 import pandas as pd
 from json import JSONDecodeError
-from typing import Any, List
 
 CONFIG_FILE = "oauth2.json"
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
@@ -13,7 +12,7 @@ STANDINGS_CSV = "standings.csv"
 
 # ---------- helpers ----------
 
-def ensure_list(x: Any) -> List[Any]:
+def ensure_list(x):
     if x is None:
         return []
     if isinstance(x, list):
@@ -21,7 +20,7 @@ def ensure_list(x: Any) -> List[Any]:
     return [x]
 
 
-def find_first(obj: Any, key: str) -> Any:
+def find_first(obj, key):
     if isinstance(obj, dict):
         if key in obj:
             return obj[key]
@@ -37,7 +36,7 @@ def find_first(obj: Any, key: str) -> Any:
     return None
 
 
-def get_json(oauth: OAuth2, path: str):
+def get_json(oauth, path):
     base = "https://fantasysports.yahooapis.com/fantasy/v2/"
     url = base + path
     if "format=json" not in url:
@@ -45,67 +44,63 @@ def get_json(oauth: OAuth2, path: str):
 
     r = oauth.session.get(url)
     r.raise_for_status()
-
     try:
         return r.json()
     except JSONDecodeError:
-        print("JSON decode error:", url)
         return {}
+
+
+def extract_teams(data):
+    teams_container = find_first(data, "teams")
+    teams = []
+
+    if isinstance(teams_container, dict):
+        if "team" in teams_container:
+            teams = ensure_list(teams_container["team"])
+        else:
+            for v in teams_container.values():
+                if isinstance(v, dict) and "team" in v:
+                    teams.append(v["team"])
+
+    elif isinstance(teams_container, list):
+        teams = teams_container
+
+    return teams
 
 
 # ---------- main ----------
 
 def main():
     if not LEAGUE_KEY:
-        raise SystemExit("LEAGUE_KEY env var is not set")
-
-    if not os.path.exists(CONFIG_FILE):
-        raise SystemExit("oauth2.json missing")
+        raise SystemExit("LEAGUE_KEY not set")
 
     oauth = OAuth2(None, None, from_file=CONFIG_FILE)
     if not oauth.token_is_valid():
-        raise SystemExit("OAuth token invalid")
+        raise SystemExit("OAuth invalid")
 
-    # ======================================================
-    # 1. FETCH TEAMS (SAFE WAY)
-    # ======================================================
     print("Fetching league teams...")
+    league = get_json(oauth, f"league/{LEAGUE_KEY}")
+    teams = extract_teams(league)
 
-    teams_json = get_json(oauth, f"league/{LEAGUE_KEY}/teams")
-    team_nodes = ensure_list(find_first(teams_json, "team"))
-
-    if not team_nodes:
-        raise SystemExit("No teams found in league response")
-
-    teams = []
-    for t in team_nodes:
-        team_key = find_first(t, "team_key")
-        team_name = find_first(t, "name")
-        if team_key:
-            teams.append({
-                "team_key": team_key,
-                "team_name": team_name
-            })
+    if not teams:
+        raise SystemExit("No teams found")
 
     print(f"Found {len(teams)} teams")
 
-    # ======================================================
-    # 2. FETCH ROSTERS
-    # ======================================================
-    print("Fetching team rosters...")
-
+    # ---------- ROSTERS ----------
     roster_rows = []
 
     for t in teams:
-        team_key = t["team_key"]
-        team_name = t["team_name"]
+        team_key = find_first(t, "team_key")
+        team_name = find_first(t, "name")
 
         print(f"→ {team_name}")
 
-        roster_json = get_json(oauth, f"team/{team_key}/roster")
-        players = ensure_list(find_first(roster_json, "player"))
+        roster = get_json(oauth, f"team/{team_key}/roster")
+        players = find_first(roster, "players")
+        player_nodes = ensure_list(find_first(players, "player"))
 
-        for p in players:
+        for p in player_nodes:
             roster_rows.append({
                 "team_key": team_key,
                 "team_name": team_name,
@@ -114,20 +109,15 @@ def main():
                 "position": find_first(p, "display_position"),
             })
 
-    df_rosters = pd.DataFrame(roster_rows)
-    df_rosters.to_csv(ROSTERS_CSV, index=False)
-    print(f"Wrote {len(df_rosters)} rows → {ROSTERS_CSV}")
+    pd.DataFrame(roster_rows).to_csv(ROSTERS_CSV, index=False)
+    print(f"Wrote {len(roster_rows)} rows → {ROSTERS_CSV}")
 
-    # ======================================================
-    # 3. FETCH STANDINGS
-    # ======================================================
-    print("Fetching standings...")
-
-    standings_json = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
-    team_nodes = ensure_list(find_first(standings_json, "team"))
+    # ---------- STANDINGS ----------
+    standings = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
+    standings_teams = extract_teams(standings)
 
     rows = []
-    for t in team_nodes:
+    for t in standings_teams:
         rows.append({
             "team_key": find_first(t, "team_key"),
             "team_name": find_first(t, "name"),
@@ -135,12 +125,11 @@ def main():
             "wins": find_first(t, "wins"),
             "losses": find_first(t, "losses"),
             "ties": find_first(t, "ties"),
-            "win_pct": find_first(t, "percentage"),
+            "pct": find_first(t, "percentage"),
         })
 
-    df_standings = pd.DataFrame(rows)
-    df_standings.to_csv(STANDINGS_CSV, index=False)
-    print(f"Wrote {len(df_standings)} rows → {STANDINGS_CSV}")
+    pd.DataFrame(rows).to_csv(STANDINGS_CSV, index=False)
+    print(f"Wrote {len(rows)} rows → {STANDINGS_CSV}")
 
 
 if __name__ == "__main__":
