@@ -10,7 +10,7 @@ ROSTERS_CSV = "team_rosters.csv"
 STANDINGS_CSV = "standings.csv"
 
 
-# ---------------- helpers ---------------- #
+# ---------- helpers ----------
 
 def safe_find(obj, key):
     if isinstance(obj, dict):
@@ -41,6 +41,7 @@ def get_json(oauth, path):
     url = base + path
     if "format=json" not in url:
         url += "?format=json"
+
     resp = oauth.session.get(url)
     resp.raise_for_status()
     try:
@@ -49,7 +50,7 @@ def get_json(oauth, path):
         return {}
 
 
-# ---------------- main ---------------- #
+# ---------- main ----------
 
 def main():
     if not LEAGUE_KEY:
@@ -59,28 +60,21 @@ def main():
     if not oauth.token_is_valid():
         raise SystemExit("OAuth invalid")
 
-    print("Fetching league teams...")
-    league = get_json(oauth, f"league/{LEAGUE_KEY}")
-    teams_node = safe_find(league, "team")
-    teams = ensure_list(teams_node)
+    # ================== ROSTERS ==================
+    print("Fetching teams + rosters...")
+    data = get_json(oauth, f"league/{LEAGUE_KEY}/teams;out=roster")
 
+    teams = ensure_list(safe_find(data, "team"))
     if not teams:
-        raise SystemExit("No teams found")
+        raise SystemExit("No teams found in teams;out=roster response")
 
-    # ---------- ROSTERS ---------- #
     roster_rows = []
 
     for t in teams:
         team_key = safe_find(t, "team_key")
         team_name = safe_find(t, "name")
 
-        if not team_key:
-            continue
-
-        print(f"→ {team_name}")
-
-        roster = safe_find(t, "roster")
-        players = ensure_list(safe_find(roster, "player"))
+        players = ensure_list(safe_find(t, "player"))
 
         for p in players:
             roster_rows.append({
@@ -95,7 +89,14 @@ def main():
     df_rosters.to_csv(ROSTERS_CSV, index=False)
     print(f"Wrote {len(df_rosters)} rows → {ROSTERS_CSV}")
 
-    # ---------- STANDINGS ---------- #
+    # ================== STANDINGS ==================
+    print("Fetching standings...")
+    data = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
+
+    teams = ensure_list(safe_find(data, "team"))
+    if not teams:
+        raise SystemExit("No teams found in standings response")
+
     standings_rows = []
 
     for t in teams:
