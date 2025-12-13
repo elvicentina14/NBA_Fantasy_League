@@ -2,7 +2,7 @@ import os
 import csv
 from datetime import date
 from yahoo_oauth import OAuth2
-from yahoo_fantasy_api import League, Player
+from yahoo_fantasy_api import League, Team, Player
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
 OUT_DIR = "player_stats_daily"
@@ -17,7 +17,7 @@ def main():
     rows = []
 
     for team_key in team_keys:
-        team = league.to_team(team_key)
+        team = Team(oauth, team_key)
         roster = team.roster()
 
         for p in roster:
@@ -27,7 +27,7 @@ def main():
             seen_players.add(pk)
 
             player = Player(oauth, pk)
-            stats = player.stats()
+            stats = player.stats()   # dict: stat_id -> value
 
             for stat_id, stat_val in stats.items():
                 rows.append({
@@ -43,7 +43,13 @@ def main():
     with open(out_file, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(
             f,
-            fieldnames=["player_key", "player_name", "stat_id", "stat_value", "date"]
+            fieldnames=[
+                "player_key",
+                "player_name",
+                "stat_id",
+                "stat_value",
+                "date"
+            ]
         )
         writer.writeheader()
         writer.writerows(rows)
