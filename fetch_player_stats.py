@@ -1,43 +1,67 @@
-from yahoo_oauth import OAuth2
-import pandas as pd
 import os
-from datetime import datetime
+import csv
+from datetime import date
+from yahoo_oauth import OAuth2
+from yahoo_fantasy_api import League
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-DATE = datetime.utcnow().strftime("%Y-%m-%d")
+TODAY = date.today().isoformat()
+OUTDIR = "player_stats_daily"
 
-oauth = OAuth2(None, None, from_file="oauth2.json")
+os.makedirs(OUTDIR, exist_ok=True)
 
-print("Loading players from team_rosters.csv")
-players = pd.read_csv("team_rosters.csv")["player_key"].unique().tolist()
+def ensure_list(x):
+    if x is None:
+        return []
+    return x if isinstance(x, list) else [x]
 
-rows = []
+def list_to_dict(node):
+    out = {}
+    for item in node:
+        if isinstance(item, dict):
+            out.update(item)
+    return out
 
-for i, pk in enumerate(players, 1):
-    print(f"[{i}/{len(players)}] {pk}")
+def main():
+    oauth = OAuth2(None, None, from_file="oauth2.json")
+    league = League(oauth, LEAGUE_KEY)
 
-    resp = oauth.session.get(
-        f"https://fantasysports.yahooapis.com/fantasy/v2/player/{pk}/stats?format=json"
-    ).json()
+    players = league.players()
 
-    try:
-        player = resp["fantasy_content"]["player"]
-        name = player[0]["name"]["full"]
-        stats = player[1]["player_stats"]["stats"]["stat"]
+    rows = []
 
-        for s in stats:
+    for i, p in enumerate(players, 1):
+        print(f"[{i}/{len(players)}] Fetching stats for {p['player_key']}")
+
+        stats = league.player_stats(p["player_key"], "date", TODAY)
+
+        stat_block = stats.get("player_stats", {}).get("stats", {}).get("stat")
+        stat_block = ensure_list(stat_block)
+
+        for s in stat_block:
+            sdict = list_to_dict(s)
             rows.append({
-                "player_key": pk,
-                "player_name": name,
-                "date": DATE,
-                "stat_id": s["stat_id"],
-                "stat_value": s["value"],
+                "player_key": p["player_key"],
+                "player_name": p.get("name"),
+                "timestamp": TODAY,
+                "stat_id": sdict.get("stat_id"),
+                "stat_value": sdict.get("value")
             })
-    except Exception:
-        continue
 
-df = pd.DataFrame(rows)
-os.makedirs("player_stats_daily", exist_ok=True)
-df.to_csv(f"player_stats_daily/{DATE}.csv", index=False)
+    outfile = f"{OUTDIR}/{TODAY}.csv"
 
-print(f"✅ Wrote {len(df)} stat rows")
+    if rows:
+        with open(outfile, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(
+                f,
+                fieldnames=["player_key", "player_name", "timestamp", "stat_id", "stat_value"]
+            )
+            writer.writeheader()
+            writer.writerows(rows)
+
+        print(f"✅ Wrote {len(rows)} rows → {outfile}")
+    else:
+        print("⚠️ No stats returned by Yahoo today")
+
+if __name__ == "__main__":
+    main()
