@@ -2,7 +2,7 @@ name: Update fantasy data
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # every 6 hours
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -13,87 +13,55 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # -----------------------------
-      # Checkout repository
-      # -----------------------------
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          persist-credentials: true
 
-      # -----------------------------
-      # Restore oauth2.json from secret
-      # -----------------------------
       - name: Restore oauth2.json
         env:
           OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
         run: |
-          set -e
-          if [ -z "$OAUTH_B64" ]; then
-            echo "ERROR: OAUTH2_JSON_B64 secret is missing"
-            exit 1
-          fi
-
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
+          python - <<EOF
+import json
+json.load(open("oauth2.json"))
+print("oauth2.json valid")
+EOF
 
-          python -c "import json; json.load(open('oauth2.json')); print('oauth2.json OK')"
-
-      # -----------------------------
-      # Setup Python
-      # -----------------------------
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
-      # -----------------------------
-      # Install dependencies
-      # -----------------------------
       - name: Install dependencies
         run: |
-          set -e
-          python -m pip install --upgrade pip
-          pip install yahoo_oauth requests pandas pyarrow
+          pip install --upgrade pip
+          pip install yahoo_oauth pandas pyarrow requests
 
-      # -----------------------------
-      # Fetch team rosters & standings
-      # -----------------------------
       - name: Fetch rosters and standings
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
           set -e
-          echo "Running fetch_rosters_and_standings.py"
           python fetch_rosters_and_standings.py
 
-      # -----------------------------
-      # Fetch daily player stats
-      # -----------------------------
       - name: Fetch player stats
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
           set -e
-          echo "Running fetch_full_player_stats.py"
           python fetch_full_player_stats.py
 
-      # -----------------------------
-      # Commit & push outputs
-      # -----------------------------
-      - name: Commit and push outputs
+      - name: Commit outputs
         run: |
-          set -e
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Stage everything EXCEPT oauth2.json
           git add -A
           git reset oauth2.json || true
 
           if [ -n "$(git diff --cached --name-only)" ]; then
             git commit -m "Automated fantasy data update"
-            git push origin HEAD:main
+            git push
           else
             echo "No changes to commit"
           fi
