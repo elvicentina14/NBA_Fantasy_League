@@ -1,61 +1,31 @@
 import os
 import csv
 from yahoo_oauth import OAuth2
-from yahoo_fantasy_api import League
+from yahoo_fantasy_api import League, Team
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-
-def find_teams(node, found):
-    if isinstance(node, dict):
-        if "team_key" in node:
-            found.append(node)
-        for v in node.values():
-            find_teams(v, found)
-    elif isinstance(node, list):
-        for i in node:
-            find_teams(i, found)
-
-def find_players(node, found):
-    if isinstance(node, dict):
-        if "player_key" in node:
-            found.append(node)
-        for v in node.values():
-            find_players(v, found)
-    elif isinstance(node, list):
-        for i in node:
-            find_players(i, found)
 
 def main():
     oauth = OAuth2(None, None, from_file="oauth2.json")
     league = League(oauth, LEAGUE_KEY)
 
-    print("Fetching raw league data ...")
-    raw = league.league_raw
-
-    teams = []
-    find_teams(raw, teams)
+    print("Fetching teams via league.teams() ...")
+    team_keys = league.teams()  # <-- THIS IS THE ONLY VALID WAY
 
     rows = []
 
-    for team in teams:
-        team_key = team.get("team_key")
-        team_name = team.get("name", "")
+    for team_key in team_keys:
+        team = Team(oauth, team_key)
+        team_name = team.settings().get("name", "")
 
-        try:
-            team_obj = league.to_team(team_key)
-            roster_raw = team_obj.roster_raw
-        except Exception:
-            continue
+        roster = team.roster()  # list of dicts
 
-        players = []
-        find_players(roster_raw, players)
-
-        for p in players:
+        for p in roster:
             rows.append({
                 "team_key": team_key,
                 "team_name": team_name,
-                "player_key": p.get("player_key"),
-                "player_name": p.get("name", {}).get("full", ""),
+                "player_key": p["player_key"],
+                "player_name": p["name"]["full"],
                 "position": ",".join(p.get("eligible_positions", []))
             })
 
