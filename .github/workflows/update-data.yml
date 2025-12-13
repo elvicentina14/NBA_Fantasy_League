@@ -28,7 +28,7 @@ jobs:
 import json
 with open("oauth2.json") as f:
     json.load(f)
-print("oauth2.json is valid")
+print("oauth2.json OK")
 EOF
 
       - name: Setup Python
@@ -45,14 +45,12 @@ EOF
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
-          set -e
           python fetch_rosters_and_standings.py
 
       - name: Fetch player stats
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
-          set -e
           python fetch_full_player_stats.py
 
       - name: Commit and push results
