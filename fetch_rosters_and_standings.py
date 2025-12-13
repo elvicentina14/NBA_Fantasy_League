@@ -1,7 +1,6 @@
 from yahoo_oauth import OAuth2
 import os
 import pandas as pd
-from json import JSONDecodeError
 
 CONFIG_FILE = "oauth2.json"
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
@@ -25,14 +24,14 @@ def find_first(obj, key):
         if key in obj:
             return obj[key]
         for v in obj.values():
-            found = find_first(v, key)
-            if found is not None:
-                return found
+            r = find_first(v, key)
+            if r is not None:
+                return r
     elif isinstance(obj, list):
         for i in obj:
-            found = find_first(i, key)
-            if found is not None:
-                return found
+            r = find_first(i, key)
+            if r is not None:
+                return r
     return None
 
 
@@ -41,31 +40,9 @@ def get_json(oauth, path):
     url = base + path
     if "format=json" not in url:
         url += "?format=json"
-
-    r = oauth.session.get(url)
-    r.raise_for_status()
-    try:
-        return r.json()
-    except JSONDecodeError:
-        return {}
-
-
-def extract_teams(data):
-    teams_container = find_first(data, "teams")
-    teams = []
-
-    if isinstance(teams_container, dict):
-        if "team" in teams_container:
-            teams = ensure_list(teams_container["team"])
-        else:
-            for v in teams_container.values():
-                if isinstance(v, dict) and "team" in v:
-                    teams.append(v["team"])
-
-    elif isinstance(teams_container, list):
-        teams = teams_container
-
-    return teams
+    resp = oauth.session.get(url)
+    resp.raise_for_status()
+    return resp.json()
 
 
 # ---------- main ----------
@@ -78,16 +55,19 @@ def main():
     if not oauth.token_is_valid():
         raise SystemExit("OAuth invalid")
 
-    print("Fetching league teams...")
-    league = get_json(oauth, f"league/{LEAGUE_KEY}")
-    teams = extract_teams(league)
+    # ================= ROSTERS =================
+
+    print("Fetching league teams with rosters...")
+    data = get_json(oauth, f"league/{LEAGUE_KEY}/teams;out=roster")
+
+    teams = find_first(data, "team")
+    teams = ensure_list(teams)
 
     if not teams:
-        raise SystemExit("No teams found")
+        raise SystemExit("No teams found (rosters)")
 
     print(f"Found {len(teams)} teams")
 
-    # ---------- ROSTERS ----------
     roster_rows = []
 
     for t in teams:
@@ -96,11 +76,8 @@ def main():
 
         print(f"→ {team_name}")
 
-        roster = get_json(oauth, f"team/{team_key}/roster")
-        players = find_first(roster, "players")
-        player_nodes = ensure_list(find_first(players, "player"))
-
-        for p in player_nodes:
+        players = find_first(t, "player")
+        for p in ensure_list(players):
             roster_rows.append({
                 "team_key": team_key,
                 "team_name": team_name,
@@ -109,15 +86,21 @@ def main():
                 "position": find_first(p, "display_position"),
             })
 
-    pd.DataFrame(roster_rows).to_csv(ROSTERS_CSV, index=False)
-    print(f"Wrote {len(roster_rows)} rows → {ROSTERS_CSV}")
+    df_rosters = pd.DataFrame(roster_rows)
+    df_rosters.to_csv(ROSTERS_CSV, index=False)
+    print(f"Wrote {len(df_rosters)} rows → {ROSTERS_CSV}")
 
-    # ---------- STANDINGS ----------
+    # ================= STANDINGS =================
+
+    print("Fetching standings...")
     standings = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
-    standings_teams = extract_teams(standings)
+
+    teams = ensure_list(find_first(standings, "team"))
+    if not teams:
+        raise SystemExit("No teams found (standings)")
 
     rows = []
-    for t in standings_teams:
+    for t in teams:
         rows.append({
             "team_key": find_first(t, "team_key"),
             "team_name": find_first(t, "name"),
@@ -128,8 +111,9 @@ def main():
             "pct": find_first(t, "percentage"),
         })
 
-    pd.DataFrame(rows).to_csv(STANDINGS_CSV, index=False)
-    print(f"Wrote {len(rows)} rows → {STANDINGS_CSV}")
+    df_standings = pd.DataFrame(rows)
+    df_standings.to_csv(STANDINGS_CSV, index=False)
+    print(f"Wrote {len(df_standings)} rows → {STANDINGS_CSV}")
 
 
 if __name__ == "__main__":
