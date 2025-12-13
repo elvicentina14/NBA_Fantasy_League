@@ -1,5 +1,0 @@
-
-yahoo-fantasy-api==2.12.2
-pandas==2.2.3
-tenacity==9.0.0
-python-dateutil==2.9.0.post0
