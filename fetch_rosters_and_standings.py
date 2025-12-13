@@ -1,78 +1,75 @@
-import os
-import pandas as pd
 from yahoo_oauth import OAuth2
+import pandas as pd
+import os
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-CONFIG = "oauth2.json"
 
 def as_list(x):
+    if isinstance(x, list):
+        return x
     if x is None:
         return []
-    return x if isinstance(x, list) else [x]
+    return [x]
 
-def find(obj, key):
-    if isinstance(obj, dict):
-        if key in obj:
-            return obj[key]
-        for v in obj.values():
-            r = find(v, key)
-            if r is not None:
-                return r
-    elif isinstance(obj, list):
-        for i in obj:
-            r = find(i, key)
-            if r is not None:
-                return r
-    return None
+def unwrap(node):
+    if isinstance(node, list):
+        return node[0]
+    return node
 
-def get(oauth, path):
-    url = f"https://fantasysports.yahooapis.com/fantasy/v2/{path}?format=json"
-    return oauth.session.get(url).json()
+oauth = OAuth2(None, None, from_file="oauth2.json")
 
-def main():
-    oauth = OAuth2(None, None, from_file=CONFIG)
+# ---------- STANDINGS ----------
+print("Fetching league standings...")
+resp = oauth.session.get(
+    f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/standings?format=json"
+).json()
 
-    print("Fetching league standings (source of teams)...")
-    data = get(oauth, f"league/{LEAGUE_KEY}/standings")
-    teams = as_list(find(data, "team"))
+league = unwrap(resp["fantasy_content"]["league"])
+teams_node = unwrap(league["standings"])["teams"]["team"]
+teams = as_list(teams_node)
 
-    if not teams:
-        raise SystemExit("❌ No teams found in standings")
+standings_rows = []
+team_keys = []
 
-    standings_rows = []
-    roster_rows = []
+for t in teams:
+    team = unwrap(t)
+    team_keys.append(team["team_key"])
+    standings_rows.append({
+        "team_key": team["team_key"],
+        "team_name": team["name"],
+        "rank": team["team_standings"]["rank"],
+        "wins": team["team_standings"]["outcome_totals"]["wins"],
+        "losses": team["team_standings"]["outcome_totals"]["losses"],
+        "ties": team["team_standings"]["outcome_totals"]["ties"],
+        "pct": team["team_standings"]["outcome_totals"]["percentage"],
+    })
 
-    for t in teams:
-        team_key = find(t, "team_key")
-        team_name = find(t, "name")
+pd.DataFrame(standings_rows).to_csv("standings.csv", index=False)
+print(f"✅ Wrote {len(standings_rows)} standings rows")
 
-        standings_rows.append({
+# ---------- ROSTERS ----------
+print("Fetching team rosters...")
+roster_rows = []
+
+for team_key in team_keys:
+    resp = oauth.session.get(
+        f"https://fantasysports.yahooapis.com/fantasy/v2/team/{team_key}/roster?format=json"
+    ).json()
+
+    team = unwrap(resp["fantasy_content"]["team"])
+    team_name = team["name"]
+
+    players = as_list(unwrap(team["roster"])["players"]["player"])
+
+    for p in players:
+        player = unwrap(p)
+        roster_rows.append({
             "team_key": team_key,
             "team_name": team_name,
-            "rank": find(t, "rank"),
-            "wins": find(t, "wins"),
-            "losses": find(t, "losses"),
-            "ties": find(t, "ties"),
-            "pct": find(t, "percentage")
+            "player_key": player["player_key"],
+            "player_name": player["name"]["full"],
+            "position": player.get("display_position"),
         })
 
-        print(f"Fetching roster for {team_key}")
-        roster = get(oauth, f"team/{team_key}/roster")
-        players = as_list(find(roster, "player"))
-
-        for p in players:
-            roster_rows.append({
-                "team_key": team_key,
-                "team_name": team_name,
-                "player_key": find(p, "player_key"),
-                "player_name": find(p, "full"),
-                "position": find(p, "display_position")
-            })
-
-    pd.DataFrame(roster_rows).to_csv("team_rosters.csv", index=False)
-    pd.DataFrame(standings_rows).to_csv("standings.csv", index=False)
-
-    print("✅ team_rosters.csv and standings.csv written")
-
-if __name__ == "__main__":
-    main()
+pd.DataFrame(roster_rows).to_csv("team_rosters.csv", index=False)
+print(f"✅ Wrote {len(roster_rows)} roster rows")
