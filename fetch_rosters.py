@@ -10,15 +10,16 @@ def main():
     league = League(oauth, LEAGUE_KEY)
 
     print("Fetching teams via league.teams() ...")
-    team_keys = league.teams()  # <-- THIS IS THE ONLY VALID WAY
+    team_keys = league.teams()   # ✅ returns list[str]
 
     rows = []
 
     for team_key in team_keys:
         team = Team(oauth, team_key)
-        team_name = team.settings().get("name", "")
 
-        roster = team.roster()  # list of dicts
+        team_name = team.team_name  # ✅ PROPERTY, NOT METHOD
+
+        roster = team.roster()      # ✅ list of dicts
 
         for p in roster:
             rows.append({
@@ -32,7 +33,13 @@ def main():
     with open("team_rosters.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(
             f,
-            fieldnames=["team_key", "team_name", "player_key", "player_name", "position"]
+            fieldnames=[
+                "team_key",
+                "team_name",
+                "player_key",
+                "player_name",
+                "position"
+            ]
         )
         writer.writeheader()
         writer.writerows(rows)
