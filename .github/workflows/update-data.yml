@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
         with:
           persist-credentials: true
@@ -23,30 +23,31 @@ jobs:
           OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
         run: |
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
+          python -c "import json; json.load(open('oauth2.json')); print('oauth2.json OK')"
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
-          pip install yahoo-oauth yahoo-fantasy-api pandas
+          pip install yahoo-oauth pandas requests
 
-      - name: Fetch team rosters
+      - name: Fetch rosters
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
-        run: python fetch_rosters.py
+        run: python fetch_rosters_raw.py
 
-      - name: Fetch player stats
+      - name: Fetch season totals
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
-        run: python fetch_player_stats.py
+        run: python fetch_season_totals_raw.py
 
-      - name: Commit and push
+      - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add team_rosters.csv player_stats_daily/*.csv || true
-          git commit -m "Automated fantasy data update" || true
+          git add *.csv || true
+          git commit -m "Automated Yahoo fantasy update" || echo "No changes"
           git push
