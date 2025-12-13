@@ -1,23 +1,27 @@
-# fetch_rosters_and_standings.py
-#
-# Robust Yahoo Fantasy extractor for:
-# - team_rosters.csv
-# - standings.csv
-#
-# Handles Yahoo's inconsistent list/dict nesting safely.
+#!/usr/bin/env python3
+"""
+fetch_rosters_and_standings.py
+
+Fetches team rosters and standings from Yahoo Fantasy (NBA).
+Handles Yahoo's inconsistent formats safely.
+Writes:
+ - team_rosters.csv
+ - standings.csv
+"""
 
 from yahoo_oauth import OAuth2
-import os
 import pandas as pd
+import os
+from typing import Any, Dict, List
 
 CONFIG_FILE = "oauth2.json"
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 
-ROSTERS_CSV = "team_rosters.csv"
-STANDINGS_CSV = "standings.csv"
+if not LEAGUE_KEY:
+    raise SystemExit("LEAGUE_KEY env var not set")
 
 
-# -------------------- helpers -------------------- #
+# ---------- HELPERS ---------- #
 
 def as_list(x):
     if x is None:
@@ -27,130 +31,117 @@ def as_list(x):
     return [x]
 
 
-def deep_find(obj, key):
-    """Find ALL dicts that contain `key` anywhere in structure."""
-    found = []
-
+def deep_collect(obj: Any, predicate):
+    """
+    Recursively collect objects matching predicate (e.g., dicts with some key).
+    """
+    results = []
     if isinstance(obj, dict):
-        if key in obj:
-            found.append(obj)
+        if predicate(obj):
+            results.append(obj)
         for v in obj.values():
-            found.extend(deep_find(v, key))
-
+            results.extend(deep_collect(v, predicate))
     elif isinstance(obj, list):
         for item in obj:
-            found.extend(deep_find(item, key))
+            results.extend(deep_collect(item, predicate))
+    return results
 
-    return found
 
-
-def get_json(oauth, path):
+def get_json(oauth: OAuth2, path: str) -> Dict[str, Any]:
     base = "https://fantasysports.yahooapis.com/fantasy/v2/"
     url = base + path
     if "format=json" not in url:
         url += "?format=json"
-
     resp = oauth.session.get(url)
-    resp.raise_for_status()
-    return resp.json()
+    try:
+        resp.raise_for_status()
+    except Exception:
+        print(f"WARNING: Non-200 for {url}: {resp.status_code}")
+        return {}
+    try:
+        return resp.json()
+    except Exception:
+        print(f"WARNING: JSON decode failed for {url}")
+        return {}
 
 
-def extract_name(node):
-    if not isinstance(node, dict):
+def extract_name(o: Dict[str, Any]):
+    """
+    Safely extract a full name from Yahoo node.
+    """
+    if not isinstance(o, dict):
         return None
+    n = o.get("name")
+    if isinstance(n, dict):
+        return n.get("full") or n.get("first") or n.get("last")
+    return n
 
-    name = node.get("name")
-    if isinstance(name, dict):
-        return name.get("full")
-    return None
 
-
-# -------------------- main -------------------- #
+# ---------- MAIN ---------- #
 
 def main():
-    if not LEAGUE_KEY:
-        raise SystemExit("LEAGUE_KEY env var not set")
+    if not os.path.exists(CONFIG_FILE):
+        raise SystemExit("oauth2.json not found")
 
     oauth = OAuth2(None, None, from_file=CONFIG_FILE)
     if not oauth.token_is_valid():
         raise SystemExit("OAuth token invalid")
 
-    print("Fetching league standings (source of teams)...")
+    # --- FETCH LEAGUE DATA (standings endpoint is most reliable) --- #
+    print("Fetching league standings for team list...")
     data = get_json(oauth, f"league/{LEAGUE_KEY}/standings")
+    if not data:
+        raise SystemExit("Failed to fetch league standings")
 
-    # ----------- TEAMS + STANDINGS ----------- #
+    # collect all dicts that have team_key
+    teams = deep_collect(data, lambda x: isinstance(x, dict) and "team_key" in x)
 
-    team_nodes = deep_find(data, "team_key")
+    if not teams:
+        raise SystemExit("No teams found in Yahoo response")
 
-    if not team_nodes:
-        raise SystemExit("❌ No teams found in Yahoo response")
+    print(f"Found {len(teams)} teams")
 
+    # --- WRITE STANDINGS --- #
     standings_rows = []
+    for t in teams:
+        tk = t.get("team_key")
+        tname = extract_name(t)
+        ts = t.get("team_standings") or {}
+        ot = ts.get("outcome_totals") or {}
+
+        standings_rows.append({
+            "team_key": tk,
+            "team_name": tname,
+            "rank": ts.get("rank"),
+            "wins": ot.get("wins"),
+            "losses": ot.get("losses"),
+            "ties": ot.get("ties"),
+            "win_pct": ot.get("percentage")
+        })
+
+    df_stand = pd.DataFrame(standings_rows)
+    df_stand = df_stand.drop_duplicates(subset=["team_key"])
+    df_stand.to_csv("standings.csv", index=False)
+    print(f"Saved {len(df_stand)} rows to standings.csv")
+
+    # --- FETCH ROSTERS --- #
     roster_rows = []
+    for t in df_stand["team_key"].dropna().unique().tolist():
+        print(f"Fetching roster for {t}...")
+        rd = get_json(oauth, f"team/{t}/roster")
+        players = deep_collect(rd, lambda x: isinstance(x, dict) and "player_key" in x)
+        for p in players:
+            roster_rows.append({
+                "team_key": t,
+                "team_name": extract_name(p.get("editorial_team_full_name") or {}),
+                "player_key": p.get("player_key"),
+                "player_name": extract_name(p),
+                "position": p.get("display_position") or p.get("primary_position")
+            })
 
-    print(f"Found {len(team_nodes)} teams")
-
-    for team in team_nodes:
-        if not isinstance(team, dict):
-            continue
-
-        team_key = team.get("team_key")
-        if not team_key:
-            continue
-
-        team_name = extract_name(team)
-
-        # standings fields
-        standings_rows.append(
-            {
-                "team_key": team_key,
-                "team_name": team_name,
-                "rank": team.get("rank"),
-                "wins": team.get("wins"),
-                "losses": team.get("losses"),
-                "ties": team.get("ties"),
-                "pct": team.get("percentage"),
-            }
-        )
-
-        # ----------- ROSTER ----------- #
-
-        print(f"Fetching roster for {team_key}")
-        roster_data = get_json(oauth, f"team/{team_key}/roster")
-
-        player_nodes = deep_find(roster_data, "player_key")
-
-        for p in player_nodes:
-            if not isinstance(p, dict):
-                continue
-
-            player_key = p.get("player_key")
-            if not player_key:
-                continue
-
-            roster_rows.append(
-                {
-                    "team_key": team_key,
-                    "team_name": team_name,
-                    "player_key": player_key,
-                    "player_name": extract_name(p),
-                    "position": p.get("display_position"),
-                }
-            )
-
-    # ----------- WRITE FILES ----------- #
-
-    df_rosters = pd.DataFrame(roster_rows).drop_duplicates(
-        subset=["team_key", "player_key"]
-    )
-    df_rosters.to_csv(ROSTERS_CSV, index=False)
-    print(f"✅ Wrote {len(df_rosters)} rows → {ROSTERS_CSV}")
-
-    df_standings = pd.DataFrame(standings_rows).drop_duplicates(
-        subset=["team_key"]
-    )
-    df_standings.to_csv(STANDINGS_CSV, index=False)
-    print(f"✅ Wrote {len(df_standings)} rows → {STANDINGS_CSV}")
+    df_roster = pd.DataFrame(roster_rows).drop_duplicates(subset=["team_key","player_key"])
+    df_roster.to_csv("team_rosters.csv", index=False)
+    print(f"Saved {len(df_roster)} rows to team_rosters.csv")
 
 
 if __name__ == "__main__":
