@@ -11,61 +11,94 @@ def as_list(x):
         return []
     return [x]
 
-def unwrap(node):
-    if isinstance(node, list):
-        return node[0]
-    return node
+def unwrap(x):
+    if isinstance(x, list):
+        return x[0]
+    return x
 
 oauth = OAuth2(None, None, from_file="oauth2.json")
 
-# ---------- STANDINGS ----------
-print("Fetching league standings...")
+# -------------------------------------------------
+# FETCH TEAMS (MOST RELIABLE ENDPOINT)
+# -------------------------------------------------
+print("Fetching league teams...")
+
 resp = oauth.session.get(
-    f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/standings?format=json"
+    f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/teams?format=json"
 ).json()
 
 league = unwrap(resp["fantasy_content"]["league"])
-teams_node = unwrap(league["standings"])["teams"]["team"]
+teams_node = league["teams"]["team"]
 teams = as_list(teams_node)
 
-standings_rows = []
+print(f"Found {len(teams)} teams")
+
 team_keys = []
+team_names = {}
 
 for t in teams:
     team = unwrap(t)
     team_keys.append(team["team_key"])
-    standings_rows.append({
-        "team_key": team["team_key"],
-        "team_name": team["name"],
-        "rank": team["team_standings"]["rank"],
-        "wins": team["team_standings"]["outcome_totals"]["wins"],
-        "losses": team["team_standings"]["outcome_totals"]["losses"],
-        "ties": team["team_standings"]["outcome_totals"]["ties"],
-        "pct": team["team_standings"]["outcome_totals"]["percentage"],
-    })
+    team_names[team["team_key"]] = team["name"]
+
+# -------------------------------------------------
+# FETCH STANDINGS (OPTIONAL BUT NOW SAFE)
+# -------------------------------------------------
+print("Fetching standings...")
+
+standings_rows = []
+
+try:
+    resp = oauth.session.get(
+        f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/standings?format=json"
+    ).json()
+
+    league = unwrap(resp["fantasy_content"]["league"])
+    standings = unwrap(league["standings"])
+    teams_standings = as_list(standings["teams"]["team"])
+
+    for t in teams_standings:
+        team = unwrap(t)
+        stats = team["team_standings"]["outcome_totals"]
+
+        standings_rows.append({
+            "team_key": team["team_key"],
+            "team_name": team["name"],
+            "rank": team["team_standings"]["rank"],
+            "wins": stats["wins"],
+            "losses": stats["losses"],
+            "ties": stats["ties"],
+            "pct": stats["percentage"],
+        })
+
+except Exception as e:
+    print("⚠️ Standings not available:", e)
 
 pd.DataFrame(standings_rows).to_csv("standings.csv", index=False)
 print(f"✅ Wrote {len(standings_rows)} standings rows")
 
-# ---------- ROSTERS ----------
+# -------------------------------------------------
+# FETCH ROSTERS
+# -------------------------------------------------
 print("Fetching team rosters...")
+
 roster_rows = []
 
 for team_key in team_keys:
+    print(f"→ {team_key}")
+
     resp = oauth.session.get(
         f"https://fantasysports.yahooapis.com/fantasy/v2/team/{team_key}/roster?format=json"
     ).json()
 
     team = unwrap(resp["fantasy_content"]["team"])
-    team_name = team["name"]
-
     players = as_list(unwrap(team["roster"])["players"]["player"])
 
     for p in players:
         player = unwrap(p)
         roster_rows.append({
             "team_key": team_key,
-            "team_name": team_name,
+            "team_name": team_names.get(team_key),
             "player_key": player["player_key"],
             "player_name": player["name"]["full"],
             "position": player.get("display_position"),
