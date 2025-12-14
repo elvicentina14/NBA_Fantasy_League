@@ -8,50 +8,36 @@ def as_list(x):
     return [x]
 
 
-def first_dict(lst):
-    for item in as_list(lst):
+def first_dict(items):
+    """
+    Return the first dict found in a list.
+    """
+    for item in as_list(items):
         if isinstance(item, dict):
             return item
-    return None
+    return {}
 
 
-def find_all(node, key):
+def find_all_dicts(items):
     """
-    Recursively find ALL values for key inside Yahoo-style list/dict trees
+    Return all dicts found in a list.
     """
-    found = []
-
-    if isinstance(node, dict):
-        for k, v in node.items():
-            if k == key:
-                found.extend(as_list(v))
-            else:
-                found.extend(find_all(v, key))
-
-    elif isinstance(node, list):
-        for item in node:
-            found.extend(find_all(item, key))
-
-    return found
+    return [x for x in as_list(items) if isinstance(x, dict)]
 
 
-def extract_fragment(lst, key):
+def safe_get(obj, *keys):
     """
-    Scan list[dict] and return dict[key] if present
+    Safely walk nested dict/list structures.
     """
-    for frag in as_list(lst):
-        if isinstance(frag, dict) and key in frag:
-            return frag[key]
-    return None
-
-
-def extract_name(lst):
-    """
-    Extract name.full safely
-    """
-    for frag in as_list(lst):
-        if isinstance(frag, dict) and "name" in frag:
-            name_block = frag["name"]
-            if isinstance(name_block, list) and name_block:
-                return name_block[0].get("full")
-    return None
+    cur = obj
+    for k in keys:
+        if isinstance(cur, dict):
+            cur = cur.get(k)
+        elif isinstance(cur, list):
+            try:
+                cur = cur[k]
+            except Exception:
+                return None
+        else:
+            return None
+    return cur
