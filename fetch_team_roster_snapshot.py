@@ -2,51 +2,64 @@
 
 import csv
 import os
-from datetime import datetime, timezone
+from datetime import datetime
 from yahoo_oauth import OAuth2
-from yahoo_utils import as_list, first_dict, find_all, extract_fragment, extract_name
+from yahoo_utils import as_list, first_dict
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-TS = datetime.now(timezone.utc).isoformat()
+OUT_FILE = "fact_team_roster_snapshot.csv"
 
-oauth = OAuth2(None, None, from_file="oauth2.json")
 
-url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/teams?format=json"
-r = oauth.session.get(url)
-r.raise_for_status()
-data = r.json()
+def get_oauth():
+    return OAuth2(None, None, from_file="oauth2.json")
 
-league = first_dict(find_all(data, "league"))
-teams = find_all(league, "team")
 
-rows = []
+def main():
+    oauth = get_oauth()
 
-for team in teams:
-    team_key = extract_fragment(team, "team_key")
-    team_name = extract_name(team)
+    url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/teams"
+    r = oauth.session.get(url, params={"format": "json"})
+    r.raise_for_status()
+    data = r.json()
 
-    roster_players = find_all(team, "player")
-    for p in roster_players:
-        rows.append({
-            "timestamp": TS,
-            "team_key": team_key,
-            "team_name": team_name,
-            "player_key": extract_fragment(p, "player_key"),
-            "player_name": extract_name(p),
-        })
+    league = first_dict(data["fantasy_content"]["league"])
+    teams = as_list(league.get("teams", {}).get("team"))
 
-if not rows:
-    print("WARNING: No roster rows extracted")
+    rows = []
+    snapshot_ts = datetime.utcnow().isoformat()
 
-file_exists = os.path.exists("fact_team_roster_snapshot.csv")
+    for team in teams:
+        team_dict = first_dict(team)
+        team_key = team_dict.get("team_key")
+        team_name = team_dict.get("name")
 
-with open("fact_team_roster_snapshot.csv", "a", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(
-        f,
-        fieldnames=["timestamp", "team_key", "team_name", "player_key", "player_name"]
-    )
-    if not file_exists:
-        writer.writeheader()
-    writer.writerows(rows)
+        roster_block = team_dict.get("roster", {})
+        players = as_list(roster_block.get("players", {}).get("player"))
 
-print(f"Appended {len(rows)} rows to fact_team_roster_snapshot.csv")
+        for p in players:
+            pdata = first_dict(p)
+            rows.append({
+                "snapshot_ts": snapshot_ts,
+                "team_key": team_key,
+                "team_name": team_name,
+                "player_key": pdata.get("player_key"),
+                "player_name": pdata.get("name", {}).get("full"),
+            })
+
+    if not rows:
+        print("No roster rows found")
+        return
+
+    file_exists = os.path.exists(OUT_FILE)
+
+    with open(OUT_FILE, "a", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=rows[0].keys())
+        if not file_exists:
+            writer.writeheader()
+        writer.writerows(rows)
+
+    print(f"Appended {len(rows)} rows to {OUT_FILE}")
+
+
+if __name__ == "__main__":
+    main()
