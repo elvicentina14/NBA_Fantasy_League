@@ -8,36 +8,17 @@ def as_list(x):
     return [x]
 
 
-def first_dict(items):
+def merge_kv_list(block):
     """
-    Return the first dict found in a list.
+    Yahoo pattern:
+    [
+      {"key1": value1},
+      {"key2": value2}
+    ]
+    → {"key1": value1, "key2": value2}
     """
-    for item in as_list(items):
+    out = {}
+    for item in as_list(block):
         if isinstance(item, dict):
-            return item
-    return {}
-
-
-def find_all_dicts(items):
-    """
-    Return all dicts found in a list.
-    """
-    return [x for x in as_list(items) if isinstance(x, dict)]
-
-
-def safe_get(obj, *keys):
-    """
-    Safely walk nested dict/list structures.
-    """
-    cur = obj
-    for k in keys:
-        if isinstance(cur, dict):
-            cur = cur.get(k)
-        elif isinstance(cur, list):
-            try:
-                cur = cur[k]
-            except Exception:
-                return None
-        else:
-            return None
-    return cur
+            out.update(item)
+    return out
