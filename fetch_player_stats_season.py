@@ -1,38 +1,47 @@
-import os
-import pandas as pd
+import os, csv
 from yahoo_oauth import OAuth2
-from yahoo_utils import ensure_list, unwrap
 
-LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-
+LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 oauth = OAuth2(None, None, from_file="oauth2.json")
-session = oauth.session
+ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
 
-players = pd.read_csv("league_players.csv")
+def get(url):
+    r = oauth.session.get(url)
+    r.raise_for_status()
+    return r.json()
+
+data = get(f"{ROOT}/league/{LEAGUE_KEY}/players/stats;type=season?format=json")
+players = data["fantasy_content"]["league"][1]["players"]
 
 rows = []
 
-for i, p in players.iterrows():
-    print(f"[{i+1}/{len(players)}] {p.player_key}")
-
-    url = f"https://fantasysports.yahooapis.com/fantasy/v2/player/{p.player_key}/stats;type=season;season=2025?format=json"
-    r = session.get(url)
-    data = r.json()
-
-    try:
-        stats = data["fantasy_content"]["player"][1]["player_stats"]["stats"]
-    except KeyError:
+for _, p in players.items():
+    if not isinstance(p, dict):
         continue
 
-    for s in ensure_list(stats):
-        stat = unwrap(s)["stat"]
+    plist = p["player"][0]
+    base = {"player_key": None, "player_name": None}
+
+    for item in plist:
+        if isinstance(item, dict):
+            if "player_key" in item:
+                base["player_key"] = item["player_key"]
+            if "name" in item:
+                base["player_name"] = item["name"]["full"]
+
+    stats = p["player"][1]["player_stats"]["stats"]["stat"]
+    for s in stats:
         rows.append({
-            "player_key": p.player_key,
-            "stat_id": stat["stat_id"],
-            "value": stat.get("value")
+            **base,
+            "stat_id": s["stat_id"],
+            "stat_value": s["value"]
         })
 
-df = pd.DataFrame(rows)
-df.to_parquet("player_stats_full.parquet", index=False)
+with open("player_stats_season.csv", "w", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(
+        f, fieldnames=["player_key", "player_name", "stat_id", "stat_value"]
+    )
+    writer.writeheader()
+    writer.writerows(rows)
 
-print(f"Saved player_stats_full.parquet rows: {len(df)}")
+print(f"Wrote player_stats_season.csv rows: {len(rows)}")
