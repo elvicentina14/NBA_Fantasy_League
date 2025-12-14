@@ -1,0 +1,71 @@
+name: Dump Yahoo Fantasy JSON (one-off)
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Decode oauth2.json
+        env:
+          OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
+        run: |
+          echo "$OAUTH_B64" | base64 --decode > oauth2.json
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install deps
+        run: |
+          pip install yahoo_oauth requests
+
+      - name: Dump raw Yahoo JSON
+        env:
+          LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
+        run: |
+          python - << 'EOF'
+          from yahoo_oauth import OAuth2
+          import json, os
+
+          LEAGUE_KEY = os.environ["LEAGUE_KEY"]
+          oauth = OAuth2(None, None, from_file="oauth2.json")
+          s = oauth.session
+
+          def dump(url, fname):
+              r = s.get(url)
+              r.raise_for_status()
+              with open(fname, "w") as f:
+                  json.dump(r.json(), f, indent=2)
+              print(f"Wrote {fname}")
+
+          dump(
+            f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/players;start=0;count=5?format=json",
+            "sample_players.json"
+          )
+
+          dump(
+            f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/teams?format=json",
+            "sample_teams.json"
+          )
+
+          dump(
+            "https://fantasysports.yahooapis.com/fantasy/v2/player/466.p.5352/stats;date=2025-12-13?format=json",
+            "sample_jokic_stats.json"
+          )
+          EOF
+
+      - name: Commit JSON dumps
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add sample_*.json
+          git commit -m "Add raw Yahoo Fantasy JSON samples"
+          git push
