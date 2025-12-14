@@ -1,46 +1,54 @@
-import os
-import csv
+import os, csv, sys
 from yahoo_oauth import OAuth2
-import requests
-from yahoo_utils import ensure_list, unwrap
 
-LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-
+LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 oauth = OAuth2(None, None, from_file="oauth2.json")
-session = oauth.session
+ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
 
-teams_url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/teams?format=json"
-teams = session.get(teams_url).json()
+def get(url):
+    r = oauth.session.get(url)
+    r.raise_for_status()
+    return r.json()
 
-team_nodes = ensure_list(
-    teams["fantasy_content"]["league"][1]["teams"].values()
-)[1:]
+teams = get(f"{ROOT}/league/{LEAGUE_KEY}/teams?format=json")
+teams_node = teams["fantasy_content"]["league"][1]["teams"]
 
 rows = []
 
-for t in team_nodes:
-    t = unwrap(t)["team"]
-    team_key = unwrap(t)[0]["team_key"]
-    team_name = unwrap(t)[0]["name"]
+for k, t in teams_node.items():
+    if not k.isdigit():
+        continue
 
-    roster_url = f"https://fantasysports.yahooapis.com/fantasy/v2/team/{team_key}/roster?format=json"
-    roster = session.get(roster_url).json()
+    team_key = t["team"][0][0]["team_key"]
+    team_name = t["team"][0][2]["name"]
 
+    roster = get(f"{ROOT}/team/{team_key}/roster?format=json")
     players = roster["fantasy_content"]["team"][1]["roster"]["0"]["players"]
 
-    for p in ensure_list(players.values())[1:]:
-        p = unwrap(p)["player"]
-        meta = unwrap(p)[0]
-
-        rows.append({
+    for _, p in players.items():
+        plist = p["player"][0]
+        row = {
             "team_key": team_key,
             "team_name": team_name,
-            "player_key": meta["player_key"],
-            "player_name": meta["name"]["full"]
-        })
+            "player_key": None,
+            "player_name": None,
+        }
+
+        for item in plist:
+            if not isinstance(item, dict):
+                continue
+            if "player_key" in item:
+                row["player_key"] = item["player_key"]
+            if "name" in item:
+                row["player_name"] = item["name"]["full"]
+
+        if row["player_key"]:
+            rows.append(row)
 
 with open("team_rosters.csv", "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(f, fieldnames=rows[0].keys())
+    writer = csv.DictWriter(
+        f, fieldnames=["team_key", "team_name", "player_key", "player_name"]
+    )
     writer.writeheader()
     writer.writerows(rows)
 
