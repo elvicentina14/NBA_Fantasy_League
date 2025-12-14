@@ -2,8 +2,8 @@ name: Update fantasy data
 
 on:
   schedule:
-    - cron: '*/30 * * * *'   # every 30 minutes
-  workflow_dispatch: {}       # manual trigger
+    - cron: '*/30 * * * *'
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -13,74 +13,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo (persist credentials for push)
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           persist-credentials: true
-          fetch-depth: 0
 
-      - name: Decode oauth2.json from base64 secret and validate
+      - name: Decode oauth
         env:
           OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
         run: |
-          if [ -z "$OAUTH_B64" ]; then
-            echo "ERROR: OAUTH2_JSON_B64 secret is empty"
-            exit 2
-          fi
-
-          # Decode base64 into oauth2.json
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
+          python - <<EOF
+          import json; json.load(open("oauth2.json")); print("oauth ok")
+          EOF
 
-          # Quick JSON sanity check
-          python -c "import json,sys; json.load(open('oauth2.json')); print('oauth2.json OK')"
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Install requirements
-        run: |
-          python -m pip install --upgrade pip
-          pip install yahoo_oauth requests pandas pyarrow
+      - name: Install deps
+        run: pip install yahoo_oauth pandas pyarrow requests
 
-      - name: Run data fetch scripts
+      - name: Run fetchers
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
-          set -e
-
-          # Ensure scripts exist in repo root
-          for f in fetch_players_and_stats.py fetch_rosters_and_standings.py fetch_full_player_stats.py; do
-            if [ ! -f "$f" ]; then
-              echo "$f not found in repo root"
-              ls -la
-              exit 2
-            fi
-          done
-
-          echo "Running fetch_players_and_stats.py..."
           python fetch_players_and_stats.py
-
-          echo "Running fetch_rosters_and_standings.py..."
           python fetch_rosters_and_standings.py
-
-          echo "Running fetch_full_player_stats.py..."
           python fetch_full_player_stats.py
 
-      - name: Commit and push outputs
+      - name: Commit
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # Add daily stats + parquet outputs + existing CSV outputs you still care about
-          git add player_stats_daily || true
-          git add player_stats_full.parquet combined_player_view_full.parquet || true
-          git add standings.csv team_rosters.csv league_players.csv || true
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Update fantasy data outputs (automated)"
-            git push
-          fi
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add *.csv *.parquet player_stats_daily || true
+          git diff --cached --quiet || git commit -m "Update fantasy data"
+          git push
