@@ -2,7 +2,7 @@ name: Update fantasy data
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -11,35 +11,25 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-
-      - name: Decode oauth
-        env:
-          OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
-        run: echo "$OAUTH_B64" | base64 --decode > oauth2.json
 
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: '3.10'
 
       - run: pip install yahoo_oauth pandas pyarrow requests
 
-      - name: Run pipeline
-        env:
+      - run: echo "${{ secrets.OAUTH2_JSON_B64 }}" | base64 --decode > oauth2.json
+
+      - env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
           python fetch_players.py
           python fetch_rosters.py
           python fetch_player_stats_season.py
 
-      - name: Commit outputs
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add *.csv *.parquet || true
-          git diff --cached --quiet || git commit -m "Update fantasy data"
+      - run: |
+          git add *.csv
+          git commit -m "Update fantasy data" || true
           git push
