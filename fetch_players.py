@@ -1,4 +1,3 @@
-# fetch_players.py
 from yahoo_oauth import OAuth2
 import os, csv
 from yahoo_utils import as_list, first_dict
@@ -9,8 +8,7 @@ OUT = "league_players.csv"
 oauth = OAuth2(None, None, from_file="oauth2.json")
 
 rows = []
-start = 0
-count = 25
+start, count = 0, 25
 
 while True:
     url = (
@@ -23,15 +21,14 @@ while True:
     if len(league) < 2:
         break
 
-    players_container = first_dict(league[1])
-    players_block = first_dict(players_container.get("players"))
+    players_block = first_dict(first_dict(league[1]).get("players"))
     players = as_list(players_block.get("player"))
 
     if not players:
         break
 
-    for p_raw in players:
-        p = first_dict(p_raw)
+    for raw in players:
+        p = first_dict(raw)
         name = first_dict(p.get("name"))
 
         rows.append({
@@ -44,8 +41,8 @@ while True:
     start += count
 
 with open(OUT, "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(f, fieldnames=rows[0].keys())
-    writer.writeheader()
-    writer.writerows(rows)
+    w = csv.DictWriter(f, fieldnames=rows[0].keys())
+    w.writeheader()
+    w.writerows(rows)
 
 print(f"Wrote league_players.csv rows: {len(rows)}")
