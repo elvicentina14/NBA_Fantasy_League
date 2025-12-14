@@ -1,12 +1,13 @@
-def first_dict(obj):
+# yahoo_normalize.py
+
+def first(obj):
     """
     Yahoo Fantasy API normalizer.
-    Always returns a dict or {}.
+    Always returns a dict (or {}).
+    Safely unwraps list -> dict -> list chains.
     """
-    if isinstance(obj, list):
-        if len(obj) == 0:
+    while isinstance(obj, list):
+        if not obj:
             return {}
-        return first_dict(obj[0])
-    if isinstance(obj, dict):
-        return obj
-    return {}
+        obj = obj[0]
+    return obj if isinstance(obj, dict) else {}
