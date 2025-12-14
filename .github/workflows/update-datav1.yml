@@ -1,35 +1,31 @@
-name: Update Fantasy Snapshots
+name: Run snapshots
 
 on:
   schedule:
-    - cron: "0 3 * * *"   # once daily, consistent snapshot
+    - cron: "0 * * * *"
   workflow_dispatch: {}
 
 permissions:
   contents: write
 
 jobs:
-  update:
+  run:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
-      - name: Decode oauth2.json
+      - name: Decode oauth
         env:
           OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
-        run: |
-          echo "$OAUTH_B64" | base64 --decode > oauth2.json
+        run: echo "$OAUTH_B64" | base64 --decode > oauth2.json
 
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
       - name: Install deps
-        run: |
-          pip install yahoo_oauth requests
+        run: pip install yahoo_oauth pandas
 
       - name: Run snapshots
         env:
@@ -39,10 +35,10 @@ jobs:
           python fetch_team_roster_snapshot.py
           python fetch_player_season_snapshot.py
 
-      - name: Commit outputs
+      - name: Commit
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add *.csv
-          git diff --cached --quiet || git commit -m "Daily fantasy snapshots"
+          git diff --cached --quiet || git commit -m "Daily Yahoo Fantasy snapshots"
           git push
