@@ -1,55 +1,94 @@
-# fetch_players.py
 import csv
 import os
-import time
+import requests
 from yahoo_oauth import OAuth2
+from datetime import datetime
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
+BASE_URL = "https://fantasysports.yahooapis.com/fantasy/v2"
+OUTFILE = "league_players.csv"
 
 oauth = OAuth2(None, None, from_file="oauth2.json")
-session = oauth.session
 
-def flatten(frags):
-    out = {}
-    for f in frags:
-        if isinstance(f, dict):
-            out.update(f)
-    return out
+def first_dict(x):
+    """Yahoo often wraps dicts inside single-item lists"""
+    if isinstance(x, list):
+        return x[0] if x else {}
+    return x or {}
 
-rows = []
+def extract_players(players_block):
+    """
+    players_block example:
+    {
+      "count": 25,
+      "0": {"player": [...]},
+      "1": {"player": [...]}
+    }
+    """
+    rows = []
+
+    for k, v in players_block.items():
+        if not k.isdigit():
+            continue
+
+        wrapper = first_dict(v)
+        player = first_dict(wrapper.get("player", []))
+
+        name = first_dict(player.get("name", []))
+
+        rows.append({
+            "player_key": player.get("player_key"),
+            "player_id": player.get("player_id"),
+            "editorial_player_key": player.get("editorial_player_key"),
+            "player_name": name.get("full"),
+            "position_type": player.get("position_type"),
+            "eligible_positions": ",".join(
+                p["position"]
+                for p in player.get("eligible_positions", [])
+                if "position" in p
+            ),
+            "timestamp": datetime.utcnow().isoformat()
+        })
+
+    return rows
+
+all_rows = []
 start = 0
 count = 25
 
 while True:
-    url = f"{ROOT}/league/{LEAGUE_KEY}/players;start={start};count={count}?format=json"
-    r = session.get(url).json()
+    url = f"{BASE_URL}/league/{LEAGUE_KEY}/players;start={start};count={count}?format=json"
+    r = oauth.session.get(url)
+    r.raise_for_status()
+    data = r.json()
 
-    players = (
-        r["fantasy_content"]["league"][1]["players"]
+    league = first_dict(
+        first_dict(data["fantasy_content"]["league"])
     )
 
-    if str(start) not in players:
-        print(f"No players found on page start={start}; stopping")
-        break
+    players_block = first_dict(league.get("players", {}))
+    page_count = int(players_block.get("count", 0))
 
-    for i in range(int(players["count"])):
-        p = players[str(i)]["player"]
-        meta = flatten(p)
+    # ✅ IMPORTANT FIX: do NOT stop on empty pages after page 0
+    if page_count == 0:
+        if start == 0:
+            print("No players returned on first page; aborting")
+            break
+        else:
+            print(f"No players on page start={start}; skipping")
+            start += count
+            continue
 
-        rows.append({
-            "player_key": meta.get("player_key"),
-            "player_id": meta.get("player_id"),
-            "editorial_player_key": meta.get("editorial_player_key"),
-            "player_name": meta.get("name", {}).get("full")
-        })
+    rows = extract_players(players_block)
+    all_rows.extend(rows)
 
     start += count
-    time.sleep(0.2)
 
-with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
-    w = csv.DictWriter(f, fieldnames=rows[0].keys())
-    w.writeheader()
-    w.writerows(rows)
+# --- WRITE OUTPUT ---
+if all_rows:
+    with open(OUTFILE, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=all_rows[0].keys())
+        writer.writeheader()
+        writer.writerows(all_rows)
 
-print(f"Wrote {len(rows)} rows to league_players.csv")
+print(f"Wrote {len(all_rows)} rows to {OUTFILE}")
