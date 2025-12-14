@@ -1,58 +1,49 @@
+from yahoo_oauth import OAuth2
 import os, csv
 from datetime import datetime, timezone
-from yahoo_oauth import OAuth2
-from yahoo_utils import iter_indexed_dict, merge_fragments
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-SNAPSHOT_DATE = datetime.now(timezone.utc).date().isoformat()
-ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
+today = datetime.now(timezone.utc).date().isoformat()
 
 oauth = OAuth2(None, None, from_file="oauth2.json")
 s = oauth.session
 
+league = s.get(
+    f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/teams?format=json"
+).json()
+
+teams = league["fantasy_content"]["league"][1]["teams"]
+
 rows = []
 
-# --- fetch teams ---
-teams_json = s.get(f"{ROOT}/league/{LEAGUE_KEY}/teams?format=json").json()
-teams_node = teams_json["fantasy_content"]["league"][1]["teams"]
+for i in range(int(teams["count"])):
+    team = teams[str(i)]["team"]
+    team_key = team[0]["team_key"]
+    team_name = team[0]["name"]
 
-for t in iter_indexed_dict(teams_node):
-    team_block = t["team"][0]
-    team = merge_fragments(team_block)
+    roster = s.get(
+        f"https://fantasysports.yahooapis.com/fantasy/v2/team/{team_key}/roster?format=json"
+    ).json()
 
-    team_key = team.get("team_key")
-    team_name = team.get("name")
+    players = roster["fantasy_content"]["team"][1]["roster"]["0"]["players"]
 
-    # --- fetch roster ---
-    roster_json = s.get(f"{ROOT}/team/{team_key}/roster?format=json").json()
-    players_node = roster_json["fantasy_content"]["team"][1]["roster"]["0"]["players"]
-
-    for p in iter_indexed_dict(players_node):
-        player_block = p["player"][0]
-        player = merge_fragments(player_block)
-
+    for p in players.values():
+        meta = p["player"][0]
         rows.append({
-            "snapshot_date": SNAPSHOT_DATE,
+            "snapshot_date": today,
             "team_key": team_key,
             "team_name": team_name,
-            "player_key": player.get("player_key"),
-            "player_name": player.get("name", {}).get("full"),
-            "position": player.get("display_position"),
+            "player_key": meta["player_key"],
+            "player_name": meta["name"]["full"]
         })
 
-out_file = "fact_team_roster_snapshot.csv"
-write_header = not os.path.exists(out_file)
+file = "fact_team_roster_snapshot.csv"
+exists = os.path.exists(file)
 
-with open(out_file, "a", newline="", encoding="utf-8") as f:
-    w = csv.DictWriter(
-        f,
-        fieldnames=[
-            "snapshot_date","team_key","team_name",
-            "player_key","player_name","position"
-        ]
-    )
-    if write_header:
+with open(file, "a", newline="", encoding="utf-8") as f:
+    w = csv.DictWriter(f, fieldnames=rows[0].keys())
+    if not exists:
         w.writeheader()
     w.writerows(rows)
 
-print(f"Appended {len(rows)} rows to {out_file}")
+print(f"Appended {len(rows)} rows to {file}")
