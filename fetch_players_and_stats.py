@@ -1,33 +1,31 @@
-import os, json, time, csv, sys
+import os, sys, csv, time
 from yahoo_oauth import OAuth2
 
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 if not LEAGUE_KEY:
-    print("ERROR: set LEAGUE_KEY environment variable")
-    sys.exit(2)
+    sys.exit("LEAGUE_KEY not set")
 
 oauth = OAuth2(None, None, from_file="oauth2.json")
 ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
 
-def safe_get(url):
+def get(url):
     r = oauth.session.get(url)
     print("GET", r.status_code, url)
     if r.status_code != 200:
-        print("HTTP", r.status_code, r.text[:500])
         return None
     return r.json()
 
-def find_key(obj, key):
-    if isinstance(obj, dict):
-        if key in obj:
-            return obj[key]
-        for v in obj.values():
-            r = find_key(v, key)
+def find(node, key):
+    if isinstance(node, dict):
+        if key in node:
+            return node[key]
+        for v in node.values():
+            r = find(v, key)
             if r is not None:
                 return r
-    elif isinstance(obj, list):
-        for e in obj:
-            r = find_key(e, key)
+    elif isinstance(node, list):
+        for i in node:
+            r = find(i, key)
             if r is not None:
                 return r
     return None
@@ -38,50 +36,41 @@ count = 25
 
 while True:
     url = f"{ROOT}/league/{LEAGUE_KEY}/players;status=ALL;start={start};count={count}?format=json"
-    j = safe_get(url)
+    j = get(url)
     if not j:
         break
 
-    players_node = find_key(j, "players")
-    if not players_node:
+    players_node = find(j, "players")
+    if not isinstance(players_node, dict):
         break
 
-    for k,v in players_node.items():
-        if k == "count":
-            continue
-        wrapper = v.get("player") if isinstance(v, dict) else None
+    for _, entry in [(k,v) for k,v in players_node.items() if k != "count"]:
+        wrapper = entry.get("player")
         if not wrapper:
             continue
 
-        player_key = None
-        player_id = None
-        editorial_key = None
-        name = None
+        wrapper = flatten_list(wrapper)
 
+        pk = pid = epk = name = None
         for item in wrapper:
             if not isinstance(item, dict):
                 continue
-            player_key = player_key or item.get("player_key")
-            player_id = player_id or item.get("player_id")
-            editorial_key = editorial_key or item.get("editorial_player_key")
-            if "name" in item:
-                nm = item["name"]
-                if isinstance(nm, dict):
-                    name = nm.get("full")
-                else:
-                    name = nm
+            pk = pk or item.get("player_key")
+            pid = pid or item.get("player_id")
+            epk = epk or item.get("editorial_player_key")
+            name = name or extract_name(item)
 
         players.append({
-            "player_key": player_key,
-            "player_id": player_id,
-            "editorial_player_key": editorial_key,
+            "player_key": pk,
+            "player_id": pid,
+            "editorial_player_key": epk,
             "player_name": name
         })
 
     if len(players) < start + count:
         break
     start += count
-    time.sleep(0.3)
+    time.sleep(0.25)
 
 with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
     w = csv.DictWriter(
@@ -89,7 +78,6 @@ with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
         fieldnames=["player_key","player_id","editorial_player_key","player_name"]
     )
     w.writeheader()
-    for p in players:
-        w.writerow(p)
+    w.writerows(players)
 
-print("Wrote league_players.csv rows:", len(players))
+print("league_players.csv rows:", len(players))
