@@ -16,17 +16,33 @@ count = int(players_node["count"])
 rows = []
 
 for i in range(count):
-    player_wrapper = players_node[str(i)]["player"]
+    fragments = players_node[str(i)]["player"][0]
 
-    # player_wrapper[0] is a LIST of fragments
-    # fragment[0] is the canonical identity dict
-    meta = player_wrapper[0][0]
+    player_key = None
+    editorial_player_key = None
+    player_id = None
+    player_name = None
+
+    for frag in fragments:
+        if not isinstance(frag, dict):
+            continue
+
+        if "player_key" in frag:
+            player_key = frag["player_key"]
+            editorial_player_key = frag.get("editorial_player_key")
+            player_id = frag.get("player_id")
+
+        if "name" in frag and "full" in frag["name"]:
+            player_name = frag["name"]["full"]
+
+    if not player_key or not player_name:
+        raise RuntimeError(f"Malformed player object at index {i}")
 
     rows.append({
-        "player_key": meta["player_key"],                       # guaranteed
-        "editorial_player_key": meta.get("editorial_player_key"),  # optional
-        "player_id": meta.get("player_id"),                     # optional
-        "player_name": meta["name"]["full"],                    # guaranteed
+        "player_key": player_key,
+        "editorial_player_key": editorial_player_key,
+        "player_id": player_id,
+        "player_name": player_name,
     })
 
 with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
