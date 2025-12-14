@@ -1,77 +1,47 @@
+# fetch_player_season_snapshot.py
 from yahoo_oauth import OAuth2
-import os, csv
+import csv, os
 from datetime import datetime, timezone
+from yahoo_normalize import first
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
+PLAYERS_CSV = "league_players.csv"
+OUT = "fact_player_season_snapshot.csv"
+SNAPSHOT_TS = datetime.now(timezone.utc).isoformat()
 
 oauth = OAuth2(None, None, from_file="oauth2.json")
-s = oauth.session
-
-timestamp = datetime.now(timezone.utc).isoformat()
-
-# Load players
-players = []
-with open("league_players.csv", newline="", encoding="utf-8") as f:
-    reader = csv.DictReader(f)
-    for r in reader:
-        players.append(r["player_key"])
 
 rows = []
 
-for idx, player_key in enumerate(players, start=1):
-    print(f"[{idx}/{len(players)}] Fetching season stats for {player_key}")
+with open(PLAYERS_CSV, newline="", encoding="utf-8") as f:
+    players = list(csv.DictReader(f))
 
-    url = f"{ROOT}/player/{player_key}/stats;type=season?format=json"
-    data = s.get(url).json()
+for idx, p in enumerate(players, 1):
+    print(f"[{idx}/{len(players)}] {p['player_key']}")
 
-    player_node = data["fantasy_content"]["player"][0]
+    url = f"https://fantasysports.yahooapis.com/fantasy/v2/player/{p['player_key']}/stats?format=json"
+    data = oauth.session.get(url).json()
 
-    player_name = None
-    stats_frag = None
+    player = first(first(data["fantasy_content"]["player"]))
+    stats_block = first(player.get("player_stats"))
+    stats = first(stats_block.get("stats"))
+    stat_list = stats.get("stat", [])
 
-    for frag in player_node:
-        if not isinstance(frag, dict):
-            continue
-
-        if "name" in frag:
-            player_name = frag["name"]["full"]
-
-        if "player_stats" in frag:
-            for ps_frag in frag["player_stats"]:
-                if isinstance(ps_frag, dict) and "stats" in ps_frag:
-                    stats_frag = ps_frag["stats"]
-
-    if not stats_frag:
-        continue
-
-    # stats_frag is a LIST
-    for stat_entry in stats_frag:
-        if not isinstance(stat_entry, dict):
-            continue
-
-        stat = stat_entry.get("stat")
-        if not stat:
-            continue
-
+    for s in stat_list:
+        stat = first(s)
         rows.append({
-            "timestamp": timestamp,
-            "player_key": player_key,
-            "player_name": player_name,
+            "snapshot_ts": SNAPSHOT_TS,
+            "player_key": p["player_key"],
             "stat_id": stat.get("stat_id"),
             "stat_value": stat.get("value"),
         })
 
-# Write snapshot
-file_exists = os.path.exists("fact_player_season_snapshot.csv")
+file_exists = os.path.exists(OUT)
 
-with open("fact_player_season_snapshot.csv", "a", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(
-        f,
-        fieldnames=["timestamp", "player_key", "player_name", "stat_id", "stat_value"]
-    )
+with open(OUT, "a", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(f, fieldnames=rows[0].keys())
     if not file_exists:
         writer.writeheader()
     writer.writerows(rows)
 
-print(f"Appended {len(rows)} rows to fact_player_season_snapshot.csv")
+print(f"Appended {len(rows)} rows to {OUT}")
