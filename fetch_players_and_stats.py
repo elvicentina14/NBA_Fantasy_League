@@ -1,4 +1,7 @@
-import os, sys, csv, time
+import os
+import sys
+import csv
+import time
 from yahoo_oauth import OAuth2
 from yahoo_helpers import flatten_list, extract_name
 
@@ -15,7 +18,10 @@ def get(url):
     print("GET", r.status_code, url)
     if r.status_code != 200:
         return None
-    return r.json()
+    try:
+        return r.json()
+    except Exception:
+        return None
 
 
 def find(node, key):
@@ -39,7 +45,10 @@ start = 0
 count = 25
 
 while True:
-    url = f"{ROOT}/league/{LEAGUE_KEY}/players;status=ALL;start={start};count={count}?format=json"
+    url = (
+        f"{ROOT}/league/{LEAGUE_KEY}"
+        f"/players;status=ALL;start={start};count={count}?format=json"
+    )
     j = get(url)
     if not j:
         break
@@ -51,7 +60,10 @@ while True:
     for k, entry in players_node.items():
         if k == "count":
             continue
-        wrapper = entry.get("player") if isinstance(entry, dict) else None
+        if not isinstance(entry, dict):
+            continue
+
+        wrapper = entry.get("player")
         if not wrapper:
             continue
 
@@ -70,7 +82,7 @@ while True:
             "player_key": pk,
             "player_id": pid,
             "editorial_player_key": epk,
-            "player_name": name
+            "player_name": name,
         })
 
     if len(players) < start + count:
@@ -79,9 +91,19 @@ while True:
     start += count
     time.sleep(0.25)
 
+
+# ✅ CORRECT CSV WRITE (THIS FIXES YOUR CRASH)
 with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
-    w = csv.DictWriter(
+    writer = csv.DictWriter(
         f,
-        fieldnames=["player_key", "player_id", "editorial_player_key", "player_name"]
+        fieldnames=[
+            "player_key",
+            "player_id",
+            "editorial_player_key",
+            "player_name",
+        ],
     )
-    w.writehe
+    writer.writeheader()
+    writer.writerows(players)
+
+print("Wrote league_players.csv rows:", len(players))
