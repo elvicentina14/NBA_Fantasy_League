@@ -1,48 +1,95 @@
-name: Run snapshots
+name: Run Yahoo Fantasy Snapshots
 
 on:
   schedule:
-    - cron: '0 */6 * * *'
-  workflow_dispatch:
+    - cron: "*/30 * * * *"   # every 30 minutes
+  workflow_dispatch: {}
 
 permissions:
   contents: write
 
 jobs:
-  snapshot:
+  snapshots:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # -------------------------------------------------
+      # Checkout
+      # -------------------------------------------------
+      - name: Checkout repo
+        uses: actions/checkout@v4
         with:
           persist-credentials: true
+          fetch-depth: 0
 
-      - name: Decode oauth
+      # -------------------------------------------------
+      # Decode OAuth
+      # -------------------------------------------------
+      - name: Decode oauth2.json
         env:
           OAUTH_B64: ${{ secrets.OAUTH2_JSON_B64 }}
         run: |
-          echo "$OAUTH_B64" | base64 --decode > oauth2.json
+          if [ -z "$OAUTH_B64" ]; then
+            echo "OAUTH_B64 is missing"
+            exit 1
+          fi
 
-      - uses: actions/setup-python@v4
+          echo "$OAUTH_B64" | base64 --decode > oauth2.json
+          python - <<EOF
+          import json
+          json.load(open("oauth2.json"))
+          print("oauth2.json OK")
+          EOF
+
+      # -------------------------------------------------
+      # Python setup
+      # -------------------------------------------------
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
+      # -------------------------------------------------
+      # Install dependencies
+      # -------------------------------------------------
       - name: Install deps
         run: |
-          pip install yahoo_oauth pandas pyarrow
+          python -m pip install --upgrade pip
+          pip install yahoo_oauth requests pandas pyarrow
 
+      # -------------------------------------------------
+      # Run snapshots (NO set -e)
+      # -------------------------------------------------
       - name: Run snapshots
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
         run: |
-          python fetch_players.py
-          python fetch_team_roster_snapshot.py
-          python fetch_player_season_snapshot.py
+          echo "Running fetch_players.py"
+          python fetch_players.py || echo "fetch_players.py failed (continuing)"
 
-      - name: Commit
+          echo "Running fetch_team_roster_snapshot.py"
+          python fetch_team_roster_snapshot.py || echo "fetch_team_roster_snapshot.py failed (continuing)"
+
+          echo "Running fetch_player_season_snapshot.py"
+          python fetch_player_season_snapshot.py || echo "fetch_player_season_snapshot.py failed (continuing)"
+
+      # -------------------------------------------------
+      # Commit outputs
+      # -------------------------------------------------
+      - name: Commit snapshots
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions@github.com"
-          git add *.csv *.parquet || true
-          git diff --cached --quiet || git commit -m "Daily Yahoo Fantasy snapshots"
-          git push
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            league_players.csv \
+            fact_team_roster_snapshot.csv \
+            fact_player_season_snapshot.csv \
+            *.parquet || true
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update Yahoo Fantasy snapshots"
+            git push
+          fi
