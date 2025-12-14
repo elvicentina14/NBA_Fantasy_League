@@ -2,49 +2,59 @@
 
 import csv
 import os
-from datetime import datetime, timezone
+from datetime import datetime
 from yahoo_oauth import OAuth2
-from yahoo_utils import as_list, first_dict, find_all, extract_fragment
+from yahoo_utils import as_list, first_dict
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-TS = datetime.now(timezone.utc).isoformat()
+OUT_FILE = "fact_player_season_snapshot.csv"
 
-oauth = OAuth2(None, None, from_file="oauth2.json")
 
-players = []
-with open("league_players.csv", encoding="utf-8") as f:
-    players = list(csv.DictReader(f))
+def get_oauth():
+    return OAuth2(None, None, from_file="oauth2.json")
 
-rows = []
 
-for p in players:
-    pk = p["player_key"]
-    url = f"https://fantasysports.yahooapis.com/fantasy/v2/player/{pk}/stats?format=json"
-    r = oauth.session.get(url)
+def main():
+    oauth = get_oauth()
+    ts = datetime.utcnow().isoformat()
+
+    url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/players/stats"
+    r = oauth.session.get(url, params={"format": "json"})
     r.raise_for_status()
     data = r.json()
 
-    stats_blocks = find_all(data, "stats")
-    for sb in stats_blocks:
-        stats = find_all(sb, "stat")
+    league = first_dict(data["fantasy_content"]["league"])
+    players = as_list(league.get("players", {}).get("player"))
+
+    rows = []
+
+    for p in players:
+        pdata = first_dict(p)
+        stats = as_list(pdata.get("player_stats", {}).get("stats", {}).get("stat"))
+
         for s in stats:
+            stat = first_dict(s)
             rows.append({
-                "timestamp": TS,
-                "player_key": pk,
-                "stat_id": extract_fragment(s, "stat_id"),
-                "value": extract_fragment(s, "value"),
+                "snapshot_ts": ts,
+                "player_key": pdata.get("player_key"),
+                "stat_id": stat.get("stat_id"),
+                "value": stat.get("value"),
             })
 
-if not rows:
-    print("WARNING: No stats rows extracted")
+    if not rows:
+        print("No stats found")
+        return
 
-with open("fact_player_season_snapshot.csv", "a", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(
-        f,
-        fieldnames=["timestamp", "player_key", "stat_id", "value"]
-    )
-    if f.tell() == 0:
-        writer.writeheader()
-    writer.writerows(rows)
+    file_exists = os.path.exists(OUT_FILE)
 
-print(f"Appended {len(rows)} rows to fact_player_season_snapshot.csv")
+    with open(OUT_FILE, "a", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=rows[0].keys())
+        if not file_exists:
+            writer.writeheader()
+        writer.writerows(rows)
+
+    print(f"Appended {len(rows)} rows to {OUT_FILE}")
+
+
+if __name__ == "__main__":
+    main()
