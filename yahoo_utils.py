@@ -1,4 +1,5 @@
 # yahoo_utils.py
+
 def ensure_list(x):
     if x is None:
         return []
@@ -7,31 +8,24 @@ def ensure_list(x):
     return [x]
 
 
-def unwrap(node):
+def merge_fragments(fragments):
     """
-    Yahoo JSON returns:
-    - dict
-    - list
-    - int (!!!)
-    This normalizes everything to dict or list safely.
+    Yahoo 'player' or 'team' nodes are lists of dict fragments.
+    This merges them into a single dict safely.
     """
-    if isinstance(node, dict):
-        return node
-    if isinstance(node, list):
-        return node
-    return {}
-
-
-def extract_players(container):
-    """
-    Handles:
-    players: { 0: {...}, 1: {...} }
-    players: [ {...}, {...} ]
-    """
-    out = []
-    if isinstance(container, dict):
-        for _, v in container.items():
-            out.append(v)
-    elif isinstance(container, list):
-        out.extend(container)
+    out = {}
+    for frag in fragments:
+        if isinstance(frag, dict):
+            out.update(frag)
     return out
+
+
+def iter_indexed_dict(d):
+    """
+    Yahoo containers look like:
+      { "0": {...}, "1": {...}, "count": 14 }
+    This yields only numeric keys.
+    """
+    if not isinstance(d, dict):
+        return []
+    return [v for k, v in d.items() if k.isdigit()]
