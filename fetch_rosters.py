@@ -1,5 +1,5 @@
 # fetch_rosters.py
-import os, csv, sys, time
+import os, csv, time
 from yahoo_oauth import OAuth2
 
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
@@ -26,20 +26,36 @@ def find(obj, key):
                 return x
     return None
 
-teams = get(f"{ROOT}/league/{LEAGUE_KEY}/teams?format=json")
-teams_node = find(teams, "teams")
+# fetch teams
+teams_json = get(f"{ROOT}/league/{LEAGUE_KEY}/teams?format=json")
+teams_node = find(teams_json, "teams")
 
 rows = []
-for i in range(int(teams_node["count"])):
-    team = teams_node[str(i)]["team"]
+
+for i in range(int(teams_node.get("count", 0))):
+    team_entry = teams_node.get(str(i))
+    if not team_entry:
+        continue
+
+    team = team_entry.get("team", [])
     team_key = find(team, "team_key")
     team_name = find(team, "name")
 
-    roster = get(f"{ROOT}/team/{team_key}/roster?format=json")
-    players = find(roster, "players")
+    roster_json = get(f"{ROOT}/team/{team_key}/roster?format=json")
+    players_node = find(roster_json, "players")
 
-    for p in players.values():
+    if not isinstance(players_node, dict):
+        continue
+
+    for p in players_node.values():
+        # 🚨 THIS IS THE IMPORTANT GUARD
+        if not isinstance(p, dict):
+            continue
+        if "player" not in p:
+            continue
+
         wrapper = p["player"][0]
+
         rows.append({
             "team_key": team_key,
             "team_name": team_name,
@@ -51,8 +67,11 @@ for i in range(int(teams_node["count"])):
     time.sleep(0.15)
 
 with open("team_rosters.csv", "w", newline="", encoding="utf-8") as f:
-    w = csv.DictWriter(f, fieldnames=rows[0].keys())
-    w.writeheader()
-    w.writerows(rows)
+    writer = csv.DictWriter(
+        f,
+        fieldnames=["team_key", "team_name", "player_key", "player_name", "position"]
+    )
+    writer.writeheader()
+    writer.writerows(rows)
 
 print("Wrote team_rosters.csv rows:", len(rows))
