@@ -2,60 +2,68 @@
 
 import csv
 import os
+import requests
 from yahoo_oauth import OAuth2
-from yahoo_utils import as_list, first_dict, find_all, extract_fragment, extract_name
+from yahoo_utils import as_list, first_dict
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-PAGE_SIZE = 25
+OUT_FILE = "league_players.csv"
 
-oauth = OAuth2(None, None, from_file="oauth2.json")
 
-rows = []
-start = 0
+def get_oauth():
+    return OAuth2(None, None, from_file="oauth2.json")
 
-while True:
-    url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/players;start={start};count={PAGE_SIZE}?format=json"
-    print("INFO GET", url)
-    r = oauth.session.get(url)
+
+def fetch_page(oauth, start):
+    url = (
+        f"https://fantasysports.yahooapis.com/fantasy/v2/"
+        f"league/{LEAGUE_KEY}/players;start={start};count=25"
+    )
+    r = oauth.session.get(url, params={"format": "json"})
     r.raise_for_status()
-    data = r.json()
+    return r.json()
 
-    league = first_dict(find_all(data, "league"))
-    players_block = first_dict(find_all(league, "players"))
 
-    if not players_block:
-        start += PAGE_SIZE
-        continue
-
-    count = int(players_block.get("count", 0))
-    if count == 0 and start > 0:
-        break
-
-    players = find_all(players_block, "player")
-    if not players:
-        start += PAGE_SIZE
-        continue
+def extract_players(payload):
+    league = first_dict(payload["fantasy_content"]["league"])
+    players_block = league.get("players", {})
+    players = as_list(players_block.get("player"))
+    rows = []
 
     for p in players:
-        meta = first_dict(p)
+        pdata = first_dict(p)
         rows.append({
-            "player_key": extract_fragment(p, "player_key"),
-            "player_id": extract_fragment(p, "player_id"),
-            "editorial_player_key": extract_fragment(p, "editorial_player_key"),
-            "player_name": extract_name(p),
+            "player_key": pdata.get("player_key"),
+            "name": pdata.get("name", {}).get("full"),
+            "editorial_team_abbr": pdata.get("editorial_team_abbr"),
+            "position_type": pdata.get("position_type"),
         })
 
-    start += PAGE_SIZE
+    return rows
 
-if not rows:
-    print("WARNING: 0 players extracted")
 
-with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(
-        f,
-        fieldnames=["player_key", "player_id", "editorial_player_key", "player_name"]
-    )
-    writer.writeheader()
-    writer.writerows(rows)
+def main():
+    oauth = get_oauth()
+    start = 0
+    all_rows = []
 
-print(f"Wrote {len(rows)} rows to league_players.csv")
+    while True:
+        data = fetch_page(oauth, start)
+        rows = extract_players(data)
+
+        if not rows:
+            break
+
+        all_rows.extend(rows)
+        start += 25
+
+    with open(OUT_FILE, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=all_rows[0].keys())
+        writer.writeheader()
+        writer.writerows(all_rows)
+
+    print(f"Wrote {len(all_rows)} rows to {OUT_FILE}")
+
+
+if __name__ == "__main__":
+    main()
