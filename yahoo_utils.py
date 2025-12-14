@@ -1,37 +1,33 @@
-# yahoo_utils.py
-"""Utilities to safely unwrap Yahoo Fantasy JSON shapes (lists of fragments)."""
+def list_to_dict(obj):
+    """
+    Yahoo Fantasy wraps objects as:
+    [ { "key": "value" }, { "key2": "value2" } ]
 
-from typing import Any, Dict, List
-
-
-def as_list(x: Any) -> List[Any]:
-    return x if isinstance(x, list) else []
-
-
-def first_dict(x: Any) -> Dict:
-    """Return the first dict found inside x (which may be a list)."""
-    if isinstance(x, list):
-        for item in x:
-            if isinstance(item, dict):
-                return item
+    This converts:
+      list -> dict
+      dict -> dict
+      None -> {}
+    """
+    if obj is None:
         return {}
-    return x if isinstance(x, dict) else {}
-
-
-def find_all(obj: Any, key: str) -> List[Any]:
-    """
-    Recursively find all values for `key` in nested dict/list structure.
-    Returns list of found values (may be empty).
-    """
-    out = []
 
     if isinstance(obj, dict):
-        for k, v in obj.items():
-            if k == key:
-                out.append(v)
-            else:
-                out.extend(find_all(v, key))
-    elif isinstance(obj, list):
+        return obj
+
+    if isinstance(obj, list):
+        out = {}
         for item in obj:
-            out.extend(find_all(item, key))
-    return out
+            if isinstance(item, dict):
+                out.update(item)
+        return out
+
+    return {}
+
+
+def safe_get(d, key, default=None):
+    """
+    Safe getter that works even if d is None
+    """
+    if not isinstance(d, dict):
+        return default
+    return d.get(key, default)
