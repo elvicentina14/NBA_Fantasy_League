@@ -26,8 +26,7 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install deps
-        run: pip install yahoo_oauth pandas pyarrow
+      - run: pip install yahoo_oauth pandas pyarrow requests
 
       - name: Run pipeline
         env:
@@ -35,12 +34,12 @@ jobs:
         run: |
           python fetch_players.py
           python fetch_rosters.py
-          python fetch_daily_player_stats.py
+          python fetch_player_stats_season.py
 
-      - name: Commit
+      - name: Commit outputs
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add *.csv *.parquet player_stats_daily || true
+          git add *.csv *.parquet || true
           git diff --cached --quiet || git commit -m "Update fantasy data"
           git push
