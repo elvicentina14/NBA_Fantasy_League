@@ -1,46 +1,30 @@
-import os, csv
 from yahoo_oauth import OAuth2
-from yahoo_utils import iter_indexed_dict, merge_fragments
+import os, csv
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
-
 oauth = OAuth2(None, None, from_file="oauth2.json")
 s = oauth.session
 
-rows = []
-start = 0
-count = 25
+URL = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/players;status=ALL?format=json"
+data = s.get(URL).json()
 
-while True:
-    url = f"{ROOT}/league/{LEAGUE_KEY}/players;start={start};count={count}?format=json"
-    j = s.get(url).json()
+players = []
+players_node = data["fantasy_content"]["league"][1]["players"]
 
-    players_node = j["fantasy_content"]["league"][1]["players"]
-    batch = iter_indexed_dict(players_node)
+for i in range(int(players_node["count"])):
+    p = players_node[str(i)]["player"]
+    meta = p[0]
 
-    if not batch:
-        break
-
-    for p in batch:
-        player_block = p["player"][0]     # list of fragments
-        player = merge_fragments(player_block)
-
-        rows.append({
-            "player_key": player.get("player_key"),
-            "player_id": player.get("player_id"),
-            "editorial_player_key": player.get("editorial_player_key"),
-            "player_name": player.get("name", {}).get("full"),
-        })
-
-    start += count
+    players.append({
+        "player_key": meta.get("player_key"),
+        "player_id": meta.get("player_id"),
+        "editorial_player_key": meta.get("editorial_player_key"),
+        "player_name": meta["name"]["full"]
+    })
 
 with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
-    w = csv.DictWriter(
-        f,
-        fieldnames=["player_key","player_id","editorial_player_key","player_name"]
-    )
+    w = csv.DictWriter(f, fieldnames=players[0].keys())
     w.writeheader()
-    w.writerows(rows)
+    w.writerows(players)
 
-print(f"Wrote league_players.csv rows: {len(rows)}")
+print("Wrote league_players.csv rows:", len(players))
