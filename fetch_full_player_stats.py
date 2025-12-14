@@ -1,4 +1,5 @@
-import os, pandas as pd
+import os
+import pandas as pd
 from yahoo_oauth import OAuth2
 from datetime import datetime
 
@@ -18,10 +19,11 @@ for k in keys:
         expanded.add(f"466.p.{k}")
 
 player_keys = sorted(expanded)
-print("Total player keys:", len(player_keys))
+print("Total player keys to fetch:", len(player_keys))
 
 today = datetime.utcnow().date().isoformat()
 rows = []
+
 
 def fetch(pk):
     url = f"https://fantasysports.yahooapis.com/fantasy/v2/player/{pk}/stats;date={today}?format=json"
@@ -46,9 +48,10 @@ def fetch(pk):
     except Exception:
         return []
 
-for i,pk in enumerate(player_keys,1):
+
+for i, pk in enumerate(player_keys, 1):
     print(f"[{i}/{len(player_keys)}] {pk}")
     rows.extend(fetch(pk))
 
 pd.DataFrame(rows).to_parquet("player_stats_full.parquet", index=False)
-print("player_stats_full.parquet rows:", len(rows))
+print("Saved player_stats_full.parquet rows:", len(rows))
