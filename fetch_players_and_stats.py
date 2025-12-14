@@ -1,12 +1,14 @@
 import os, sys, csv, time
 from yahoo_oauth import OAuth2
+from yahoo_helpers import flatten_list, extract_name
 
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 if not LEAGUE_KEY:
-    sys.exit("LEAGUE_KEY not set")
+    sys.exit("ERROR: LEAGUE_KEY not set")
 
 oauth = OAuth2(None, None, from_file="oauth2.json")
 ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
+
 
 def get(url):
     r = oauth.session.get(url)
@@ -14,6 +16,7 @@ def get(url):
     if r.status_code != 200:
         return None
     return r.json()
+
 
 def find(node, key):
     if isinstance(node, dict):
@@ -30,6 +33,7 @@ def find(node, key):
                 return r
     return None
 
+
 players = []
 start = 0
 count = 25
@@ -44,8 +48,10 @@ while True:
     if not isinstance(players_node, dict):
         break
 
-    for _, entry in [(k,v) for k,v in players_node.items() if k != "count"]:
-        wrapper = entry.get("player")
+    for k, entry in players_node.items():
+        if k == "count":
+            continue
+        wrapper = entry.get("player") if isinstance(entry, dict) else None
         if not wrapper:
             continue
 
@@ -69,15 +75,13 @@ while True:
 
     if len(players) < start + count:
         break
+
     start += count
     time.sleep(0.25)
 
 with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
     w = csv.DictWriter(
         f,
-        fieldnames=["player_key","player_id","editorial_player_key","player_name"]
+        fieldnames=["player_key", "player_id", "editorial_player_key", "player_name"]
     )
-    w.writeheader()
-    w.writerows(players)
-
-print("league_players.csv rows:", len(players))
+    w.writehe
