@@ -1,55 +1,47 @@
-import os, csv, sys
+import os
+import csv
 from yahoo_oauth import OAuth2
+import requests
+from yahoo_utils import extract_players, unwrap
 
-LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
-if not LEAGUE_KEY:
-    sys.exit("LEAGUE_KEY not set")
+LEAGUE_KEY = os.environ["LEAGUE_KEY"]
 
 oauth = OAuth2(None, None, from_file="oauth2.json")
-ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
+session = oauth.session
 
-def get(url):
-    r = oauth.session.get(url)
-    r.raise_for_status()
-    return r.json()
+url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/players;status=ALL?format=json"
 
 players = []
 start = 0
 count = 25
 
 while True:
-    url = f"{ROOT}/league/{LEAGUE_KEY}/players;start={start};count={count}?format=json"
-    data = get(url)
-    container = data["fantasy_content"]["league"][1]["players"]
+    r = session.get(url.replace("players;", f"players;start={start};count={count};"))
+    data = r.json()
+    league = data["fantasy_content"]["league"][1]
+    container = league["players"]
 
-    for k, v in container.items():
-        if not k.isdigit():
-            continue
-        plist = v["player"][0]
-        row = {"player_key": None, "player_id": None, "player_name": None}
-
-        for item in plist:
-            if not isinstance(item, dict):
-                continue
-            if "player_key" in item:
-                row["player_key"] = item["player_key"]
-            if "player_id" in item:
-                row["player_id"] = item["player_id"]
-            if "name" in item:
-                row["player_name"] = item["name"]["full"]
-
-        if row["player_key"]:
-            players.append(row)
-
-    if len(players) < start + count:
+    batch = extract_players(container)
+    if not batch:
         break
+
+    players.extend(batch)
     start += count
 
-with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(
-        f, fieldnames=["player_key", "player_id", "player_name"]
-    )
-    writer.writeheader()
-    writer.writerows(players)
+rows = []
+for p in players:
+    p = unwrap(p)
+    row = p.get("player", [{}])[0]
+    rows.append({
+        "player_key": row.get("player_key"),
+        "player_id": row.get("player_id"),
+        "editorial_player_key": row.get("editorial_player_key"),
+        "player_name": row.get("name", {}).get("full")
+    })
 
-print(f"Wrote league_players.csv rows: {len(players)}")
+with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(f, fieldnames=rows[0].keys())
+    writer.writeheader()
+    writer.writerows(rows)
+
+print(f"Wrote league_players.csv rows: {len(rows)}")
