@@ -1,77 +1,47 @@
-# fetch_rosters.py
-import os, csv, time
+import os
+import csv
 from yahoo_oauth import OAuth2
+import requests
+from yahoo_utils import ensure_list, unwrap
 
-LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
+LEAGUE_KEY = os.environ["LEAGUE_KEY"]
+
 oauth = OAuth2(None, None, from_file="oauth2.json")
-ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
+session = oauth.session
 
-def get(url):
-    r = oauth.session.get(url)
-    r.raise_for_status()
-    return r.json()
+teams_url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/teams?format=json"
+teams = session.get(teams_url).json()
 
-def find(obj, key):
-    if isinstance(obj, dict):
-        if key in obj:
-            return obj[key]
-        for v in obj.values():
-            x = find(v, key)
-            if x is not None:
-                return x
-    elif isinstance(obj, list):
-        for i in obj:
-            x = find(i, key)
-            if x is not None:
-                return x
-    return None
-
-# fetch teams
-teams_json = get(f"{ROOT}/league/{LEAGUE_KEY}/teams?format=json")
-teams_node = find(teams_json, "teams")
+team_nodes = ensure_list(
+    teams["fantasy_content"]["league"][1]["teams"].values()
+)[1:]
 
 rows = []
 
-for i in range(int(teams_node.get("count", 0))):
-    team_entry = teams_node.get(str(i))
-    if not team_entry:
-        continue
+for t in team_nodes:
+    t = unwrap(t)["team"]
+    team_key = unwrap(t)[0]["team_key"]
+    team_name = unwrap(t)[0]["name"]
 
-    team = team_entry.get("team", [])
-    team_key = find(team, "team_key")
-    team_name = find(team, "name")
+    roster_url = f"https://fantasysports.yahooapis.com/fantasy/v2/team/{team_key}/roster?format=json"
+    roster = session.get(roster_url).json()
 
-    roster_json = get(f"{ROOT}/team/{team_key}/roster?format=json")
-    players_node = find(roster_json, "players")
+    players = roster["fantasy_content"]["team"][1]["roster"]["0"]["players"]
 
-    if not isinstance(players_node, dict):
-        continue
-
-    for p in players_node.values():
-        # 🚨 THIS IS THE IMPORTANT GUARD
-        if not isinstance(p, dict):
-            continue
-        if "player" not in p:
-            continue
-
-        wrapper = p["player"][0]
+    for p in ensure_list(players.values())[1:]:
+        p = unwrap(p)["player"]
+        meta = unwrap(p)[0]
 
         rows.append({
             "team_key": team_key,
             "team_name": team_name,
-            "player_key": find(wrapper, "player_key"),
-            "player_name": find(wrapper, "full"),
-            "position": find(wrapper, "display_position")
+            "player_key": meta["player_key"],
+            "player_name": meta["name"]["full"]
         })
 
-    time.sleep(0.15)
-
 with open("team_rosters.csv", "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(
-        f,
-        fieldnames=["team_key", "team_name", "player_key", "player_name", "position"]
-    )
+    writer = csv.DictWriter(f, fieldnames=rows[0].keys())
     writer.writeheader()
     writer.writerows(rows)
 
-print("Wrote team_rosters.csv rows:", len(rows))
+print(f"Wrote team_rosters.csv rows: {len(rows)}")
