@@ -2,23 +2,18 @@ import os
 import sys
 import pandas as pd
 from yahoo_oauth import OAuth2
-from datetime import datetime
 
 LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
 if not LEAGUE_KEY:
     sys.exit("ERROR: LEAGUE_KEY not set")
 
-CONFIG_FILE = "oauth2.json"
-DAILY_PARQUET = "player_stats_full.parquet"
-
-oauth = OAuth2(None, None, from_file=CONFIG_FILE)
-
 BASE = "https://fantasysports.yahooapis.com/fantasy/v2"
+OUT = "player_stats_full.parquet"
+
+oauth = OAuth2(None, None, from_file="oauth2.json")
 
 
-# ---------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------
+# ---------------- helpers ----------------
 def get_json(url):
     r = oauth.session.get(url)
     if r.status_code != 200:
@@ -45,151 +40,101 @@ def find_first(obj, key):
     return None
 
 
-def get_league_current_date():
-    """
-    Ask Yahoo what date the league considers 'current'.
-    This is the ONLY safe date for daily stats.
-    """
-    url = f"{BASE}/league/{LEAGUE_KEY}?format=json"
-    j = get_json(url)
+def get_current_week():
+    j = get_json(f"{BASE}/league/{LEAGUE_KEY}?format=json")
     if not j:
         return None
-    return find_first(j, "current_date")
+    return find_first(j, "current_week")
 
 
-# ---------------------------------------------------------
-# Load player universe (league + roster)
-# ---------------------------------------------------------
-if not os.path.exists("league_players.csv"):
-    sys.exit("league_players.csv not found")
-
-league_players = pd.read_csv("league_players.csv", dtype=str)
-player_keys = set(league_players["player_key"].dropna())
+# ---------------- load players ----------------
+lp = pd.read_csv("league_players.csv", dtype=str)
+keys = set(lp["player_key"].dropna())
 
 if os.path.exists("team_rosters.csv"):
-    rosters = pd.read_csv("team_rosters.csv", dtype=str)
-    player_keys |= set(rosters["player_key"].dropna())
+    r = pd.read_csv("team_rosters.csv", dtype=str)
+    keys |= set(r["player_key"].dropna())
 
-# Expand numeric keys to Yahoo canonical form
-expanded_keys = set()
-for k in player_keys:
-    expanded_keys.add(k)
-    if isinstance(k, str) and k.isdigit():
-        expanded_keys.add(f"466.p.{k}")
+expanded = set()
+for k in keys:
+    expanded.add(k)
+    if k.isdigit():
+        expanded.add(f"466.p.{k}")
 
-player_keys = sorted(expanded_keys)
-print(f"Total unique player keys to fetch: {len(player_keys)}")
-
-
-# ---------------------------------------------------------
-# Determine stats date
-# ---------------------------------------------------------
-stats_date = get_league_current_date()
-if not stats_date:
-    print("No league current_date found — exiting safely")
-    sys.exit(0)
-
-print("Using league current_date:", stats_date)
+player_keys = sorted(expanded)
+print("Total player keys:", len(player_keys))
 
 
-# ---------------------------------------------------------
-# Fetch logic (daily → season fallback)
-# ---------------------------------------------------------
-def fetch_player_stats(player_key):
-    rows = []
+# ---------------- determine week ----------------
+current_week = get_current_week()
+if not current_week:
+    sys.exit("Could not determine current_week")
 
-    # 1) Try DAILY stats
-    daily_url = (
-        f"{BASE}/player/{player_key}/stats;date={stats_date}?format=json"
-    )
-    j = get_json(daily_url)
-
-    player_node = find_first(j, "player") if j else None
-    player_stats = find_first(player_node, "player_stats") if player_node else None
-    stats_node = find_first(player_stats, "stats") if player_stats else None
-
-    if stats_node and isinstance(stats_node, dict) and "stat" in stats_node:
-        stats = stats_node["stat"]
-        if isinstance(stats, dict):
-            stats = [stats]
-
-        name = find_first(player_node, "name")
-        player_name = name.get("full") if isinstance(name, dict) else None
-
-        for s in stats:
-            sid = find_first(s, "stat_id")
-            val = find_first(s, "value")
-            rows.append({
-                "player_key": player_key,
-                "player_name": player_name,
-                "coverage": "date",
-                "period": stats_date,
-                "timestamp": stats_date,
-                "stat_id": sid,
-                "stat_value": val,
-            })
-
-        return rows  # DAILY SUCCESS
-
-    # 2) FALLBACK: SEASON stats
-    season_url = f"{BASE}/player/{player_key}/stats?format=json"
-    j = get_json(season_url)
-
-    player_node = find_first(j, "player") if j else None
-    player_stats = find_first(player_node, "player_stats") if player_node else None
-    stats_node = find_first(player_stats, "stats") if player_stats else None
-
-    if stats_node and isinstance(stats_node, dict) and "stat" in stats_node:
-        stats = stats_node["stat"]
-        if isinstance(stats, dict):
-            stats = [stats]
-
-        name = find_first(player_node, "name")
-        player_name = name.get("full") if isinstance(name, dict) else None
-        season = find_first(player_stats, "season")
-
-        for s in stats:
-            sid = find_first(s, "stat_id")
-            val = find_first(s, "value")
-            rows.append({
-                "player_key": player_key,
-                "player_name": player_name,
-                "coverage": "season",
-                "period": season,
-                "timestamp": stats_date,
-                "stat_id": sid,
-                "stat_value": val,
-            })
-
-    return rows
+print("Using fantasy week:", current_week)
 
 
-# ---------------------------------------------------------
-# Run fetch
-# ---------------------------------------------------------
-all_rows = []
+# ---------------- fetch stats ----------------
+rows = []
 
 for i, pk in enumerate(player_keys, 1):
     print(f"[{i}/{len(player_keys)}] Fetching {pk}")
-    try:
-        all_rows.extend(fetch_player_stats(pk))
-    except Exception as e:
-        print("Failed for", pk, type(e).__name__, e)
 
-
-# ---------------------------------------------------------
-# Write output
-# ---------------------------------------------------------
-df = pd.DataFrame(all_rows)
-
-if df.empty:
-    print("WARNING: No stats returned by Yahoo")
-else:
-    df.sort_values(
-        by=["coverage", "timestamp", "player_key", "stat_id"],
-        inplace=True,
-        ignore_index=True,
+    # 1) WEEKLY fantasy stats (PRIMARY)
+    week_url = (
+        f"{BASE}/player/{pk}/stats;type=week;week={current_week}?format=json"
     )
+    j = get_json(week_url)
 
-df.to_parquet(DAILY_PARQUET, index=False)
+    player = find_first(j, "player") if j else None
+    stats = find_first(player, "stats") if player else None
+
+    if stats and "stat" in stats:
+        name = find_first(player, "name")
+        pname = name.get("full") if isinstance(name, dict) else None
+
+        stat_list = stats["stat"]
+        if isinstance(stat_list, dict):
+            stat_list = [stat_list]
+
+        for s in stat_list:
+            rows.append({
+                "player_key": pk,
+                "player_name": pname,
+                "coverage": "week",
+                "period": current_week,
+                "stat_id": s.get("stat_id"),
+                "stat_value": s.get("value"),
+            })
+        continue  # success, skip fallback
+
+    # 2) FALLBACK: SEASON TOTALS
+    season_url = f"{BASE}/player/{pk}/stats;type=season?format=json"
+    j = get_json(season_url)
+
+    player = find_first(j, "player") if j else None
+    stats = find_first(player, "stats") if player else None
+
+    if stats and "stat" in stats:
+        name = find_first(player, "name")
+        pname = name.get("full") if isinstance(name, dict) else None
+
+        stat_list = stats["stat"]
+        if isinstance(stat_list, dict):
+            stat_list = [stat_list]
+
+        for s in stat_list:
+            rows.append({
+                "player_key": pk,
+                "player_name": pname,
+                "coverage": "season",
+                "period": "season",
+                "stat_id": s.get("stat_id"),
+                "stat_value": s.get("value"),
+            })
+
+
+# ---------------- write output ----------------
+df = pd.DataFrame(rows)
+df.to_parquet(OUT, index=False)
+
 print("Saved player_stats_full.parquet rows:", len(df))
