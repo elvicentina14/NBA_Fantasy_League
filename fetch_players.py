@@ -18,15 +18,15 @@ rows = []
 for i in range(count):
     player_wrapper = players_node[str(i)]["player"]
 
-    # player_wrapper is a LIST
-    # player_wrapper[0] is a LIST of dict fragments
-    meta = player_wrapper[0][0]   # <-- THIS IS THE DICT
+    # player_wrapper[0] is a LIST of fragments
+    # fragment[0] is the canonical identity dict
+    meta = player_wrapper[0][0]
 
     rows.append({
-        "player_key": meta["player_key"],
-        "player_id": meta["player_id"],
-        "editorial_player_key": meta["editorial_player_key"],
-        "player_name": meta["name"]["full"],
+        "player_key": meta["player_key"],                       # guaranteed
+        "editorial_player_key": meta.get("editorial_player_key"),  # optional
+        "player_id": meta.get("player_id"),                     # optional
+        "player_name": meta["name"]["full"],                    # guaranteed
     })
 
 with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
@@ -34,8 +34,8 @@ with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
         f,
         fieldnames=[
             "player_key",
-            "player_id",
             "editorial_player_key",
+            "player_id",
             "player_name",
         ],
     )
