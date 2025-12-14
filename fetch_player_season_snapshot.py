@@ -1,7 +1,7 @@
 import os, csv
 from datetime import datetime, timezone
 from yahoo_oauth import OAuth2
-from yahoo_utils import iter_indexed_dict, merge_fragments
+from yahoo_utils import iter_indexed_dict, merge_fragments, ensure_list
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
 SNAPSHOT_DATE = datetime.now(timezone.utc).date().isoformat()
@@ -18,17 +18,29 @@ j = s.get(url).json()
 players_node = j["fantasy_content"]["league"][1]["players"]
 
 for p in iter_indexed_dict(players_node):
-    player_block = p["player"][0]
-    player = merge_fragments(player_block)
+    player_sections = p["player"]
 
-    stats_block = p["player"][1].get("player_stats", {})
-    stats = stats_block.get("stats", {}).get("stat", [])
+    # --- identity ---
+    player_identity = merge_fragments(player_sections[0])
+    player_key = player_identity.get("player_key")
+    player_name = player_identity.get("name", {}).get("full")
 
-    for stat in stats:
+    # --- stats section ---
+    stats_container = player_sections[1].get("player_stats", [])
+    stats_fragments = ensure_list(stats_container)
+
+    merged_stats = merge_fragments(stats_fragments)
+    stats_list = (
+        merged_stats
+        .get("stats", {})
+        .get("stat", [])
+    )
+
+    for stat in ensure_list(stats_list):
         rows.append({
             "snapshot_date": SNAPSHOT_DATE,
-            "player_key": player.get("player_key"),
-            "player_name": player.get("name", {}).get("full"),
+            "player_key": player_key,
+            "player_name": player_name,
             "stat_id": stat.get("stat_id"),
             "season_total": stat.get("value"),
         })
@@ -40,8 +52,11 @@ with open(out_file, "a", newline="", encoding="utf-8") as f:
     w = csv.DictWriter(
         f,
         fieldnames=[
-            "snapshot_date","player_key","player_name",
-            "stat_id","season_total"
+            "snapshot_date",
+            "player_key",
+            "player_name",
+            "stat_id",
+            "season_total"
         ]
     )
     if write_header:
