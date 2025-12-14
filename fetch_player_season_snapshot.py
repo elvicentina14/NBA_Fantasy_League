@@ -1,58 +1,94 @@
 # fetch_player_season_snapshot.py
-import csv
-import os
-from datetime import datetime
+import os, sys, logging, time
 from yahoo_oauth import OAuth2
-from yahoo_utils import merge_kv_list, as_list
+from yahoo_utils import as_list, first_dict, find_all
+from safe_io import safe_write_csv, debug_dump
+from http_helpers import safe_get
+from datetime import datetime, timezone
+import csv
 
-LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-OUT_FILE = "fact_player_season_snapshot.csv"
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
-def oauth():
-    return OAuth2(None, None, from_file="oauth2.json")
+LEAGUE_KEY = os.environ.get("LEAGUE_KEY")
+if not LEAGUE_KEY:
+    logging.error("LEAGUE_KEY env var not set")
+    sys.exit(2)
 
-def main():
-    session = oauth().session
-    ts = datetime.utcnow().isoformat()
+PLAYERS_CSV = "league_players.csv"
+OUT = "fact_player_season_snapshot.csv"
+TS = datetime.now(timezone.utc).isoformat()
+oauth = OAuth2(None, None, from_file="oauth2.json")
+session = oauth.session
 
-    url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/players/stats"
-    r = session.get(url, params={"format": "json"})
-    r.raise_for_status()
-    data = r.json()
+DEBUG_DUMP = os.environ.get("DEBUG_DUMP") == "1"
 
-    league = merge_kv_list(data["fantasy_content"]["league"])
-    players_block = merge_kv_list(league["players"])
-    players = as_list(players_block["player"])
+# Load players
+if not os.path.exists(PLAYERS_CSV):
+    logging.error("%s not found, run fetch_players.py first", PLAYERS_CSV)
+    sys.exit(1)
 
-    rows = []
+players = []
+with open(PLAYERS_CSV, newline="", encoding="utf-8") as f:
+    reader = csv.DictReader(f)
+    for r in reader:
+        if r.get("player_key"):
+            players.append(r)
 
-    for p in players:
-        pdata = merge_kv_list(p)
-        stats_block = merge_kv_list(pdata["player_stats"])
-        stats_container = merge_kv_list(stats_block["stats"])
-        stats = as_list(stats_container["stat"])
+if not players:
+    logging.info("No players in %s", PLAYERS_CSV)
+    sys.exit(0)
 
-        for s in stats:
-            stat = merge_kv_list(s)
-            rows.append({
-                "snapshot_ts": ts,
-                "player_key": pdata["player_key"],
-                "stat_id": stat["stat_id"],
-                "value": stat["value"],
-            })
+rows = []
+for idx, p in enumerate(players, start=1):
+    pk = p["player_key"]
+    logging.info("[%d/%d] Getting stats for %s", idx, len(players), pk)
+    url = f"https://fantasysports.yahooapis.com/fantasy/v2/player/{pk}/stats?format=json"
+    try:
+        status, data = safe_get(session, url)
+    except Exception as e:
+        logging.exception("Failed to fetch stats for %s", pk)
+        continue
 
-    if not rows:
-        print("No stats found")
-        return
+    if DEBUG_DUMP and idx <= 5:
+        debug_dump(data, f"debug_stats_{pk}.json")
 
-    file_exists = os.path.exists(OUT_FILE)
-    with open(OUT_FILE, "a", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=rows[0].keys())
-        if not file_exists:
-            writer.writeheader()
-        writer.writerows(rows)
+    # find player node and its player_stats fragment(s)
+    player_nodes = as_list(data.get("fantasy_content", {}).get("player"))
+    if len(player_nodes) < 2:
+        logging.debug("Unexpected player node for %s", pk)
+        continue
 
-    print(f"Appended {len(rows)} rows")
+    stats_frag = first_dict(player_nodes[1]).get("player_stats")
+    # stats_frag may be list/dict; find all "stat" occurrences under it
+    stat_lists = find_all(stats_frag, "stat")
+    # flatten: each entry may be list of stat dicts or dict
+    for sl in stat_lists:
+        if isinstance(sl, list):
+            for stat_item in sl:
+                s = first_dict(stat_item)
+                if s.get("stat_id") is not None:
+                    rows.append({
+                        "snapshot_ts": TS,
+                        "player_key": pk,
+                        "stat_id": s.get("stat_id"),
+                        "stat_value": s.get("value")
+                    })
+        elif isinstance(sl, dict):
+            s = first_dict(sl)
+            if s.get("stat_id") is not None:
+                rows.append({
+                    "snapshot_ts": TS,
+                    "player_key": pk,
+                    "stat_id": s.get("stat_id"),
+                    "stat_value": s.get("value")
+                })
+    # polite pause
+    time.sleep(0.12)
 
-if __name__ == "__main__":
-    main()
+if not rows:
+    logging.info("No season stats parsed — nothing to append")
+    sys.exit(0)
+
+fieldnames = ["snapshot_ts", "player_key", "stat_id", "stat_value"]
+n = safe_write_csv(OUT, rows, fieldnames, mode="a")
+logging.info("Appended %d rows to %s", n, OUT)
