@@ -1,66 +1,46 @@
+from yahoo_oauth import OAuth2
 import os, csv
 from datetime import datetime, timezone
-from yahoo_oauth import OAuth2
-from yahoo_utils import iter_indexed_dict, merge_fragments, ensure_list
+import pandas as pd
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-SNAPSHOT_DATE = datetime.now(timezone.utc).date().isoformat()
-ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
+today = datetime.now(timezone.utc).date().isoformat()
 
 oauth = OAuth2(None, None, from_file="oauth2.json")
 s = oauth.session
 
+players = pd.read_csv("league_players.csv", dtype=str)
+
 rows = []
 
-url = f"{ROOT}/league/{LEAGUE_KEY}/players/stats;type=season?format=json"
-j = s.get(url).json()
+for _, p in players.iterrows():
+    pk = p["player_key"]
 
-players_node = j["fantasy_content"]["league"][1]["players"]
+    url = f"https://fantasysports.yahooapis.com/fantasy/v2/player/{pk}/stats?format=json"
+    data = s.get(url).json()
 
-for p in iter_indexed_dict(players_node):
-    player_sections = p["player"]
+    player = data["fantasy_content"]["player"]
 
-    # --- identity ---
-    player_identity = merge_fragments(player_sections[0])
-    player_key = player_identity.get("player_key")
-    player_name = player_identity.get("name", {}).get("full")
+    # player[1] ALWAYS holds stats block
+    stats_block = player[1]["player_stats"]
+    stats_list = stats_block["stats"]["stat"]
 
-    # --- stats section ---
-    stats_container = player_sections[1].get("player_stats", [])
-    stats_fragments = ensure_list(stats_container)
-
-    merged_stats = merge_fragments(stats_fragments)
-    stats_list = (
-        merged_stats
-        .get("stats", {})
-        .get("stat", [])
-    )
-
-    for stat in ensure_list(stats_list):
+    for stat in stats_list:
         rows.append({
-            "snapshot_date": SNAPSHOT_DATE,
-            "player_key": player_key,
-            "player_name": player_name,
-            "stat_id": stat.get("stat_id"),
-            "season_total": stat.get("value"),
+            "snapshot_date": today,
+            "player_key": pk,
+            "player_name": p["player_name"],
+            "stat_id": stat["stat_id"],
+            "stat_value": stat.get("value")
         })
 
-out_file = "fact_player_season_snapshot.csv"
-write_header = not os.path.exists(out_file)
+file = "fact_player_season_snapshot.csv"
+exists = os.path.exists(file)
 
-with open(out_file, "a", newline="", encoding="utf-8") as f:
-    w = csv.DictWriter(
-        f,
-        fieldnames=[
-            "snapshot_date",
-            "player_key",
-            "player_name",
-            "stat_id",
-            "season_total"
-        ]
-    )
-    if write_header:
+with open(file, "a", newline="", encoding="utf-8") as f:
+    w = csv.DictWriter(f, fieldnames=rows[0].keys())
+    if not exists:
         w.writeheader()
     w.writerows(rows)
 
-print(f"Appended {len(rows)} rows to {out_file}")
+print(f"Appended {len(rows)} rows to {file}")
