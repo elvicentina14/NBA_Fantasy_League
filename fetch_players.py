@@ -1,61 +1,43 @@
+# fetch_players.py
 from yahoo_oauth import OAuth2
 import os, csv
+from yahoo_normalize import first
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
+OUT = "league_players.csv"
 
 oauth = OAuth2(None, None, from_file="oauth2.json")
-s = oauth.session
 
-url = f"{ROOT}/league/{LEAGUE_KEY}/players;status=ALL?format=json"
-data = s.get(url).json()
+players = []
+start = 0
+count = 25
 
-players_node = data["fantasy_content"]["league"][1]["players"]
-count = int(players_node["count"])
+while True:
+    url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/players;start={start};count={count}?format=json"
+    data = oauth.session.get(url).json()
 
-rows = []
+    league = first(data["fantasy_content"]["league"])
+    players_block = first(league["players"])
+    player_items = players_block.get("player", [])
 
-for i in range(count):
-    fragments = players_node[str(i)]["player"][0]
+    if not player_items:
+        break
 
-    player_key = None
-    editorial_player_key = None
-    player_id = None
-    player_name = None
+    for raw in player_items:
+        p = first(raw)
+        name = first(p.get("name"))
+        players.append({
+            "player_key": p.get("player_key"),
+            "player_id": p.get("player_id"),
+            "editorial_player_key": p.get("editorial_player_key"),
+            "player_name": name.get("full"),
+        })
 
-    for frag in fragments:
-        if not isinstance(frag, dict):
-            continue
+    start += count
 
-        if "player_key" in frag:
-            player_key = frag["player_key"]
-            editorial_player_key = frag.get("editorial_player_key")
-            player_id = frag.get("player_id")
-
-        if "name" in frag and "full" in frag["name"]:
-            player_name = frag["name"]["full"]
-
-    if not player_key or not player_name:
-        raise RuntimeError(f"Malformed player object at index {i}")
-
-    rows.append({
-        "player_key": player_key,
-        "editorial_player_key": editorial_player_key,
-        "player_id": player_id,
-        "player_name": player_name,
-    })
-
-with open("league_players.csv", "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(
-        f,
-        fieldnames=[
-            "player_key",
-            "editorial_player_key",
-            "player_id",
-            "player_name",
-        ],
-    )
+with open(OUT, "w", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(f, fieldnames=players[0].keys())
     writer.writeheader()
-    writer.writerows(rows)
+    writer.writerows(players)
 
-print(f"Wrote league_players.csv rows: {len(rows)}")
+print(f"Wrote {len(players)} rows to {OUT}")
