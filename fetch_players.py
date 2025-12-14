@@ -2,67 +2,53 @@
 
 import csv
 import os
-import requests
 from yahoo_oauth import OAuth2
-from yahoo_utils import as_list, first_dict
+from yahoo_utils import as_list, merge_kv_list
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
 OUT_FILE = "league_players.csv"
 
 
-def get_oauth():
-    return OAuth2(None, None, from_file="oauth2.json")
-
-
-def fetch_page(oauth, start):
-    url = (
-        f"https://fantasysports.yahooapis.com/fantasy/v2/"
-        f"league/{LEAGUE_KEY}/players;start={start};count=25"
-    )
-    r = oauth.session.get(url, params={"format": "json"})
-    r.raise_for_status()
-    return r.json()
-
-
-def extract_players(payload):
-    league = first_dict(payload["fantasy_content"]["league"])
-    players_block = league.get("players", {})
-    players = as_list(players_block.get("player"))
+def main():
+    oauth = OAuth2(None, None, from_file="oauth2.json")
+    start = 0
     rows = []
 
-    for p in players:
-        pdata = first_dict(p)
-        rows.append({
-            "player_key": pdata.get("player_key"),
-            "name": pdata.get("name", {}).get("full"),
-            "editorial_team_abbr": pdata.get("editorial_team_abbr"),
-            "position_type": pdata.get("position_type"),
-        })
-
-    return rows
-
-
-def main():
-    oauth = get_oauth()
-    start = 0
-    all_rows = []
-
     while True:
-        data = fetch_page(oauth, start)
-        rows = extract_players(data)
+        url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/players;start={start};count=25"
+        r = oauth.session.get(url, params={"format": "json"})
+        r.raise_for_status()
+        data = r.json()
 
-        if not rows:
+        league = merge_kv_list(data["fantasy_content"]["league"])
+        players_block = as_list(league.get("players"))
+
+        if not players_block:
             break
 
-        all_rows.extend(rows)
+        for p in players_block:
+            player = merge_kv_list(p["player"])
+            name = merge_kv_list(player.get("name"))
+
+            rows.append({
+                "player_key": player.get("player_key"),
+                "player_id": player.get("player_id"),
+                "player_name": name.get("full"),
+                "editorial_team_abbr": player.get("editorial_team_abbr"),
+                "position_type": player.get("position_type"),
+            })
+
         start += 25
 
-    with open(OUT_FILE, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=all_rows[0].keys())
-        writer.writeheader()
-        writer.writerows(all_rows)
+    if not rows:
+        raise RuntimeError("No players returned from Yahoo")
 
-    print(f"Wrote {len(all_rows)} rows to {OUT_FILE}")
+    with open(OUT_FILE, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=rows[0].keys())
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print(f"Wrote {len(rows)} rows to {OUT_FILE}")
 
 
 if __name__ == "__main__":
