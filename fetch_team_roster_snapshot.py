@@ -1,48 +1,53 @@
-# fetch_team_roster_snapshot.py
 from yahoo_oauth import OAuth2
 import os, csv
 from datetime import datetime, timezone
-from yahoo_normalize import first
+from yahoo_utils import as_list, first_dict
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
 OUT = "fact_team_roster_snapshot.csv"
-SNAPSHOT_TS = datetime.now(timezone.utc).isoformat()
+TS = datetime.now(timezone.utc).isoformat()
 
 oauth = OAuth2(None, None, from_file="oauth2.json")
 
 rows = []
 
-# get teams
-teams_url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/teams?format=json"
-teams_data = oauth.session.get(teams_url).json()
+league_url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/teams?format=json"
+data = oauth.session.get(league_url).json()
 
-league = first(teams_data["fantasy_content"]["league"])
-teams = first(league["teams"]).get("team", [])
+league = as_list(data["fantasy_content"]["league"])
+teams_block = first_dict(league[1]).get("teams")
+teams = as_list(first_dict(teams_block).get("team"))
 
-for raw_team in teams:
-    team = first(raw_team)
-    team_key = team.get("team_key")
-    team_name = team.get("name")
+for t_raw in teams:
+    team_meta = first_dict(t_raw)
+    team_key = team_meta.get("team_key")
+    team_name = team_meta.get("name")
 
-    roster = first(team.get("roster"))
-    players_block = first(roster.get("players"))
-    player_items = players_block.get("player", [])
+    roster_url = f"https://fantasysports.yahooapis.com/fantasy/v2/team/{team_key}/roster?format=json"
+    rdata = oauth.session.get(roster_url).json()
 
-    for raw_player in player_items:
-        p = first(raw_player)
+    team = as_list(rdata["fantasy_content"]["team"])
+    roster_block = first_dict(team[1]).get("roster")
+    players = as_list(first_dict(roster_block).get("players", {}).get("player"))
+
+    for p_raw in players:
+        p = first_dict(p_raw)
+        name = first_dict(p.get("name"))
+
         rows.append({
-            "snapshot_ts": SNAPSHOT_TS,
+            "snapshot_ts": TS,
             "team_key": team_key,
             "team_name": team_name,
             "player_key": p.get("player_key"),
+            "player_name": name.get("full"),
+            "position": p.get("display_position"),
         })
 
-file_exists = os.path.exists(OUT)
-
+write_header = not os.path.exists(OUT)
 with open(OUT, "a", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(f, fieldnames=rows[0].keys())
-    if not file_exists:
-        writer.writeheader()
-    writer.writerows(rows)
+    w = csv.DictWriter(f, fieldnames=rows[0].keys())
+    if write_header:
+        w.writeheader()
+    w.writerows(rows)
 
 print(f"Appended {len(rows)} rows to {OUT}")
