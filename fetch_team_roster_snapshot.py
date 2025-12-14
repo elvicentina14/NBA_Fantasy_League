@@ -1,68 +1,48 @@
+# fetch_team_roster_snapshot.py
 from yahoo_oauth import OAuth2
 import os, csv
 from datetime import datetime, timezone
+from yahoo_normalize import first
 
 LEAGUE_KEY = os.environ["LEAGUE_KEY"]
-ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
+OUT = "fact_team_roster_snapshot.csv"
+SNAPSHOT_TS = datetime.now(timezone.utc).isoformat()
 
 oauth = OAuth2(None, None, from_file="oauth2.json")
-s = oauth.session
-
-timestamp = datetime.now(timezone.utc).isoformat()
-
-url = f"{ROOT}/league/{LEAGUE_KEY}/teams?format=json"
-data = s.get(url).json()
-
-teams_node = data["fantasy_content"]["league"][1]["teams"]
-team_count = int(teams_node["count"])
 
 rows = []
 
-for i in range(team_count):
-    team_fragments = teams_node[str(i)]["team"][0]
+# get teams
+teams_url = f"https://fantasysports.yahooapis.com/fantasy/v2/league/{LEAGUE_KEY}/teams?format=json"
+teams_data = oauth.session.get(teams_url).json()
 
-    team_key = None
-    team_name = None
-    roster_players = []
+league = first(teams_data["fantasy_content"]["league"])
+teams = first(league["teams"]).get("team", [])
 
-    for frag in team_fragments:
-        if not isinstance(frag, dict):
-            continue
+for raw_team in teams:
+    team = first(raw_team)
+    team_key = team.get("team_key")
+    team_name = team.get("name")
 
-        if "team_key" in frag:
-            team_key = frag["team_key"]
+    roster = first(team.get("roster"))
+    players_block = first(roster.get("players"))
+    player_items = players_block.get("player", [])
 
-        if "name" in frag:
-            team_name = frag["name"]
-
-        if "roster" in frag:
-            players = frag["roster"]["0"]["players"]
-            for j in range(int(players["count"])):
-                p_fragments = players[str(j)]["player"][0]
-                for p in p_fragments:
-                    if "player_key" in p:
-                        roster_players.append(p["player_key"])
-
-    if not team_key:
-        raise RuntimeError(f"Missing team_key at index {i}")
-
-    for player_key in roster_players:
+    for raw_player in player_items:
+        p = first(raw_player)
         rows.append({
-            "timestamp": timestamp,
+            "snapshot_ts": SNAPSHOT_TS,
             "team_key": team_key,
             "team_name": team_name,
-            "player_key": player_key,
+            "player_key": p.get("player_key"),
         })
 
-file_exists = os.path.exists("fact_team_roster_snapshot.csv")
+file_exists = os.path.exists(OUT)
 
-with open("fact_team_roster_snapshot.csv", "a", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(
-        f,
-        fieldnames=["timestamp", "team_key", "team_name", "player_key"]
-    )
+with open(OUT, "a", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(f, fieldnames=rows[0].keys())
     if not file_exists:
         writer.writeheader()
     writer.writerows(rows)
 
-print(f"Appended {len(rows)} rows to fact_team_roster_snapshot.csv")
+print(f"Appended {len(rows)} rows to {OUT}")
