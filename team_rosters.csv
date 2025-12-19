@@ -47,14 +47,14 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.4,Dropped Giannis,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.4725,Paul George,"SG,SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.6166,De'Andre Hunter,"SF,PF"
-466.l.165651.t.4,Dropped Giannis,466.p.4901,Tobias Harris,PF
-466.l.165651.t.4,Dropped Giannis,466.p.5194,Tim Hardaway Jr.,"SG,SF"
+466.l.165651.t.4,Dropped Giannis,466.p.4896,Kawhi Leonard,"SF,PF"
+466.l.165651.t.4,Dropped Giannis,466.p.6441,Isaiah Joe,"SG,SF"
 466.l.165651.t.4,Dropped Giannis,466.p.6572,Santi Aldama,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.10496,Maxime Raynaud,C
 466.l.165651.t.4,Dropped Giannis,466.p.5858,Dillon Brooks,"SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.6411,Saddiq Bey,"SF,PF"
+466.l.165651.t.4,Dropped Giannis,466.p.5194,Tim Hardaway Jr.,"SG,SF"
 466.l.165651.t.4,Dropped Giannis,466.p.6417,Immanuel Quickley,"PG,SG"
-466.l.165651.t.4,Dropped Giannis,466.p.4896,Kawhi Leonard,"SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.6165,RJ Barrett,"SG,SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.6550,Franz Wagner,"SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.5185,Giannis Antetokounmpo,"PF,C"
@@ -147,7 +147,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.10,🚑 🚑 🚑,466.p.6514,Evan Mobley,"PF,C"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6035,Anfernee Simons,"PG,SG"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6754,Julian Champagnie,"SG,SF"
-466.l.165651.t.11,Denzel's Grand Team,466.p.6254,Luguentz Dort,"SG,SF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.5602,Jaylen Brown,"SG,SF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.4912,Jimmy Butler III,"SG,SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.10296,Zaccharie Risacher,"SF,PF"
@@ -158,6 +157,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.11,Denzel's Grand Team,466.p.6023,Miles Bridges,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.5658,Pascal Siakam,"SF,PF,C"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6163,Zion Williamson,"SF,PF,C"
+466.l.165651.t.11,Denzel's Grand Team,466.p.5824,Malik Monk,SG
 466.l.165651.t.11,Denzel's Grand Team,466.p.5475,Kelly Oubre Jr.,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6711,Christian Braun,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.6433,Tre Jones,"PG,SG"
