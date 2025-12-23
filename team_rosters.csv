@@ -109,12 +109,12 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.8,Zesty Squad,466.p.6217,Keldon Johnson,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.6725,Max Christie,"SG,SF"
 466.l.165651.t.8,Zesty Squad,466.p.5432,Karl-Anthony Towns,"PF,C"
-466.l.165651.t.8,Zesty Squad,466.p.6733,Moussa Diabaté,C
 466.l.165651.t.8,Zesty Squad,466.p.6702,Jalen Williams,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.4897,Nikola Vučević,C
 466.l.165651.t.8,Zesty Squad,466.p.10075,Jordan Walsh,"SG,SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.6707,Tari Eason,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.5013,Harrison Barnes,"SF,PF"
+466.l.165651.t.8,Zesty Squad,466.p.6632,Justin Champagnie,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.6606,Austin Reaves,"PG,SG,SF"
 466.l.165651.t.8,Zesty Squad,466.p.6019,Collin Sexton,"PG,SG"
 466.l.165651.t.9,Donation Only,466.p.10467,Dylan Harper,"PG,SG"
@@ -132,18 +132,18 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Donation Only,466.p.6031,Josh Okogie,"SG,SF"
 466.l.165651.t.9,Donation Only,466.p.5324,Zach LaVine,"PG,SG,SF"
 466.l.165651.t.9,Donation Only,466.p.5464,Kristaps Porziņģis,"PF,C"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.10282,Isaiah Collier,"PG,SG"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.5161,CJ McCollum,"PG,SG"
+466.l.165651.t.10,🚑 🚑 🚑,466.p.6016,Trae Young,PG
+466.l.165651.t.10,🚑 🚑 🚑,466.p.4563,James Harden,"PG,SG"
 466.l.165651.t.10,🚑 🚑 🚑,466.p.6548,Josh Giddey,"PG,SG"
 466.l.165651.t.10,🚑 🚑 🚑,466.p.6580,Ayo Dosunmu,"SG,SF"
 466.l.165651.t.10,🚑 🚑 🚑,466.p.10121,Noah Clowney,"PF,C"
 466.l.165651.t.10,🚑 🚑 🚑,466.p.10078,Tristan Vukcevic,"PF,C"
 466.l.165651.t.10,🚑 🚑 🚑,466.p.10294,Alex Sarr,C
 466.l.165651.t.10,🚑 🚑 🚑,466.p.4472,Brook Lopez,C
-466.l.165651.t.10,🚑 🚑 🚑,466.p.6568,Bones Hyland,PG
 466.l.165651.t.10,🚑 🚑 🚑,466.p.5840,Kyle Kuzma,"SF,PF"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.6016,Trae Young,PG
-466.l.165651.t.10,🚑 🚑 🚑,466.p.4563,James Harden,"PG,SG"
+466.l.165651.t.10,🚑 🚑 🚑,466.p.5161,CJ McCollum,"PG,SG"
+466.l.165651.t.10,🚑 🚑 🚑,466.p.6568,Bones Hyland,PG
+466.l.165651.t.10,🚑 🚑 🚑,466.p.10282,Isaiah Collier,"PG,SG"
 466.l.165651.t.10,🚑 🚑 🚑,466.p.6514,Evan Mobley,"PF,C"
 466.l.165651.t.10,🚑 🚑 🚑,466.p.4840,Kyrie Irving,PG
 466.l.165651.t.10,🚑 🚑 🚑,466.p.5663,Ivica Zubac,C
@@ -189,7 +189,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6755,AJ Green,"PG,SG"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5842,Derrick White,"PG,SG"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.4612,Stephen Curry,PG
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6429,Vít Krejčí,"SG,SF"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6038,Robert Williams III,C
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6569,Cam Thomas,"SG,SF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.10108,Amen Thompson,"PG,SG,SF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.6205,Nickeil Alexander-Walker,"PG,SG,SF"
