@@ -15,20 +15,20 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6164,Ja Morant,PG
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6420,Jaden McDaniels,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
-466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.10450,Kon Knueppel,"SG,SF"
+466.l.165651.t.2,Matalim Dede,466.p.6218,Kevin Porter Jr.,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.6499,Naji Marshall,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6691,Paolo Banchero,"PF,C"
 466.l.165651.t.2,Matalim Dede,466.p.10265,Matas Buzelis,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6703,Jalen Duren,C
 466.l.165651.t.2,Matalim Dede,466.p.6617,Jay Huff,C
-466.l.165651.t.2,Matalim Dede,466.p.6218,Kevin Porter Jr.,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
+466.l.165651.t.2,Matalim Dede,466.p.6692,Chet Holmgren,"PF,C"
+466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.10342,Branden Carlson,C
 466.l.165651.t.2,Matalim Dede,466.p.5582,T.J. McConnell,PG
-466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG"
-466.l.165651.t.2,Matalim Dede,466.p.6692,Chet Holmgren,"PF,C"
+466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
 466.l.165651.t.3,Westbrook 2K16,466.p.4390,Russell Westbrook,"PG,SG"
 466.l.165651.t.3,Westbrook 2K16,466.p.6515,Scottie Barnes,"SG,SF,PF"
 466.l.165651.t.3,Westbrook 2K16,466.p.6551,Davion Mitchell,PG
@@ -38,10 +38,10 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Westbrook 2K16,466.p.6047,Mitchell Robinson,C
 466.l.165651.t.3,Westbrook 2K16,466.p.5958,Deandre Ayton,C
 466.l.165651.t.3,Westbrook 2K16,466.p.6219,Nic Claxton,C
-466.l.165651.t.3,Westbrook 2K16,466.p.5764,Lonzo Ball,"PG,SG"
-466.l.165651.t.3,Westbrook 2K16,466.p.6206,Goga Bitadze,C
 466.l.165651.t.3,Westbrook 2K16,466.p.6652,Dru Smith,"PG,SG"
+466.l.165651.t.3,Westbrook 2K16,466.p.6206,Goga Bitadze,C
 466.l.165651.t.3,Westbrook 2K16,466.p.6581,Neemias Queta,"PF,C"
+466.l.165651.t.3,Westbrook 2K16,466.p.5764,Lonzo Ball,"PG,SG"
 466.l.165651.t.3,Westbrook 2K16,466.p.10287,Zach Edey,C
 466.l.165651.t.3,Westbrook 2K16,466.p.6698,Dyson Daniels,"PG,SG,SF"
 466.l.165651.t.4,Dropped Giannis,466.p.6417,Immanuel Quickley,"PG,SG"
@@ -92,16 +92,16 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.7,Sakuragi,466.p.5506,Norman Powell,"SG,SF"
 466.l.165651.t.7,Sakuragi,466.p.5601,Brandon Ingram,"SG,SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5905,Royce O'Neale,"SF,PF"
-466.l.165651.t.7,Sakuragi,466.p.5769,Lauri Markkanen,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.10315,Kyle Filipowski,"PF,C"
 466.l.165651.t.7,Sakuragi,466.p.5471,Myles Turner,C
+466.l.165651.t.7,Sakuragi,466.p.5856,Isaiah Hartenstein,C
 466.l.165651.t.7,Sakuragi,466.p.6355,Anthony Edwards,"PG,SG"
 466.l.165651.t.7,Sakuragi,466.p.5903,Luke Kornet,C
 466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
 466.l.165651.t.7,Sakuragi,466.p.5350,Jerami Grant,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.6564,Isaiah Jackson,C
 466.l.165651.t.7,Sakuragi,466.p.5295,Aaron Gordon,"PF,C"
-466.l.165651.t.7,Sakuragi,466.p.5856,Isaiah Hartenstein,C
+466.l.165651.t.7,Sakuragi,466.p.5769,Lauri Markkanen,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.10100,Keyonte George,"PG,SG"
 466.l.165651.t.8,Zesty Squad,466.p.5638,Jamal Murray,"PG,SG"
 466.l.165651.t.8,Zesty Squad,466.p.6606,Austin Reaves,"PG,SG,SF"
@@ -113,9 +113,9 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.8,Zesty Squad,466.p.6702,Jalen Williams,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.6707,Tari Eason,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.6725,Max Christie,"SG,SF"
-466.l.165651.t.8,Zesty Squad,466.p.6632,Justin Champagnie,"SF,PF"
-466.l.165651.t.8,Zesty Squad,466.p.6516,Jalen Suggs,"PG,SG"
 466.l.165651.t.8,Zesty Squad,466.p.6019,Collin Sexton,"PG,SG"
+466.l.165651.t.8,Zesty Squad,466.p.6733,Moussa Diabaté,C
+466.l.165651.t.8,Zesty Squad,466.p.6516,Jalen Suggs,"PG,SG"
 466.l.165651.t.8,Zesty Squad,466.p.10075,Jordan Walsh,"SG,SF,PF"
 466.l.165651.t.9,Donation Only,466.p.6413,Tyrese Maxey,PG
 466.l.165651.t.9,Donation Only,466.p.6053,Bruce Brown,SG
@@ -125,11 +125,11 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Donation Only,466.p.6697,Shaedon Sharpe,"SG,SF"
 466.l.165651.t.9,Donation Only,466.p.5352,Nikola Jokić,C
 466.l.165651.t.9,Donation Only,466.p.5015,Andre Drummond,C
-466.l.165651.t.9,Donation Only,466.p.10467,Dylan Harper,"PG,SG"
 466.l.165651.t.9,Donation Only,466.p.6751,Collin Gillespie,PG
 466.l.165651.t.9,Donation Only,466.p.6226,Daniel Gafford,C
-466.l.165651.t.9,Donation Only,466.p.5069,Draymond Green,"PF,C"
 466.l.165651.t.9,Donation Only,466.p.6031,Josh Okogie,"SG,SF"
+466.l.165651.t.9,Donation Only,466.p.10467,Dylan Harper,"PG,SG"
+466.l.165651.t.9,Donation Only,466.p.5069,Draymond Green,"PF,C"
 466.l.165651.t.9,Donation Only,466.p.5324,Zach LaVine,"PG,SG,SF"
 466.l.165651.t.9,Donation Only,466.p.5464,Kristaps Porziņģis,"PF,C"
 466.l.165651.t.10,🚑 🚑 🚑,466.p.6016,Trae Young,PG
@@ -193,16 +193,16 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6569,Cam Thomas,"SG,SF"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6038,Robert Williams III,C
 466.l.165651.t.14,Mervyn's Swag Team,466.p.10108,Amen Thompson,"PG,SG,SF"
-466.l.165651.t.14,Mervyn's Swag Team,466.p.10465,Cedric Coward,"SG,SF"
+466.l.165651.t.14,Mervyn's Swag Team,466.p.6403,Devin Vassell,"SG,SF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.5473,Devin Booker,"PG,SG"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.6694,Keegan Murray,"SF,PF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.6015,Jaren Jackson Jr.,"PF,C"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.6025,Michael Porter Jr.,"SF,PF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.5835,Jarrett Allen,C
 466.l.165651.t.14,Mervyn's Swag Team,466.p.6018,Wendell Carter Jr.,C
-466.l.165651.t.14,Mervyn's Swag Team,466.p.6403,Devin Vassell,"SG,SF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.5482,Bobby Portis,"PF,C"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.6705,Mark Williams,C
+466.l.165651.t.14,Mervyn's Swag Team,466.p.10465,Cedric Coward,"SG,SF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.6205,Nickeil Alexander-Walker,"PG,SG,SF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.6032,Grayson Allen,"SG,SF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.4622,Jrue Holiday,"PG,SG"
