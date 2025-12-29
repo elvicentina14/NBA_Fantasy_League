@@ -105,14 +105,14 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.8,Zesty Squad,466.p.10279,Jaylon Tyson,"SG,SF"
 466.l.165651.t.8,Zesty Squad,466.p.6429,Vít Krejčí,"SG,SF"
 466.l.165651.t.8,Zesty Squad,466.p.6217,Keldon Johnson,"SF,PF"
-466.l.165651.t.8,Zesty Squad,466.p.5013,Harrison Barnes,"SF,PF"
+466.l.165651.t.8,Zesty Squad,466.p.6707,Tari Eason,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.4897,Nikola Vučević,C
 466.l.165651.t.8,Zesty Squad,466.p.5432,Karl-Anthony Towns,"PF,C"
 466.l.165651.t.8,Zesty Squad,466.p.6702,Jalen Williams,"SF,PF"
-466.l.165651.t.8,Zesty Squad,466.p.6707,Tari Eason,"SF,PF"
+466.l.165651.t.8,Zesty Squad,466.p.6733,Moussa Diabaté,C
+466.l.165651.t.8,Zesty Squad,466.p.5013,Harrison Barnes,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.10100,Keyonte George,"PG,SG"
 466.l.165651.t.8,Zesty Squad,466.p.10075,Jordan Walsh,"SG,SF,PF"
-466.l.165651.t.8,Zesty Squad,466.p.6733,Moussa Diabaté,C
 466.l.165651.t.8,Zesty Squad,466.p.6516,Jalen Suggs,"PG,SG"
 466.l.165651.t.8,Zesty Squad,466.p.6606,Austin Reaves,"PG,SG,SF"
 466.l.165651.t.9,Donation Only,466.p.6751,Collin Gillespie,PG
@@ -176,19 +176,20 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.12,Gab's Minions,466.p.5642,Domantas Sabonis,C
 466.l.165651.t.12,Gab's Minions,466.p.6578,Miles McBride,"PG,SG"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.4612,Stephen Curry,PG
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5842,Derrick White,"PG,SG"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6167,Darius Garland,PG
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10340,Jaylen Wells,"SG,SF"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10094,Victor Wembanyama,"PF,C"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.4614,DeMar DeRozan,"SF,PF"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6791,Dominick Barlow,"PF,C"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5159,Kentavious Caldwell-Pope,"SG,SF"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6441,Isaiah Joe,"SG,SF"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6569,Cam Thomas,"SG,SF"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6452,Sam Merrill,"SG,SF"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6755,AJ Green,"PG,SG"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10287,Zach Edey,C
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6167,Darius Garland,PG
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6569,Cam Thomas,"SG,SF"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.4614,DeMar DeRozan,"SF,PF"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6452,Sam Merrill,"SG,SF"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10094,Victor Wembanyama,"PF,C"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10313,Oso Ighodaro,C
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6038,Robert Williams III,C
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6030,Kevin Huerter,"SG,SF"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6791,Dominick Barlow,"PF,C"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5842,Derrick White,"PG,SG"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10340,Jaylen Wells,"SG,SF"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10287,Zach Edey,C
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6173,Cameron Johnson,"SG,SF,PF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.5473,Devin Booker,"PG,SG"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.10465,Cedric Coward,"SG,SF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.10108,Amen Thompson,"PG,SG,SF"
