@@ -11,6 +11,7 @@ permissions:
 jobs:
   snapshot:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,7 +28,11 @@ jobs:
             exit 2
           fi
           echo "$OAUTH_B64" | base64 --decode > oauth2.json
-          python -c "import json; json.load(open('oauth2.json')); print('oauth2 OK')"
+          python - <<EOF
+          import json
+          json.load(open("oauth2.json"))
+          print("oauth2 OK")
+          EOF
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -42,15 +47,23 @@ jobs:
       - name: Run snapshots
         env:
           LEAGUE_KEY: ${{ secrets.LEAGUE_KEY }}
-          DEBUG_DUMP: "0"   # set to "1" to dump example JSONs to logs/artifacts
         run: |
           python fetch_players.py
           python fetch_team_roster_snapshot.py
           python fetch_player_season_snapshot.py
 
-      - name: Commit outputs
+      - name: Commit Parquet snapshots
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add *.csv || true
-          git diff --cached --quiet || (git commit -m "Daily Yahoo Fantasy snapshots" && git push)
+
+          # Only track Parquet snapshots (no CSVs)
+          git add data/snapshots/*.parquet || true
+
+          # Commit only if there are actual changes
+          if ! git diff --cached --quiet; then
+            git commit -m "Update Yahoo Fantasy Parquet snapshots"
+            git push
+          else
+            echo "No snapshot changes to commit"
+          fi
