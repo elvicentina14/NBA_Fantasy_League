@@ -1,11 +1,14 @@
-# fetch_player_season_snapshot.py
-import os, sys, logging, time
+import os
+import sys
+import time
+import csv
+import logging
+from datetime import datetime, timezone
+
+import pandas as pd
 from yahoo_oauth import OAuth2
 from yahoo_utils import as_list, first_dict, find_all
-from safe_io import safe_write_csv, debug_dump
 from http_helpers import safe_get
-from datetime import datetime, timezone
-import csv
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
@@ -15,80 +18,121 @@ if not LEAGUE_KEY:
     sys.exit(2)
 
 PLAYERS_CSV = "league_players.csv"
-OUT = "fact_player_season_snapshot.csv"
-TS = datetime.now(timezone.utc).isoformat()
+
+SNAPSHOT_TS = datetime.now(timezone.utc)
+SNAPSHOT_DATE = SNAPSHOT_TS.date().isoformat()
+
+OUT_DIR = "data/snapshots"
+OUT_FILE = os.path.join(
+    OUT_DIR,
+    f"fact_player_season_snapshot_{SNAPSHOT_DATE}.parquet"
+)
+
+os.makedirs(OUT_DIR, exist_ok=True)
+
 oauth = OAuth2(None, None, from_file="oauth2.json")
 session = oauth.session
 
-DEBUG_DUMP = os.environ.get("DEBUG_DUMP") == "1"
-
-# Load players
+# ---------------- Load players ----------------
 if not os.path.exists(PLAYERS_CSV):
     logging.error("%s not found, run fetch_players.py first", PLAYERS_CSV)
     sys.exit(1)
 
 players = []
 with open(PLAYERS_CSV, newline="", encoding="utf-8") as f:
-    reader = csv.DictReader(f)
-    for r in reader:
+    for r in csv.DictReader(f):
         if r.get("player_key"):
             players.append(r)
 
 if not players:
-    logging.info("No players in %s", PLAYERS_CSV)
+    logging.info("No players found — exiting")
     sys.exit(0)
 
 rows = []
+
+# ---------------- Fetch stats ----------------
 for idx, p in enumerate(players, start=1):
     pk = p["player_key"]
-    logging.info("[%d/%d] Getting stats for %s", idx, len(players), pk)
+    logging.info("[%d/%d] Fetching stats for %s", idx, len(players), pk)
+
     url = f"https://fantasysports.yahooapis.com/fantasy/v2/player/{pk}/stats?format=json"
+
     try:
-        status, data = safe_get(session, url)
-    except Exception as e:
+        _, data = safe_get(session, url)
+    except Exception:
         logging.exception("Failed to fetch stats for %s", pk)
         continue
 
-    if DEBUG_DUMP and idx <= 5:
-        debug_dump(data, f"debug_stats_{pk}.json")
-
-    # find player node and its player_stats fragment(s)
     player_nodes = as_list(data.get("fantasy_content", {}).get("player"))
     if len(player_nodes) < 2:
-        logging.debug("Unexpected player node for %s", pk)
         continue
 
     stats_frag = first_dict(player_nodes[1]).get("player_stats")
-    # stats_frag may be list/dict; find all "stat" occurrences under it
     stat_lists = find_all(stats_frag, "stat")
-    # flatten: each entry may be list of stat dicts or dict
+
     for sl in stat_lists:
-        if isinstance(sl, list):
-            for stat_item in sl:
-                s = first_dict(stat_item)
-                if s.get("stat_id") is not None:
-                    rows.append({
-                        "snapshot_ts": TS,
-                        "player_key": pk,
-                        "stat_id": s.get("stat_id"),
-                        "stat_value": s.get("value")
-                    })
-        elif isinstance(sl, dict):
-            s = first_dict(sl)
-            if s.get("stat_id") is not None:
-                rows.append({
-                    "snapshot_ts": TS,
-                    "player_key": pk,
-                    "stat_id": s.get("stat_id"),
-                    "stat_value": s.get("value")
-                })
-    # polite pause
+        for stat_item in (sl if isinstance(sl, list) else [sl]):
+            s = first_dict(stat_item)
+            if s.get("stat_id") is None:
+                continue
+
+            rows.append({
+                "snapshot_ts": SNAPSHOT_TS,
+                "snapshot_date": SNAPSHOT_DATE,
+                "player_key": pk,
+                "stat_id": int(s["stat_id"]),
+                "stat_value": s.get("value")
+            })
+
     time.sleep(0.12)
 
 if not rows:
-    logging.info("No season stats parsed — nothing to append")
+    logging.info("No stats collected")
     sys.exit(0)
 
-fieldnames = ["snapshot_ts", "player_key", "stat_id", "stat_value"]
-n = safe_write_csv(OUT, rows, fieldnames, mode="a")
-logging.info("Appended %d rows to %s", n, OUT)
+new_df = pd.DataFrame(rows)
+
+# ---------------- Enforce schema ----------------
+new_df["snapshot_ts"] = pd.to_datetime(new_df["snapshot_ts"], utc=True)
+new_df["snapshot_date"] = new_df["snapshot_date"].astype("string")
+new_df["player_key"] = new_df["player_key"].astype("string")
+new_df["stat_id"] = new_df["stat_id"].astype("int32")
+new_df["stat_value"] = new_df["stat_value"].astype("string")
+
+# ---------------- Load existing Parquet (if any) ----------------
+if os.path.exists(OUT_FILE):
+    logging.info("Existing snapshot found — merging and deduping")
+    existing_df = pd.read_parquet(OUT_FILE)
+
+    df = pd.concat([existing_df, new_df], ignore_index=True)
+else:
+    df = new_df
+
+# ---------------- DEDUPE ----------------
+# Keep the latest snapshot per (date, player, stat)
+before = len(df)
+
+df = (
+    df.sort_values("snapshot_ts")
+      .drop_duplicates(
+          subset=["snapshot_date", "player_key", "stat_id"],
+          keep="last"
+      )
+)
+
+after = len(df)
+
+logging.info(
+    "Deduped snapshot: %d → %d rows (removed %d)",
+    before, after, before - after
+)
+
+# ---------------- Write Parquet ----------------
+df.to_parquet(
+    OUT_FILE,
+    engine="pyarrow",
+    compression="snappy",
+    index=False
+)
+
+logging.info("Wrote %d rows → %s", len(df), OUT_FILE)
