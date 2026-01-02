@@ -60,13 +60,13 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.4,Dropped Giannis,466.p.5640,Jakob Poeltl,C
 466.l.165651.t.5,IBA KA,466.p.5826,Donovan Mitchell,"PG,SG"
 466.l.165651.t.5,IBA KA,466.p.5292,Andrew Wiggins,"SG,SF,PF"
-466.l.165651.t.5,IBA KA,466.p.6397,Isaac Okoro,"SF,PF"
 466.l.165651.t.5,IBA KA,466.p.6696,Bennedict Mathurin,"SG,SF"
+466.l.165651.t.5,IBA KA,466.p.6397,Isaac Okoro,"SF,PF"
+466.l.165651.t.5,IBA KA,466.p.4244,Kevin Durant,"SG,SF,PF"
+466.l.165651.t.5,IBA KA,466.p.10107,Cason Wallace,"PG,SG,SF"
 466.l.165651.t.5,IBA KA,466.p.5294,Joel Embiid,C
 466.l.165651.t.5,IBA KA,466.p.5197,Rudy Gobert,C
 466.l.165651.t.5,IBA KA,466.p.6616,Jordan Goodwin,"PG,SG"
-466.l.165651.t.5,IBA KA,466.p.10107,Cason Wallace,"PG,SG,SF"
-466.l.165651.t.5,IBA KA,466.p.4244,Kevin Durant,"SG,SF,PF"
 466.l.165651.t.5,IBA KA,466.p.6693,Jabari Smith Jr.,"SF,PF,C"
 466.l.165651.t.5,IBA KA,466.p.5832,John Collins,"PF,C"
 466.l.165651.t.5,IBA KA,466.p.4563,James Harden,"PG,SG"
@@ -170,7 +170,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.10099,Bilal Coulibaly,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.5959,Marvin Bagley III,"PF,C"
-466.l.165651.t.12,Gab's Minions,466.p.6052,Jarred Vanderbilt,"PF,C"
+466.l.165651.t.12,Gab's Minions,466.p.10308,Quinten Post,C
 466.l.165651.t.12,Gab's Minions,466.p.6578,Miles McBride,"PG,SG"
 466.l.165651.t.12,Gab's Minions,466.p.10327,Cam Spencer,"PG,SG"
 466.l.165651.t.12,Gab's Minions,466.p.10274,Kel'el Ware,"PF,C"
@@ -190,7 +190,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10508,Caleb Love,"PG,SG"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5636,Kris Dunn,"PG,SG"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5842,Derrick White,"PG,SG"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6791,Dominick Barlow,"PF,C"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10114,Marcus Sasser,PG
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10287,Zach Edey,C
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6173,Cameron Johnson,"SG,SF,PF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.5473,Devin Booker,"PG,SG"
@@ -202,9 +202,9 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.14,Mervyn's Swag Team,466.p.5835,Jarrett Allen,C
 466.l.165651.t.14,Mervyn's Swag Team,466.p.6018,Wendell Carter Jr.,C
 466.l.165651.t.14,Mervyn's Swag Team,466.p.6705,Mark Williams,C
+466.l.165651.t.14,Mervyn's Swag Team,466.p.6015,Jaren Jackson Jr.,"PF,C"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.10469,Nique Clifford,SG
 466.l.165651.t.14,Mervyn's Swag Team,466.p.10108,Amen Thompson,"PG,SG,SF"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.6205,Nickeil Alexander-Walker,"PG,SG,SF"
-466.l.165651.t.14,Mervyn's Swag Team,466.p.6015,Jaren Jackson Jr.,"PF,C"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.4622,Jrue Holiday,"PG,SG"
 466.l.165651.t.14,Mervyn's Swag Team,466.p.6403,Devin Vassell,"SG,SF"
