@@ -32,17 +32,17 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Warmers,466.p.6734,Ryan Rollins,"PG,SG"
 466.l.165651.t.3,Bench Warmers,466.p.5582,T.J. McConnell,PG
 466.l.165651.t.3,Bench Warmers,466.p.10468,Cooper Flagg,"PG,SG,SF"
-466.l.165651.t.3,Bench Warmers,466.p.10444,Derik Queen,"PF,C"
+466.l.165651.t.3,Bench Warmers,466.p.6515,Scottie Barnes,"SG,SF,PF"
 466.l.165651.t.3,Bench Warmers,466.p.6698,Dyson Daniels,"PG,SG,SF"
 466.l.165651.t.3,Bench Warmers,466.p.6206,Goga Bitadze,C
-466.l.165651.t.3,Bench Warmers,466.p.6219,Nic Claxton,C
-466.l.165651.t.3,Bench Warmers,466.p.4390,Russell Westbrook,"PG,SG"
 466.l.165651.t.3,Bench Warmers,466.p.5958,Deandre Ayton,C
-466.l.165651.t.3,Bench Warmers,466.p.6515,Scottie Barnes,"SG,SF,PF"
+466.l.165651.t.3,Bench Warmers,466.p.4390,Russell Westbrook,"PG,SG"
+466.l.165651.t.3,Bench Warmers,466.p.6614,Jock Landale,C
 466.l.165651.t.3,Bench Warmers,466.p.6551,Davion Mitchell,PG
 466.l.165651.t.3,Bench Warmers,466.p.6581,Neemias Queta,"PF,C"
-466.l.165651.t.3,Bench Warmers,466.p.6564,Isaiah Jackson,C
+466.l.165651.t.3,Bench Warmers,466.p.6219,Nic Claxton,C
 466.l.165651.t.3,Bench Warmers,466.p.6047,Mitchell Robinson,C
+466.l.165651.t.3,Bench Warmers,466.p.10444,Derik Queen,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.5825,Luke Kennard,"PG,SG"
 466.l.165651.t.4,Dropped Giannis,466.p.10115,Brandin Podziemski,"PG,SG"
 466.l.165651.t.4,Dropped Giannis,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
@@ -132,21 +132,21 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Villain Jr.,466.p.10335,Adem Bona,C
 466.l.165651.t.9,Villain Jr.,466.p.5324,Zach LaVine,"PG,SG,SF"
 466.l.165651.t.9,Villain Jr.,466.p.5352,Nikola Jokić,C
-466.l.165651.t.10,🚑 🚑 🚑,466.p.6016,Trae Young,PG
-466.l.165651.t.10,🚑 🚑 🚑,466.p.6216,Jordan Poole,"PG,SG"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.5161,CJ McCollum,"PG,SG"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.6559,Trey Murphy III,"SG,SF,PF"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.10121,Noah Clowney,"PF,C"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.5840,Kyle Kuzma,"SF,PF"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.10294,Alex Sarr,C
-466.l.165651.t.10,🚑 🚑 🚑,466.p.6514,Evan Mobley,"PF,C"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.6580,Ayo Dosunmu,"SG,SF"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.10104,Brandon Miller,"SF,PF"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.10282,Isaiah Collier,"PG,SG"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.6548,Josh Giddey,"PG,SG"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.5747,Derrick Jones Jr.,"SF,PF"
-466.l.165651.t.10,🚑 🚑 🚑,466.p.4840,Kyrie Irving,PG
-466.l.165651.t.10,🚑 🚑 🚑,466.p.5663,Ivica Zubac,C
+466.l.165651.t.10,Big Eiffel,466.p.6016,Trae Young,PG
+466.l.165651.t.10,Big Eiffel,466.p.6216,Jordan Poole,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.5161,CJ McCollum,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.6559,Trey Murphy III,"SG,SF,PF"
+466.l.165651.t.10,Big Eiffel,466.p.10121,Noah Clowney,"PF,C"
+466.l.165651.t.10,Big Eiffel,466.p.5840,Kyle Kuzma,"SF,PF"
+466.l.165651.t.10,Big Eiffel,466.p.10294,Alex Sarr,C
+466.l.165651.t.10,Big Eiffel,466.p.6514,Evan Mobley,"PF,C"
+466.l.165651.t.10,Big Eiffel,466.p.6580,Ayo Dosunmu,"SG,SF"
+466.l.165651.t.10,Big Eiffel,466.p.10104,Brandon Miller,"SF,PF"
+466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.6548,Josh Giddey,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.5747,Derrick Jones Jr.,"SF,PF"
+466.l.165651.t.10,Big Eiffel,466.p.4840,Kyrie Irving,PG
+466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
 466.l.165651.t.11,Denzel's Grand Team,466.p.6413,Tyrese Maxey,PG
 466.l.165651.t.11,Denzel's Grand Team,466.p.4912,Jimmy Butler III,"SG,SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6556,Moses Moody,"SG,SF"
