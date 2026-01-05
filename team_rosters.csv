@@ -42,19 +42,19 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Warmers,466.p.6206,Goga Bitadze,C
 466.l.165651.t.3,Bench Warmers,466.p.10444,Derik Queen,"PF,C"
 466.l.165651.t.3,Bench Warmers,466.p.6219,Nic Claxton,C
-466.l.165651.t.4,Dropped Giannis,466.p.6164,Ja Morant,PG
+466.l.165651.t.4,Dropped Giannis,466.p.10115,Brandin Podziemski,"PG,SG"
 466.l.165651.t.4,Dropped Giannis,466.p.5194,Tim Hardaway Jr.,"SG,SF"
 466.l.165651.t.4,Dropped Giannis,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
-466.l.165651.t.4,Dropped Giannis,466.p.6411,Saddiq Bey,"SF,PF"
-466.l.165651.t.4,Dropped Giannis,466.p.6655,Micah Potter,"PF,C"
+466.l.165651.t.4,Dropped Giannis,466.p.4725,Paul George,"SG,SF,PF"
+466.l.165651.t.4,Dropped Giannis,466.p.4896,Kawhi Leonard,"SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.6165,RJ Barrett,"SG,SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.10496,Maxime Raynaud,C
 466.l.165651.t.4,Dropped Giannis,466.p.6402,Jalen Smith,C
 466.l.165651.t.4,Dropped Giannis,466.p.5185,Giannis Antetokounmpo,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.6417,Immanuel Quickley,"PG,SG"
-466.l.165651.t.4,Dropped Giannis,466.p.4896,Kawhi Leonard,"SF,PF"
-466.l.165651.t.4,Dropped Giannis,466.p.10115,Brandin Podziemski,"PG,SG"
-466.l.165651.t.4,Dropped Giannis,466.p.4725,Paul George,"SG,SF,PF"
+466.l.165651.t.4,Dropped Giannis,466.p.6164,Ja Morant,PG
+466.l.165651.t.4,Dropped Giannis,466.p.6411,Saddiq Bey,"SF,PF"
+466.l.165651.t.4,Dropped Giannis,466.p.6655,Micah Potter,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.6550,Franz Wagner,"SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.5640,Jakob Poeltl,C
 466.l.165651.t.5,IBA KA,466.p.4563,James Harden,"PG,SG"
@@ -137,11 +137,11 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.10,Big Eiffel,466.p.6016,Trae Young,PG
 466.l.165651.t.10,Big Eiffel,466.p.6580,Ayo Dosunmu,"SG,SF"
 466.l.165651.t.10,Big Eiffel,466.p.10121,Noah Clowney,"PF,C"
+466.l.165651.t.10,Big Eiffel,466.p.10104,Brandon Miller,"SF,PF"
+466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
+466.l.165651.t.10,Big Eiffel,466.p.5336,Clint Capela,C
 466.l.165651.t.10,Big Eiffel,466.p.6514,Evan Mobley,"PF,C"
 466.l.165651.t.10,Big Eiffel,466.p.10294,Alex Sarr,C
-466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
-466.l.165651.t.10,Big Eiffel,466.p.10104,Brandon Miller,"SF,PF"
-466.l.165651.t.10,Big Eiffel,466.p.5159,Kentavious Caldwell-Pope,"SG,SF"
 466.l.165651.t.10,Big Eiffel,466.p.6559,Trey Murphy III,"SG,SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.6216,Jordan Poole,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.5840,Kyle Kuzma,"SF,PF"
@@ -183,8 +183,8 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6569,Cam Thomas,"SG,SF"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.4614,DeMar DeRozan,"SF,PF"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6452,Sam Merrill,"SG,SF"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6038,Robert Williams III,C
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10094,Victor Wembanyama,"PF,C"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6594,Luka Garza,C
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6030,Kevin Huerter,"SG,SF"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10508,Caleb Love,"PG,SG"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.4612,Stephen Curry,PG
