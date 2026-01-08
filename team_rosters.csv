@@ -43,18 +43,19 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Warmers,466.p.6515,Scottie Barnes,"SG,SF,PF,C"
 466.l.165651.t.3,Bench Warmers,466.p.4390,Russell Westbrook,"PG,SG"
 466.l.165651.t.3,Bench Warmers,466.p.5765,Jayson Tatum,"SF,PF"
+466.l.165651.t.3,Bench Warmers,466.p.6402,Jalen Smith,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.10115,Brandin Podziemski,"PG,SG"
-466.l.165651.t.4,Dropped Giannis,466.p.10448,Tre Johnson,"SG,SF"
+466.l.165651.t.4,Dropped Giannis,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.6164,Ja Morant,PG
 466.l.165651.t.4,Dropped Giannis,466.p.5194,Tim Hardaway Jr.,"SG,SF"
 466.l.165651.t.4,Dropped Giannis,466.p.4896,Kawhi Leonard,"SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.4725,Paul George,"SG,SF,PF"
-466.l.165651.t.4,Dropped Giannis,466.p.5464,Kristaps Porziņģis,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.5185,Giannis Antetokounmpo,"PF,C"
+466.l.165651.t.4,Dropped Giannis,466.p.6655,Micah Potter,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.6417,Immanuel Quickley,"PG,SG"
 466.l.165651.t.4,Dropped Giannis,466.p.6411,Saddiq Bey,"SF,PF"
-466.l.165651.t.4,Dropped Giannis,466.p.6655,Micah Potter,"PF,C"
-466.l.165651.t.4,Dropped Giannis,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
+466.l.165651.t.4,Dropped Giannis,466.p.10448,Tre Johnson,"SG,SF"
+466.l.165651.t.4,Dropped Giannis,466.p.5464,Kristaps Porziņģis,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.10496,Maxime Raynaud,C
 466.l.165651.t.4,Dropped Giannis,466.p.5640,Jakob Poeltl,C
 466.l.165651.t.4,Dropped Giannis,466.p.6550,Franz Wagner,"SF,PF"
@@ -88,19 +89,19 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.6,ICC Defenders,466.p.6571,Day'Ron Sharpe,C
 466.l.165651.t.6,ICC Defenders,466.p.10272,Kyshawn George,"SG,SF,PF"
 466.l.165651.t.6,ICC Defenders,466.p.6558,Alperen Sengun,"PF,C"
-466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
+466.l.165651.t.7,Sakuragi,466.p.6355,Anthony Edwards,"PG,SG"
 466.l.165651.t.7,Sakuragi,466.p.5506,Norman Powell,"SG,SF"
-466.l.165651.t.7,Sakuragi,466.p.5187,Dennis Schröder,"PG,SG"
-466.l.165651.t.7,Sakuragi,466.p.5601,Brandon Ingram,"SG,SF,PF"
+466.l.165651.t.7,Sakuragi,466.p.6679,Brandon Williams,PG
+466.l.165651.t.7,Sakuragi,466.p.6166,De'Andre Hunter,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5295,Aaron Gordon,"PF,C"
 466.l.165651.t.7,Sakuragi,466.p.5905,Royce O'Neale,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.10315,Kyle Filipowski,"PF,C"
 466.l.165651.t.7,Sakuragi,466.p.5903,Luke Kornet,C
 466.l.165651.t.7,Sakuragi,466.p.5769,Lauri Markkanen,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5471,Myles Turner,C
-466.l.165651.t.7,Sakuragi,466.p.6679,Brandon Williams,PG
-466.l.165651.t.7,Sakuragi,466.p.6166,De'Andre Hunter,"SF,PF"
-466.l.165651.t.7,Sakuragi,466.p.6355,Anthony Edwards,"PG,SG"
+466.l.165651.t.7,Sakuragi,466.p.5187,Dennis Schröder,"PG,SG"
+466.l.165651.t.7,Sakuragi,466.p.5601,Brandon Ingram,"SG,SF,PF"
+466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
 466.l.165651.t.7,Sakuragi,466.p.5350,Jerami Grant,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5856,Isaiah Hartenstein,C
 466.l.165651.t.8,Zesty Squad,466.p.6652,Dru Smith,"PG,SG"
@@ -137,12 +138,12 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.10,Big Eiffel,466.p.6216,Jordan Poole,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6559,Trey Murphy III,"SG,SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.10104,Brandon Miller,"SF,PF"
-466.l.165651.t.10,Big Eiffel,466.p.10121,Noah Clowney,"PF,C"
-466.l.165651.t.10,Big Eiffel,466.p.6580,Ayo Dosunmu,"SG,SF"
-466.l.165651.t.10,Big Eiffel,466.p.10294,Alex Sarr,C
 466.l.165651.t.10,Big Eiffel,466.p.6514,Evan Mobley,"PF,C"
-466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.5840,Kyle Kuzma,"SF,PF"
+466.l.165651.t.10,Big Eiffel,466.p.10121,Noah Clowney,"PF,C"
+466.l.165651.t.10,Big Eiffel,466.p.10294,Alex Sarr,C
+466.l.165651.t.10,Big Eiffel,466.p.6580,Ayo Dosunmu,"SG,SF"
+466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
 466.l.165651.t.10,Big Eiffel,466.p.6016,Trae Young,PG
 466.l.165651.t.10,Big Eiffel,466.p.5161,CJ McCollum,"PG,SG"
