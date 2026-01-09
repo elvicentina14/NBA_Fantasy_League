@@ -2,16 +2,16 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6169,Coby White,"PG,SG"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10440,Jeremiah Fears,"PG,SG"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6418,Payton Pritchard,PG
-466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6420,Jaden McDaniels,"SF,PF"
-466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.5827,Bam Adebayo,"PF,C"
+466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.5858,Dillon Brooks,"SF,PF"
+466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6720,Peyton Watson,"SF,PF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6021,Mikal Bridges,"SG,SF,PF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6572,Santi Aldama,"PF,C"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10065,Toumani Camara,"SF,PF,C"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6022,Shai Gilgeous-Alexander,PG
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6057,De'Anthony Melton,"PG,SG"
+466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6420,Jaden McDaniels,"SF,PF"
+466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.5827,Bam Adebayo,"PF,C"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.5767,De'Aaron Fox,"PG,SG"
-466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.5858,Dillon Brooks,"SF,PF"
-466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6720,Peyton Watson,"SF,PF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6577,Herbert Jones,"SF,PF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10476,Ryan Kalkbrenner,C
 466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
@@ -20,48 +20,47 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.2,Matalim Dede,466.p.10450,Kon Knueppel,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.6691,Paolo Banchero,"PF,C"
 466.l.165651.t.2,Matalim Dede,466.p.10265,Matas Buzelis,"SF,PF"
-466.l.165651.t.2,Matalim Dede,466.p.6617,Jay Huff,C
 466.l.165651.t.2,Matalim Dede,466.p.10342,Branden Carlson,C
+466.l.165651.t.2,Matalim Dede,466.p.6692,Chet Holmgren,"PF,C"
 466.l.165651.t.2,Matalim Dede,466.p.6632,Justin Champagnie,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6218,Kevin Porter Jr.,"PG,SG"
-466.l.165651.t.2,Matalim Dede,466.p.6692,Chet Holmgren,"PF,C"
+466.l.165651.t.2,Matalim Dede,466.p.6617,Jay Huff,C
 466.l.165651.t.2,Matalim Dede,466.p.6450,Paul Reed,C
 466.l.165651.t.2,Matalim Dede,466.p.6703,Jalen Duren,C
 466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
-466.l.165651.t.3,Bench Warmers,466.p.6551,Davion Mitchell,PG
-466.l.165651.t.3,Bench Warmers,466.p.6433,Tre Jones,"PG,SG"
-466.l.165651.t.3,Bench Warmers,466.p.5582,T.J. McConnell,PG
-466.l.165651.t.3,Bench Warmers,466.p.10468,Cooper Flagg,"PG,SG,SF"
-466.l.165651.t.3,Bench Warmers,466.p.10274,Kel'el Ware,"PF,C"
-466.l.165651.t.3,Bench Warmers,466.p.10443,Collin Murray-Boyles,"PF,C"
-466.l.165651.t.3,Bench Warmers,466.p.10444,Derik Queen,"PF,C"
-466.l.165651.t.3,Bench Warmers,466.p.5958,Deandre Ayton,C
-466.l.165651.t.3,Bench Warmers,466.p.10304,Ajay Mitchell,"PG,SG"
-466.l.165651.t.3,Bench Warmers,466.p.6581,Neemias Queta,"PF,C"
-466.l.165651.t.3,Bench Warmers,466.p.6734,Ryan Rollins,"PG,SG"
-466.l.165651.t.3,Bench Warmers,466.p.6698,Dyson Daniels,"PG,SG,SF"
-466.l.165651.t.3,Bench Warmers,466.p.6515,Scottie Barnes,"SG,SF,PF,C"
-466.l.165651.t.3,Bench Warmers,466.p.5765,Jayson Tatum,"SF,PF"
-466.l.165651.t.3,Bench Warmers,466.p.6402,Jalen Smith,"PF,C"
+466.l.165651.t.3,Bench Kings,466.p.6734,Ryan Rollins,"PG,SG"
+466.l.165651.t.3,Bench Kings,466.p.6433,Tre Jones,"PG,SG"
+466.l.165651.t.3,Bench Kings,466.p.5582,T.J. McConnell,PG
+466.l.165651.t.3,Bench Kings,466.p.6698,Dyson Daniels,"PG,SG,SF"
+466.l.165651.t.3,Bench Kings,466.p.6515,Scottie Barnes,"SG,SF,PF,C"
+466.l.165651.t.3,Bench Kings,466.p.10443,Collin Murray-Boyles,"PF,C"
+466.l.165651.t.3,Bench Kings,466.p.10444,Derik Queen,"PF,C"
+466.l.165651.t.3,Bench Kings,466.p.5958,Deandre Ayton,C
+466.l.165651.t.3,Bench Kings,466.p.10304,Ajay Mitchell,"PG,SG"
+466.l.165651.t.3,Bench Kings,466.p.6581,Neemias Queta,"PF,C"
+466.l.165651.t.3,Bench Kings,466.p.6551,Davion Mitchell,PG
+466.l.165651.t.3,Bench Kings,466.p.10468,Cooper Flagg,"PG,SG,SF"
+466.l.165651.t.3,Bench Kings,466.p.10274,Kel'el Ware,"PF,C"
+466.l.165651.t.3,Bench Kings,466.p.5765,Jayson Tatum,"SF,PF"
+466.l.165651.t.3,Bench Kings,466.p.6402,Jalen Smith,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.10115,Brandin Podziemski,"PG,SG"
-466.l.165651.t.4,Dropped Giannis,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
-466.l.165651.t.4,Dropped Giannis,466.p.6164,Ja Morant,PG
+466.l.165651.t.4,Dropped Giannis,466.p.10448,Tre Johnson,"SG,SF"
 466.l.165651.t.4,Dropped Giannis,466.p.5194,Tim Hardaway Jr.,"SG,SF"
 466.l.165651.t.4,Dropped Giannis,466.p.4896,Kawhi Leonard,"SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.4725,Paul George,"SG,SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.5185,Giannis Antetokounmpo,"PF,C"
-466.l.165651.t.4,Dropped Giannis,466.p.6655,Micah Potter,"PF,C"
-466.l.165651.t.4,Dropped Giannis,466.p.6417,Immanuel Quickley,"PG,SG"
-466.l.165651.t.4,Dropped Giannis,466.p.5640,Jakob Poeltl,C
-466.l.165651.t.4,Dropped Giannis,466.p.10448,Tre Johnson,"SG,SF"
-466.l.165651.t.4,Dropped Giannis,466.p.5464,Kristaps Porziņģis,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.10496,Maxime Raynaud,C
+466.l.165651.t.4,Dropped Giannis,466.p.6417,Immanuel Quickley,"PG,SG"
+466.l.165651.t.4,Dropped Giannis,466.p.5464,Kristaps Porziņģis,"PF,C"
+466.l.165651.t.4,Dropped Giannis,466.p.6164,Ja Morant,PG
+466.l.165651.t.4,Dropped Giannis,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
+466.l.165651.t.4,Dropped Giannis,466.p.5640,Jakob Poeltl,C
 466.l.165651.t.4,Dropped Giannis,466.p.6411,Saddiq Bey,"SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.6550,Franz Wagner,"SF,PF"
-466.l.165651.t.5,IBA KA,466.p.6175,Tyler Herro,"PG,SG"
-466.l.165651.t.5,IBA KA,466.p.5292,Andrew Wiggins,"SG,SF,PF"
-466.l.165651.t.5,IBA KA,466.p.5826,Donovan Mitchell,"PG,SG"
+466.l.165651.t.5,IBA KA,466.p.4563,James Harden,"PG,SG"
+466.l.165651.t.5,IBA KA,466.p.6053,Bruce Brown,"PG,SG"
+466.l.165651.t.5,IBA KA,466.p.10107,Cason Wallace,"PG,SG,SF"
 466.l.165651.t.5,IBA KA,466.p.6693,Jabari Smith Jr.,"SF,PF,C"
 466.l.165651.t.5,IBA KA,466.p.4244,Kevin Durant,"SG,SF,PF"
 466.l.165651.t.5,IBA KA,466.p.5832,John Collins,"PF,C"
@@ -69,24 +68,24 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.5,IBA KA,466.p.5294,Joel Embiid,C
 466.l.165651.t.5,IBA KA,466.p.5317,Marcus Smart,"PG,SG"
 466.l.165651.t.5,IBA KA,466.p.6616,Jordan Goodwin,"PG,SG"
-466.l.165651.t.5,IBA KA,466.p.4563,James Harden,"PG,SG"
-466.l.165651.t.5,IBA KA,466.p.6053,Bruce Brown,"PG,SG"
-466.l.165651.t.5,IBA KA,466.p.10107,Cason Wallace,"PG,SG,SF"
+466.l.165651.t.5,IBA KA,466.p.6175,Tyler Herro,"PG,SG"
+466.l.165651.t.5,IBA KA,466.p.5292,Andrew Wiggins,"SG,SF,PF"
+466.l.165651.t.5,IBA KA,466.p.5826,Donovan Mitchell,"PG,SG"
 466.l.165651.t.5,IBA KA,466.p.5660,Dejounte Murray,"PG,SG"
 466.l.165651.t.5,IBA KA,466.p.6696,Bennedict Mathurin,"SG,SF"
-466.l.165651.t.6,ICC Defenders,466.p.6028,Donte DiVincenzo,"PG,SG"
+466.l.165651.t.6,ICC Defenders,466.p.10273,Bub Carrington,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10290,Stephon Castle,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10288,Reed Sheppard,"PG,SG"
-466.l.165651.t.6,ICC Defenders,466.p.10096,Ausar Thompson,"SG,SF,PF"
+466.l.165651.t.6,ICC Defenders,466.p.6562,Jalen Johnson,"SF,PF"
 466.l.165651.t.6,ICC Defenders,466.p.5007,Anthony Davis,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.6398,Onyeka Okongwu,"PF,C"
-466.l.165651.t.6,ICC Defenders,466.p.10285,Donovan Clingan,C
-466.l.165651.t.6,ICC Defenders,466.p.5327,Jusuf Nurkić,C
-466.l.165651.t.6,ICC Defenders,466.p.6562,Jalen Johnson,"SF,PF"
-466.l.165651.t.6,ICC Defenders,466.p.5836,OG Anunoby,"SF,PF"
 466.l.165651.t.6,ICC Defenders,466.p.10289,Yves Missi,C
-466.l.165651.t.6,ICC Defenders,466.p.10273,Bub Carrington,"PG,SG"
+466.l.165651.t.6,ICC Defenders,466.p.10285,Donovan Clingan,C
+466.l.165651.t.6,ICC Defenders,466.p.5836,OG Anunoby,"SF,PF"
 466.l.165651.t.6,ICC Defenders,466.p.6571,Day'Ron Sharpe,C
+466.l.165651.t.6,ICC Defenders,466.p.6028,Donte DiVincenzo,"PG,SG"
+466.l.165651.t.6,ICC Defenders,466.p.10096,Ausar Thompson,"SG,SF,PF"
+466.l.165651.t.6,ICC Defenders,466.p.5327,Jusuf Nurkić,C
 466.l.165651.t.6,ICC Defenders,466.p.10272,Kyshawn George,"SG,SF,PF"
 466.l.165651.t.6,ICC Defenders,466.p.6558,Alperen Sengun,"PF,C"
 466.l.165651.t.7,Sakuragi,466.p.6355,Anthony Edwards,"PG,SG"
@@ -104,9 +103,9 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
 466.l.165651.t.7,Sakuragi,466.p.5350,Jerami Grant,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5856,Isaiah Hartenstein,C
-466.l.165651.t.8,Zesty Squad,466.p.6652,Dru Smith,"PG,SG"
-466.l.165651.t.8,Zesty Squad,466.p.6019,Collin Sexton,"PG,SG"
-466.l.165651.t.8,Zesty Squad,466.p.10100,Keyonte George,"PG,SG"
+466.l.165651.t.8,Zesty Squad,466.p.5638,Jamal Murray,"PG,SG"
+466.l.165651.t.8,Zesty Squad,466.p.10393,Spencer Jones,"SG,SF"
+466.l.165651.t.8,Zesty Squad,466.p.6429,Vít Krejčí,"SG,SF"
 466.l.165651.t.8,Zesty Squad,466.p.6707,Tari Eason,"SG,SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.6217,Keldon Johnson,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.10279,Jaylon Tyson,"SG,SF"
@@ -114,97 +113,97 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.8,Zesty Squad,466.p.5432,Karl-Anthony Towns,"PF,C"
 466.l.165651.t.8,Zesty Squad,466.p.6702,Jalen Williams,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.6733,Moussa Diabaté,C
-466.l.165651.t.8,Zesty Squad,466.p.5638,Jamal Murray,"PG,SG"
-466.l.165651.t.8,Zesty Squad,466.p.10393,Spencer Jones,"SG,SF"
-466.l.165651.t.8,Zesty Squad,466.p.6429,Vít Krejčí,"SG,SF"
+466.l.165651.t.8,Zesty Squad,466.p.6652,Dru Smith,"PG,SG"
+466.l.165651.t.8,Zesty Squad,466.p.6019,Collin Sexton,"PG,SG"
+466.l.165651.t.8,Zesty Squad,466.p.10100,Keyonte George,"PG,SG"
 466.l.165651.t.8,Zesty Squad,466.p.6606,Austin Reaves,"PG,SG,SF"
 466.l.165651.t.8,Zesty Squad,466.p.6516,Jalen Suggs,"PG,SG"
-466.l.165651.t.9,Villain Jr.,466.p.6395,LaMelo Ball,"PG,SG"
-466.l.165651.t.9,Villain Jr.,466.p.6721,Andrew Nembhard,"PG,SG"
+466.l.165651.t.9,Villain Jr.,466.p.6751,Collin Gillespie,"PG,SG"
 466.l.165651.t.9,Villain Jr.,466.p.6697,Shaedon Sharpe,"PG,SG,SF"
-466.l.165651.t.9,Villain Jr.,466.p.5324,Zach LaVine,"PG,SG,SF"
 466.l.165651.t.9,Villain Jr.,466.p.6165,RJ Barrett,"SG,SF,PF"
+466.l.165651.t.9,Villain Jr.,466.p.5324,Zach LaVine,"PG,SG,SF"
+466.l.165651.t.9,Villain Jr.,466.p.5069,Draymond Green,"PF,C"
 466.l.165651.t.9,Villain Jr.,466.p.5602,Jaylen Brown,"SG,SF"
 466.l.165651.t.9,Villain Jr.,466.p.5163,Steven Adams,C
-466.l.165651.t.9,Villain Jr.,466.p.6226,Daniel Gafford,C
-466.l.165651.t.9,Villain Jr.,466.p.6751,Collin Gillespie,"PG,SG"
-466.l.165651.t.9,Villain Jr.,466.p.6717,Nikola Jović,"PF,C"
 466.l.165651.t.9,Villain Jr.,466.p.6414,Zeke Nnaji,"PF,C"
+466.l.165651.t.9,Villain Jr.,466.p.6721,Andrew Nembhard,"PG,SG"
 466.l.165651.t.9,Villain Jr.,466.p.6412,Precious Achiuwa,"PF,C"
-466.l.165651.t.9,Villain Jr.,466.p.5069,Draymond Green,"PF,C"
+466.l.165651.t.9,Villain Jr.,466.p.6395,LaMelo Ball,"PG,SG"
+466.l.165651.t.9,Villain Jr.,466.p.6226,Daniel Gafford,C
+466.l.165651.t.9,Villain Jr.,466.p.6717,Nikola Jović,"PF,C"
 466.l.165651.t.9,Villain Jr.,466.p.5352,Nikola Jokić,C
 466.l.165651.t.9,Villain Jr.,466.p.3704,LeBron James,"SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.10445,Egor Dëmin,PG
-466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.6216,Jordan Poole,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.5161,CJ McCollum,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.6559,Trey Murphy III,"SG,SF,PF"
+466.l.165651.t.10,Big Eiffel,466.p.10121,Noah Clowney,"PF,C"
 466.l.165651.t.10,Big Eiffel,466.p.6580,Ayo Dosunmu,"SG,SF"
+466.l.165651.t.10,Big Eiffel,466.p.10294,Alex Sarr,C
+466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
+466.l.165651.t.10,Big Eiffel,466.p.5840,Kyle Kuzma,"SF,PF"
+466.l.165651.t.10,Big Eiffel,466.p.6016,Trae Young,PG
 466.l.165651.t.10,Big Eiffel,466.p.10104,Brandon Miller,"SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.6514,Evan Mobley,"PF,C"
-466.l.165651.t.10,Big Eiffel,466.p.5840,Kyle Kuzma,"SF,PF"
-466.l.165651.t.10,Big Eiffel,466.p.10121,Noah Clowney,"PF,C"
-466.l.165651.t.10,Big Eiffel,466.p.10294,Alex Sarr,C
-466.l.165651.t.10,Big Eiffel,466.p.6216,Jordan Poole,"PG,SG"
-466.l.165651.t.10,Big Eiffel,466.p.6559,Trey Murphy III,"SG,SF,PF"
-466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
-466.l.165651.t.10,Big Eiffel,466.p.6016,Trae Young,PG
-466.l.165651.t.10,Big Eiffel,466.p.5161,CJ McCollum,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.4840,Kyrie Irving,PG
 466.l.165651.t.10,Big Eiffel,466.p.6548,Josh Giddey,"PG,SG"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6413,Tyrese Maxey,PG
 466.l.165651.t.11,Denzel's Grand Team,466.p.4912,Jimmy Butler III,"SG,SF,PF"
-466.l.165651.t.11,Denzel's Grand Team,466.p.6725,Max Christie,"SG,SF"
+466.l.165651.t.11,Denzel's Grand Team,466.p.10454,VJ Edgecombe,"PG,SG"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6023,Miles Bridges,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.5475,Kelly Oubre Jr.,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.10296,Zaccharie Risacher,"SF,PF"
-466.l.165651.t.11,Denzel's Grand Team,466.p.6253,Naz Reid,"PF,C"
-466.l.165651.t.11,Denzel's Grand Team,466.p.5658,Pascal Siakam,"SF,PF,C"
-466.l.165651.t.11,Denzel's Grand Team,466.p.6035,Anfernee Simons,"PG,SG"
-466.l.165651.t.11,Denzel's Grand Team,466.p.10454,VJ Edgecombe,"PG,SG"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6163,Zion Williamson,"SF,PF,C"
 466.l.165651.t.11,Denzel's Grand Team,466.p.10313,Oso Ighodaro,C
-466.l.165651.t.11,Denzel's Grand Team,466.p.6174,P.J. Washington,"SF,PF,C"
+466.l.165651.t.11,Denzel's Grand Team,466.p.6035,Anfernee Simons,"PG,SG"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6711,Christian Braun,"SG,SF"
+466.l.165651.t.11,Denzel's Grand Team,466.p.6725,Max Christie,"SG,SF"
+466.l.165651.t.11,Denzel's Grand Team,466.p.6253,Naz Reid,"PF,C"
+466.l.165651.t.11,Denzel's Grand Team,466.p.5658,Pascal Siakam,"SF,PF,C"
+466.l.165651.t.11,Denzel's Grand Team,466.p.6174,P.J. Washington,"SF,PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.4390,Russell Westbrook,"PG,SG"
-466.l.165651.t.12,Gab's Minions,466.p.6406,Aaron Nesmith,"SG,SF"
-466.l.165651.t.12,Gab's Minions,466.p.10327,Cam Spencer,"PG,SG"
+466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
+466.l.165651.t.12,Gab's Minions,466.p.6014,Luka Dončić,"PG,SG"
 466.l.165651.t.12,Gab's Minions,466.p.6422,Desmond Bane,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.6709,Jake LaRavia,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.10099,Bilal Coulibaly,"SG,SF"
-466.l.165651.t.12,Gab's Minions,466.p.5318,Julius Randle,"PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.6219,Nic Claxton,C
-466.l.165651.t.12,Gab's Minions,466.p.6014,Luka Dončić,"PG,SG"
-466.l.165651.t.12,Gab's Minions,466.p.6578,Miles McBride,"PG,SG"
 466.l.165651.t.12,Gab's Minions,466.p.6614,Jock Landale,C
+466.l.165651.t.12,Gab's Minions,466.p.10327,Cam Spencer,"PG,SG"
+466.l.165651.t.12,Gab's Minions,466.p.6578,Miles McBride,"PG,SG"
+466.l.165651.t.12,Gab's Minions,466.p.6406,Aaron Nesmith,"SG,SF"
+466.l.165651.t.12,Gab's Minions,466.p.5318,Julius Randle,"PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.6408,Isaiah Stewart,"PF,C"
-466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.5642,Domantas Sabonis,C
 466.l.165651.t.12,Gab's Minions,466.p.4901,Tobias Harris,PF
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6167,Darius Garland,PG
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6452,Sam Merrill,"SG,SF"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6552,Ziaire Williams,"SG,SF"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6269,Javonte Green,"SG,SF"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10094,Victor Wembanyama,"PF,C"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6569,Cam Thomas,"SG,SF"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6594,Luka Garza,C
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10329,PJ Hall,C
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10508,Caleb Love,"PG,SG"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5842,Derrick White,"PG,SG"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.4612,Stephen Curry,PG
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5636,Kris Dunn,"PG,SG"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6552,Ziaire Williams,"SG,SF"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6269,Javonte Green,"SG,SF"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.4614,DeMar DeRozan,"SF,PF"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6569,Cam Thomas,"SG,SF"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6594,Luka Garza,C
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10508,Caleb Love,"PG,SG"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5842,Derrick White,"PG,SG"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6167,Darius Garland,PG
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6452,Sam Merrill,"SG,SF"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10094,Victor Wembanyama,"PF,C"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5825,Luke Kennard,"PG,SG"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10287,Zach Edey,C
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6173,Cameron Johnson,"SG,SF,PF"
 466.l.165651.t.14,Moneyball,466.p.5473,Devin Booker,"PG,SG"
 466.l.165651.t.14,Moneyball,466.p.10465,Cedric Coward,"SG,SF"
-466.l.165651.t.14,Moneyball,466.p.6754,Julian Champagnie,"SG,SF"
+466.l.165651.t.14,Moneyball,466.p.6032,Grayson Allen,"SG,SF"
 466.l.165651.t.14,Moneyball,466.p.10108,Amen Thompson,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.6025,Michael Porter Jr.,"SF,PF"
 466.l.165651.t.14,Moneyball,466.p.6205,Nickeil Alexander-Walker,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.5482,Bobby Portis,"PF,C"
-466.l.165651.t.14,Moneyball,466.p.5835,Jarrett Allen,C
+466.l.165651.t.14,Moneyball,466.p.6018,Wendell Carter Jr.,C
 466.l.165651.t.14,Moneyball,466.p.6705,Mark Williams,C
 466.l.165651.t.14,Moneyball,466.p.6015,Jaren Jackson Jr.,"PF,C"
-466.l.165651.t.14,Moneyball,466.p.6018,Wendell Carter Jr.,C
-466.l.165651.t.14,Moneyball,466.p.6032,Grayson Allen,"SG,SF"
 466.l.165651.t.14,Moneyball,466.p.4622,Jrue Holiday,"PG,SG"
+466.l.165651.t.14,Moneyball,466.p.6754,Julian Champagnie,"SG,SF"
+466.l.165651.t.14,Moneyball,466.p.5835,Jarrett Allen,C
 466.l.165651.t.14,Moneyball,466.p.6694,Keegan Murray,"SF,PF"
 466.l.165651.t.14,Moneyball,466.p.6403,Devin Vassell,"SG,SF"
