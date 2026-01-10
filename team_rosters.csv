@@ -78,7 +78,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.6,ICC Defenders,466.p.10272,Kyshawn George,"SG,SF,PF"
 466.l.165651.t.6,ICC Defenders,466.p.10288,Reed Sheppard,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.6562,Jalen Johnson,"SF,PF"
-466.l.165651.t.6,ICC Defenders,466.p.5007,Anthony Davis,"PF,C"
+466.l.165651.t.6,ICC Defenders,466.p.10096,Ausar Thompson,"SG,SF,PF"
 466.l.165651.t.6,ICC Defenders,466.p.6398,Onyeka Okongwu,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.10289,Yves Missi,C
 466.l.165651.t.6,ICC Defenders,466.p.10285,Donovan Clingan,C
@@ -86,9 +86,9 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.6,ICC Defenders,466.p.6571,Day'Ron Sharpe,C
 466.l.165651.t.6,ICC Defenders,466.p.10290,Stephon Castle,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.6028,Donte DiVincenzo,"PG,SG"
-466.l.165651.t.6,ICC Defenders,466.p.10096,Ausar Thompson,"SG,SF,PF"
-466.l.165651.t.6,ICC Defenders,466.p.6558,Alperen Sengun,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.5327,Jusuf Nurkić,C
+466.l.165651.t.6,ICC Defenders,466.p.6558,Alperen Sengun,"PF,C"
+466.l.165651.t.6,ICC Defenders,466.p.5007,Anthony Davis,"PF,C"
 466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
 466.l.165651.t.7,Sakuragi,466.p.5601,Brandon Ingram,"SG,SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5187,Dennis Schröder,"PG,SG"
@@ -154,7 +154,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.11,Denzel's Grand Team,466.p.10454,VJ Edgecombe,"PG,SG"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6023,Miles Bridges,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.5475,Kelly Oubre Jr.,"SF,PF"
-466.l.165651.t.11,Denzel's Grand Team,466.p.10296,Zaccharie Risacher,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6163,Zion Williamson,"SF,PF,C"
 466.l.165651.t.11,Denzel's Grand Team,466.p.10313,Oso Ighodaro,C
 466.l.165651.t.11,Denzel's Grand Team,466.p.6035,Anfernee Simons,"PG,SG"
@@ -163,6 +162,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.11,Denzel's Grand Team,466.p.6253,Naz Reid,"PF,C"
 466.l.165651.t.11,Denzel's Grand Team,466.p.5658,Pascal Siakam,"SF,PF,C"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6174,P.J. Washington,"SF,PF,C"
+466.l.165651.t.11,Denzel's Grand Team,466.p.10296,Zaccharie Risacher,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.4390,Russell Westbrook,"PG,SG"
 466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6014,Luka Dončić,"PG,SG"
