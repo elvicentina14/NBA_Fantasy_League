@@ -5,14 +5,15 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6420,Jaden McDaniels,"SF,PF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.5827,Bam Adebayo,"PF,C"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6720,Peyton Watson,"SF,PF"
-466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10065,Toumani Camara,"SF,PF,C"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.5958,Deandre Ayton,C
+466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10524,Moussa Cisse,C
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6022,Shai Gilgeous-Alexander,PG
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.5858,Dillon Brooks,"SF,PF"
+466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10065,Toumani Camara,"SF,PF,C"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10440,Jeremiah Fears,"PG,SG"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6572,Santi Aldama,"PF,C"
-466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6169,Coby White,"PG,SG"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6577,Herbert Jones,"SF,PF"
+466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6169,Coby White,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.10450,Kon Knueppel,"SG,SF"
@@ -65,10 +66,10 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.5,IBA KA,466.p.5294,Joel Embiid,C
 466.l.165651.t.5,IBA KA,466.p.4472,Brook Lopez,C
 466.l.165651.t.5,IBA KA,466.p.5826,Donovan Mitchell,"PG,SG"
+466.l.165651.t.5,IBA KA,466.p.6171,Rui Hachimura,"SF,PF"
 466.l.165651.t.5,IBA KA,466.p.6693,Jabari Smith Jr.,"SF,PF,C"
 466.l.165651.t.5,IBA KA,466.p.4244,Kevin Durant,"SG,SF,PF"
 466.l.165651.t.5,IBA KA,466.p.5197,Rudy Gobert,C
-466.l.165651.t.5,IBA KA,466.p.6171,Rui Hachimura,"SF,PF"
 466.l.165651.t.5,IBA KA,466.p.5660,Dejounte Murray,"PG,SG"
 466.l.165651.t.5,IBA KA,466.p.6696,Bennedict Mathurin,"SG,SF"
 466.l.165651.t.6,ICC Defenders,466.p.6028,Donte DiVincenzo,"PG,SG"
@@ -141,11 +142,11 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
 466.l.165651.t.10,Big Eiffel,466.p.10294,Alex Sarr,C
 466.l.165651.t.10,Big Eiffel,466.p.6559,Trey Murphy III,"SG,SF,PF"
-466.l.165651.t.10,Big Eiffel,466.p.6016,Trae Young,PG
 466.l.165651.t.10,Big Eiffel,466.p.6216,Jordan Poole,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6580,Ayo Dosunmu,"SG,SF"
-466.l.165651.t.10,Big Eiffel,466.p.4840,Kyrie Irving,PG
 466.l.165651.t.10,Big Eiffel,466.p.6548,Josh Giddey,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.4840,Kyrie Irving,PG
+466.l.165651.t.10,Big Eiffel,466.p.6016,Trae Young,PG
 466.l.165651.t.11,Denzel's Grand Team,466.p.6413,Tyrese Maxey,PG
 466.l.165651.t.11,Denzel's Grand Team,466.p.6035,Anfernee Simons,"PG,SG"
 466.l.165651.t.11,Denzel's Grand Team,466.p.10454,VJ Edgecombe,"PG,SG"
@@ -172,10 +173,10 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.12,Gab's Minions,466.p.6422,Desmond Bane,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.10099,Bilal Coulibaly,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.6614,Jock Landale,C
-466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6578,Miles McBride,"PG,SG"
-466.l.165651.t.12,Gab's Minions,466.p.5642,Domantas Sabonis,C
 466.l.165651.t.12,Gab's Minions,466.p.6408,Isaiah Stewart,"PF,C"
+466.l.165651.t.12,Gab's Minions,466.p.5642,Domantas Sabonis,C
+466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6167,Darius Garland,PG
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5636,Kris Dunn,"PG,SG"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5825,Luke Kennard,"PG,SG"
