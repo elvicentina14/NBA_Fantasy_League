@@ -10,8 +10,8 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6022,Shai Gilgeous-Alexander,PG
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.5858,Dillon Brooks,"SF,PF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6418,Payton Pritchard,PG
-466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10524,Moussa Cisse,C
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6572,Santi Aldama,"PF,C"
+466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10443,Collin Murray-Boyles,"PF,C"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6577,Herbert Jones,"SF,PF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6169,Coby White,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
@@ -110,12 +110,12 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.8,Zesty Squad,466.p.6217,Keldon Johnson,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.10279,Jaylon Tyson,"SG,SF"
 466.l.165651.t.8,Zesty Squad,466.p.4897,Nikola Vučević,C
+466.l.165651.t.8,Zesty Squad,466.p.6253,Naz Reid,"PF,C"
 466.l.165651.t.8,Zesty Squad,466.p.6733,Moussa Diabaté,C
+466.l.165651.t.8,Zesty Squad,466.p.6413,Tyrese Maxey,PG
 466.l.165651.t.8,Zesty Squad,466.p.6019,Collin Sexton,"PG,SG"
 466.l.165651.t.8,Zesty Squad,466.p.10100,Keyonte George,"PG,SG"
 466.l.165651.t.8,Zesty Squad,466.p.6596,Sandro Mamukelashvili,"PF,C"
-466.l.165651.t.8,Zesty Squad,466.p.6413,Tyrese Maxey,PG
-466.l.165651.t.8,Zesty Squad,466.p.6253,Naz Reid,"PF,C"
 466.l.165651.t.8,Zesty Squad,466.p.6606,Austin Reaves,"PG,SG,SF"
 466.l.165651.t.8,Zesty Squad,466.p.6516,Jalen Suggs,"PG,SG"
 466.l.165651.t.9,Villain Jr.,466.p.5324,Zach LaVine,"PG,SG,SF"
@@ -135,46 +135,46 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Villain Jr.,466.p.6165,RJ Barrett,"SG,SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.5161,CJ McCollum,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6216,Jordan Poole,"PG,SG"
-466.l.165651.t.10,Big Eiffel,466.p.6548,Josh Giddey,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.6057,De'Anthony Melton,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6580,Ayo Dosunmu,"SG,SF"
 466.l.165651.t.10,Big Eiffel,466.p.6559,Trey Murphy III,"SG,SF,PF"
-466.l.165651.t.10,Big Eiffel,466.p.10456,Danny Wolf,PF
+466.l.165651.t.10,Big Eiffel,466.p.10104,Brandon Miller,"SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.6514,Evan Mobley,"PF,C"
 466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
-466.l.165651.t.10,Big Eiffel,466.p.10121,Noah Clowney,"PF,C"
 466.l.165651.t.10,Big Eiffel,466.p.10294,Alex Sarr,C
+466.l.165651.t.10,Big Eiffel,466.p.6548,Josh Giddey,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.10121,Noah Clowney,"PF,C"
 466.l.165651.t.10,Big Eiffel,466.p.10445,Egor Dëmin,PG
 466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
-466.l.165651.t.10,Big Eiffel,466.p.10104,Brandon Miller,"SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.4840,Kyrie Irving,PG
 466.l.165651.t.10,Big Eiffel,466.p.6016,Trae Young,PG
+466.l.165651.t.11,Denzel's Grand Team,466.p.6035,Anfernee Simons,"PG,SG"
 466.l.165651.t.11,Denzel's Grand Team,466.p.4912,Jimmy Butler III,"SG,SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.10454,VJ Edgecombe,"PG,SG"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6163,Zion Williamson,"SF,PF,C"
-466.l.165651.t.11,Denzel's Grand Team,466.p.5475,Kelly Oubre Jr.,"SF,PF"
+466.l.165651.t.11,Denzel's Grand Team,466.p.6702,Jalen Williams,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6737,Vince Williams Jr.,"PG,SG,SF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.10313,Oso Ighodaro,C
+466.l.165651.t.11,Denzel's Grand Team,466.p.5432,Karl-Anthony Towns,"PF,C"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6711,Christian Braun,"SG,SF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6023,Miles Bridges,"SF,PF"
-466.l.165651.t.11,Denzel's Grand Team,466.p.6035,Anfernee Simons,"PG,SG"
+466.l.165651.t.11,Denzel's Grand Team,466.p.5475,Kelly Oubre Jr.,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6725,Max Christie,"SG,SF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.5658,Pascal Siakam,"SF,PF,C"
-466.l.165651.t.11,Denzel's Grand Team,466.p.5432,Karl-Anthony Towns,"PF,C"
-466.l.165651.t.11,Denzel's Grand Team,466.p.6702,Jalen Williams,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6174,P.J. Washington,"SF,PF,C"
 466.l.165651.t.11,Denzel's Grand Team,466.p.10296,Zaccharie Risacher,"SF,PF"
+466.l.165651.t.12,Gab's Minions,466.p.4390,Russell Westbrook,"PG,SG"
+466.l.165651.t.12,Gab's Minions,466.p.6406,Aaron Nesmith,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.10327,Cam Spencer,"PG,SG"
 466.l.165651.t.12,Gab's Minions,466.p.6422,Desmond Bane,"SG,SF"
-466.l.165651.t.12,Gab's Minions,466.p.6014,Luka Dončić,"PG,SG"
-466.l.165651.t.12,Gab's Minions,466.p.10099,Bilal Coulibaly,"SG,SF"
+466.l.165651.t.12,Gab's Minions,466.p.6408,Isaiah Stewart,"PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.6709,Jake LaRavia,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.5318,Julius Randle,"PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.6038,Robert Williams III,C
-466.l.165651.t.12,Gab's Minions,466.p.6408,Isaiah Stewart,"PF,C"
-466.l.165651.t.12,Gab's Minions,466.p.4390,Russell Westbrook,"PG,SG"
-466.l.165651.t.12,Gab's Minions,466.p.6614,Jock Landale,C
+466.l.165651.t.12,Gab's Minions,466.p.5317,Marcus Smart,"PG,SG"
+466.l.165651.t.12,Gab's Minions,466.p.6014,Luka Dončić,"PG,SG"
+466.l.165651.t.12,Gab's Minions,466.p.10099,Bilal Coulibaly,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.6219,Nic Claxton,C
-466.l.165651.t.12,Gab's Minions,466.p.6406,Aaron Nesmith,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.6578,Miles McBride,"PG,SG"
 466.l.165651.t.12,Gab's Minions,466.p.5642,Domantas Sabonis,C
 466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
