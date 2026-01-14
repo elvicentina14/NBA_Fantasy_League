@@ -93,7 +93,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.7,Sakuragi,466.p.5506,Norman Powell,"SG,SF"
 466.l.165651.t.7,Sakuragi,466.p.5769,Lauri Markkanen,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5295,Aaron Gordon,"PF,C"
-466.l.165651.t.7,Sakuragi,466.p.5350,Jerami Grant,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5471,Myles Turner,C
 466.l.165651.t.7,Sakuragi,466.p.5903,Luke Kornet,C
 466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
@@ -101,8 +100,9 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.7,Sakuragi,466.p.5905,Royce O'Neale,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.6355,Anthony Edwards,"PG,SG"
 466.l.165651.t.7,Sakuragi,466.p.6206,Goga Bitadze,C
-466.l.165651.t.7,Sakuragi,466.p.5856,Isaiah Hartenstein,C
 466.l.165651.t.7,Sakuragi,466.p.5187,Dennis Schröder,"PG,SG"
+466.l.165651.t.7,Sakuragi,466.p.5856,Isaiah Hartenstein,C
+466.l.165651.t.7,Sakuragi,466.p.5350,Jerami Grant,"SF,PF"
 466.l.165651.t.8,Zesty Squad,466.p.5638,Jamal Murray,"PG,SG"
 466.l.165651.t.8,Zesty Squad,466.p.10100,Keyonte George,"PG,SG"
 466.l.165651.t.8,Zesty Squad,466.p.6429,Vít Krejčí,"SG,SF"
