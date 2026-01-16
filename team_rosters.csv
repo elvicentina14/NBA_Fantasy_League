@@ -15,18 +15,18 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6577,Herbert Jones,"SF,PF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6169,Coby White,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
-466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
+466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.10450,Kon Knueppel,"SG,SF"
-466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
-466.l.165651.t.2,Matalim Dede,466.p.6499,Naji Marshall,"SF,PF"
+466.l.165651.t.2,Matalim Dede,466.p.10265,Matas Buzelis,"SF,PF"
+466.l.165651.t.2,Matalim Dede,466.p.6632,Justin Champagnie,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6691,Paolo Banchero,"PF,C"
 466.l.165651.t.2,Matalim Dede,466.p.6692,Chet Holmgren,"PF,C"
 466.l.165651.t.2,Matalim Dede,466.p.6703,Jalen Duren,C
 466.l.165651.t.2,Matalim Dede,466.p.6218,Kevin Porter Jr.,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.6617,Jay Huff,C
-466.l.165651.t.2,Matalim Dede,466.p.6632,Justin Champagnie,"SF,PF"
-466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
-466.l.165651.t.2,Matalim Dede,466.p.10265,Matas Buzelis,"SF,PF"
+466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
+466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
+466.l.165651.t.2,Matalim Dede,466.p.6499,Naji Marshall,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.5582,T.J. McConnell,PG
 466.l.165651.t.3,Bench Kings,466.p.6433,Tre Jones,"PG,SG"
@@ -37,7 +37,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.6047,Mitchell Robinson,C
 466.l.165651.t.3,Bench Kings,466.p.10476,Ryan Kalkbrenner,C
 466.l.165651.t.3,Bench Kings,466.p.6581,Neemias Queta,"PF,C"
-466.l.165651.t.3,Bench Kings,466.p.10510,Dylan Cardwell,C
+466.l.165651.t.3,Bench Kings,466.p.6742,Karlo Matković,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.10468,Cooper Flagg,"PG,SG,SF"
 466.l.165651.t.3,Bench Kings,466.p.10304,Ajay Mitchell,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.10274,Kel'el Ware,"PF,C"
@@ -120,7 +120,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Villain Jr.,466.p.5324,Zach LaVine,"PG,SG,SF"
 466.l.165651.t.9,Villain Jr.,466.p.6697,Shaedon Sharpe,"PG,SG,SF"
 466.l.165651.t.9,Villain Jr.,466.p.6721,Andrew Nembhard,"PG,SG"
-466.l.165651.t.9,Villain Jr.,466.p.6030,Kevin Huerter,"SG,SF"
+466.l.165651.t.9,Villain Jr.,466.p.4892,Klay Thompson,"SG,SF"
 466.l.165651.t.9,Villain Jr.,466.p.3704,LeBron James,"SF,PF"
 466.l.165651.t.9,Villain Jr.,466.p.4901,Tobias Harris,PF
 466.l.165651.t.9,Villain Jr.,466.p.6226,Daniel Gafford,C
@@ -128,8 +128,8 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Villain Jr.,466.p.5602,Jaylen Brown,"SG,SF"
 466.l.165651.t.9,Villain Jr.,466.p.6751,Collin Gillespie,"PG,SG"
 466.l.165651.t.9,Villain Jr.,466.p.6395,LaMelo Ball,"PG,SG"
-466.l.165651.t.9,Villain Jr.,466.p.4892,Klay Thompson,"SG,SF"
 466.l.165651.t.9,Villain Jr.,466.p.5069,Draymond Green,"PF,C"
+466.l.165651.t.9,Villain Jr.,466.p.6614,Jock Landale,C
 466.l.165651.t.9,Villain Jr.,466.p.5352,Nikola Jokić,C
 466.l.165651.t.9,Villain Jr.,466.p.6165,RJ Barrett,"SG,SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.10445,Egor Dëmin,PG
@@ -183,13 +183,13 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6569,Cam Thomas,"SG,SF"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.4614,DeMar DeRozan,"SF,PF"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6452,Sam Merrill,"SG,SF"
-466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6724,Jaylin Williams,"PF,C"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10094,Victor Wembanyama,"PF,C"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.5842,Derrick White,"PG,SG"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6167,Darius Garland,PG
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.4612,Stephen Curry,PG
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10508,Caleb Love,"PG,SG"
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6269,Javonte Green,"SG,SF"
+466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10289,Yves Missi,C
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.10287,Zach Edey,C
 466.l.165651.t.13,☄️ David & Goliath 👽,466.p.6173,Cameron Johnson,"SG,SF,PF"
 466.l.165651.t.14,Moneyball,466.p.5473,Devin Booker,"PG,SG"
