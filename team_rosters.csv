@@ -64,8 +64,8 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.5,IBA KA,466.p.6596,Sandro Mamukelashvili,"PF,C"
 466.l.165651.t.5,IBA KA,466.p.5294,Joel Embiid,C
 466.l.165651.t.5,IBA KA,466.p.6693,Jabari Smith Jr.,"SF,PF,C"
-466.l.165651.t.5,IBA KA,466.p.5840,Kyle Kuzma,"SF,PF"
 466.l.165651.t.5,IBA KA,466.p.5197,Rudy Gobert,C
+466.l.165651.t.5,IBA KA,466.p.6549,Jonathan Kuminga,"SF,PF"
 466.l.165651.t.5,IBA KA,466.p.10145,Craig Porter Jr.,"PG,SG"
 466.l.165651.t.5,IBA KA,466.p.10107,Cason Wallace,"PG,SG,SF"
 466.l.165651.t.5,IBA KA,466.p.5826,Donovan Mitchell,"PG,SG"
@@ -133,6 +133,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.10,Big Eiffel,466.p.6057,De'Anthony Melton,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6548,Josh Giddey,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.10104,Brandon Miller,"SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.6514,Evan Mobley,"PF,C"
 466.l.165651.t.10,Big Eiffel,466.p.6580,Ayo Dosunmu,"SG,SF"
 466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
@@ -141,7 +142,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.10,Big Eiffel,466.p.6216,Jordan Poole,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.5161,CJ McCollum,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.10121,Noah Clowney,"PF,C"
-466.l.165651.t.10,Big Eiffel,466.p.10104,Brandon Miller,"SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.6559,Trey Murphy III,"SG,SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.4840,Kyrie Irving,PG
 466.l.165651.t.10,Big Eiffel,466.p.6016,Trae Young,PG
