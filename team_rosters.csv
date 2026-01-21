@@ -8,10 +8,11 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10065,Toumani Camara,"SF,PF,C"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.5958,Deandre Ayton,C
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6420,Jaden McDaniels,"SF,PF"
-466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10485,Will Richard,"SG,SF"
+466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.5637,Buddy Hield,"SG,SF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6022,Shai Gilgeous-Alexander,PG
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6021,Mikal Bridges,"SG,SF,PF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6418,Payton Pritchard,PG
+466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10485,Will Richard,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG"
@@ -29,7 +30,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.6698,Dyson Daniels,"PG,SG,SF"
 466.l.165651.t.3,Bench Kings,466.p.6551,Davion Mitchell,PG
 466.l.165651.t.3,Bench Kings,466.p.6515,Scottie Barnes,"SG,SF,PF,C"
-466.l.165651.t.3,Bench Kings,466.p.10274,Kel'el Ware,"PF,C"
+466.l.165651.t.3,Bench Kings,466.p.10443,Collin Murray-Boyles,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6572,Santi Aldama,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6047,Mitchell Robinson,C
 466.l.165651.t.3,Bench Kings,466.p.10444,Derik Queen,"PF,C"
@@ -38,7 +39,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.10304,Ajay Mitchell,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.5582,T.J. McConnell,PG
 466.l.165651.t.3,Bench Kings,466.p.10476,Ryan Kalkbrenner,C
-466.l.165651.t.3,Bench Kings,466.p.10443,Collin Murray-Boyles,"PF,C"
+466.l.165651.t.3,Bench Kings,466.p.10274,Kel'el Ware,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.10115,Brandin Podziemski,"PG,SG"
 466.l.165651.t.4,Dropped Giannis,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.5194,Tim Hardaway Jr.,"SG,SF"
@@ -48,7 +49,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.4,Dropped Giannis,466.p.10496,Maxime Raynaud,C
 466.l.165651.t.4,Dropped Giannis,466.p.5185,Giannis Antetokounmpo,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.6417,Immanuel Quickley,"PG,SG"
-466.l.165651.t.4,Dropped Giannis,466.p.6755,AJ Green,"PG,SG,SF"
+466.l.165651.t.4,Dropped Giannis,466.p.6766,Simone Fontecchio,"SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.6164,Ja Morant,PG
 466.l.165651.t.4,Dropped Giannis,466.p.6411,Saddiq Bey,"SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.6550,Franz Wagner,"SF,PF"
