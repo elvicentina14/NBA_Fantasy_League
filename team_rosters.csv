@@ -35,9 +35,9 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.10443,Collin Murray-Boyles,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6581,Neemias Queta,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6734,Ryan Rollins,"PG,SG"
-466.l.165651.t.3,Bench Kings,466.p.10476,Ryan Kalkbrenner,C
 466.l.165651.t.3,Bench Kings,466.p.6433,Tre Jones,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.6551,Davion Mitchell,PG
+466.l.165651.t.3,Bench Kings,466.p.10524,Moussa Cisse,C
 466.l.165651.t.3,Bench Kings,466.p.10274,Kel'el Ware,"PF,C"
 466.l.165651.t.4,Dropped Giannis,466.p.6164,Ja Morant,PG
 466.l.165651.t.4,Dropped Giannis,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
@@ -128,17 +128,17 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Mr. Brown,466.p.6226,Daniel Gafford,C
 466.l.165651.t.10,Big Eiffel,466.p.5161,CJ McCollum,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6559,Trey Murphy III,"SG,SF,PF"
-466.l.165651.t.10,Big Eiffel,466.p.6548,Josh Giddey,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.10445,Egor Dëmin,PG
 466.l.165651.t.10,Big Eiffel,466.p.10104,Brandon Miller,"SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.6514,Evan Mobley,"PF,C"
-466.l.165651.t.10,Big Eiffel,466.p.6580,Ayo Dosunmu,"SG,SF"
-466.l.165651.t.10,Big Eiffel,466.p.10294,Alex Sarr,C
 466.l.165651.t.10,Big Eiffel,466.p.10121,Noah Clowney,"PF,C"
-466.l.165651.t.10,Big Eiffel,466.p.10445,Egor Dëmin,PG
+466.l.165651.t.10,Big Eiffel,466.p.10294,Alex Sarr,C
+466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
 466.l.165651.t.10,Big Eiffel,466.p.6216,Jordan Poole,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.6548,Josh Giddey,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.6580,Ayo Dosunmu,"SG,SF"
 466.l.165651.t.10,Big Eiffel,466.p.6057,De'Anthony Melton,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
-466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
 466.l.165651.t.10,Big Eiffel,466.p.4840,Kyrie Irving,PG
 466.l.165651.t.10,Big Eiffel,466.p.6016,Trae Young,PG
 466.l.165651.t.11,Denzel's Grand Team,466.p.6035,Anfernee Simons,"PG,SG"
@@ -169,6 +169,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.10308,Quinten Post,C
 466.l.165651.t.12,Gab's Minions,466.p.6422,Desmond Bane,"SG,SF"
+466.l.165651.t.12,Gab's Minions,466.p.6577,Herbert Jones,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.10099,Bilal Coulibaly,"SG,SF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4612,Stephen Curry,PG
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6569,Cam Thomas,"SG,SF"
@@ -182,6 +183,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6452,Sam Merrill,"SG,SF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6751,Collin Gillespie,"PG,SG"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10094,Victor Wembanyama,"PF,C"
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6552,Ziaire Williams,"SG,SF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10287,Zach Edey,C
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6167,Darius Garland,PG
 466.l.165651.t.14,Moneyball,466.p.5473,Devin Booker,"PG,SG"
