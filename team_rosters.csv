@@ -53,6 +53,8 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.4,Dropped Giannis,466.p.6550,Franz Wagner,"SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.5640,Jakob Poeltl,C
 466.l.165651.t.4,Dropped Giannis,466.p.5464,Kristaps Porziņģis,"PF,C"
+466.l.165651.t.5,IBA KA,466.p.5842,Derrick White,"PG,SG"
+466.l.165651.t.5,IBA KA,466.p.4244,Kevin Durant,"SG,SF,PF"
 466.l.165651.t.5,IBA KA,466.p.5292,Andrew Wiggins,"SG,SF,PF"
 466.l.165651.t.5,IBA KA,466.p.10107,Cason Wallace,"PG,SG,SF"
 466.l.165651.t.5,IBA KA,466.p.5832,John Collins,"PF,C"
@@ -62,9 +64,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.5,IBA KA,466.p.5197,Rudy Gobert,C
 466.l.165651.t.5,IBA KA,466.p.6549,Jonathan Kuminga,"SF,PF"
 466.l.165651.t.5,IBA KA,466.p.4563,James Harden,"PG,SG"
-466.l.165651.t.5,IBA KA,466.p.4244,Kevin Durant,"SG,SF,PF"
 466.l.165651.t.5,IBA KA,466.p.10122,Brice Sensabaugh,"SF,PF"
-466.l.165651.t.5,IBA KA,466.p.5842,Derrick White,"PG,SG"
 466.l.165651.t.5,IBA KA,466.p.4892,Klay Thompson,"SG,SF"
 466.l.165651.t.5,IBA KA,466.p.6696,Bennedict Mathurin,"SG,SF"
 466.l.165651.t.5,IBA KA,466.p.6175,Tyler Herro,"PG,SG"
@@ -115,15 +115,15 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Mr. Brown,466.p.6721,Andrew Nembhard,"PG,SG"
 466.l.165651.t.9,Mr. Brown,466.p.6395,LaMelo Ball,"PG,SG"
 466.l.165651.t.9,Mr. Brown,466.p.5324,Zach LaVine,"PG,SG,SF"
+466.l.165651.t.9,Mr. Brown,466.p.10312,Pelle Larsson,"SG,SF"
 466.l.165651.t.9,Mr. Brown,466.p.6165,RJ Barrett,"SG,SF,PF"
 466.l.165651.t.9,Mr. Brown,466.p.4901,Tobias Harris,PF
 466.l.165651.t.9,Mr. Brown,466.p.6412,Precious Achiuwa,"PF,C"
 466.l.165651.t.9,Mr. Brown,466.p.6614,Jock Landale,C
 466.l.165651.t.9,Mr. Brown,466.p.5602,Jaylen Brown,"SG,SF"
-466.l.165651.t.9,Mr. Brown,466.p.10312,Pelle Larsson,"SG,SF"
+466.l.165651.t.9,Mr. Brown,466.p.5826,Donovan Mitchell,"PG,SG"
 466.l.165651.t.9,Mr. Brown,466.p.5069,Draymond Green,"PF,C"
 466.l.165651.t.9,Mr. Brown,466.p.6697,Shaedon Sharpe,"PG,SG,SF"
-466.l.165651.t.9,Mr. Brown,466.p.5826,Donovan Mitchell,"PG,SG"
 466.l.165651.t.9,Mr. Brown,466.p.5352,Nikola Jokić,C
 466.l.165651.t.9,Mr. Brown,466.p.6226,Daniel Gafford,C
 466.l.165651.t.10,Big Eiffel,466.p.5161,CJ McCollum,"PG,SG"
@@ -171,19 +171,19 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.12,Gab's Minions,466.p.6422,Desmond Bane,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.10099,Bilal Coulibaly,"SG,SF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4612,Stephen Curry,PG
-466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6751,Collin Gillespie,"PG,SG"
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6569,Cam Thomas,"SG,SF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.5824,Malik Monk,SG
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6556,Moses Moody,"SG,SF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.3704,LeBron James,"SF,PF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4614,DeMar DeRozan,"SF,PF"
-466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10094,Victor Wembanyama,"PF,C"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10510,Dylan Cardwell,C
-466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6167,Darius Garland,PG
-466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.5636,Kris Dunn,"PG,SG"
-466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6569,Cam Thomas,"SG,SF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10289,Yves Missi,C
-466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10287,Zach Edey,C
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.5636,Kris Dunn,"PG,SG"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6452,Sam Merrill,"SG,SF"
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6751,Collin Gillespie,"PG,SG"
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10094,Victor Wembanyama,"PF,C"
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10287,Zach Edey,C
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6167,Darius Garland,PG
 466.l.165651.t.14,Moneyball,466.p.5473,Devin Booker,"PG,SG"
 466.l.165651.t.14,Moneyball,466.p.6032,Grayson Allen,"SG,SF"
 466.l.165651.t.14,Moneyball,466.p.10465,Cedric Coward,"SG,SF"
