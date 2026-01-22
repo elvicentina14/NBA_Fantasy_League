@@ -33,8 +33,8 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.6515,Scottie Barnes,"SG,SF,PF,C"
 466.l.165651.t.3,Bench Kings,466.p.10274,Kel'el Ware,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6572,Santi Aldama,"PF,C"
-466.l.165651.t.3,Bench Kings,466.p.10069,Mouhamed Gueye,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.10524,Moussa Cisse,C
+466.l.165651.t.3,Bench Kings,466.p.4245,Al Horford,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6581,Neemias Queta,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6734,Ryan Rollins,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.10444,Derik Queen,"PF,C"
@@ -42,7 +42,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.6047,Mitchell Robinson,C
 466.l.165651.t.3,Bench Kings,466.p.10443,Collin Murray-Boyles,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.10304,Ajay Mitchell,"PG,SG"
-466.l.165651.t.4,Dropped Giannis,466.p.6164,Ja Morant,PG
+466.l.165651.t.4,Dropped Giannis,466.p.10508,Caleb Love,"PG,SG"
 466.l.165651.t.4,Dropped Giannis,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.5194,Tim Hardaway Jr.,"SG,SF"
 466.l.165651.t.4,Dropped Giannis,466.p.4896,Kawhi Leonard,"SF,PF"
@@ -52,6 +52,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.4,Dropped Giannis,466.p.4886,Jonas Valančiūnas,C
 466.l.165651.t.4,Dropped Giannis,466.p.6417,Immanuel Quickley,"PG,SG"
 466.l.165651.t.4,Dropped Giannis,466.p.10115,Brandin Podziemski,"PG,SG"
+466.l.165651.t.4,Dropped Giannis,466.p.6164,Ja Morant,PG
 466.l.165651.t.4,Dropped Giannis,466.p.6411,Saddiq Bey,"SF,PF"
 466.l.165651.t.4,Dropped Giannis,466.p.10496,Maxime Raynaud,C
 466.l.165651.t.4,Dropped Giannis,466.p.5640,Jakob Poeltl,C
