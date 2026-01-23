@@ -13,7 +13,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10468,Cooper Flagg,"PG,SG,SF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6021,Mikal Bridges,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG"
-466.l.165651.t.2,Matalim Dede,466.p.10074,Jalen Pickett,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.5317,Marcus Smart,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.10450,Kon Knueppel,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.10265,Matas Buzelis,"SF,PF"
@@ -21,6 +20,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.2,Matalim Dede,466.p.6703,Jalen Duren,C
 466.l.165651.t.2,Matalim Dede,466.p.6691,Paolo Banchero,"PF,C"
 466.l.165651.t.2,Matalim Dede,466.p.6617,Jay Huff,C
+466.l.165651.t.2,Matalim Dede,466.p.6407,Cole Anthony,PG
 466.l.165651.t.2,Matalim Dede,466.p.6499,Naji Marshall,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
@@ -132,18 +132,18 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Mr. Brown,466.p.5352,Nikola Jokić,C
 466.l.165651.t.9,Mr. Brown,466.p.6226,Daniel Gafford,C
 466.l.165651.t.10,Big Eiffel,466.p.5161,CJ McCollum,"PG,SG"
-466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
-466.l.165651.t.10,Big Eiffel,466.p.6548,Josh Giddey,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.6216,Jordan Poole,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.10445,Egor Dëmin,PG
 466.l.165651.t.10,Big Eiffel,466.p.6559,Trey Murphy III,"SG,SF,PF"
 466.l.165651.t.10,Big Eiffel,466.p.6514,Evan Mobley,"PF,C"
-466.l.165651.t.10,Big Eiffel,466.p.6580,Ayo Dosunmu,"SG,SF"
-466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
 466.l.165651.t.10,Big Eiffel,466.p.10121,Noah Clowney,"PF,C"
-466.l.165651.t.10,Big Eiffel,466.p.10445,Egor Dëmin,PG
-466.l.165651.t.10,Big Eiffel,466.p.6216,Jordan Poole,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.5663,Ivica Zubac,C
+466.l.165651.t.10,Big Eiffel,466.p.10294,Alex Sarr,C
+466.l.165651.t.10,Big Eiffel,466.p.6548,Josh Giddey,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
+466.l.165651.t.10,Big Eiffel,466.p.6580,Ayo Dosunmu,"SG,SF"
 466.l.165651.t.10,Big Eiffel,466.p.6057,De'Anthony Melton,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.10104,Brandon Miller,"SF,PF"
-466.l.165651.t.10,Big Eiffel,466.p.10294,Alex Sarr,C
 466.l.165651.t.10,Big Eiffel,466.p.4840,Kyrie Irving,PG
 466.l.165651.t.10,Big Eiffel,466.p.6016,Trae Young,PG
 466.l.165651.t.11,Denzel's Grand Team,466.p.6035,Anfernee Simons,"PG,SG"
