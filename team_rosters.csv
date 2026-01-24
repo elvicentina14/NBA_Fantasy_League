@@ -14,6 +14,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6021,Mikal Bridges,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
+466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.10450,Kon Knueppel,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.10265,Matas Buzelis,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6692,Chet Holmgren,"PF,C"
@@ -23,7 +24,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.2,Matalim Dede,466.p.5840,Kyle Kuzma,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6499,Naji Marshall,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
-466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6218,Kevin Porter Jr.,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.6698,Dyson Daniels,"PG,SG,SF"
@@ -172,7 +172,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.12,Gab's Minions,466.p.5318,Julius Randle,"PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.6422,Desmond Bane,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.10099,Bilal Coulibaly,"SG,SF"
-466.l.165651.t.12,Gab's Minions,466.p.6038,Robert Williams III,C
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4612,Stephen Curry,PG
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6751,Collin Gillespie,"PG,SG"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.5824,Malik Monk,SG
