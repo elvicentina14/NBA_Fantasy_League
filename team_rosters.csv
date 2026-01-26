@@ -1,18 +1,4 @@
 team_key,team_name,player_key,player_name,position
-466.l.165651.t.1,KALK BANGER,466.p.6022,Shai Gilgeous-Alexander,PG
-466.l.165651.t.1,KALK BANGER,466.p.6169,Coby White,"PG,SG"
-466.l.165651.t.1,KALK BANGER,466.p.6418,Payton Pritchard,PG
-466.l.165651.t.1,KALK BANGER,466.p.10065,Toumani Camara,"SF,PF,C"
-466.l.165651.t.1,KALK BANGER,466.p.6021,Mikal Bridges,"SG,SF,PF"
-466.l.165651.t.1,KALK BANGER,466.p.5858,Dillon Brooks,"SF,PF"
-466.l.165651.t.1,KALK BANGER,466.p.5958,Deandre Ayton,C
-466.l.165651.t.1,KALK BANGER,466.p.5015,Andre Drummond,C
-466.l.165651.t.1,KALK BANGER,466.p.6420,Jaden McDaniels,"SF,PF"
-466.l.165651.t.1,KALK BANGER,466.p.10476,Ryan Kalkbrenner,C
-466.l.165651.t.1,KALK BANGER,466.p.5827,Bam Adebayo,"PF,C"
-466.l.165651.t.1,KALK BANGER,466.p.5767,De'Aaron Fox,"PG,SG"
-466.l.165651.t.1,KALK BANGER,466.p.10468,Cooper Flagg,"PG,SG,SF"
-466.l.165651.t.1,KALK BANGER,466.p.6720,Peyton Watson,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
@@ -122,8 +108,8 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Girth Nowitzki,466.p.5826,Donovan Mitchell,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.6721,Andrew Nembhard,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.6697,Shaedon Sharpe,"PG,SG,SF"
+466.l.165651.t.9,Girth Nowitzki,466.p.6171,Rui Hachimura,"SF,PF"
 466.l.165651.t.9,Girth Nowitzki,466.p.4901,Tobias Harris,PF
-466.l.165651.t.9,Girth Nowitzki,466.p.10312,Pelle Larsson,"SG,SF"
 466.l.165651.t.9,Girth Nowitzki,466.p.6614,Jock Landale,C
 466.l.165651.t.9,Girth Nowitzki,466.p.10315,Kyle Filipowski,"PF,C"
 466.l.165651.t.9,Girth Nowitzki,466.p.5069,Draymond Green,"PF,C"
