@@ -34,10 +34,10 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.6515,Scottie Barnes,"SG,SF,PF,C"
 466.l.165651.t.3,Bench Kings,466.p.10444,Derik Queen,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6572,Santi Aldama,"PF,C"
-466.l.165651.t.3,Bench Kings,466.p.6206,Goga Bitadze,C
 466.l.165651.t.3,Bench Kings,466.p.6047,Mitchell Robinson,C
-466.l.165651.t.3,Bench Kings,466.p.6734,Ryan Rollins,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.10524,Moussa Cisse,C
+466.l.165651.t.3,Bench Kings,466.p.6734,Ryan Rollins,"PG,SG"
+466.l.165651.t.3,Bench Kings,466.p.10263,Ronald Holland II,"SF,PF"
 466.l.165651.t.3,Bench Kings,466.p.6581,Neemias Queta,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.10443,Collin Murray-Boyles,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6551,Davion Mitchell,PG
@@ -58,8 +58,8 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.4,Brownlee,466.p.6165,RJ Barrett,"SG,SF,PF"
 466.l.165651.t.4,Brownlee,466.p.5185,Giannis Antetokounmpo,"PF,C"
 466.l.165651.t.4,Brownlee,466.p.5464,Kristaps Porziņģis,"PF,C"
-466.l.165651.t.5,IBA KA,466.p.10107,Cason Wallace,"PG,SG,SF"
 466.l.165651.t.5,IBA KA,466.p.4563,James Harden,"PG,SG"
+466.l.165651.t.5,IBA KA,466.p.6569,Cam Thomas,"SG,SF"
 466.l.165651.t.5,IBA KA,466.p.5292,Andrew Wiggins,"SG,SF,PF"
 466.l.165651.t.5,IBA KA,466.p.4244,Kevin Durant,"SG,SF,PF"
 466.l.165651.t.5,IBA KA,466.p.10122,Brice Sensabaugh,"SF,PF"
@@ -72,7 +72,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.5,IBA KA,466.p.6693,Jabari Smith Jr.,"SF,PF,C"
 466.l.165651.t.5,IBA KA,466.p.6696,Bennedict Mathurin,"SG,SF"
 466.l.165651.t.5,IBA KA,466.p.6175,Tyler Herro,"PG,SG"
-466.l.165651.t.5,IBA KA,466.p.6569,Cam Thomas,"SG,SF"
+466.l.165651.t.5,IBA KA,466.p.10107,Cason Wallace,"PG,SG,SF"
 466.l.165651.t.6,ICC Defenders,466.p.6028,Donte DiVincenzo,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10096,Ausar Thompson,"SG,SF,PF"
 466.l.165651.t.6,ICC Defenders,466.p.10290,Stephon Castle,"PG,SG"
@@ -80,14 +80,14 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.6,ICC Defenders,466.p.6414,Zeke Nnaji,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.6558,Alperen Sengun,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.10285,Donovan Clingan,C
-466.l.165651.t.6,ICC Defenders,466.p.5327,Jusuf Nurkić,C
+466.l.165651.t.6,ICC Defenders,466.p.6398,Onyeka Okongwu,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.10273,Bub Carrington,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.6571,Day'Ron Sharpe,C
 466.l.165651.t.6,ICC Defenders,466.p.10288,Reed Sheppard,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.6562,Jalen Johnson,"SF,PF"
-466.l.165651.t.6,ICC Defenders,466.p.6398,Onyeka Okongwu,"PF,C"
-466.l.165651.t.6,ICC Defenders,466.p.5007,Anthony Davis,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.10272,Kyshawn George,"SG,SF,PF"
+466.l.165651.t.6,ICC Defenders,466.p.5007,Anthony Davis,"PF,C"
+466.l.165651.t.6,ICC Defenders,466.p.5327,Jusuf Nurkić,C
 466.l.165651.t.7,Sakuragi,466.p.5187,Dennis Schröder,"PG,SG"
 466.l.165651.t.7,Sakuragi,466.p.6355,Anthony Edwards,"PG,SG"
 466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
