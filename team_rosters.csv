@@ -38,10 +38,10 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.10524,Moussa Cisse,C
 466.l.165651.t.3,Bench Kings,466.p.6581,Neemias Queta,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.10473,Amari Williams,C
-466.l.165651.t.3,Bench Kings,466.p.10304,Ajay Mitchell,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.10444,Derik Queen,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6734,Ryan Rollins,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.6433,Tre Jones,"PG,SG"
+466.l.165651.t.3,Bench Kings,466.p.10304,Ajay Mitchell,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.10274,Kel'el Ware,"PF,C"
 466.l.165651.t.4,Brownlee,466.p.6395,LaMelo Ball,"PG,SG"
 466.l.165651.t.4,Brownlee,466.p.5194,Tim Hardaway Jr.,"SG,SF"
@@ -103,7 +103,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.7,Sakuragi,466.p.5350,Jerami Grant,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5856,Isaiah Hartenstein,C
 466.l.165651.t.7,Sakuragi,466.p.5295,Aaron Gordon,"PF,C"
-466.l.165651.t.8,Prime Guards,466.p.6413,Tyrese Maxey,PG
+466.l.165651.t.8,Prime Guards,466.p.6516,Jalen Suggs,"PG,SG"
 466.l.165651.t.8,Prime Guards,466.p.10100,Keyonte George,"PG,SG"
 466.l.165651.t.8,Prime Guards,466.p.6707,Tari Eason,"SG,SF,PF"
 466.l.165651.t.8,Prime Guards,466.p.6709,Jake LaRavia,"SF,PF"
@@ -113,11 +113,10 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.8,Prime Guards,466.p.6733,Moussa Diabaté,C
 466.l.165651.t.8,Prime Guards,466.p.6578,Miles McBride,"PG,SG"
 466.l.165651.t.8,Prime Guards,466.p.6217,Keldon Johnson,"SF,PF"
-466.l.165651.t.8,Prime Guards,466.p.6616,Jordan Goodwin,"PG,SG"
+466.l.165651.t.8,Prime Guards,466.p.6413,Tyrese Maxey,PG
 466.l.165651.t.8,Prime Guards,466.p.5638,Jamal Murray,"PG,SG"
 466.l.165651.t.8,Prime Guards,466.p.6597,Aaron Wiggins,"SG,SF"
 466.l.165651.t.8,Prime Guards,466.p.6606,Austin Reaves,"PG,SG,SF"
-466.l.165651.t.8,Prime Guards,466.p.6516,Jalen Suggs,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.6417,Immanuel Quickley,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.5826,Donovan Mitchell,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.6721,Andrew Nembhard,"PG,SG"
@@ -180,16 +179,16 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4612,Stephen Curry,PG
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6452,Sam Merrill,"SG,SF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.5825,Luke Kennard,"PG,SG"
-466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6552,Ziaire Williams,"SG,SF"
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4614,DeMar DeRozan,"SF,PF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.3704,LeBron James,"SF,PF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6556,Moses Moody,"SG,SF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10289,Yves Missi,C
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10094,Victor Wembanyama,"PF,C"
-466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10510,Dylan Cardwell,C
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10084,Jordan Miller,"SG,SF"
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6679,Brandon Williams,PG
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10510,Dylan Cardwell,C
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6751,Collin Gillespie,"PG,SG"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.5824,Malik Monk,"PG,SG"
-466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4614,DeMar DeRozan,"SF,PF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10287,Zach Edey,C
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6167,Darius Garland,PG
 466.l.165651.t.14,Moneyball,466.p.4622,Jrue Holiday,"PG,SG"
