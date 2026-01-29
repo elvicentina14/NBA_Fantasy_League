@@ -38,9 +38,9 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.10524,Moussa Cisse,C
 466.l.165651.t.3,Bench Kings,466.p.6581,Neemias Queta,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.10274,Kel'el Ware,"PF,C"
-466.l.165651.t.3,Bench Kings,466.p.5636,Kris Dunn,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.10444,Derik Queen,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6734,Ryan Rollins,"PG,SG"
+466.l.165651.t.3,Bench Kings,466.p.5765,Jayson Tatum,"SF,PF"
 466.l.165651.t.3,Bench Kings,466.p.10304,Ajay Mitchell,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.6433,Tre Jones,"PG,SG"
 466.l.165651.t.4,Brownlee,466.p.6395,LaMelo Ball,"PG,SG"
@@ -69,10 +69,10 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.5,IBA KA,466.p.5197,Rudy Gobert,C
 466.l.165651.t.5,IBA KA,466.p.10462,Ace Bailey,"SG,SF,PF"
 466.l.165651.t.5,IBA KA,466.p.4563,James Harden,"PG,SG"
-466.l.165651.t.5,IBA KA,466.p.6569,Cam Thomas,"SG,SF"
 466.l.165651.t.5,IBA KA,466.p.5294,Joel Embiid,C
-466.l.165651.t.5,IBA KA,466.p.6175,Tyler Herro,"PG,SG"
 466.l.165651.t.5,IBA KA,466.p.10107,Cason Wallace,"PG,SG,SF"
+466.l.165651.t.5,IBA KA,466.p.6175,Tyler Herro,"PG,SG"
+466.l.165651.t.5,IBA KA,466.p.6569,Cam Thomas,"SG,SF"
 466.l.165651.t.6,ICC Defenders,466.p.6028,Donte DiVincenzo,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10288,Reed Sheppard,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10290,Stephon Castle,"PG,SG"
