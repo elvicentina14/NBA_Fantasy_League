@@ -13,6 +13,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,KALK BANGER,466.p.10476,Ryan Kalkbrenner,C
 466.l.165651.t.1,KALK BANGER,466.p.5767,De'Aaron Fox,"PG,SG"
 466.l.165651.t.1,KALK BANGER,466.p.6514,Evan Mobley,"PF,C"
+466.l.165651.t.1,KALK BANGER,466.p.6173,Cameron Johnson,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
@@ -118,16 +119,16 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.8,Prime Guards,466.p.6707,Tari Eason,"SG,SF,PF"
 466.l.165651.t.8,Prime Guards,466.p.6606,Austin Reaves,"PG,SG,SF"
 466.l.165651.t.8,Prime Guards,466.p.6578,Miles McBride,"PG,SG"
-466.l.165651.t.9,Girth Nowitzki,466.p.5324,Zach LaVine,"PG,SG,SF"
+466.l.165651.t.9,Girth Nowitzki,466.p.10327,Cam Spencer,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.6697,Shaedon Sharpe,"PG,SG,SF"
 466.l.165651.t.9,Girth Nowitzki,466.p.10100,Keyonte George,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.6256,Dean Wade,"SF,PF"
-466.l.165651.t.9,Girth Nowitzki,466.p.4896,Kawhi Leonard,"SF,PF"
+466.l.165651.t.9,Girth Nowitzki,466.p.4614,DeMar DeRozan,"SF,PF"
 466.l.165651.t.9,Girth Nowitzki,466.p.4901,Tobias Harris,PF
 466.l.165651.t.9,Girth Nowitzki,466.p.4245,Al Horford,"PF,C"
 466.l.165651.t.9,Girth Nowitzki,466.p.6412,Precious Achiuwa,"PF,C"
-466.l.165651.t.9,Girth Nowitzki,466.p.10327,Cam Spencer,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.5826,Donovan Mitchell,"PG,SG"
+466.l.165651.t.9,Girth Nowitzki,466.p.3704,LeBron James,"SF,PF"
 466.l.165651.t.9,Girth Nowitzki,466.p.6226,Daniel Gafford,C
 466.l.165651.t.9,Girth Nowitzki,466.p.6721,Andrew Nembhard,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
@@ -180,8 +181,8 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.5824,Malik Monk,"PG,SG"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6751,Collin Gillespie,"PG,SG"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4612,Stephen Curry,PG
-466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4614,DeMar DeRozan,"SF,PF"
-466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.3704,LeBron James,"SF,PF"
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.5324,Zach LaVine,"PG,SG,SF"
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4896,Kawhi Leonard,"SF,PF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6556,Moses Moody,"SG,SF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10510,Dylan Cardwell,C
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10289,Yves Missi,C
