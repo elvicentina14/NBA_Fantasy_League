@@ -16,7 +16,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,KALK BANGER,466.p.6173,Cameron Johnson,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
-466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
+466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.10265,Matas Buzelis,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6499,Naji Marshall,"SF,PF"
@@ -28,7 +28,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.2,Matalim Dede,466.p.6692,Chet Holmgren,"PF,C"
 466.l.165651.t.2,Matalim Dede,466.p.6617,Jay Huff,C
 466.l.165651.t.2,Matalim Dede,466.p.6218,Kevin Porter Jr.,"PG,SG"
-466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG"
+466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
 466.l.165651.t.3,Bench Kings,466.p.5636,Kris Dunn,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.6698,Dyson Daniels,"PG,SG,SF"
 466.l.165651.t.3,Bench Kings,466.p.6551,Davion Mitchell,PG
@@ -73,7 +73,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.5,IBA KA,466.p.6696,Bennedict Mathurin,"SG,SF"
 466.l.165651.t.5,IBA KA,466.p.10107,Cason Wallace,"PG,SG,SF"
 466.l.165651.t.5,IBA KA,466.p.6175,Tyler Herro,"PG,SG"
-466.l.165651.t.5,IBA KA,466.p.6569,Cam Thomas,"SG,SF"
+466.l.165651.t.5,IBA KA,466.p.5640,Jakob Poeltl,C
 466.l.165651.t.6,ICC Defenders,466.p.10273,Bub Carrington,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10288,Reed Sheppard,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10272,Kyshawn George,"SG,SF,PF"
@@ -119,20 +119,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.8,Prime Guards,466.p.6707,Tari Eason,"SG,SF,PF"
 466.l.165651.t.8,Prime Guards,466.p.6606,Austin Reaves,"PG,SG,SF"
 466.l.165651.t.8,Prime Guards,466.p.6578,Miles McBride,"PG,SG"
-466.l.165651.t.9,Girth Nowitzki,466.p.10327,Cam Spencer,"PG,SG"
-466.l.165651.t.9,Girth Nowitzki,466.p.6697,Shaedon Sharpe,"PG,SG,SF"
-466.l.165651.t.9,Girth Nowitzki,466.p.10100,Keyonte George,"PG,SG"
-466.l.165651.t.9,Girth Nowitzki,466.p.6256,Dean Wade,"SF,PF"
-466.l.165651.t.9,Girth Nowitzki,466.p.4614,DeMar DeRozan,"SF,PF"
-466.l.165651.t.9,Girth Nowitzki,466.p.4901,Tobias Harris,PF
-466.l.165651.t.9,Girth Nowitzki,466.p.4245,Al Horford,"PF,C"
-466.l.165651.t.9,Girth Nowitzki,466.p.5352,Nikola Jokić,C
-466.l.165651.t.9,Girth Nowitzki,466.p.5826,Donovan Mitchell,"PG,SG"
-466.l.165651.t.9,Girth Nowitzki,466.p.3704,LeBron James,"SF,PF"
-466.l.165651.t.9,Girth Nowitzki,466.p.6226,Daniel Gafford,C
-466.l.165651.t.9,Girth Nowitzki,466.p.6721,Andrew Nembhard,"PG,SG"
-466.l.165651.t.9,Girth Nowitzki,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
-466.l.165651.t.9,Girth Nowitzki,466.p.6757,Scotty Pippen Jr.,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6057,De'Anthony Melton,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6216,Jordan Poole,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6418,Payton Pritchard,PG
@@ -172,6 +158,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.12,Gab's Minions,466.p.6219,Nic Claxton,C
 466.l.165651.t.12,Gab's Minions,466.p.6408,Isaiah Stewart,"PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.10099,Bilal Coulibaly,"SG,SF"
+466.l.165651.t.12,Gab's Minions,466.p.10070,GG Jackson,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.5073,Khris Middleton,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.5318,Julius Randle,"PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.6406,Aaron Nesmith,"SG,SF"
