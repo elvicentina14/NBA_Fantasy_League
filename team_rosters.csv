@@ -112,11 +112,10 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.8,Prime Guards,466.p.4897,Nikola Vučević,C
 466.l.165651.t.8,Prime Guards,466.p.6733,Moussa Diabaté,C
 466.l.165651.t.8,Prime Guards,466.p.6217,Keldon Johnson,"SF,PF"
+466.l.165651.t.8,Prime Guards,466.p.6606,Austin Reaves,"PG,SG,SF"
 466.l.165651.t.8,Prime Guards,466.p.6614,Jock Landale,C
 466.l.165651.t.8,Prime Guards,466.p.6413,Tyrese Maxey,PG
 466.l.165651.t.8,Prime Guards,466.p.6707,Tari Eason,"SG,SF,PF"
-466.l.165651.t.8,Prime Guards,466.p.4892,Klay Thompson,"SG,SF"
-466.l.165651.t.8,Prime Guards,466.p.6606,Austin Reaves,"PG,SG,SF"
 466.l.165651.t.8,Prime Guards,466.p.6578,Miles McBride,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.5826,Donovan Mitchell,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.6030,Kevin Huerter,"SG,SF"
@@ -165,6 +164,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.11,Denzel's Grand Team,466.p.10296,Zaccharie Risacher,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6014,Luka Dončić,"PG,SG"
 466.l.165651.t.12,Gab's Minions,466.p.6754,Julian Champagnie,"SG,SF"
+466.l.165651.t.12,Gab's Minions,466.p.6212,Ty Jerome,SG
 466.l.165651.t.12,Gab's Minions,466.p.6025,Michael Porter Jr.,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.5073,Khris Middleton,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6408,Isaiah Stewart,"PF,C"
@@ -175,7 +175,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.12,Gab's Minions,466.p.6577,Herbert Jones,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6406,Aaron Nesmith,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.5318,Julius Randle,"PF,C"
-466.l.165651.t.12,Gab's Minions,466.p.6212,Ty Jerome,SG
 466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.5824,Malik Monk,"PG,SG"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6751,Collin Gillespie,"PG,SG"
