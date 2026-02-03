@@ -8,11 +8,12 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,KALK BANGER,466.p.5958,Deandre Ayton,C
 466.l.165651.t.1,KALK BANGER,466.p.10065,Toumani Camara,"SF,PF,C"
 466.l.165651.t.1,KALK BANGER,466.p.6169,Coby White,"PG,SG"
-466.l.165651.t.1,KALK BANGER,466.p.6721,Andrew Nembhard,"PG,SG"
-466.l.165651.t.1,KALK BANGER,466.p.5767,De'Aaron Fox,"PG,SG"
 466.l.165651.t.1,KALK BANGER,466.p.10476,Ryan Kalkbrenner,C
+466.l.165651.t.1,KALK BANGER,466.p.5767,De'Aaron Fox,"PG,SG"
 466.l.165651.t.1,KALK BANGER,466.p.4614,DeMar DeRozan,"SF,PF"
+466.l.165651.t.1,KALK BANGER,466.p.10110,Taylor Hendricks,"SF,PF"
 466.l.165651.t.1,KALK BANGER,466.p.6514,Evan Mobley,"PF,C"
+466.l.165651.t.1,KALK BANGER,466.p.6721,Andrew Nembhard,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
@@ -163,6 +164,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.11,Denzel's Grand Team,466.p.6702,Jalen Williams,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6166,De'Andre Hunter,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6014,Luka Dončić,"PG,SG"
+466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6406,Aaron Nesmith,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.6025,Michael Porter Jr.,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6408,Isaiah Stewart,"PF,C"
@@ -174,9 +176,8 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.12,Gab's Minions,466.p.6754,Julian Champagnie,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.5318,Julius Randle,"PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.6212,Ty Jerome,SG
-466.l.165651.t.12,Gab's Minions,466.p.5642,Domantas Sabonis,"PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.10121,Noah Clowney,"PF,C"
-466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
+466.l.165651.t.12,Gab's Minions,466.p.5642,Domantas Sabonis,"PF,C"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4612,Stephen Curry,PG
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6751,Collin Gillespie,"PG,SG"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6616,Jordan Goodwin,"PG,SG"
