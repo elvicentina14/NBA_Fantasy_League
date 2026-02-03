@@ -4,16 +4,15 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,KALK BANGER,466.p.6021,Mikal Bridges,"SG,SF,PF"
 466.l.165651.t.1,KALK BANGER,466.p.6720,Peyton Watson,"SF,PF"
 466.l.165651.t.1,KALK BANGER,466.p.6791,Dominick Barlow,"PF,C"
-466.l.165651.t.1,KALK BANGER,466.p.5858,Dillon Brooks,"SF,PF"
+466.l.165651.t.1,KALK BANGER,466.p.6420,Jaden McDaniels,"SF,PF"
 466.l.165651.t.1,KALK BANGER,466.p.5958,Deandre Ayton,C
 466.l.165651.t.1,KALK BANGER,466.p.10065,Toumani Camara,"SF,PF,C"
-466.l.165651.t.1,KALK BANGER,466.p.6019,Collin Sexton,"PG,SG"
-466.l.165651.t.1,KALK BANGER,466.p.10468,Cooper Flagg,"PG,SG,SF"
-466.l.165651.t.1,KALK BANGER,466.p.5767,De'Aaron Fox,"PG,SG"
-466.l.165651.t.1,KALK BANGER,466.p.6420,Jaden McDaniels,"SF,PF"
-466.l.165651.t.1,KALK BANGER,466.p.10476,Ryan Kalkbrenner,C
-466.l.165651.t.1,KALK BANGER,466.p.6514,Evan Mobley,"PF,C"
 466.l.165651.t.1,KALK BANGER,466.p.6169,Coby White,"PG,SG"
+466.l.165651.t.1,KALK BANGER,466.p.6721,Andrew Nembhard,"PG,SG"
+466.l.165651.t.1,KALK BANGER,466.p.5767,De'Aaron Fox,"PG,SG"
+466.l.165651.t.1,KALK BANGER,466.p.10476,Ryan Kalkbrenner,C
+466.l.165651.t.1,KALK BANGER,466.p.4614,DeMar DeRozan,"SF,PF"
+466.l.165651.t.1,KALK BANGER,466.p.6514,Evan Mobley,"PF,C"
 466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
@@ -37,11 +36,11 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.6581,Neemias Queta,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6047,Mitchell Robinson,C
 466.l.165651.t.3,Bench Kings,466.p.10313,Oso Ighodaro,C
-466.l.165651.t.3,Bench Kings,466.p.5582,T.J. McConnell,PG
 466.l.165651.t.3,Bench Kings,466.p.5636,Kris Dunn,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.10443,Collin Murray-Boyles,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.10444,Derik Queen,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6572,Santi Aldama,"PF,C"
+466.l.165651.t.3,Bench Kings,466.p.10333,Jamal Shead,PG
 466.l.165651.t.3,Bench Kings,466.p.10304,Ajay Mitchell,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.6433,Tre Jones,"PG,SG"
 466.l.165651.t.4,Brownlee,466.p.6652,Dru Smith,"PG,SG"
@@ -113,25 +112,24 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.8,Prime Guards,466.p.6614,Jock Landale,C
 466.l.165651.t.8,Prime Guards,466.p.4897,Nikola Vučević,C
 466.l.165651.t.8,Prime Guards,466.p.6217,Keldon Johnson,"SF,PF"
-466.l.165651.t.8,Prime Guards,466.p.4472,Brook Lopez,C
+466.l.165651.t.8,Prime Guards,466.p.6606,Austin Reaves,"PG,SG,SF"
 466.l.165651.t.8,Prime Guards,466.p.6707,Tari Eason,"SG,SF,PF"
 466.l.165651.t.8,Prime Guards,466.p.6733,Moussa Diabaté,C
 466.l.165651.t.8,Prime Guards,466.p.6417,Immanuel Quickley,"PG,SG"
-466.l.165651.t.8,Prime Guards,466.p.6606,Austin Reaves,"PG,SG,SF"
 466.l.165651.t.8,Prime Guards,466.p.6578,Miles McBride,"PG,SG"
-466.l.165651.t.9,Girth Nowitzki,466.p.10327,Cam Spencer,"PG,SG"
-466.l.165651.t.9,Girth Nowitzki,466.p.6721,Andrew Nembhard,"PG,SG"
-466.l.165651.t.9,Girth Nowitzki,466.p.6697,Shaedon Sharpe,"PG,SG,SF"
+466.l.165651.t.9,Girth Nowitzki,466.p.10468,Cooper Flagg,"PG,SG,SF"
 466.l.165651.t.9,Girth Nowitzki,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
+466.l.165651.t.9,Girth Nowitzki,466.p.6697,Shaedon Sharpe,"PG,SG,SF"
+466.l.165651.t.9,Girth Nowitzki,466.p.5858,Dillon Brooks,"SF,PF"
 466.l.165651.t.9,Girth Nowitzki,466.p.4245,Al Horford,"PF,C"
 466.l.165651.t.9,Girth Nowitzki,466.p.4901,Tobias Harris,PF
 466.l.165651.t.9,Girth Nowitzki,466.p.5352,Nikola Jokić,C
 466.l.165651.t.9,Girth Nowitzki,466.p.6226,Daniel Gafford,C
 466.l.165651.t.9,Girth Nowitzki,466.p.3704,LeBron James,"SF,PF"
 466.l.165651.t.9,Girth Nowitzki,466.p.6429,Vít Krejčí,"SG,SF"
+466.l.165651.t.9,Girth Nowitzki,466.p.10327,Cam Spencer,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.5826,Donovan Mitchell,"PG,SG"
-466.l.165651.t.9,Girth Nowitzki,466.p.10470,Kobe Sanders,"SG,SF"
-466.l.165651.t.9,Girth Nowitzki,466.p.4614,DeMar DeRozan,"SF,PF"
+466.l.165651.t.9,Girth Nowitzki,466.p.10084,Jordan Miller,"SG,SF"
 466.l.165651.t.9,Girth Nowitzki,466.p.6757,Scotty Pippen Jr.,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.10100,Keyonte George,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6057,De'Anthony Melton,"PG,SG"
@@ -173,10 +171,11 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.12,Gab's Minions,466.p.6219,Nic Claxton,C
 466.l.165651.t.12,Gab's Minions,466.p.6038,Robert Williams III,C
 466.l.165651.t.12,Gab's Minions,466.p.6619,Sam Hauser,"SF,PF"
+466.l.165651.t.12,Gab's Minions,466.p.6577,Herbert Jones,"SG,SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6754,Julian Champagnie,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.5318,Julius Randle,"PF,C"
-466.l.165651.t.12,Gab's Minions,466.p.6577,Herbert Jones,"SG,SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6212,Ty Jerome,SG
+466.l.165651.t.12,Gab's Minions,466.p.10121,Noah Clowney,"PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.5642,Domantas Sabonis,"PF,C"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4612,Stephen Curry,PG
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6751,Collin Gillespie,"PG,SG"
