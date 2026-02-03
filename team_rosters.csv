@@ -53,12 +53,12 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.4,Brownlee,466.p.4886,Jonas Valančiūnas,C
 466.l.165651.t.4,Brownlee,466.p.5069,Draymond Green,"PF,C"
 466.l.165651.t.4,Brownlee,466.p.6164,Ja Morant,PG
-466.l.165651.t.4,Brownlee,466.p.6550,Franz Wagner,"SF,PF"
+466.l.165651.t.4,Brownlee,466.p.5464,Kristaps Porziņģis,"PF,C"
 466.l.165651.t.4,Brownlee,466.p.6652,Dru Smith,"PG,SG"
 466.l.165651.t.4,Brownlee,466.p.6397,Isaac Okoro,"SF,PF"
 466.l.165651.t.4,Brownlee,466.p.10115,Brandin Podziemski,"PG,SG"
 466.l.165651.t.4,Brownlee,466.p.5185,Giannis Antetokounmpo,"PF,C"
-466.l.165651.t.4,Brownlee,466.p.5464,Kristaps Porziņģis,"PF,C"
+466.l.165651.t.4,Brownlee,466.p.6550,Franz Wagner,"SF,PF"
 466.l.165651.t.5,IBA KA,466.p.5842,Derrick White,"PG,SG"
 466.l.165651.t.5,IBA KA,466.p.6696,Bennedict Mathurin,"SG,SF"
 466.l.165651.t.5,IBA KA,466.p.4563,James Harden,"PG,SG"
@@ -122,13 +122,15 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Girth Nowitzki,466.p.10327,Cam Spencer,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.6721,Andrew Nembhard,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.6697,Shaedon Sharpe,"PG,SG,SF"
-466.l.165651.t.9,Girth Nowitzki,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
-466.l.165651.t.9,Girth Nowitzki,466.p.4614,DeMar DeRozan,"SF,PF"
+466.l.165651.t.9,Girth Nowitzki,466.p.10470,Kobe Sanders,"SG,SF"
+466.l.165651.t.9,Girth Nowitzki,466.p.4487,Nicolas Batum,"SF,PF"
 466.l.165651.t.9,Girth Nowitzki,466.p.4901,Tobias Harris,PF
 466.l.165651.t.9,Girth Nowitzki,466.p.5352,Nikola Jokić,C
 466.l.165651.t.9,Girth Nowitzki,466.p.6226,Daniel Gafford,C
 466.l.165651.t.9,Girth Nowitzki,466.p.3704,LeBron James,"SF,PF"
 466.l.165651.t.9,Girth Nowitzki,466.p.5826,Donovan Mitchell,"PG,SG"
+466.l.165651.t.9,Girth Nowitzki,466.p.4614,DeMar DeRozan,"SF,PF"
+466.l.165651.t.9,Girth Nowitzki,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
 466.l.165651.t.9,Girth Nowitzki,466.p.4245,Al Horford,"PF,C"
 466.l.165651.t.9,Girth Nowitzki,466.p.6757,Scotty Pippen Jr.,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.10100,Keyonte George,"PG,SG"
