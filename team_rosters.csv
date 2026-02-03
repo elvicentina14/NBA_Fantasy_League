@@ -20,9 +20,9 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.2,Matalim Dede,466.p.6691,Paolo Banchero,"PF,C"
 466.l.165651.t.2,Matalim Dede,466.p.6499,Naji Marshall,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6617,Jay Huff,C
+466.l.165651.t.2,Matalim Dede,466.p.6703,Jalen Duren,C
 466.l.165651.t.2,Matalim Dede,466.p.6692,Chet Holmgren,"PF,C"
 466.l.165651.t.2,Matalim Dede,466.p.5840,Kyle Kuzma,"SF,PF"
-466.l.165651.t.2,Matalim Dede,466.p.6703,Jalen Duren,C
 466.l.165651.t.2,Matalim Dede,466.p.6567,Quentin Grimes,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.10450,Kon Knueppel,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.10496,Maxime Raynaud,C
@@ -163,7 +163,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.11,Denzel's Grand Team,466.p.6702,Jalen Williams,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6166,De'Andre Hunter,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6014,Luka Dončić,"PG,SG"
-466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6406,Aaron Nesmith,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.6025,Michael Porter Jr.,"SF,PF"
 466.l.165651.t.12,Gab's Minions,466.p.6408,Isaiah Stewart,"PF,C"
@@ -175,8 +174,9 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.12,Gab's Minions,466.p.6754,Julian Champagnie,"SG,SF"
 466.l.165651.t.12,Gab's Minions,466.p.5318,Julius Randle,"PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.6212,Ty Jerome,SG
-466.l.165651.t.12,Gab's Minions,466.p.10121,Noah Clowney,"PF,C"
 466.l.165651.t.12,Gab's Minions,466.p.5642,Domantas Sabonis,"PF,C"
+466.l.165651.t.12,Gab's Minions,466.p.10121,Noah Clowney,"PF,C"
+466.l.165651.t.12,Gab's Minions,466.p.6401,Deni Avdija,"SG,SF,PF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4612,Stephen Curry,PG
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6751,Collin Gillespie,"PG,SG"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6616,Jordan Goodwin,"PG,SG"
