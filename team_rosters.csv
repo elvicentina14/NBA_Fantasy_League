@@ -96,14 +96,14 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.7,Sakuragi,466.p.5905,Royce O'Neale,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5350,Jerami Grant,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5856,Isaiah Hartenstein,C
-466.l.165651.t.7,Sakuragi,466.p.5903,Luke Kornet,C
 466.l.165651.t.7,Sakuragi,466.p.5769,Lauri Markkanen,"SF,PF"
+466.l.165651.t.7,Sakuragi,466.p.6402,Jalen Smith,"PF,C"
 466.l.165651.t.7,Sakuragi,466.p.5506,Norman Powell,"SG,SF"
 466.l.165651.t.7,Sakuragi,466.p.5471,Myles Turner,C
 466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
 466.l.165651.t.7,Sakuragi,466.p.5601,Brandon Ingram,"SG,SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5295,Aaron Gordon,"PF,C"
-466.l.165651.t.7,Sakuragi,466.p.6402,Jalen Smith,"PF,C"
+466.l.165651.t.7,Sakuragi,466.p.5903,Luke Kornet,C
 466.l.165651.t.8,Prime Guards,466.p.5638,Jamal Murray,"PG,SG"
 466.l.165651.t.8,Prime Guards,466.p.6516,Jalen Suggs,"PG,SG"
 466.l.165651.t.8,Prime Guards,466.p.6413,Tyrese Maxey,PG
@@ -119,6 +119,21 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.8,Prime Guards,466.p.4897,Nikola Vučević,C
 466.l.165651.t.8,Prime Guards,466.p.5640,Jakob Poeltl,C
 466.l.165651.t.8,Prime Guards,466.p.6707,Tari Eason,"SG,SF,PF"
+466.l.165651.t.9,Girth Nowitzki,466.p.10327,Cam Spencer,"PG,SG"
+466.l.165651.t.9,Girth Nowitzki,466.p.5826,Donovan Mitchell,"PG,SG"
+466.l.165651.t.9,Girth Nowitzki,466.p.6757,Scotty Pippen Jr.,"PG,SG"
+466.l.165651.t.9,Girth Nowitzki,466.p.10449,Will Riley,SF
+466.l.165651.t.9,Girth Nowitzki,466.p.4245,Al Horford,"PF,C"
+466.l.165651.t.9,Girth Nowitzki,466.p.10468,Cooper Flagg,"PG,SG,SF"
+466.l.165651.t.9,Girth Nowitzki,466.p.6226,Daniel Gafford,C
+466.l.165651.t.9,Girth Nowitzki,466.p.5352,Nikola Jokić,C
+466.l.165651.t.9,Girth Nowitzki,466.p.3704,LeBron James,"SF,PF"
+466.l.165651.t.9,Girth Nowitzki,466.p.5858,Dillon Brooks,"SF,PF"
+466.l.165651.t.9,Girth Nowitzki,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
+466.l.165651.t.9,Girth Nowitzki,466.p.5747,Derrick Jones Jr.,"SF,PF"
+466.l.165651.t.9,Girth Nowitzki,466.p.4901,Tobias Harris,PF
+466.l.165651.t.9,Girth Nowitzki,466.p.10100,Keyonte George,"PG,SG"
+466.l.165651.t.9,Girth Nowitzki,466.p.6697,Shaedon Sharpe,"PG,SG,SF"
 466.l.165651.t.10,Big Eiffel,466.p.6057,De'Anthony Melton,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6695,Jaden Ivey,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
