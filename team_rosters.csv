@@ -17,16 +17,16 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.10450,Kon Knueppel,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.6218,Kevin Porter Jr.,"PG,SG"
-466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
-466.l.165651.t.2,Matalim Dede,466.p.10265,Matas Buzelis,"SF,PF"
-466.l.165651.t.2,Matalim Dede,466.p.5840,Kyle Kuzma,"SF,PF"
-466.l.165651.t.2,Matalim Dede,466.p.6691,Paolo Banchero,"PF,C"
-466.l.165651.t.2,Matalim Dede,466.p.6703,Jalen Duren,C
-466.l.165651.t.2,Matalim Dede,466.p.6692,Chet Holmgren,"PF,C"
-466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6499,Naji Marshall,"SG,SF,PF"
+466.l.165651.t.2,Matalim Dede,466.p.5840,Kyle Kuzma,"SF,PF"
+466.l.165651.t.2,Matalim Dede,466.p.6703,Jalen Duren,C
 466.l.165651.t.2,Matalim Dede,466.p.6617,Jay Huff,C
+466.l.165651.t.2,Matalim Dede,466.p.6692,Chet Holmgren,"PF,C"
+466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG"
+466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
+466.l.165651.t.2,Matalim Dede,466.p.10265,Matas Buzelis,"SF,PF"
+466.l.165651.t.2,Matalim Dede,466.p.6691,Paolo Banchero,"PF,C"
 466.l.165651.t.2,Matalim Dede,466.p.5765,Jayson Tatum,"SF,PF"
 466.l.165651.t.3,Bench Kings,466.p.6734,Ryan Rollins,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.6698,Dyson Daniels,"PG,SG,SF"
@@ -128,9 +128,9 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Girth Nowitzki,466.p.4245,Al Horford,"PF,C"
 466.l.165651.t.9,Girth Nowitzki,466.p.5352,Nikola Jokić,C
 466.l.165651.t.9,Girth Nowitzki,466.p.5317,Marcus Smart,"PG,SG"
-466.l.165651.t.9,Girth Nowitzki,466.p.10327,Cam Spencer,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.10469,Nique Clifford,"SG,SF"
 466.l.165651.t.9,Girth Nowitzki,466.p.10449,Will Riley,"SF,PF"
+466.l.165651.t.9,Girth Nowitzki,466.p.10496,Maxime Raynaud,C
 466.l.165651.t.9,Girth Nowitzki,466.p.6697,Shaedon Sharpe,"PG,SG,SF"
 466.l.165651.t.9,Girth Nowitzki,466.p.10100,Keyonte George,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6057,De'Anthony Melton,"PG,SG"
