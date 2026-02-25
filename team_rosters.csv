@@ -43,17 +43,17 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.6408,Isaiah Stewart,"PF,C"
 466.l.165651.t.4,Porzinglass & Co.,466.p.10115,Brandin Podziemski,"PG,SG"
 466.l.165651.t.4,Porzinglass & Co.,466.p.5602,Jaylen Brown,"SG,SF"
-466.l.165651.t.4,Porzinglass & Co.,466.p.6164,Ja Morant,PG
-466.l.165651.t.4,Porzinglass & Co.,466.p.3704,LeBron James,"SF,PF"
-466.l.165651.t.4,Porzinglass & Co.,466.p.5840,Kyle Kuzma,"SF,PF"
-466.l.165651.t.4,Porzinglass & Co.,466.p.5464,Kristaps Porziņģis,"PF,C"
-466.l.165651.t.4,Porzinglass & Co.,466.p.10121,Noah Clowney,"PF,C"
-466.l.165651.t.4,Porzinglass & Co.,466.p.10078,Tristan Vukcevic,"PF,C"
-466.l.165651.t.4,Porzinglass & Co.,466.p.5015,Andre Drummond,C
-466.l.165651.t.4,Porzinglass & Co.,466.p.6165,RJ Barrett,"SG,SF,PF"
-466.l.165651.t.4,Porzinglass & Co.,466.p.4901,Tobias Harris,PF
 466.l.165651.t.4,Porzinglass & Co.,466.p.10327,Cam Spencer,"PG,SG"
 466.l.165651.t.4,Porzinglass & Co.,466.p.6711,Christian Braun,"SG,SF"
+466.l.165651.t.4,Porzinglass & Co.,466.p.5840,Kyle Kuzma,"SF,PF"
+466.l.165651.t.4,Porzinglass & Co.,466.p.4901,Tobias Harris,PF
+466.l.165651.t.4,Porzinglass & Co.,466.p.10078,Tristan Vukcevic,"PF,C"
+466.l.165651.t.4,Porzinglass & Co.,466.p.5464,Kristaps Porziņģis,"PF,C"
+466.l.165651.t.4,Porzinglass & Co.,466.p.6165,RJ Barrett,"SG,SF,PF"
+466.l.165651.t.4,Porzinglass & Co.,466.p.6164,Ja Morant,PG
+466.l.165651.t.4,Porzinglass & Co.,466.p.10121,Noah Clowney,"PF,C"
+466.l.165651.t.4,Porzinglass & Co.,466.p.5015,Andre Drummond,C
+466.l.165651.t.4,Porzinglass & Co.,466.p.3704,LeBron James,"SF,PF"
 466.l.165651.t.4,Porzinglass & Co.,466.p.5185,Giannis Antetokounmpo,"PF,C"
 466.l.165651.t.4,Porzinglass & Co.,466.p.4725,Paul George,"SG,SF,PF"
 466.l.165651.t.5,IBA KA,466.p.4563,James Harden,"PG,SG"
@@ -86,7 +86,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.6,ICC Defenders,466.p.5836,OG Anunoby,"SF,PF"
 466.l.165651.t.6,ICC Defenders,466.p.5007,Anthony Davis,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.5327,Jusuf Nurkić,C
-466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
+466.l.165651.t.7,Sakuragi,466.p.5187,Dennis Schröder,"PG,SG"
 466.l.165651.t.7,Sakuragi,466.p.6355,Anthony Edwards,"PG,SG"
 466.l.165651.t.7,Sakuragi,466.p.6613,Jose Alvarado,PG
 466.l.165651.t.7,Sakuragi,466.p.5601,Brandon Ingram,"SG,SF,PF"
@@ -94,11 +94,11 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.7,Sakuragi,466.p.5350,Jerami Grant,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5471,Myles Turner,C
 466.l.165651.t.7,Sakuragi,466.p.5856,Isaiah Hartenstein,C
-466.l.165651.t.7,Sakuragi,466.p.5506,Norman Powell,"SG,SF"
-466.l.165651.t.7,Sakuragi,466.p.5073,Khris Middleton,"SF,PF"
-466.l.165651.t.7,Sakuragi,466.p.5769,Lauri Markkanen,"SF,PF"
-466.l.165651.t.7,Sakuragi,466.p.5187,Dennis Schröder,"PG,SG"
 466.l.165651.t.7,Sakuragi,466.p.5903,Luke Kornet,C
+466.l.165651.t.7,Sakuragi,466.p.5069,Draymond Green,"PF,C"
+466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
+466.l.165651.t.7,Sakuragi,466.p.5506,Norman Powell,"SG,SF"
+466.l.165651.t.7,Sakuragi,466.p.5769,Lauri Markkanen,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5295,Aaron Gordon,"PF,C"
 466.l.165651.t.7,Sakuragi,466.p.6402,Jalen Smith,"PF,C"
 466.l.165651.t.8,Prime Guards,466.p.5638,Jamal Murray,"PG,SG"
