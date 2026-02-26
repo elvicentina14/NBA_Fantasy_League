@@ -14,18 +14,18 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6021,Mikal Bridges,"SG,SF,PF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6572,Santi Aldama,"PF,C"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6022,Shai Gilgeous-Alexander,PG
-466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
+466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.6499,Naji Marshall,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6218,Kevin Porter Jr.,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.10265,Matas Buzelis,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.10450,Kon Knueppel,"SG,SF"
-466.l.165651.t.2,Matalim Dede,466.p.6703,Jalen Duren,C
 466.l.165651.t.2,Matalim Dede,466.p.6724,Jaylin Williams,"PF,C"
+466.l.165651.t.2,Matalim Dede,466.p.6691,Paolo Banchero,"PF,C"
 466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.6617,Jay Huff,C
-466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG,SF"
-466.l.165651.t.2,Matalim Dede,466.p.6691,Paolo Banchero,"PF,C"
+466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
+466.l.165651.t.2,Matalim Dede,466.p.6703,Jalen Duren,C
 466.l.165651.t.2,Matalim Dede,466.p.5765,Jayson Tatum,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6692,Chet Holmgren,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6751,Collin Gillespie,"PG,SG"
@@ -89,19 +89,19 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.6,ICC Defenders,466.p.5327,Jusuf Nurkić,C
 466.l.165651.t.7,Sakuragi,466.p.5187,Dennis Schröder,"PG,SG"
 466.l.165651.t.7,Sakuragi,466.p.6355,Anthony Edwards,"PG,SG"
-466.l.165651.t.7,Sakuragi,466.p.6613,Jose Alvarado,PG
-466.l.165651.t.7,Sakuragi,466.p.5601,Brandon Ingram,"SG,SF,PF"
+466.l.165651.t.7,Sakuragi,466.p.5506,Norman Powell,"SG,SF"
+466.l.165651.t.7,Sakuragi,466.p.5769,Lauri Markkanen,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5905,Royce O'Neale,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5350,Jerami Grant,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5471,Myles Turner,C
-466.l.165651.t.7,Sakuragi,466.p.5856,Isaiah Hartenstein,C
+466.l.165651.t.7,Sakuragi,466.p.6402,Jalen Smith,"PF,C"
 466.l.165651.t.7,Sakuragi,466.p.5903,Luke Kornet,C
 466.l.165651.t.7,Sakuragi,466.p.10333,Jamal Shead,PG
+466.l.165651.t.7,Sakuragi,466.p.5601,Brandon Ingram,"SG,SF,PF"
+466.l.165651.t.7,Sakuragi,466.p.6613,Jose Alvarado,PG
 466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
-466.l.165651.t.7,Sakuragi,466.p.5506,Norman Powell,"SG,SF"
-466.l.165651.t.7,Sakuragi,466.p.5769,Lauri Markkanen,"SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.5295,Aaron Gordon,"PF,C"
-466.l.165651.t.7,Sakuragi,466.p.6402,Jalen Smith,"PF,C"
+466.l.165651.t.7,Sakuragi,466.p.5856,Isaiah Hartenstein,C
 466.l.165651.t.8,Prime Guards,466.p.5638,Jamal Murray,"PG,SG"
 466.l.165651.t.8,Prime Guards,466.p.6707,Tari Eason,"SG,SF,PF"
 466.l.165651.t.8,Prime Guards,466.p.6413,Tyrese Maxey,PG
@@ -123,13 +123,13 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Girth Nowitzki,466.p.10469,Nique Clifford,"SG,SF"
 466.l.165651.t.9,Girth Nowitzki,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
 466.l.165651.t.9,Girth Nowitzki,466.p.6411,Saddiq Bey,"SF,PF"
+466.l.165651.t.9,Girth Nowitzki,466.p.6655,Micah Potter,"PF,C"
 466.l.165651.t.9,Girth Nowitzki,466.p.10496,Maxime Raynaud,C
-466.l.165651.t.9,Girth Nowitzki,466.p.6226,Daniel Gafford,C
 466.l.165651.t.9,Girth Nowitzki,466.p.10449,Will Riley,"SF,PF"
 466.l.165651.t.9,Girth Nowitzki,466.p.10117,Kobe Brown,"PF,C"
+466.l.165651.t.9,Girth Nowitzki,466.p.6226,Daniel Gafford,C
 466.l.165651.t.9,Girth Nowitzki,466.p.5352,Nikola Jokić,C
 466.l.165651.t.9,Girth Nowitzki,466.p.4245,Al Horford,"PF,C"
-466.l.165651.t.9,Girth Nowitzki,466.p.6655,Micah Potter,"PF,C"
 466.l.165651.t.9,Girth Nowitzki,466.p.10468,Cooper Flagg,"PG,SG,SF"
 466.l.165651.t.9,Girth Nowitzki,466.p.5826,Donovan Mitchell,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.10440,Jeremiah Fears,"PG,SG"
@@ -193,16 +193,16 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6167,Darius Garland,PG
 466.l.165651.t.14,Moneyball,466.p.4390,Russell Westbrook,"PG,SG"
 466.l.165651.t.14,Moneyball,466.p.6403,Devin Vassell,"SG,SF"
-466.l.165651.t.14,Moneyball,466.p.10108,Amen Thompson,"PG,SG,SF"
+466.l.165651.t.14,Moneyball,466.p.6216,Jordan Poole,"PG,SG"
 466.l.165651.t.14,Moneyball,466.p.6205,Nickeil Alexander-Walker,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.6694,Keegan Murray,"SF,PF"
 466.l.165651.t.14,Moneyball,466.p.6422,Desmond Bane,"SG,SF"
 466.l.165651.t.14,Moneyball,466.p.6705,Mark Williams,C
 466.l.165651.t.14,Moneyball,466.p.6018,Wendell Carter Jr.,C
-466.l.165651.t.14,Moneyball,466.p.6216,Jordan Poole,"PG,SG"
 466.l.165651.t.14,Moneyball,466.p.4622,Jrue Holiday,"PG,SG"
+466.l.165651.t.14,Moneyball,466.p.6032,Grayson Allen,"PG,SG,SF"
+466.l.165651.t.14,Moneyball,466.p.10108,Amen Thompson,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.5482,Bobby Portis,"PF,C"
 466.l.165651.t.14,Moneyball,466.p.5835,Jarrett Allen,C
-466.l.165651.t.14,Moneyball,466.p.6032,Grayson Allen,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.10465,Cedric Coward,"SG,SF"
 466.l.165651.t.14,Moneyball,466.p.5473,Devin Booker,"PG,SG"
