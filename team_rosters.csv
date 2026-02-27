@@ -10,7 +10,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.10099,Bilal Coulibaly,"SG,SF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.5161,CJ McCollum,"PG,SG"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6514,Evan Mobley,"PF,C"
-466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6254,Luguentz Dort,"SG,SF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6021,Mikal Bridges,"SG,SF,PF"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6572,Santi Aldama,"PF,C"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6022,Shai Gilgeous-Alexander,PG
@@ -67,9 +66,9 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.5,IBA KA,466.p.5197,Rudy Gobert,C
 466.l.165651.t.5,IBA KA,466.p.4244,Kevin Durant,"SG,SF,PF"
 466.l.165651.t.5,IBA KA,466.p.5294,Joel Embiid,C
-466.l.165651.t.5,IBA KA,466.p.6755,AJ Green,"PG,SG,SF"
 466.l.165651.t.5,IBA KA,466.p.5842,Derrick White,"PG,SG"
 466.l.165651.t.5,IBA KA,466.p.10107,Cason Wallace,"PG,SG,SF"
+466.l.165651.t.5,IBA KA,466.p.10276,Jared McCain,"PG,SG"
 466.l.165651.t.5,IBA KA,466.p.6720,Peyton Watson,"SF,PF"
 466.l.165651.t.5,IBA KA,466.p.4563,James Harden,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10288,Reed Sheppard,"PG,SG"
@@ -150,15 +149,15 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.11,Denzel's Grand Team,466.p.10454,VJ Edgecombe,"PG,SG"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6031,Josh Okogie,"SG,SF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6679,Brandon Williams,PG
-466.l.165651.t.11,Denzel's Grand Team,466.p.6174,P.J. Washington,"SF,PF,C"
+466.l.165651.t.11,Denzel's Grand Team,466.p.6725,Max Christie,"SG,SF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.5475,Kelly Oubre Jr.,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.10103,Jarace Walker,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.5647,Guerschon Yabusele,"PF,C"
 466.l.165651.t.11,Denzel's Grand Team,466.p.5658,Pascal Siakam,"SF,PF,C"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6023,Miles Bridges,"SF,PF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6163,Zion Williamson,"SF,PF,C"
+466.l.165651.t.11,Denzel's Grand Team,466.p.6174,P.J. Washington,"SF,PF,C"
 466.l.165651.t.11,Denzel's Grand Team,466.p.5432,Karl-Anthony Towns,"PF,C"
-466.l.165651.t.11,Denzel's Grand Team,466.p.6725,Max Christie,"SG,SF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.10312,Pelle Larsson,"SG,SF"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6035,Anfernee Simons,"PG,SG"
 466.l.165651.t.11,Denzel's Grand Team,466.p.6702,Jalen Williams,"SF,PF"
@@ -174,6 +173,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.12,Gab's Ambulance 🚑 🚨,466.p.10048,Scoot Henderson,PG
 466.l.165651.t.12,Gab's Ambulance 🚑 🚨,466.p.6577,Herbert Jones,"SG,SF,PF"
 466.l.165651.t.12,Gab's Ambulance 🚑 🚨,466.p.6556,Moses Moody,"SG,SF,PF"
+466.l.165651.t.12,Gab's Ambulance 🚑 🚨,466.p.10445,Egor Dëmin,"PG,SG"
 466.l.165651.t.12,Gab's Ambulance 🚑 🚨,466.p.6401,Deni Avdija,"SG,SF,PF"
 466.l.165651.t.12,Gab's Ambulance 🚑 🚨,466.p.6212,Ty Jerome,"PG,SG"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6734,Ryan Rollins,"PG,SG"
