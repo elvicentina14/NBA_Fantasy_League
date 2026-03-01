@@ -42,6 +42,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.6255,John Konchar,"SG,SF"
 466.l.165651.t.3,Bench Kings,466.p.10304,Ajay Mitchell,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.6408,Isaiah Stewart,"PF,C"
+466.l.165651.t.4,Porzinglass & Co.,466.p.6164,Ja Morant,PG
 466.l.165651.t.4,Porzinglass & Co.,466.p.5602,Jaylen Brown,"SG,SF"
 466.l.165651.t.4,Porzinglass & Co.,466.p.6711,Christian Braun,"SG,SF"
 466.l.165651.t.4,Porzinglass & Co.,466.p.3704,LeBron James,"SF,PF"
@@ -51,7 +52,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.4,Porzinglass & Co.,466.p.5015,Andre Drummond,C
 466.l.165651.t.4,Porzinglass & Co.,466.p.5840,Kyle Kuzma,"SF,PF"
 466.l.165651.t.4,Porzinglass & Co.,466.p.10456,Danny Wolf,"PF,C"
-466.l.165651.t.4,Porzinglass & Co.,466.p.6164,Ja Morant,PG
 466.l.165651.t.4,Porzinglass & Co.,466.p.5185,Giannis Antetokounmpo,"PF,C"
 466.l.165651.t.4,Porzinglass & Co.,466.p.10115,Brandin Podziemski,"PG,SG"
 466.l.165651.t.4,Porzinglass & Co.,466.p.6165,RJ Barrett,"SG,SF,PF"
@@ -103,19 +103,19 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.7,Sakuragi,466.p.5295,Aaron Gordon,"PF,C"
 466.l.165651.t.7,Sakuragi,466.p.6402,Jalen Smith,"PF,C"
 466.l.165651.t.8,Prime Guards,466.p.5638,Jamal Murray,"PG,SG"
-466.l.165651.t.8,Prime Guards,466.p.6707,Tari Eason,"SG,SF,PF"
+466.l.165651.t.8,Prime Guards,466.p.6516,Jalen Suggs,"PG,SG"
 466.l.165651.t.8,Prime Guards,466.p.6413,Tyrese Maxey,PG
 466.l.165651.t.8,Prime Guards,466.p.6606,Austin Reaves,"PG,SG,SF"
 466.l.165651.t.8,Prime Guards,466.p.6217,Keldon Johnson,"SF,PF"
 466.l.165651.t.8,Prime Guards,466.p.10279,Jaylon Tyson,"SG,SF"
 466.l.165651.t.8,Prime Guards,466.p.6614,Jock Landale,C
-466.l.165651.t.8,Prime Guards,466.p.6038,Robert Williams III,C
+466.l.165651.t.8,Prime Guards,466.p.6733,Moussa Diabaté,C
 466.l.165651.t.8,Prime Guards,466.p.4897,Nikola Vučević,C
 466.l.165651.t.8,Prime Guards,466.p.6253,Naz Reid,"PF,C"
-466.l.165651.t.8,Prime Guards,466.p.6733,Moussa Diabaté,C
+466.l.165651.t.8,Prime Guards,466.p.6707,Tari Eason,"SG,SF,PF"
 466.l.165651.t.8,Prime Guards,466.p.5640,Jakob Poeltl,C
 466.l.165651.t.8,Prime Guards,466.p.6417,Immanuel Quickley,"PG,SG"
-466.l.165651.t.8,Prime Guards,466.p.6516,Jalen Suggs,"PG,SG"
+466.l.165651.t.8,Prime Guards,466.p.6038,Robert Williams III,C
 466.l.165651.t.9,Girth Nowitzki,466.p.6395,LaMelo Ball,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.10469,Nique Clifford,"SG,SF"
 466.l.165651.t.9,Girth Nowitzki,466.p.5826,Donovan Mitchell,"PG,SG"
@@ -193,7 +193,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6167,Darius Garland,PG
 466.l.165651.t.14,Moneyball,466.p.4390,Russell Westbrook,"PG,SG"
 466.l.165651.t.14,Moneyball,466.p.6403,Devin Vassell,"SG,SF"
-466.l.165651.t.14,Moneyball,466.p.5473,Devin Booker,"PG,SG"
+466.l.165651.t.14,Moneyball,466.p.10340,Jaylen Wells,"SG,SF"
 466.l.165651.t.14,Moneyball,466.p.6205,Nickeil Alexander-Walker,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.5482,Bobby Portis,"PF,C"
 466.l.165651.t.14,Moneyball,466.p.6422,Desmond Bane,"SG,SF"
@@ -205,4 +205,4 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.14,Moneyball,466.p.6705,Mark Williams,C
 466.l.165651.t.14,Moneyball,466.p.6032,Grayson Allen,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.6694,Keegan Murray,"SF,PF"
-466.l.165651.t.14,Moneyball,466.p.10465,Cedric Coward,"SG,SF"
+466.l.165651.t.14,Moneyball,466.p.5473,Devin Booker,"PG,SG"
