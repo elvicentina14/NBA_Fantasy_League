@@ -15,7 +15,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6572,Santi Aldama,"PF,C"
 466.l.165651.t.1,MARK HENRY ALCANTARA,466.p.6550,Franz Wagner,"SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
-466.l.165651.t.2,Matalim Dede,466.p.6499,Naji Marshall,"SG,SF,PF"
+466.l.165651.t.2,Matalim Dede,466.p.6730,Bryce McGowens,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.6218,Kevin Porter Jr.,"PG,SG"
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.10265,Matas Buzelis,"SF,PF"
@@ -27,6 +27,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.2,Matalim Dede,466.p.10450,Kon Knueppel,"SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.6513,Jalen Green,"PG,SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.5765,Jayson Tatum,"SF,PF"
+466.l.165651.t.2,Matalim Dede,466.p.6499,Naji Marshall,"SG,SF,PF"
 466.l.165651.t.3,Bench Kings,466.p.10455,Nolan Traore,PG
 466.l.165651.t.3,Bench Kings,466.p.5660,Dejounte Murray,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.10467,Dylan Harper,"PG,SG"
@@ -191,7 +192,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6745,Gui Santos,"SF,PF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10287,Zach Edey,C
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6167,Darius Garland,PG
-466.l.165651.t.14,Moneyball,466.p.4390,Russell Westbrook,"PG,SG"
+466.l.165651.t.14,Moneyball,466.p.10108,Amen Thompson,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.6403,Devin Vassell,"SG,SF"
 466.l.165651.t.14,Moneyball,466.p.10340,Jaylen Wells,"SG,SF"
 466.l.165651.t.14,Moneyball,466.p.6205,Nickeil Alexander-Walker,"PG,SG,SF"
@@ -201,7 +202,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.14,Moneyball,466.p.5835,Jarrett Allen,C
 466.l.165651.t.14,Moneyball,466.p.4622,Jrue Holiday,"PG,SG"
 466.l.165651.t.14,Moneyball,466.p.10110,Taylor Hendricks,"SF,PF,C"
-466.l.165651.t.14,Moneyball,466.p.10108,Amen Thompson,"PG,SG,SF"
+466.l.165651.t.14,Moneyball,466.p.4390,Russell Westbrook,"PG,SG"
 466.l.165651.t.14,Moneyball,466.p.6705,Mark Williams,C
 466.l.165651.t.14,Moneyball,466.p.6032,Grayson Allen,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.6694,Keegan Murray,"SF,PF"
