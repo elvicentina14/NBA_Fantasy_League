@@ -85,9 +85,9 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.6,ICC Defenders,466.p.6558,Alperen Sengun,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.10273,Bub Carrington,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.6562,Jalen Johnson,"SF,PF"
-466.l.165651.t.6,ICC Defenders,466.p.10272,Kyshawn George,"SG,SF,PF"
-466.l.165651.t.6,ICC Defenders,466.p.5007,Anthony Davis,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.10096,Ausar Thompson,"SG,SF,PF"
+466.l.165651.t.6,ICC Defenders,466.p.5007,Anthony Davis,"PF,C"
+466.l.165651.t.6,ICC Defenders,466.p.10272,Kyshawn George,"SG,SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.6355,Anthony Edwards,"PG,SG"
 466.l.165651.t.7,Sakuragi,466.p.4892,Klay Thompson,"SG,SF"
 466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
@@ -126,12 +126,12 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.9,Girth Nowitzki,466.p.6408,Isaiah Stewart,"PF,C"
 466.l.165651.t.9,Girth Nowitzki,466.p.10496,Maxime Raynaud,C
 466.l.165651.t.9,Girth Nowitzki,466.p.5352,Nikola Jokić,C
-466.l.165651.t.9,Girth Nowitzki,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
 466.l.165651.t.9,Girth Nowitzki,466.p.10468,Cooper Flagg,"PG,SG,SF"
-466.l.165651.t.9,Girth Nowitzki,466.p.6616,Jordan Goodwin,"PG,SG,SF"
+466.l.165651.t.9,Girth Nowitzki,466.p.10100,Keyonte George,"PG,SG"
+466.l.165651.t.9,Girth Nowitzki,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
 466.l.165651.t.9,Girth Nowitzki,466.p.6655,Micah Potter,"PF,C"
 466.l.165651.t.9,Girth Nowitzki,466.p.6226,Daniel Gafford,C
-466.l.165651.t.9,Girth Nowitzki,466.p.10100,Keyonte George,"PG,SG"
+466.l.165651.t.9,Girth Nowitzki,466.p.6616,Jordan Goodwin,"PG,SG,SF"
 466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.10440,Jeremiah Fears,"PG,SG"
 466.l.165651.t.10,Big Eiffel,466.p.6418,Payton Pritchard,PG
