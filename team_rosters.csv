@@ -37,10 +37,10 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.6581,Neemias Queta,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6515,Scottie Barnes,"SG,SF,PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6751,Collin Gillespie,"PG,SG"
-466.l.165651.t.3,Bench Kings,466.p.6450,Paul Reed,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6551,Davion Mitchell,PG
 466.l.165651.t.3,Bench Kings,466.p.10274,Kel'el Ware,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6412,Precious Achiuwa,"PF,C"
+466.l.165651.t.3,Bench Kings,466.p.10313,Oso Ighodaro,C
 466.l.165651.t.3,Bench Kings,466.p.10443,Collin Murray-Boyles,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.5660,Dejounte Murray,"PG,SG"
 466.l.165651.t.4,Porzinglass & Co.,466.p.10115,Brandin Podziemski,"PG,SG"
@@ -118,18 +118,18 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.8,Prime Guards,466.p.6550,Franz Wagner,"SF,PF"
 466.l.165651.t.8,Prime Guards,466.p.6413,Tyrese Maxey,PG
 466.l.165651.t.9,Girth Nowitzki,466.p.10468,Cooper Flagg,"PG,SG,SF"
-466.l.165651.t.9,Girth Nowitzki,466.p.6395,LaMelo Ball,"PG,SG"
+466.l.165651.t.9,Girth Nowitzki,466.p.10084,Jordan Miller,"SG,SF"
 466.l.165651.t.9,Girth Nowitzki,466.p.10469,Nique Clifford,"SG,SF"
 466.l.165651.t.9,Girth Nowitzki,466.p.10448,Tre Johnson,"PG,SG,SF"
 466.l.165651.t.9,Girth Nowitzki,466.p.6411,Saddiq Bey,"SF,PF"
-466.l.165651.t.9,Girth Nowitzki,466.p.6791,Dominick Barlow,"PF,C"
+466.l.165651.t.9,Girth Nowitzki,466.p.10078,Tristan Vukcevic,"PF,C"
 466.l.165651.t.9,Girth Nowitzki,466.p.10496,Maxime Raynaud,C
 466.l.165651.t.9,Girth Nowitzki,466.p.5336,Clint Capela,C
 466.l.165651.t.9,Girth Nowitzki,466.p.5352,Nikola Jokić,C
 466.l.165651.t.9,Girth Nowitzki,466.p.5826,Donovan Mitchell,"PG,SG"
+466.l.165651.t.9,Girth Nowitzki,466.p.6395,LaMelo Ball,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.6169,Coby White,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.10092,Jaime Jaquez Jr.,"SG,SF,PF"
-466.l.165651.t.9,Girth Nowitzki,466.p.10078,Tristan Vukcevic,"PF,C"
 466.l.165651.t.9,Girth Nowitzki,466.p.10100,Keyonte George,"PG,SG"
 466.l.165651.t.9,Girth Nowitzki,466.p.6226,Daniel Gafford,C
 466.l.165651.t.10,Big Eiffel,466.p.10282,Isaiah Collier,"PG,SG"
