@@ -29,8 +29,8 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.2,Matalim Dede,466.p.5843,Josh Hart,"SG,SF,PF"
 466.l.165651.t.2,Matalim Dede,466.p.10095,Anthony Black,"PG,SG,SF"
 466.l.165651.t.2,Matalim Dede,466.p.6512,Cade Cunningham,"PG,SG"
+466.l.165651.t.3,Bench Kings,466.p.10114,Marcus Sasser,PG
 466.l.165651.t.3,Bench Kings,466.p.6751,Collin Gillespie,"PG,SG"
-466.l.165651.t.3,Bench Kings,466.p.5660,Dejounte Murray,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.6433,Tre Jones,"PG,SG"
 466.l.165651.t.3,Bench Kings,466.p.6698,Dyson Daniels,"PG,SG,SF"
 466.l.165651.t.3,Bench Kings,466.p.10315,Kyle Filipowski,"PF,C"
@@ -43,6 +43,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.3,Bench Kings,466.p.6581,Neemias Queta,"PF,C"
 466.l.165651.t.3,Bench Kings,466.p.6515,Scottie Barnes,"SG,SF,PF,C"
 466.l.165651.t.3,Bench Kings,466.p.10443,Collin Murray-Boyles,"PF,C"
+466.l.165651.t.3,Bench Kings,466.p.5660,Dejounte Murray,"PG,SG"
 466.l.165651.t.4,Porzinglass & Co.,466.p.10115,Brandin Podziemski,"PG,SG"
 466.l.165651.t.4,Porzinglass & Co.,466.p.6073,Duncan Robinson,"SG,SF"
 466.l.165651.t.4,Porzinglass & Co.,466.p.6711,Christian Braun,"SG,SF,PF"
