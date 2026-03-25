@@ -74,7 +74,6 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.6,ICC Defenders,466.p.10288,Reed Sheppard,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10273,Bub Carrington,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10290,Stephon Castle,"PG,SG"
-466.l.165651.t.6,ICC Defenders,466.p.6208,Matisse Thybulle,"SG,SF"
 466.l.165651.t.6,ICC Defenders,466.p.6562,Jalen Johnson,"SF,PF"
 466.l.165651.t.6,ICC Defenders,466.p.10096,Ausar Thompson,"SG,SF,PF"
 466.l.165651.t.6,ICC Defenders,466.p.6398,Onyeka Okongwu,"PF,C"
@@ -84,6 +83,7 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.6,ICC Defenders,466.p.10510,Dylan Cardwell,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.5836,OG Anunoby,"SF,PF"
 466.l.165651.t.6,ICC Defenders,466.p.6047,Mitchell Robinson,C
+466.l.165651.t.6,ICC Defenders,466.p.10444,Derik Queen,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.5007,Anthony Davis,"PF,C"
 466.l.165651.t.6,ICC Defenders,466.p.10272,Kyshawn George,"SG,SF,PF"
 466.l.165651.t.7,Sakuragi,466.p.6044,Jalen Brunson,PG
@@ -189,17 +189,18 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6728,Kennedy Chandler,PG
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.4612,Stephen Curry,PG
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6580,Ayo Dosunmu,"PG,SG,SF"
-466.l.165651.t.14,Moneyball,466.p.5473,Devin Booker,"PG,SG"
-466.l.165651.t.14,Moneyball,466.p.4390,Russell Westbrook,"PG,SG"
+466.l.165651.t.14,Moneyball,466.p.4622,Jrue Holiday,"PG,SG"
+466.l.165651.t.14,Moneyball,466.p.6205,Nickeil Alexander-Walker,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.6403,Devin Vassell,"SG,SF"
-466.l.165651.t.14,Moneyball,466.p.6422,Desmond Bane,"SG,SF"
+466.l.165651.t.14,Moneyball,466.p.10070,GG Jackson,"SF,PF,C"
 466.l.165651.t.14,Moneyball,466.p.10116,Olivier-Maxence Prosper,"PF,C"
 466.l.165651.t.14,Moneyball,466.p.6032,Grayson Allen,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.6018,Wendell Carter Jr.,C
 466.l.165651.t.14,Moneyball,466.p.6564,Isaiah Jackson,C
 466.l.165651.t.14,Moneyball,466.p.10108,Amen Thompson,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.10110,Taylor Hendricks,"SF,PF,C"
-466.l.165651.t.14,Moneyball,466.p.6205,Nickeil Alexander-Walker,"PG,SG,SF"
-466.l.165651.t.14,Moneyball,466.p.4622,Jrue Holiday,"PG,SG"
+466.l.165651.t.14,Moneyball,466.p.5473,Devin Booker,"PG,SG"
+466.l.165651.t.14,Moneyball,466.p.4390,Russell Westbrook,"PG,SG"
+466.l.165651.t.14,Moneyball,466.p.6422,Desmond Bane,"SG,SF"
 466.l.165651.t.14,Moneyball,466.p.5835,Jarrett Allen,C
 466.l.165651.t.14,Moneyball,466.p.5482,Bobby Portis,"PF,C"
