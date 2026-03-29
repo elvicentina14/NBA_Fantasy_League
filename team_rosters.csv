@@ -57,20 +57,19 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.4,Porzinglass & Co.,466.p.3704,LeBron James,"SF,PF"
 466.l.165651.t.4,Porzinglass & Co.,466.p.5185,Giannis Antetokounmpo,"PF,C"
 466.l.165651.t.4,Porzinglass & Co.,466.p.6406,Aaron Nesmith,"SG,SF"
+466.l.165651.t.5,IBA KA,466.p.10455,Nolan Traore,PG
 466.l.165651.t.5,IBA KA,466.p.6175,Tyler Herro,"PG,SG"
-466.l.165651.t.5,IBA KA,466.p.4563,James Harden,"PG,SG"
+466.l.165651.t.5,IBA KA,466.p.5842,Derrick White,"PG,SG"
 466.l.165651.t.5,IBA KA,466.p.4244,Kevin Durant,"SG,SF,PF"
-466.l.165651.t.5,IBA KA,466.p.6693,Jabari Smith Jr.,"SF,PF,C"
 466.l.165651.t.5,IBA KA,466.p.5832,John Collins,"PF,C"
 466.l.165651.t.5,IBA KA,466.p.6696,Bennedict Mathurin,"SG,SF"
-466.l.165651.t.5,IBA KA,466.p.5197,Rudy Gobert,C
+466.l.165651.t.5,IBA KA,466.p.6693,Jabari Smith Jr.,"SF,PF,C"
 466.l.165651.t.5,IBA KA,466.p.10476,Ryan Kalkbrenner,C
 466.l.165651.t.5,IBA KA,466.p.5294,Joel Embiid,C
 466.l.165651.t.5,IBA KA,466.p.5292,Andrew Wiggins,"SG,SF,PF"
-466.l.165651.t.5,IBA KA,466.p.10494,Javon Small,"PG,SG"
+466.l.165651.t.5,IBA KA,466.p.4563,James Harden,"PG,SG"
+466.l.165651.t.5,IBA KA,466.p.5197,Rudy Gobert,C
 466.l.165651.t.5,IBA KA,466.p.10122,Brice Sensabaugh,"SG,SF,PF"
-466.l.165651.t.5,IBA KA,466.p.10423,Elijah Harkless,SG
-466.l.165651.t.5,IBA KA,466.p.5842,Derrick White,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10288,Reed Sheppard,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10273,Bub Carrington,"PG,SG"
 466.l.165651.t.6,ICC Defenders,466.p.10290,Stephon Castle,"PG,SG"
@@ -182,8 +181,8 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10050,Leonard Miller,"SF,PF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6600,Jericho Sims,C
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.5640,Jakob Poeltl,C
-466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6728,Kennedy Chandler,PG
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.5739,Gary Payton II,SG
+466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10278,Ja'Kobe Walter,"PG,SG"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6606,Austin Reaves,"PG,SG,SF"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.10094,Victor Wembanyama,"PF,C"
 466.l.165651.t.13,😴 NIGHT NIGHT 😴,466.p.6019,Collin Sexton,"PG,SG"
@@ -197,10 +196,10 @@ team_key,team_name,player_key,player_name,position
 466.l.165651.t.14,Moneyball,466.p.10283,Cody Williams,"SG,SF"
 466.l.165651.t.14,Moneyball,466.p.6018,Wendell Carter Jr.,C
 466.l.165651.t.14,Moneyball,466.p.10116,Olivier-Maxence Prosper,"PF,C"
-466.l.165651.t.14,Moneyball,466.p.10110,Taylor Hendricks,"SF,PF,C"
 466.l.165651.t.14,Moneyball,466.p.6032,Grayson Allen,"PG,SG,SF"
+466.l.165651.t.14,Moneyball,466.p.6564,Isaiah Jackson,C
 466.l.165651.t.14,Moneyball,466.p.5473,Devin Booker,"PG,SG"
 466.l.165651.t.14,Moneyball,466.p.6205,Nickeil Alexander-Walker,"PG,SG,SF"
 466.l.165651.t.14,Moneyball,466.p.10070,GG Jackson,"SF,PF,C"
 466.l.165651.t.14,Moneyball,466.p.5835,Jarrett Allen,C
-466.l.165651.t.14,Moneyball,466.p.6564,Isaiah Jackson,C
+466.l.165651.t.14,Moneyball,466.p.10110,Taylor Hendricks,"SF,PF,C"
